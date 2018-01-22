@@ -1,0 +1,20 @@
+<div class="card home">
+   <p-galleria [images]="images" [showFilmstrip]="false" panelWidth="100%" panelHeight="250" [showCaption]="false"></p-galleria>
+
+   <div class="card-footer">
+       <div class="logo">
+            <img src="assets/images/logo.PNG">
+            <p class="logo-descripcion"> Sistema de Información Geográfica</p>
+      </div>
+  </div>
+
+  <div class="card-footer logo">
+       <button type="button" routerLink="/capas"  class="btn btn-danger bmd-btn-fab">
+            <i class="fa fa-search"></i>
+        </button>
+        <br/>
+        <span>Ver capas</span>
+  </div>
+</div>
+
+<app-footer></app-footer>
