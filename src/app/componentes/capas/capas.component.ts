@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
-import * as search from 'leaflet-search'
+import 'leaflet-sidebar-v2';
+import {CapasService} from '../../services/capas.service';
 
 @Component({
   selector: 'app-capas',
@@ -13,7 +14,8 @@ export class CapasComponent implements OnInit {
    control: any;
    overlayMaps: any;
 
-  constructor() { }
+
+  constructor(private capasService: CapasService) { }
 
   ngOnInit() {
     this.iniciar_mapa();
@@ -21,28 +23,21 @@ export class CapasComponent implements OnInit {
 
   iniciar_mapa()
   {
-      let osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
 
-      const osm = L.tileLayer(osmUrl, {
-          attribution: 'Open Street Maps | CSUDO'
+      const osm_provider = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: 'OpenStreetMaps | CSUDO'
+      });
+
+      const carto_provider = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+          attribution: 'Cartografica | CSUDO'
       });
 
 
-      let cartoUrl='https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
-
-      const carto = L.tileLayer(cartoUrl, {
-          attribution: 'Carto Tiles | CSUDO'
-      });
-
-      let argis = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
-
-      let satelite = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
-
-      const argis_provider = L.tileLayer(argis, {
+      const argis_provider = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
           attribution: 'Argis | CSUDO'
       });
 
-      const satelite_provider = L.tileLayer(satelite, {
+      const satelite_provider = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
           attribution: 'Satelital | CSUDO'
       });
 
@@ -50,47 +45,88 @@ export class CapasComponent implements OnInit {
       this.mapa = L.map('mapa', {
         center: [10.456389, -64.1675],
         zoom: 13,
-        layers: [osm]
+        layers: [osm_provider]
         });
 
         this.baseMaps = {
-            "OSM": osm,
-            "Carto": carto,
+            "OSM": osm_provider,
+            "Carto": carto_provider,
             "Terreno": argis_provider,
             "Satelite": satelite_provider
         };
 
-        this.overlayMaps = {};
 
         this.control = L.control.layers(this.baseMaps, this.overlayMaps).addTo(this.mapa);
         this.mapa.on('click', (e) => {this.onMapClick(e)});
-        let geojsonFeature = {
-            "type": "Feature",
-            "properties": {
-                "name": "Coors Field",
-                "amenity": "Baseball Stadium",
-                "description": "This is where the Rockies play!",
-                "color": "blue"
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [-64.1675, 10.456389]
+
+        L.control.sidebar({
+              autopan: false,
+              closeButton: true, 
+              container: 'sidebar', 
+              position: 'left',     
+          }).addTo(this.mapa);
+  }
+
+  buscar_capa(capa)
+  {
+
+  let circleStyle = function(){
+
+                return {
+                    radius: 8,
+                    fillColor: "#ff7800",
+                    color: "#000",
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }
+
             }
-        };
-let style = {
-                radius: 8,
-            fillColor: "#ff7800",
-            color: "#000",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.8
-                };
 
 
-        L.geoJSON(geojsonFeature,{
+       this.capasService.buscar(capa).subscribe(data =>{
 
-                style: style
-        }).addTo(this.mapa);
+        this.addEscuelas(data.body, circleStyle);
+            
+       }, error =>{
+         alert("ERROR");
+       });
+  }
+
+    addEscuelas(capa, estilo){
+
+    let atributos = Object.getOwnPropertyNames(capa.features[0].properties);
+    let popup = function(feature, layer){
+
+        let popupDiv = document.createElement("div");
+        let ul = document.createElement("ul");
+
+        atributos.forEach((element) =>{
+
+            if(element != "pk"){
+
+                let li = document.createElement("li");
+                li.innerHTML = ""+element+": "+feature.properties[""+element];
+                ul.appendChild(li);
+            }
+        });
+        popupDiv.appendChild(ul);
+        layer.bindPopup(popupDiv);
+    }
+
+    let myLayer = L.geoJSON(capa, {
+        pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, estilo);
+        },
+        onEachFeature: popup}).addTo(this.mapa);
+
+    let nombre = capa.nombre;
+
+    this.overlayMaps[""+capa.nombre] = myLayer;
+
+    this.mapa.removeControl(this.control);
+    this.control = L.control.layers(this.baseMaps, this.overlayMaps).addTo(this.mapa);
+
   }
 
 

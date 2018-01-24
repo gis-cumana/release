@@ -1,10 +1,41 @@
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
-   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
-   crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
-   integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
-   crossorigin=""></script>
-
-   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.3/mapbox-gl.css' rel='stylesheet' />
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.3/mapbox-gl.css' rel='stylesheet' />
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.3/mapbox-gl.js'></script>
+
+
+<div id="sidebar" class="leaflet-sidebar collapsed">
+    <!-- Nav tabs -->
+    <div class="leaflet-sidebar-tabs">
+        <ul role="tablist"> <!-- top aligned tabs -->
+            <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+            <li ><a href="#escuelas" role="tab"><i class="fa fa-bank"></i></a></li>
+            <li class="disabled"><a href="#otro" role="tab"><i class="fa fa-gear"></i></a></li>
+            <li class="disabled"><a href="#otro2" role="tab"><i class="fa fa-gear"></i></a></li>
+        </ul>
+ 
+        <ul role="tablist"> <!-- bottom aligned tabs -->
+            <li><a href="#settings" role="tab"><i class="fa fa-info"></i></a></li>
+        </ul>
+    </div>
+ 
+    <!-- Tab panes -->
+    <div class="leaflet-sidebar-content">
+        
+        <div class="leaflet-sidebar-pane" id="home">
+            <h1 class="leaflet-sidebar-header">
+                Lista de capas disponibles
+                <div class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></div>
+            </h1>
+            <p>Aqui va una intro, informacion del sismologico o xyz</p>
+        </div>
+ 
+        <div class="leaflet-sidebar-pane" id="escuelas">
+            <h1 class="leaflet-sidebar-header">Escuelas<div class="leaflet-sidebar-close"><i class="fa fa-bank"></i></div></h1>
+            <p>Aqui va una intro, informacion sobre la capa de escuelas. Un texto</p>
+            <button pButton type="button" label="Buscar capa" (click)="buscar_capa('escuelas')"></button>
+        </div>
+ 
+    </div>
+</div>
 <div id="mapa" class="row-full"></div>
+
+
