@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import * as L from 'leaflet';
+declare const L: any;
 import 'leaflet-sidebar-v2';
+import 'leaflet-search';
 import {CapasService} from '../../services/capas.service';
 
 @Component({
@@ -23,6 +24,7 @@ export class CapasComponent implements OnInit {
 
   iniciar_mapa()
   {
+       this.capasService.buscar("escuelas").subscribe(data =>{
 
       const osm_provider = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
           attribution: 'OpenStreetMaps | CSUDO'
@@ -56,7 +58,10 @@ export class CapasComponent implements OnInit {
         };
 
 
-        this.control = L.control.layers(this.baseMaps, this.overlayMaps).addTo(this.mapa);
+        this.overlayMaps = {};
+
+
+       
         this.mapa.on('click', (e) => {this.onMapClick(e)});
 
         L.control.sidebar({
@@ -65,69 +70,45 @@ export class CapasComponent implements OnInit {
               container: 'sidebar', 
               position: 'left',     
           }).addTo(this.mapa);
+
+
+          let geojsonMarkerOptions = {
+                radius: 8,
+                fillColor: "#ff7800",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };
+
+            let escuelas = L.geoJSON(data.body, {
+                pointToLayer: function (feature, latlng) {
+                    return L.Marker(new L.latLng(feature.geometry.coordinates), {title: feature.properties.nombre} );
+                }
+            });
+
+            this.overlayMaps = {
+              "escuelas": escuelas
+            };
+
+             this.control = L.control.layers(this.baseMaps, this.overlayMaps).addTo(this.mapa);
+
+            this.mapa.addLayer(escuelas);
+
+            let searchControl = new L.Control.Search({
+              layer: escuelas
+            });
+
+            this.mapa.addControl(searchControl);
+
+      });
   }
 
   buscar_capa(capa)
-  {
-
-  let circleStyle = function(){
-
-                return {
-                    radius: 8,
-                    fillColor: "#ff7800",
-                    color: "#000",
-                    weight: 1,
-                    opacity: 1,
-                    fillOpacity: 0.8
-                }
-
-            }
-
-
-       this.capasService.buscar(capa).subscribe(data =>{
-
-        this.addEscuelas(data.body, circleStyle);
-            
-       }, error =>{
-         alert("ERROR");
-       });
+  {         
   }
 
-    addEscuelas(capa, estilo){
 
-    let atributos = Object.getOwnPropertyNames(capa.features[0].properties);
-    let popup = function(feature, layer){
-
-        let popupDiv = document.createElement("div");
-        let ul = document.createElement("ul");
-
-        atributos.forEach((element) =>{
-
-            if(element != "pk"){
-
-                let li = document.createElement("li");
-                li.innerHTML = ""+element+": "+feature.properties[""+element];
-                ul.appendChild(li);
-            }
-        });
-        popupDiv.appendChild(ul);
-        layer.bindPopup(popupDiv);
-    }
-
-    let myLayer = L.geoJSON(capa, {
-        pointToLayer: function (feature, latlng) {
-            return L.circleMarker(latlng, estilo);
-        },
-        onEachFeature: popup}).addTo(this.mapa);
-
-    let nombre = capa.nombre;
-
-    this.overlayMaps[""+capa.nombre] = myLayer;
-
-    this.mapa.removeControl(this.control);
-    this.control = L.control.layers(this.baseMaps, this.overlayMaps).addTo(this.mapa);
-
-  }
 
 
   onMapClick(e) {

@@ -23,6 +23,7 @@
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/leaflet-sidebar-v2/css/leaflet-sidebar.min.css",
         "../node_modules/primeng/resources/primeng.css",
+        "../node_modules/leaflet-search/src/leaflet-search.css",
         "../node_modules/primeng/resources/themes/bootstrap/theme.css",
         "styles.css"
       ],
