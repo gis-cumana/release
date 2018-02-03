@@ -12,3 +12,19 @@ right: 0;
 top: 15%;
 }
 
+div.nomargin, div.nomargin *{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.push{
+    margin-top: 100px;
+}
+
+.filtro{
+    background: #f0e4f3 !important;
+}
+
+div.modal-dialog{
+    max-width: 800px;
+}

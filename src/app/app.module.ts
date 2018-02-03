@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './componentes/header/header.component';
 import { HomeComponent } from './componentes/home/home.component';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { FlashMessagesModule } from 'angular2-flash-messages/module';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {GalleriaModule, ButtonModule} from 'primeng/primeng';
 import { CapasComponent} from './componentes/capas/capas.component';
@@ -30,9 +31,10 @@ const appRoutes : Routes = [
         FooterComponent
     ],
     imports: [
+        NgbModalModule.forRoot(),
+        FlashMessagesModule.forRoot(),
         RouterModule.forRoot(appRoutes),
         BrowserModule,
-        LeafletModule.forRoot(),
         BrowserAnimationsModule,
         FormsModule,
         HttpClientModule,
