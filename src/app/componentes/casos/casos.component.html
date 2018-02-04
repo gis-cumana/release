@@ -1,0 +1,27 @@
+<p-dialog header="Reportar nuevo caso" [(visible)]="display" modal="true" [width]="600" >
+  <fieldset class="form-group">
+    <label for="latitud" class="bmd-label-floating">Latitud</label>
+    <input type="text" class="form-control" [(ngModel)]="lat" id="latitud">
+    <span class="bmd-help">Latitud del caso que desea registrar</span>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="longitud" class="bmd-label-floating">Longitud</label>
+    <input type="text" class="form-control" [(ngModel)]="lng" id="longitud">
+    <span class="bmd-help">Longitud del caso que desea registrar</span>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="longitud" class="bmd-label-floating">Longitud</label>
+    <input type="text" class="form-control" [(ngModel)]="lng" id="longitud">
+    <span class="bmd-help">Longitud del caso que desea registrar</span>
+  </fieldset>
+
+    <p-footer>
+       <button type="button" pButton icon="fa-check" (click)="registrar()" label="Registrar"></button>
+            <button type="button" pButton icon="fa-close" (click)="display=false" label="Cancelar"></button>
+    </p-footer>
+</p-dialog>
+
+<div id="map" class="row-full push"></div>
+

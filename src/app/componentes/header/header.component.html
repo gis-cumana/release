@@ -1,15 +1,104 @@
-<nav class="navbar navbar-dark bg-dark" style="background-color: #a21025 !important">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bannersig">
   <a class="navbar-brand" routerLink="/" >
-  <div class="row">
-  <div class="col-md-3">
-       <img src="assets/images/Logo_UDO.svg.png" width="55" height="55">
+    <img src="assets/images/logo_sismologico.png" style="float: left" width="55" height="55">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+     <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/casos"> <span class="fa fa-map-marker"></span> Reportar caso</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="#"> <span class="fa fa-table"></span> Sucesos</a>
+      </li>
+    </ul>
+    <form class="form-inline">
+      <button class="btn btn-success" (click)="showLogin()">Iniciar sesión</button>
+      <button class="btn btn-primary" (click)="showRegister()">Registrate</button>
+    </form>
   </div>
-  <div class="col-md-6">
-   <p class="titulo">
-    Centro de Sismología <br/>
-    Universidad de Oriente
-   </p>
-  </div>
-  </div>
-    </a>
 </nav>
+
+<p-dialog header="Registrar nuevo usuario" width="400" modal="true" [(visible)]="display">
+  <div class="center">
+    <button type="button" class="btn btn-info">
+      <span class="fa fa-facebook"></span>
+      Registrate con Facebook</button>
+    <br/>
+    <button type="button" class="btn btn-danger">
+      <span class="fa fa-google-plus"></span>
+      Registrate con Google</button> <br/>
+  </div>
+
+  <fieldset class="form-group">
+    <label for="nombre" class="bmd-label-floating">Nombre y apellido</label>
+    <input type="text" class="form-control" id="nombre">
+    <span class="bmd-help">Escriba su primer nombre y primer apellido</span>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="email" class="bmd-label-floating">Correo Electronico</label>
+    <input type="email" class="form-control" id="email">
+    <span class="bmd-help">Escriba su correo electronico</span>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="password" class="bmd-label-floating">Contraseña</label>
+    <input type="password" class="form-control" id="password">
+    <span class="bmd-help">Escriba su correo electronico</span>
+  </fieldset>
+
+  <div class="center">
+    <button type="button" class="btn btn-success btn-lg">Registrar</button>
+     <br/>
+     <br/>
+    ¿Tienes una cuenta? <a href="#" (click)="showLogin()">Ingresar</a>
+  </div>
+</p-dialog>
+
+<p-dialog header="Iniciar sesión" width="400" modal="true" [(visible)]="registro">
+  <div class="center">
+    <button type="button" class="btn btn-info">
+      <span class="fa fa-facebook"></span>
+      Iniciar con Facebook</button>
+    <br/>
+    <button type="button" class="btn btn-danger">
+      <span class="fa fa-google-plus"></span>
+      Iniciar con Google</button> <br/>
+  </div>
+
+  <fieldset class="form-group">
+    <label for="email" class="bmd-label-floating">Correo Electronico</label>
+    <input type="email" class="form-control" id="email">
+    <span class="bmd-help">Escriba su correo electronico</span>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="password" class="bmd-label-floating">Contraseña</label>
+    <input type="password" class="form-control" id="password">
+    <span class="bmd-help">Escriba su correo electronico</span>
+  </fieldset>
+
+  <div class="center">
+    <button type="button" class="btn btn-success btn-lg">Iniciar sesión</button>
+     <br/><br/>
+      <a href="#" (click)="showRecover()">¿Olvidaste su contraseña?</a>
+     <br/><br/>
+    ¿No tienes cuenta? <a href="#" (click)="showRegister()">Registrate</a>
+  </div>
+</p-dialog>
+
+<p-dialog header="Recuperar contraseña" width="400" modal="true" [(visible)]="recover">
+
+  <span class="fa fa-info fa-2x"></span> Introduzca su correo electronico y le enviaremos su nuevo código de seguridad.
+  <fieldset class="form-group">
+    <label for="email" class="bmd-label-floating">Correo Electronico</label>
+    <input type="email" class="form-control" id="email">
+    <span class="bmd-help">Escriba su correo electronico</span>
+  </fieldset>
+
+  <div class="center">
+    <button type="button" class="btn btn-success">Enviar</button>
+    <button type="button" (click)="showLogin()" class="btn btn-success">Regresar</button>
+  </div>
+</p-dialog>

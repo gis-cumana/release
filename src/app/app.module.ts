@@ -7,18 +7,21 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './componentes/header/header.component';
 import { HomeComponent } from './componentes/home/home.component';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { FlashMessagesModule } from 'angular2-flash-messages/module';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
-import {GalleriaModule, ButtonModule} from 'primeng/primeng';
+import {GalleriaModule, ButtonModule, DialogModule, InputTextModule, DropdownModule, GrowlModule, InputMaskModule} from 'primeng/primeng';
 import { CapasComponent} from './componentes/capas/capas.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 //servicios
 import {CapasService} from './services/capas.service';
+import { CasosComponent } from './componentes/casos/casos.component';
 
 const appRoutes : Routes = [
  { path: '', component: HomeComponent},
- { path: 'capas', component: CapasComponent}
+ { path: 'capas', component: CapasComponent},
+ { path: 'casos', component: CasosComponent}
 ]
 
 @NgModule({
@@ -27,18 +30,24 @@ const appRoutes : Routes = [
         HeaderComponent,
         HomeComponent,
         CapasComponent,
-        FooterComponent
+        FooterComponent,
+        CasosComponent
     ],
     imports: [
+        NgbModalModule.forRoot(),
+        FlashMessagesModule.forRoot(),
         RouterModule.forRoot(appRoutes),
         BrowserModule,
-        LeafletModule.forRoot(),
         BrowserAnimationsModule,
         FormsModule,
         HttpClientModule,
         GalleriaModule,
+        DialogModule,
         ButtonModule,
-        ProgressSpinnerModule
+        ProgressSpinnerModule,
+        GrowlModule,
+        InputMaskModule,
+        DropdownModule
     ],
     providers: [CapasService],
     bootstrap: [AppComponent]
