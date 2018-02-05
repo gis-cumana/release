@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { SelectItem} from 'primeng/primeng';
 import {Message} from 'primeng/components/common/api';
+import {SucesosService} from '../../services/sucesos.service';
+import {CasosService} from '../../services/casos.service';
+
 
 @Component({
   selector: 'app-casos',
@@ -21,14 +24,19 @@ export class CasosComponent implements OnInit {
   msgs: Message[] = [];
   hora: Date;
   descripcion: string;
-  sucesos: SelectItem[];
-  constructor() { }
+  sucesos: any;
+  constructor(private sucesosService: SucesosService,
+              private casosService: CasosService) { }
 
   ngOnInit() {
 
-      this.msgs.push({severity:'success', summary:'Haga click en el lugar donde ourrio el hecho'});
+    this.sucesos = [];
 
-      this.iniciar_mapa();
+    this.get_lista_sucesos();
+
+    this.msgs.push({severity:'success', summary:'Haga click en el lugar donde ourrio el hecho'});
+
+    this.iniciar_mapa();
   }
 
   iniciar_mapa()
@@ -90,7 +98,17 @@ export class CasosComponent implements OnInit {
           "lng": this.lng,
           "imagenes": []
         };
-    }
+
+        this.casosService.post(caso).subscribe(data =>{
+          this.msgs.push({severity:'success', summary:'Registro exitoso', detail:''});
+           this.display = false;
+           this.descripcion = "";
+          },
+          error => {
+            console.log(error);
+            this.msgs.push({severity:'error', summary:'Error de conexion', detail:'no se pudo conectar con el servidor de datos'});
+          });
+      }
     }
 
 
@@ -119,9 +137,23 @@ export class CasosComponent implements OnInit {
     }
     if (this.suceso == null){
       res = false;
-      this.msgs.push({severity:'error', summary:'Suceso', detail:'es requerida'});
+      this.msgs.push({severity:'error', summary:'Suceso', detail:'es requerido'});
     }
     return res;
+  }
+
+  get_lista_sucesos(){
+    this.sucesosService.all().subscribe(data =>{
+      console.log(data);
+      data.body.forEach((element) =>{
+        this.sucesos.push({"id": element.id,
+                            "nombre": element.nombre});
+      });
+    },
+    error => {
+      console.log(error);
+      this.msgs.push({severity:'error', summary:'Error de conexion', detail:'no se encontraron los sucesos'});
+    });
   }
 
 }

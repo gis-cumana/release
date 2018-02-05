@@ -13,15 +13,20 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import {GalleriaModule, ButtonModule, DialogModule, InputTextModule, DropdownModule, GrowlModule, InputMaskModule} from 'primeng/primeng';
 import { CapasComponent} from './componentes/capas/capas.component';
 import { FooterComponent } from './componentes/footer/footer.component';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {TableModule} from 'primeng/table';
 //servicios
 import {CapasService} from './services/capas.service';
+import {CasosService} from './services/casos.service';
+import {SucesosService} from './services/sucesos.service';
+
 import { CasosComponent } from './componentes/casos/casos.component';
+import { SucesosComponent } from './componentes/sucesos/sucesos.component';
 
 const appRoutes : Routes = [
  { path: '', component: HomeComponent},
  { path: 'capas', component: CapasComponent},
- { path: 'casos', component: CasosComponent}
+ { path: 'casos', component: CasosComponent},
+ { path: 'sucesos', component: SucesosComponent}
 ]
 
 @NgModule({
@@ -31,7 +36,8 @@ const appRoutes : Routes = [
         HomeComponent,
         CapasComponent,
         FooterComponent,
-        CasosComponent
+        CasosComponent,
+        SucesosComponent
     ],
     imports: [
         NgbModalModule.forRoot(),
@@ -44,12 +50,10 @@ const appRoutes : Routes = [
         GalleriaModule,
         DialogModule,
         ButtonModule,
-        ProgressSpinnerModule,
         GrowlModule,
-        InputMaskModule,
-        DropdownModule
+        TableModule
     ],
-    providers: [CapasService],
+    providers: [CapasService, CasosService, SucesosService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
