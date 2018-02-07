@@ -1,7 +1,6 @@
 <div class="card" style="margin: 2%">
   <div class="card-body">
-        <p-table #dt [value]="sucesos"  [globalFilterFields]="['nombre']" [responsive]="true" [loading]="loading">
-
+        <p-table #dt [value]="sucesos" [globalFilterFields]="['nombre']" [responsive]="true" [loading]="loading">
             <ng-template pTemplate="caption">
                 <div style="text-align: right">
                     <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
@@ -69,9 +68,14 @@
                 </td>
             </tr>
         </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+                Este suceso no tiene casos asociados
+        </ng-template>
+
     </p-table>
 </p-dialog>
 
 <p-dialog header="Detalles sobre el mapa" [(visible)]="mapa" modal="true" [width]="800" [height]="400">
-   <div id="map" class="row-full push"></div>
+   <div id="mmap"></div>
 </p-dialog>

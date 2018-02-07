@@ -16,13 +16,25 @@ export class SucesosComponent implements OnInit {
   msgs: Message[] = [];
   loading: boolean;
   detalle: boolean = false;
-  map: any;
+  mmap: any;
   mapa: boolean = false;
   constructor(private sucesosService: SucesosService, private casosService: CasosService) { }
 
   ngOnInit() {
       this.sucesos = [];
       this.get_lista_sucesos();
+      this.iniciar_visor_mapa();
+  }
+
+  iniciar_visor_mapa(){
+    const osm_provider = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: 'OpenStreetMaps | CSUDO'
+          });
+        this.mmap = L.map('mmap', {
+            center: [10.456389, -64.1675],
+            zoom: 13,
+            layers: [osm_provider]
+           });
   }
 
   get_lista_sucesos(){
@@ -63,18 +75,10 @@ export class SucesosComponent implements OnInit {
 
     ver_mapa(suceso: any){
         this.mapa = true;
-        const osm_provider = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-          attribution: 'OpenStreetMaps | CSUDO'
-          });
-        this.map = L.map('map', {
-            center: [10.456389, -64.1675],
-            zoom: 13,
-            layers: [osm_provider],
-            preferCanvas: true
-            });
-
         suceso.casos.forEach((element) =>{
-            let marker = L.marker([element.lat, element.lng]).addTo(this.map);
+            console.log(element);
+            let latlng = L.latLng(element.lat, element.lng);
+            L.marker(latlng).addTo(this.mmap);
         });
     }
 
