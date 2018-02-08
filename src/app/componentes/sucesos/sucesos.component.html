@@ -1,38 +1,48 @@
 <div class="card" style="margin: 2%">
   <div class="card-body">
-        <p-table #dt [value]="sucesos" [globalFilterFields]="['nombre']" [responsive]="true" [loading]="loading">
+  <p-progressBar mode="indeterminate" *ngIf="loading2"></p-progressBar>
+        <p-table #dt [value]="sucesos" [globalFilterFields]="['nombre']" [responsive]="true">
             <ng-template pTemplate="caption">
-                <div style="text-align: right">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-6 ui-lg-6"> 
+                <button type="button" (click)="modal_registro()" style="float: left" class="btn btn-success bmd-btn-fab bmd-btn-fab-sm">
+                          <i class="fa fa-plus"></i>
+                </button></div>
+                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                       <div style="text-align: right">
                     <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
                     <input type="text" pInputText size="50" placeholder="Buscar" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
                 </div>
+
+                </div>
+            </div>
             </ng-template>
 
             <ng-template pTemplate="header">
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
+                    <th style="width: 30%">Nombre</th>
                     <th>Fecha</th>
                     <th>Hora</th>
                     <th>Casos</th>
-                    <th>Ver en el mapa</th>
+                    <th>Ver casos</th>
+                    <th>Ver en mapa</th>
                 </tr>
             </ng-template>
 
             <ng-template pTemplate="body" let-suceso>
                 <tr>
-                    <td>{{suceso.id}}</td>
                     <td>{{suceso.nombre}}</td>
                     <td>{{suceso.fecha}}</td>
                     <td>{{suceso.hora}}</td>
+                    <th>{{suceso.casos.length}}</th>
                     <td>
-                        <button type="button"  (click)="ver_casos(suceso)" class="btn btn-success bmd-btn-fab bmd-btn-fab-sm">
+                        <button type="button" [disabled]="suceso.casos.length == 0"  (click)="ver_casos(suceso)" class="btn btn-success bmd-btn-fab bmd-btn-fab-sm">
                           <i class="fa fa-search"></i>
                         </button>
                     </td>
 
                      <td>
-                        <button style="display: block; text-align: center; margin: auto;" type="button" (click)="ver_mapa(suceso)" class="btn btn-success bmd-btn-fab bmd-btn-fab-sm">
+                        <button [disabled]="suceso.casos.length == 0" style="display: block; text-align: center; margin: auto;" type="button" (click)="ver_mapa(suceso)" class="btn btn-success bmd-btn-fab bmd-btn-fab-sm">
                           <i class="fa fa-map-marker"></i>
                         </button>
                     </td>
@@ -43,21 +53,23 @@
 </div>
 
 <p-dialog header="Casos del suceso" [(visible)]="detalle" modal="true" [width]="800" >
-    <p-table #dt [value]="casos" [responsive]="true">
+    <p-growl [(value)]="msgs"></p-growl>
+    <p-progressBar mode="indeterminate" *ngIf="loading"></p-progressBar>
+    <p-table [value]="casos" [responsive]="true">
         <ng-template pTemplate="header">
             <tr>
+                <th style="width: 30%">Descripción</th>
                 <th>Fecha</th>
                 <th>Hora</th>
-                <th>Descripción</th>
-                <th>Visibilidad</th>
+                <th>Visible</th>
             </tr>
         </ng-template>
 
         <ng-template pTemplate="body" let-caso>
             <tr>
+                <td style="width: 9em">{{caso.descripcion}}</td>
                 <td>{{caso.fecha}}</td>
                 <td>{{caso.hora}}</td>
-                <td>{{caso.descripcion}}</td>
                 <td>
                     <button *ngIf="!caso.visible" type="button" class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm"  (click)="cambiar_visibilidad(caso.id)">
                       <i class="fa fa-eye-slash"></i>
@@ -76,6 +88,35 @@
     </p-table>
 </p-dialog>
 
-<p-dialog header="Detalles sobre el mapa" [(visible)]="mapa" modal="true" [width]="800" [height]="400">
+
+
+<p-dialog header="Detalles sobre el mapa" [(visible)]="mapa" modal="true" [width]="800" [height]="500">
    <div id="mmap"></div>
+</p-dialog>
+
+
+<p-dialog header="Registrar un nuevo suceso" [(visible)]="modal_registro_suceso" modal="true" [width]="400" >
+<p-progressBar mode="indeterminate" *ngIf="loading"></p-progressBar>
+
+<fieldset class="form-group">
+    <label for="nombre" class="bmd-label-floating">Nombre</label>
+    <textarea  class="form-control" [(ngModel)]="nombre" cols="1" id="nombre"></textarea>
+    <span class="bmd-help">Escriba el nombre del evento sucedido</span>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="fecha" class="bmd-label-floating">Fecha</label>
+    <input type="date" class="form-control" [(ngModel)]="fecha" [max]="hoy" [value]="hoy" id="fecha">
+    <span class="bmd-help">Escriba la fecha del suceso</span>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="hora" class="bmd-label-floating">Hora</label>
+    <input  type="time" class="form-control" [(ngModel)]="hora" cols="1" id="hora">
+    <span class="bmd-help">Escriba la hora del suceso</span>
+  </fieldset>
+
+    <p-footer>
+      <button type="button" class="btn btn-success"  (click)="registrar()">Registrar</button>
+      <button type="button" class="btn btn-warning"  (click)="display=false">Cancelar</button>
+    </p-footer>
 </p-dialog>

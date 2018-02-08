@@ -13,11 +13,16 @@ export class SucesosComponent implements OnInit {
   sucesos: any;
   suceso: any;
   casos: any;
+  modal_registro_suceso: boolean = false;
   msgs: Message[] = [];
-  loading: boolean;
   detalle: boolean = false;
+  mapa: boolean;
   mmap: any;
-  mapa: boolean = false;
+  loading: boolean = false;
+  loading2: boolean = false;
+  osm_provider: any = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: 'OpenStreetMaps | CSUDO'
+          });
   constructor(private sucesosService: SucesosService, private casosService: CasosService) { }
 
   ngOnInit() {
@@ -27,28 +32,26 @@ export class SucesosComponent implements OnInit {
   }
 
   iniciar_visor_mapa(){
-    const osm_provider = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-          attribution: 'OpenStreetMaps | CSUDO'
-          });
-        this.mmap = L.map('mmap', {
+    this.mmap = L.map('mmap', {
             center: [10.456389, -64.1675],
             zoom: 13,
-            layers: [osm_provider]
+            layers: [this.osm_provider]
            });
   }
 
   get_lista_sucesos(){
-      this.loading = true;
+    this.sucesos = [];
+    this.loading2 = true;
     this.sucesosService.all().subscribe(data =>{
-      console.log(data);
       data.body.forEach((element) =>{
         this.sucesos.push(element);
       });
-      this.loading = false;
+      this.loading2 = false;
     },
     error => {
       console.log(error);
       this.msgs.push({severity:'error', summary:'Error de conexion', detail:'no se encontraron los sucesos'});
+      this.loading2 = false;
     });
   }
 
@@ -59,27 +62,49 @@ export class SucesosComponent implements OnInit {
     }
 
     cambiar_visibilidad(caso_id: any) {
+        this.loading = true;
         this.casosService.change_state(caso_id).subscribe(data => {
             this.sucesosService.get(this.suceso).subscribe(data => {
-                console.log(data);
                  this.casos = data.body.casos;
+                 this.msgs = [];
+                 this.msgs.push({severity:'success', summary:'Cambio exitoso', detail:''});
+                 this.get_lista_sucesos();
+                 this.loading = false;
             }, error =>{
                 console.log(error);
                 this.msgs.push({severity:'error', summary:'Error de conexion', detail:'no se encontraron los sucesos'});
+                this.loading = false;
             });
         }, error =>{
             console.log(error);
             this.msgs.push({severity:'error', summary:'Error de conexion', detail:'no se encontraron los sucesos'});
+            this.loading = false;
         });
     }
 
     ver_mapa(suceso: any){
+        this.mmap.eachLayer((layer) => {
+          if (layer._url != "http://{s}.tile.osm.org/{z}/{x}/{y}.png"){
+              this.mmap.removeLayer(layer);}
+        });
         this.mapa = true;
         suceso.casos.forEach((element) =>{
-            console.log(element);
-            let latlng = L.latLng(element.lat, element.lng);
-            L.marker(latlng).addTo(this.mmap);
+            if (element.visible){
+            L.marker(L.latLng(element.lat, element.lng), {
+              icon: L.icon({
+                  iconSize: [ 25, 41 ],
+                  iconAnchor: [ 13, 41 ],
+                  iconUrl: 'leaflet/marker-icon.png',
+                  shadowUrl: 'leaflet/marker-shadow.png'
+                })
+            }).bindPopup("Caso: "+element.descripcion+"<br/>Fecha: "+element.fecha).addTo(this.mmap);
+            }
         });
+
+    }
+
+    modal_registro(){
+      this.modal_registro_suceso = true;
     }
 
 }

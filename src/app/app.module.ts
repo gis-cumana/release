@@ -10,7 +10,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { FlashMessagesModule } from 'angular2-flash-messages/module';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
-import {GalleriaModule, ButtonModule, DialogModule, InputTextModule, DropdownModule, GrowlModule, InputMaskModule} from 'primeng/primeng';
+import {GalleriaModule, ButtonModule, DialogModule, GrowlModule, ProgressBarModule} from 'primeng/primeng';
 import { CapasComponent} from './componentes/capas/capas.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import {TableModule} from 'primeng/table';
@@ -51,7 +51,8 @@ const appRoutes : Routes = [
         DialogModule,
         ButtonModule,
         GrowlModule,
-        TableModule
+        TableModule,
+        ProgressBarModule
     ],
     providers: [CapasService, CasosService, SucesosService],
     bootstrap: [AppComponent]

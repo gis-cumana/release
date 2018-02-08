@@ -21,10 +21,12 @@ export class CasosComponent implements OnInit {
   lat: any;
   lng: any;
   fecha: Date;
+  hoy: any = new Date();
   msgs: Message[] = [];
   hora: Date;
   descripcion: string;
   sucesos: any;
+  loading: boolean = false;
   constructor(private sucesosService: SucesosService,
               private casosService: CasosService) { }
 
@@ -89,6 +91,7 @@ export class CasosComponent implements OnInit {
         this.msgs = [];
         if (this.validar())
         {
+        this.loading = true;
         let caso = {
           "fecha": this.fecha,
           "hora": this.hora,
@@ -100,13 +103,16 @@ export class CasosComponent implements OnInit {
         };
 
         this.casosService.post(caso).subscribe(data =>{
+          this.msgs = [];
           this.msgs.push({severity:'success', summary:'Registro exitoso', detail:''});
            this.display = false;
            this.descripcion = "";
+           this.loading = false;
           },
           error => {
             console.log(error);
             this.msgs.push({severity:'error', summary:'Error de conexion', detail:'no se pudo conectar con el servidor de datos'});
+            this.loading = false;
           });
       }
     }
