@@ -88,16 +88,19 @@ export class SucesosComponent implements OnInit {
               this.mmap.removeLayer(layer);}
         });
         this.mapa = true;
+        let punto = null;
         suceso.casos.forEach((element) =>{
             if (element.visible){
-            L.marker(L.latLng(element.lat, element.lng), {
-              icon: L.icon({
-                  iconSize: [ 25, 41 ],
-                  iconAnchor: [ 13, 41 ],
-                  iconUrl: 'leaflet/marker-icon.png',
-                  shadowUrl: 'leaflet/marker-shadow.png'
-                })
-            }).bindPopup("Caso: "+element.descripcion+"<br/>Fecha: "+element.fecha).addTo(this.mmap);
+            punto = L.marker(L.latLng(element.lat, element.lng), {
+                icon: L.icon({
+                    iconSize: [ 25, 41 ],
+                    iconAnchor: [ 13, 41 ],
+                    iconUrl: 'leaflet/marker-icon.png',
+                    shadowUrl: 'leaflet/marker-shadow.png'
+                  })
+              });
+              punto.bindPopup("Caso: "+element.descripcion+"<br/>Fecha: "+element.fecha);
+              punto.addTo(this.mmap);
             }
         });
 

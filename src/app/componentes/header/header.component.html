@@ -8,16 +8,17 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-     <li class="nav-item">
+     <li class="nav-item" *ngIf="logged">
         <a class="nav-link" href="#" routerLink="/casos"> <span class="fa fa-map-marker"></span> Reportar caso</a>
       </li>
-       <li class="nav-item">
+       <li class="nav-item" *ngIf="logged">
         <a class="nav-link" href="#" routerLink="/sucesos"> <span class="fa fa-table"></span> Sucesos</a>
       </li>
     </ul>
     <form class="form-inline">
-      <button class="btn btn-success" (click)="showLogin()">Iniciar sesión</button>
-      <button class="btn btn-primary" (click)="showRegister()">Registrate</button>
+      <button class="btn btn-success" *ngIf="!logged" (click)="showLogin()">Iniciar sesión</button>
+      <button class="btn btn-primary" *ngIf="!logged" (click)="showRegister()">Registrate</button>
+      <button class="btn btn-primary" *ngIf="logged" >Cerrar sesión</button>
     </form>
   </div>
 </nav>

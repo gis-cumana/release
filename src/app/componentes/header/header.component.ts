@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-      
+    this.is_autenticate();
   }
 
 
@@ -32,6 +32,13 @@ export class HeaderComponent implements OnInit {
     showRecover() {
         this.registro = false;
         this.recover = true;
+    }
+    
+    is_autenticate(){
+      let user = JSON.parse(localStorage.getItem('currentUser'));
+      if (user != null){
+        this.logged = true;
+      }
     }
 
     login(){
