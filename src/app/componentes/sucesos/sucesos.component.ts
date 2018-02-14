@@ -118,10 +118,13 @@ export class SucesosComponent implements OnInit {
             "fecha": this.fecha,
             "hora": this.hora
         }
+
+        this.loading2 = true;
         this.sucesosService.post(datos).subscribe(data =>{
             this.msgs.push({severity:'success', summary:'Suceso registrado exitosamente', detail:''});
             this.loading2 = false;
             this.modal_registro_suceso = false;
+            this.get_lista_sucesos();
         },
         error => {
           console.log(error);
