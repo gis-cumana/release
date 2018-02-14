@@ -86,3 +86,31 @@
 <p-dialog header="Detalles sobre el mapa" [(visible)]="mapa" modal="true" [width]="800" [height]="500">
    <div id="mmap"></div>
 </p-dialog>
+
+
+<p-dialog header="Registrar suceso" [(visible)]="modal_registro_suceso" modal="true" [width]="400">
+   <p-progressBar mode="indeterminate" *ngIf="loading"></p-progressBar>
+   <p-growl [(value)]="msgs"></p-growl>
+  <fieldset class="form-group">
+    <label for="nombre" class="bmd-label-floating">Nombre</label>
+    <input type="text" class="form-control" [(ngModel)]="nombre" id="nombre">
+    <span class="bmd-help">Latitud del caso que desea registrar</span>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="fecha" class="bmd-label-floating">Fecha</label>
+    <input type="date" [max]="hoy" class="form-control"  [value]="hoy" [(ngModel)]="fecha" id="fecha">
+    <span class="bmd-help">Longitud del caso que desea registrar</span>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="hora" class="bmd-label-floating">Hora</label>
+    <input type="time" class="form-control" [(ngModel)]="hora" [max]="hoy" [value]="hoy" id="hora">
+    <span class="bmd-help">Escriba la fecha del suceso</span>
+  </fieldset>
+
+   <p-footer>
+      <button type="button" class="btn btn-success"  (click)="registrar_suceso()">Registrar</button>
+      <button type="button" class="btn btn-warning"  (click)="display=false">Cancelar</button>
+    </p-footer>
+</p-dialog>

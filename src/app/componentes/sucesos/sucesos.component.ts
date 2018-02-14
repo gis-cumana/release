@@ -18,6 +18,10 @@ export class SucesosComponent implements OnInit {
   detalle: boolean = false;
   mapa: boolean;
   mmap: any;
+  nombre: any;
+  fecha: any;
+  hora: any;
+  hoy: any = new Date();
   loading: boolean = false;
   loading2: boolean = false;
   osm_provider: any = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -104,6 +108,45 @@ export class SucesosComponent implements OnInit {
             }
         });
 
+    }
+
+    registrar_suceso(){
+    if (this.validar())
+    {
+        let datos = {
+            "nombre": this.nombre,
+            "fecha": this.fecha,
+            "hora": this.hora
+        }
+        this.sucesosService.post(datos).subscribe(data =>{
+            this.msgs.push({severity:'success', summary:'Suceso registrado exitosamente', detail:''});
+            this.loading2 = false;
+            this.modal_registro_suceso = false;
+        },
+        error => {
+          console.log(error);
+          this.msgs.push({severity:'error', summary:'Error al registrar', detail:''});
+          this.loading2 = false;
+        });
+    }
+    }
+
+    validar(){
+    let res = true;
+        if(this.nombre == null)
+        {
+            res = false
+            this.msgs.push({severity:'error', summary:'Nombre', detail:'es requerido'});
+        }
+        if (this.fecha == null){
+              res = false;
+              this.msgs.push({severity:'error', summary:'Fecha', detail:'es requerida'});
+            }
+            if (this.hora == null){
+              res = false;
+              this.msgs.push({severity:'error', summary:'Hora', detail:'es requerida'});
+            }
+            return res;
     }
 
     modal_registro(){

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class CasosService {
     public url: string;
-    public key = "Y2VyY2Fkb2Nhcmxvc0BnbWFpbC5jb206Y2VudGF1cm8u"
+    public key = JSON.parse(localStorage.getItem('currentUser')).header;
   
   constructor(public http: HttpClient) {
       this.url = 'https://gis-entorno-benjamin-s-e.c9users.io:8080/casos';

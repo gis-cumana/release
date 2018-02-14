@@ -18,6 +18,10 @@ import {TableModule} from 'primeng/table';
 import {CapasService} from './services/capas.service';
 import {CasosService} from './services/casos.service';
 import {SucesosService} from './services/sucesos.service';
+import {AuthService} from './services/auth.service';
+import {AuthGuard} from './services/guard.service';
+
+
 
 import { CasosComponent } from './componentes/casos/casos.component';
 import { SucesosComponent } from './componentes/sucesos/sucesos.component';
@@ -25,8 +29,8 @@ import { SucesosComponent } from './componentes/sucesos/sucesos.component';
 const appRoutes : Routes = [
  { path: '', component: HomeComponent},
  { path: 'capas', component: CapasComponent},
- { path: 'casos', component: CasosComponent},
- { path: 'sucesos', component: SucesosComponent}
+ { path: 'casos', component: CasosComponent, canActivate: [AuthGuard]},
+ { path: 'sucesos', component: SucesosComponent, canActivate: [AuthGuard]}
 ]
 
 @NgModule({
@@ -54,7 +58,7 @@ const appRoutes : Routes = [
         TableModule,
         ProgressBarModule
     ],
-    providers: [CapasService, CasosService, SucesosService],
+    providers: [CapasService, CasosService, SucesosService, AuthService, AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
