@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   password: any;
   msgs: Message[] = [];
   loading: boolean = false;
+  user_logged = "Usurario";
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -45,12 +46,13 @@ export class HeaderComponent implements OnInit {
       let user = JSON.parse(localStorage.getItem('currentUser'));
       if (user != null){
         this.logged = true;
+        this.user_logged = user.nombre;
       }else{
         this.logged = false;
       }
     }
 
-    login(){  
+    login(){
         this.msgs = [];
         if (this.validar())
         {
@@ -81,7 +83,7 @@ export class HeaderComponent implements OnInit {
              this.is_autenticate();
            },error => {
               console.log(error);
-           });           
+           });
           },
           error => {
             console.log(error);

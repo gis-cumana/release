@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark bannersig">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" routerLink="/" >
     <img src="assets/images/logo_sismologico.png" style="float: left" width="55" height="55">
 </a>
@@ -9,16 +9,23 @@
     <ul class="navbar-nav mr-auto">
 
      <li class="nav-item" *ngIf="logged">
-        <a class="nav-link" href="#" routerLink="/casos"> <span class="fa fa-map-marker"></span> Reportar caso</a>
+        <a class="nav-link" href="#" routerLink="/casos">Reportar caso</a>
       </li>
        <li class="nav-item" *ngIf="logged">
-        <a class="nav-link" href="#" routerLink="/sucesos"> <span class="fa fa-table"></span> Sucesos</a>
+        <a class="nav-link" href="#" routerLink="/sucesos">Sucesos</a>
       </li>
     </ul>
     <form class="form-inline">
       <button class="btn btn-success" *ngIf="!logged" (click)="showLogin()">Iniciar sesión</button>
-      <button class="btn btn-primary" *ngIf="!logged" (click)="showRegister()">Registrate</button>
-      <button class="btn btn-primary" *ngIf="logged" (click)="logout()" >Cerrar sesión</button>
+      <div class="dropdown" *ngIf="logged">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="fa fa-user"></span> {{user_logged}}
+          </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Ver perfil</a>
+        <a class="dropdown-item" href="#" (click)="logout()" >Cerrar sesión</a>
+      </div>
+    </div>
     </form>
   </div>
 </nav>
