@@ -20,9 +20,8 @@
 
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="width: 30%">Nombre</th>
+                    <th style="width: 30%">Descripción</th>
                     <th>Fecha</th>
-                    <th>Hora</th>
                     <th>Casos</th>
                     <th>Detalles</th>
                     <th>Visualizar</th>
@@ -34,7 +33,6 @@
                 <tr>
                     <td>{{suceso.nombre}}</td>
                     <td>{{suceso.fecha}}</td>
-                    <td>{{suceso.hora}}</td>
                     <th>{{suceso.casos.length}}</th>
                     <td>
                         <button type="button" [disabled]="suceso.casos.length == 0"  (click)="ver_casos(suceso)" class="btn btn-success bmd-btn-fab bmd-btn-fab-sm">
@@ -114,13 +112,6 @@
     <input type="date" [max]="hoy" class="form-control"  [value]="hoy" [(ngModel)]="fecha" id="fecha">
     <span class="bmd-help">Longitud del caso que desea registrar</span>
   </fieldset>
-
-  <fieldset class="form-group">
-    <label for="hora" class="bmd-label-floating">Hora</label>
-    <input type="time" class="form-control" [(ngModel)]="hora" [max]="hoy" [value]="hoy" id="hora">
-    <span class="bmd-help">Escriba la fecha del suceso</span>
-  </fieldset>
-
    <p-footer>
       <button type="button" class="btn btn-success"  (click)="registrar_suceso()">Registrar</button>
       <button type="button" class="btn btn-warning"  (click)="display=false">Cancelar</button>

@@ -14,6 +14,8 @@ export class HeaderComponent implements OnInit {
   recover: boolean = false;
   logged: boolean = false;
   email: any;
+  nombre: any;
+  apellido: any;
   password: any;
   msgs: Message[] = [];
   loading: boolean = false;
@@ -91,7 +93,7 @@ export class HeaderComponent implements OnInit {
             this.loading = false;
             this.password = "";
           });
-      }    
+      }
 
     }
 
@@ -112,6 +114,46 @@ export class HeaderComponent implements OnInit {
         localStorage.removeItem('currentUser');
         this.router.navigate(['/']);
         this.is_autenticate();
+    }
+
+    register(){
+      this.msgs = [];
+        this.loading = true;
+        let user = {
+          "username": this.email,
+          "email": this.email,
+          "password1": this.password,
+          "password2": this.password,
+          "first_name": this.nombre,
+          "last_name": this.apellido
+        };
+
+        this.authService.register(user).subscribe(data =>{
+           this.loading = false;
+           let header = "basic "+btoa(user.email+":"+user.password1);
+           this.authService.update(header, user).subscribe(data =>{
+              let datos = data.body;
+              this.display = false;
+              let key = {
+              "header": header,
+              "nombre": datos.first_name,
+              "apellido": datos.last_name,
+              "email": user.email
+             }
+
+             localStorage.setItem("currentUser", JSON.stringify(key));
+             this.is_autenticate();
+           },error => {
+              this.msgs.push({severity:'error', summary:'Datos incorrectos', detail:error});
+              console.log(error);
+           });
+          },
+          error => {
+            console.log(error);
+            this.msgs.push({severity:'error', summary:'Datos incorrectos', detail:''});
+            this.loading = false;
+            this.password = "";
+          });
     }
 
 }

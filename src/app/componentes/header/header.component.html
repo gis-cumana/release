@@ -31,6 +31,7 @@
 </nav>
 
 <p-dialog header="Registrar nuevo usuario" width="400" modal="true" [(visible)]="display">
+<p-progressBar mode="indeterminate" *ngIf="loading"></p-progressBar>
   <div class="center">
     <button type="button" class="btn btn-info">
       <span class="fa fa-facebook"></span>
@@ -42,23 +43,28 @@
   </div>
 
   <fieldset class="form-group">
-    <label for="nombre" class="bmd-label-floating">Nombre y apellido</label>
-    <input type="text" class="form-control" id="nombre">
-    <span class="bmd-help">Escriba su primer nombre y primer apellido</span>
+    <label for="nombre" class="bmd-label-floating">Nombre</label>
+    <input type="text" [(ngModel)]="nombre" class="form-control" id="nombre">
+    <span class="bmd-help">Escriba su primer nombre</span>
   </fieldset>
   <fieldset class="form-group">
-    <label for="email" class="bmd-label-floating">Correo Electronico</label>
-    <input type="email" class="form-control" id="email">
+    <label for="apellido" class="bmd-label-floating">Apellido</label>
+    <input type="text" [(ngModel)]="apellido"  class="form-control" id="apellido">
+    <span class="bmd-help">Escriba su primer apellido</span>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="email2" class="bmd-label-floating">Correo Electronico</label>
+    <input type="email" [(ngModel)]="email"  class="form-control" id="email2">
     <span class="bmd-help">Escriba su correo electronico</span>
   </fieldset>
   <fieldset class="form-group">
-    <label for="password" class="bmd-label-floating">Contraseña</label>
-    <input type="password" class="form-control" id="password">
+    <label for="password2"  class="bmd-label-floating">Contraseña</label>
+    <input type="password" [(ngModel)]="password" class="form-control"  id="password2">
     <span class="bmd-help">Escriba su correo electronico</span>
   </fieldset>
 
   <div class="center">
-    <button type="button" class="btn btn-success btn-lg">Registrar</button>
+    <button type="button" class="btn btn-success btn-lg" (click)="register()">Registrar</button>
      <br/>
      <br/>
     ¿Tienes una cuenta? <a href="#" (click)="showLogin()">Ingresar</a>
