@@ -17,6 +17,7 @@
     </ul>
     <form class="form-inline">
       <button class="btn btn-success" *ngIf="!logged" (click)="showLogin()">Iniciar sesión</button>
+       <button class="btn btn-primary" *ngIf="!logged" (click)="showRegister()">Registrate</button>
       <div class="dropdown" *ngIf="logged">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="fa fa-user"></span> {{user_logged}}
