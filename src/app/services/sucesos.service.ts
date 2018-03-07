@@ -25,6 +25,13 @@ public key = JSON.parse(localStorage.getItem('currentUser')).header;
         return this.http.post(this.url, suceso, {headers: headers,  observe: 'response'});
     }
 
+    delete(id): Observable<any>{
+
+        let headers = new HttpHeaders()
+                                    .set('Authorization', this.key);
+        return this.http.delete(this.url+"/"+id , {headers: headers,  observe: 'response'});
+    }
+
     get(id): Observable<any>{
 
         let headers = new HttpHeaders()

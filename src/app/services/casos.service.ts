@@ -26,6 +26,13 @@ export class CasosService {
         return this.http.get(this.url+"/"+id , {headers: headers,  observe: 'response'});
     }
 
+    delete(id): Observable<any>{
+
+        let headers = new HttpHeaders()
+                                    .set('Authorization', this.key);
+        return this.http.delete(this.url+"/"+id , {headers: headers,  observe: 'response'});
+    }
+
     update(caso, id): Observable<any>{
 
         let headers = new HttpHeaders()

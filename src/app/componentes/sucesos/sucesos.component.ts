@@ -59,6 +59,41 @@ export class SucesosComponent implements OnInit {
     });
   }
 
+  eliminar_caso(caso_id: any){
+    this.loading = true;
+      this.casosService.delete(caso_id).subscribe(data => {
+          this.sucesosService.get(this.suceso).subscribe(data => {
+               this.casos = data.body.casos;
+               this.msgs = [];
+               this.msgs.push({severity:'success', summary:'Eliminado exitosamente', detail:''});
+               this.get_lista_sucesos();
+               this.loading = false;
+          }, error =>{
+              console.log(error);
+              this.msgs.push({severity:'error', summary:'Error de conexion', detail:'no se encontraron los sucesos'});
+              this.loading = false;
+          });
+      }, error =>{
+          console.log(error);
+          this.msgs.push({severity:'error', summary:'Error de conexion', detail:'no se encontraron los sucesos'});
+          this.loading = false;
+      });
+  }
+
+  eliminar_suceso(suceso_id: any){
+    this.loading2 = true;
+      this.sucesosService.delete(suceso_id).subscribe(data => {
+        this.sucesos = this.sucesos.filter(suceso => suceso.id != suceso_id);
+        this.msgs = [];
+        this.msgs.push({severity:'success', summary:'Eliminado exitosamente', detail:''});
+        this.loading2 = false;
+      }, error =>{
+          console.log(error);
+          this.msgs.push({severity:'error', summary:'Error de conexion', detail:'no se encontraron los sucesos'});
+          this.loading2 = false;
+      });
+  }
+
    ver_casos(suceso: any) {
        this.suceso = suceso.id;
         this.casos = suceso.casos;
