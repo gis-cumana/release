@@ -25,12 +25,14 @@ import {AuthGuard} from './services/guard.service';
 
 import { CasosComponent } from './componentes/casos/casos.component';
 import { SucesosComponent } from './componentes/sucesos/sucesos.component';
+import { ProfileComponent } from './componentes/profile/profile.component';
 
 const appRoutes : Routes = [
  { path: '', component: HomeComponent},
  { path: 'capas', component: CapasComponent},
  { path: 'casos', component: CasosComponent, canActivate: [AuthGuard]},
- { path: 'sucesos', component: SucesosComponent, canActivate: [AuthGuard]}
+ { path: 'sucesos', component: SucesosComponent, canActivate: [AuthGuard]},
+ { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
 ]
 
 @NgModule({
@@ -41,7 +43,8 @@ const appRoutes : Routes = [
         CapasComponent,
         FooterComponent,
         CasosComponent,
-        SucesosComponent
+        SucesosComponent,
+        ProfileComponent
     ],
     imports: [
         NgbModalModule.forRoot(),
