@@ -1,0 +1,146 @@
+<div class="row">
+<div class="col-12">
+
+	<form class="form" (submit)="agregarDato()">
+		
+
+		<fieldset class="form-group">
+
+		<div class="row short-mod">
+
+			<div class="col"></div>
+
+			<div class="col">
+				
+				<table class="table table-sm table-hover table-responsive">
+				  <caption>Propiedades de la Capa</caption>
+
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Propiedad</th>
+				      <th scope="col">Valor</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr *ngFor="let propiedad of capaActiva.atributos; let i = index; ">
+				      <th scope="row" *ngIf="propiedad.nombre!='geom'">{{i+1}}</th>
+				      <td *ngIf="propiedad.nombre!='geom'">{{propiedad.nombre}}</td>
+				      <td *ngIf="propiedad.nombre!='geom'"><input class="form-control-sm" [type]="propiedad.tipo" [name]="propiedad.nombre" [(ngModel)]="atributos[''+propiedad.nombre]"></td>
+				    </tr>
+				  </tbody>
+				</table>
+
+			</div>
+
+			<div class="col"></div>
+
+		</div>		
+
+		<div class="row">
+
+			<div class="col">
+				
+				<table class="table table-sm table-hover table-responsive" *ngIf="capaActiva.geometria">
+				  <caption>Coordenadas</caption>
+
+				  <thead *ngIf="capaActiva.geometria=='Point'">
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Longitud</th>
+				      <th scope="col">Latitud</th>
+				      <th scope="col"></th>
+				      <th scope="col">Remover</th>
+				    </tr>
+				  </thead>
+				  <thead class="thead-dark" *ngIf="capaActiva.geometria!='Point'">
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Longitud</th>
+				      <th scope="col">Latitud</th>
+				      <th scope="col"></th>
+				      <th scope="col">Subir</th>
+				      <th scope="col">Bajar</th>
+				      <th scope="col">Remover</th>
+				    </tr>
+				  </thead>
+				  <tbody *ngIf="capaActiva.geometria=='Polygon'">
+				    <tr *ngFor="let coord of capaActiva.coordenadas[0]; let i = index; ">
+				      <th scope="row">{{i+1}}</th>
+				      <td>{{coord[0]}}</td>
+				      <td>{{coord[1]}}</td>
+				      <td></td>
+				      <td><button class="btn btn-warning" *ngIf="i!=0" (click)="subirCoordenada(i)"><i class="fa fa-arrow-up"></i></button></td>
+				      <td><button class="btn btn-warning" *ngIf="i<capaActiva.coordenadas[0].length-1" (click)="bajarCoordenada(i)"><i class="fa fa-arrow-down"></i></button></td>
+				      <td><button type="button" class="btn btn-danger" (click)="removerCoordenada(i)"><i class="fa fa-minus"></i></button></td>
+				    </tr>
+				    <tr>
+				      <th scope="row">#</th>
+				      <td><input class="form-control-sm" type="number" name="coord" [(ngModel)]="coordenadaNueva.longitud" [disabled]="capaActiva.cerrada"></td>
+				      <td><input class="form-control-sm" type="number" name="coord" [(ngModel)]="coordenadaNueva.latitud" [disabled]="capaActiva.cerrada"></td>
+				      <td><button type="button" class="btn btn-success" (click)="agregarCoordenada(coordenadaNueva.longitud,coordenadaNueva.latitud)" *ngIf="!capaActiva.cerrada"><i class="fa fa-plus"></i></button></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				  </tbody>
+				  <tbody *ngIf="capaActiva.geometria=='LineString'">
+				    <tr *ngFor="let coord of capaActiva.coordenadas; let i = index; ">
+				      <th scope="row">{{i+1}}</th>
+				      <td>{{coord[0]}}</td>
+				      <td>{{coord[1]}}</td>
+				      <td></td>
+				      <td><button class="btn btn-warning" *ngIf="i!=0" (click)="subirCoordenada(i)"><i class="fa fa-arrow-up"></i></button></td>
+				      <td><button class="btn btn-warning" *ngIf="i<capaActiva.coordenadas.length-1" (click)="bajarCoordenada(i)"><i class="fa fa-arrow-down"></i></button></td>
+				      <td><button type="button" class="btn btn-danger" (click)="removerCoordenada(i)"><i class="fa fa-minus"></i></button></td>
+				    </tr>
+				    <tr>
+				      <th scope="row">#</th>
+				      <td><input class="form-control-sm" type="number" name="coord" [(ngModel)]="coordenadaNueva.longitud" [disabled]="capaActiva.cerrada"></td>
+				      <td><input class="form-control-sm" type="number" name="coord" [(ngModel)]="coordenadaNueva.latitud" [disabled]="capaActiva.cerrada"></td>
+				      <td><button type="button" class="btn btn-success" (click)="agregarCoordenada(coordenadaNueva.longitud,coordenadaNueva.latitud)" *ngIf="!capaActiva.cerrada"><i class="fa fa-plus"></i></button></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				  </tbody>
+				  <tbody *ngIf="capaActiva.geometria=='Point'">
+				    <tr *ngIf="capaActiva.coordenadas.length">
+				      <th scope="row">1</th>
+				      <td>{{capaActiva.coordenadas[0]}}</td>
+				      <td>{{capaActiva.coordenadas[1]}}</td>
+				      <td></td>
+				      <td><button type="button" class="btn btn-danger" (click)="removerCoordenada(i)"><i class="fa fa-minus"></i></button></td>
+				    </tr>
+				    <tr>
+				      <th scope="row">#</th>
+				      <td><input class="form-control-sm" type="number" name="coord" [(ngModel)]="coordenadaNueva.longitud" [disabled]="capaActiva.cerrada"></td>
+				      <td><input class="form-control-sm" type="number" name="coord" [(ngModel)]="coordenadaNueva.latitud" [disabled]="capaActiva.cerrada"></td>
+				      <td><button type="button" class="btn btn-success" (click)="agregarCoordenada(coordenadaNueva.longitud,coordenadaNueva.latitud)" *ngIf="!capaActiva.cerrada"><i class="fa fa-plus"></i></button></td>
+				      <td></td>
+				    </tr>
+				  </tbody>
+				</table>
+
+			</div>
+
+		</div>
+
+
+		</fieldset>		
+
+		<div class="row">
+			<div class="col-auto">
+				<input type="submit" class="btn btn-outline-success" value="Enviar">
+			</div>
+			<div class="col-auto">
+				<button type="button" class="btn btn-outline-danger" (click)="terminarAgregar(false)">Cancelar</button>
+			</div>
+			<div class="col"></div>
+		</div>
+
+	</form>
+
+</div>
+</div>
+<i class="fa fa-spinner fa-pulse fa-2x fa-fw" *ngIf="loading"></i>

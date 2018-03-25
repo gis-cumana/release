@@ -1,19 +1,59 @@
+<input type="file" name="file" id="geojsonfile" style="display: none" (change)="cargarGeojson($event)">
+<button type="button" id="montar" style="display: none" (click)="montarDatos()"></button>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" routerLink="/" >
     <img src="assets/images/logo_sismologico.png" style="float: left" width="55" height="55">
-</a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-     <li class="nav-item" *ngIf="logged">
-        <a class="nav-link" href="#" routerLink="/casos">Reportar caso</a>
-      </li>
-       <li class="nav-item" *ngIf="logged">
-        <a class="nav-link" href="#" routerLink="/sucesos">Sucesos</a>
-      </li>
+    <li class="nav-item" *ngIf="logged">
+      <a class="nav-link" href="#" routerLink="/casos">Reportar caso</a>
+    </li>
+    <li class="nav-item" *ngIf="logged">
+      <a class="nav-link" href="#" routerLink="/sucesos">Sucesos</a>
+    </li>
+<!--    
+    <li class="nav-item dropdown" ngbDropdown *ngIf="isRouteMapa()">
+      <a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
+      <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdown01">
+        <app-categorias></app-categorias>
+        <app-capas></app-capas>
+        <app-importar-capas [categorias]="categorias"></app-importar-capas>
+      </div>
+    </li>    
+-->
+    <li class="nav-item" *ngIf="isRouteMapa()">
+      <app-categorias></app-categorias>
+    </li>   
+
+    <li class="nav-item" *ngIf="isRouteMapa()">
+      <app-capas></app-capas>
+    </li>   
+
+    <li class="nav-item" *ngIf="isRouteMapa()">
+      <app-importar-capas [categorias]="categorias"></app-importar-capas>
+    </li>   
+
+          <li class="nav-item dropdown" ngbDropdown >
+            <a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</a>
+            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdown01">
+              <a class="dropdown-item" *ngFor="let cat of categorias" (click)="filtrarCapas(cat.id)">{{cat.nombre}}</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown" ngbDropdown>
+            <a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Capas</a>
+            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdown01">
+              <a class="dropdown-item" *ngFor="let cap of capasFiltradas" (click)="traerCapa(cap.nombre)">{{cap.nombre}}</a>
+            </div>
+          </li>
+
     </ul>
     <form class="form-inline">
       <button class="btn btn-success" *ngIf="!logged" (click)="showLogin()">Iniciar sesión</button>

@@ -20,7 +20,6 @@ export class SucesosComponent implements OnInit {
   mmap: any;
   nombre: any;
   fecha: any;
-  hora: any;
   hoy: any = new Date();
   loading: boolean = false;
   loading2: boolean = false;
@@ -150,8 +149,7 @@ export class SucesosComponent implements OnInit {
     {
         let datos = {
             "nombre": this.nombre,
-            "fecha": this.fecha,
-            "hora": this.hora
+            "fecha": this.fecha
         }
 
         this.loading2 = true;
@@ -179,10 +177,6 @@ export class SucesosComponent implements OnInit {
         if (this.fecha == null){
               res = false;
               this.msgs.push({severity:'error', summary:'Fecha', detail:'es requerida'});
-            }
-            if (this.hora == null){
-              res = false;
-              this.msgs.push({severity:'error', summary:'Hora', detail:'es requerida'});
             }
             return res;
     }

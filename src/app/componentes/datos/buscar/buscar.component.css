@@ -1,0 +1,13 @@
+.enlaceStyle{
+    color: #0078a8;
+}
+
+.enlaceStyle:hover{
+    text-decoration: underline;
+}
+
+.prueba:active{
+
+    text-decoration: underline;
+    color: yellow;
+}

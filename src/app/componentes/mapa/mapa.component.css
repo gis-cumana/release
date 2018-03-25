@@ -1,0 +1,47 @@
+#mapa { 
+width: 100%;
+height: 85%;
+}
+
+.row-full{
+bottom: 0;
+left: 0;
+padding: 0px;
+position: fixed;
+right: 0;
+top: 15%;
+}
+
+div.nomargin, div.nomargin *{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.push{
+    margin-top: 100px;
+}
+
+.filtro{
+    background: #f0e4f3 !important;
+}
+
+div.modal-dialog{
+    max-width: 800px;
+}
+
+
+#mapid {
+	height: 700px;
+}
+
+input.map-input {
+    max-width: 100px;
+}
+
+.dark-modal .modal-content {
+	background-color: #292b2c;
+	color: white;
+}
+.dark-modal .close {
+	color: white;   
+}
