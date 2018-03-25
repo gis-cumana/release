@@ -7,7 +7,7 @@ export class CapasService {
   public url: string;
   
   constructor(public http: HttpClient) {
-    this.url = 'https://gis-entorno-benjamin-s-e.c9users.io:8080/capas';
+    this.url = 'http://190.168.131.13:8000/capas';
    }
 
    buscar(capa): Observable<any>{

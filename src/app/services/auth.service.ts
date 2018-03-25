@@ -7,7 +7,7 @@ export class AuthService {
     public url: string;
   
   constructor(public http: HttpClient) {
-        this.url = 'https://gis-entorno-benjamin-s-e.c9users.io:8080/auth/';
+        this.url = 'http://190.168.131.13:8000/auth/';
    }
 
    login(user): Observable<any>{

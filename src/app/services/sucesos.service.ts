@@ -7,7 +7,7 @@ export class SucesosService {
 public url: string;
 public key = JSON.parse(localStorage.getItem('currentUser')).header;
   constructor(public http: HttpClient) {
-      this.url = 'https://gis-entorno-benjamin-s-e.c9users.io:8080/sucesos';
+      this.url = 'http://190.168.131.13:8000/sucesos';
    }
 
    all(): Observable<any>{
