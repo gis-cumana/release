@@ -1077,7 +1077,14 @@ calcularAreaPunto(){
 					this.puntosEnEdicion = L.geoJSON(this.geojsonEditable, {
 			
 						pointToLayer: function (feature, latlng) {
-				        	return L.circleMarker(latlng, init.estiloEdicion);
+				        	return L.circleMarker(latlng, {
+										radius: 8,
+										fillColor: "#ff7800",
+										color: "#000",
+										weight: 1,
+										opacity: 1,
+										fillOpacity: 0.8
+									});
 				    	}}).addTo(this.activeMap);
 
 	  			break;
@@ -1780,7 +1787,14 @@ calcularAreaPunto(){
 				this.puntosEnEdicion = L.geoJSON(this.geojsonEditable, {
 				
 					pointToLayer: function (feature, latlng) {
-						return L.circleMarker(latlng, init.estiloEdicion);
+						return L.circleMarker(latlng, {
+										radius: 8,
+										fillColor: "#ff7800",
+										color: "#000",
+										weight: 1,
+										opacity: 1,
+										fillOpacity: 0.8
+									});
 					}}).addTo(this.activeMap);
   			}
 
