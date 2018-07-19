@@ -283,7 +283,8 @@ export class MapaComponent implements OnInit {
 		center: [10.456389, -64.1675],
 		zoom: 11,
 		zoomControl: false,
-		layers: [osm]
+		layers: [osm],
+		preferCanvas: true
 	});
 
 	this.configurarControlDatos();
