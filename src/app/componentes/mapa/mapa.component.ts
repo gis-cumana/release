@@ -284,7 +284,8 @@ export class MapaComponent implements OnInit {
 		zoom: 11,
 		zoomControl: false,
 		layers: [osm],
-		preferCanvas: true
+		preferCanvas: true,
+		renderer: L.canvas()
 	});
 
 	this.configurarControlDatos();
