@@ -1,15 +1,14 @@
 #mapa { 
-width: 100%;
-height: 85%;
+    width: 100%;
+    height: 85%;
 }
 
 .row-full{
-bottom: 0;
-left: 0;
-padding: 0px;
-position: fixed;
-right: 0;
-top: 15%;
+    position: fixed;
+    top: 80px;
+    left: 0px;
+    padding: 0px;
+    height: 100vh;
 }
 
 div.nomargin, div.nomargin *{
