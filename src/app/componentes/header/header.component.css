@@ -16,5 +16,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40ff7777', e
 }
 
 .omni-nav{
-	z-index: 10000;
+	z-index: 990;
 }
