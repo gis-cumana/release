@@ -7,9 +7,11 @@ import { Output, EventEmitter } from '@angular/core';
 import { CapasService } from '../../services/capas/capas.service'
 import { CategoriasService } from '../../services/categorias/categorias.service'
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-header',
+  providers: [NgbDropdownConfig],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
@@ -38,7 +40,11 @@ export class HeaderComponent implements OnInit {
               private authService: AuthService,
               private capasService: CapasService, 
               private categoriasService: CategoriasService, 
-              private modalService: NgbModal) { }
+              private modalService: NgbModal
+              config: NgbDropdownConfig) { 
+
+                config.autoClose = false;
+              }
 
   ngOnInit() {
     
