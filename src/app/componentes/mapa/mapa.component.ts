@@ -2023,21 +2023,14 @@ calcularAreaPunto(){
 
   	console.log(capaNueva);
 
-  	let atributos;
 
-  	if(capaNueva.geojson.features.length > 0){
-  		atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
-  	}
-  	else{
-  		let temp = JSON.parse(window.localStorage.capas);
-  		let lay = temp.find((el)=>{return el.nombre == capaNueva.nombre});
-  		atributos = [];
-  		lay.atributos.forEach((el)=>{
-  			if(el.nombre != "geom") atributos.push(el.nombre);
-  		})
-  		atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
-  	}
+	if(!capaNueva.geojson.features.length){
 
+		this.geoJsons.push(capaNueva);
+		return false;
+	}
+
+  	let atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
 	let popup = function(feature, layer){
 
 	  	let popupDiv = document.createElement("div");
@@ -2104,21 +2097,14 @@ calcularAreaPunto(){
 
   addLineLayerToControl(capaNueva, estilo){
 
-  	let atributos;
 
-  	if(capaNueva.geojson.features.length > 0){
-  		atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
-  	}
-  	else{
-  		let temp = JSON.parse(window.localStorage.capas);
-  		let lay = temp.find((el)=>{return el.nombre == capaNueva.nombre});
-  		atributos = [];
-  		lay.atributos.forEach((el)=>{
-  			if(el.nombre != "geom") atributos.push(el.nombre);
-  		})
-  		atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
-  	}
+	if(!capaNueva.geojson.features.length){
 
+		this.geoJsons.push(capaNueva);
+		return false;
+	}
+
+  	let atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
 	let popup = function(feature, layer){
 
 	  	let popupDiv = document.createElement("div");
