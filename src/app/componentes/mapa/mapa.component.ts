@@ -1931,8 +1931,9 @@ calcularAreaPunto(){
 
   	let match = false;
 
-	console.log("Largo: "+geoJson.features.length);
-	if (geoJson.features.length == 0){ 
+  	let largo = geoJson.features.length;
+	console.log("Largo: "+largo);
+	if (largo == 0){ 
 		
 		console.log("No hay features");		
 	}
@@ -2089,7 +2090,20 @@ calcularAreaPunto(){
 
   addLineLayerToControl(capaNueva, estilo){
 
-  	let atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
+  	let atributos;
+
+  	if(capaNueva.geojson.features.length > 0){
+  		atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
+  	}
+  	else{
+  		let temp = JSON.parse(window.localStorage.capa);
+  		let lay = temp.find((el)=>{return el.nombre == capaNueva.nombre});
+  		atributos = [];
+  		lay.atributos.forEach((el)=>{
+  			if(el.nombre != "geom") atributos.push(el.nombre);
+  		})
+  		atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
+  	}
 
 	let popup = function(feature, layer){
 
