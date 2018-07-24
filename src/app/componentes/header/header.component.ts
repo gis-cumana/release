@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
               private authService: AuthService,
               private capasService: CapasService, 
               private categoriasService: CategoriasService, 
-              private modalService: NgbModal
+              private modalService: NgbModal,
               config: NgbDropdownConfig) { 
 
                 config.autoClose = false;
