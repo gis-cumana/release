@@ -5,10 +5,12 @@
 
 .row-full{
     position: fixed;
+    z-index: 10000;
+    height: 100vh;
+    width: 100%;
     top: 80px;
     left: 0px;
     padding: 0px;
-    height: 100vh;
 }
 
 div.nomargin, div.nomargin *{
