@@ -539,7 +539,7 @@ calcularAreaPunto(){
 			a[0]["style"]="display: none;" 
 			a[1]["style"]="display: block;" 
 		}
-		if(el == 'f'){
+		if(el == 'pic'){
 			let a = document.querySelectorAll("#formularioFoto>div")
 			a[0]["style"]="display: none;" 
 			a[1]["style"]="display: block;" 
@@ -570,7 +570,7 @@ calcularAreaPunto(){
 			a[0]["style"]="display: block;" 
 			a[1]["style"]="display: none;" 
 		}
-		if(el == 'f'){
+		if(el == 'pic'){
 			let a = document.querySelectorAll("#formularioFoto>div")
 			a[0]["style"]="display: block;" 
 			a[1]["style"]="display: none;" 
