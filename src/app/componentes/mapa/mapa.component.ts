@@ -2330,7 +2330,7 @@ calcularAreaPunto(){
   		return false;
   	}
 
-  	if(this.overlayMaps.find((el)=>{return el[evento.nombre]})){
+  	if(this.overlayMaps[evento.nombre]){
 	  	this.activeMap.removeLayer(this.overlayMaps[""+evento.nombre]);
   	}
 
