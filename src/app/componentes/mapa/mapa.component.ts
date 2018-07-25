@@ -1077,7 +1077,6 @@ calcularAreaPunto(){
 					}
 
 					this.puntosEnEdicion = L.geoJSON(this.geojsonEditable, {
-			
 						pointToLayer: function (feature, latlng) {
 				        	return L.circleMarker(latlng, {
 										radius: 8,
@@ -2177,10 +2176,26 @@ calcularAreaPunto(){
 				popupDiv.appendChild(ul);
 				layer.bindPopup(popupDiv);
 			}
+
+	let _self = this;
 		
 	let myLayer = L.geoJSON(capaNueva.geojson, {
 		pointToLayer: function (feature, latlng) {
-	        return L.circleMarker(latlng, estilo);
+			console.log(_self);
+			console.log(capaNueva);
+			if(capaNueva.nombre == "perforaciones"){
+
+				let myIcon = L.icon({
+				    iconUrl: '../../../assets/images/perforacion_amarillo.png',
+				    iconSize: [50,50],
+				    iconAnchor: [25, 25],
+				    popupAnchor: [-10, -10]
+				    });
+		        return L.marker(latlng, {icon: myIcon});
+			}else{
+
+		        return L.circleMarker(latlng, estilo);
+			}
 	    },
 	    onEachFeature: popup}).addTo(this.activeMap);
 
