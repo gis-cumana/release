@@ -6,7 +6,7 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './popup-modal-content.component.html',
   styleUrls: ['./popup-modal.content.component.css']
 })
-export class PopupModalContent{
+export class PopupModalContentComponent{
 	
 	@Input() datos;
 

@@ -7,7 +7,7 @@ import * as Turf from '@turf/turf';
 import * as leafletImage from 'leaflet-image';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
-import {PopupModalContent} from './popup-modal-content.component';
+import {PopupModalContentComponent} from './popup-modal-content.component';
 
 @Component({
   selector: 'app-mapa',
@@ -2488,7 +2488,7 @@ calcularAreaPunto(){
 		datos.push({"atributo": "lat", "valor": feature.geometry.coordinates[1]});
 		datos.push({"atributo": "lng", "valor": feature.geometry.coordinates[0]});
 
-	    const modalRef = this.modalService.open(PopupModalContent);
+	    const modalRef = this.modalService.open(PopupModalContentComponent);
 	    modalRef.componentInstance.datos = datos;
 
 
