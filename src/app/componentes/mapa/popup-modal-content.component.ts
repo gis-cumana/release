@@ -4,7 +4,7 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-popup-modal-content',
   templateUrl: './popup-modal-content.component.html',
-  styleUrls: ['./popup-modal.content.component.css']
+  styleUrls: ['./popup-modal-content.component.css']
 })
 export class PopupModalContentComponent{
 	
