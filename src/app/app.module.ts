@@ -17,6 +17,7 @@ import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap/popover/popover.mod
 
 import {GalleriaModule, ButtonModule, DialogModule, GrowlModule, ProgressBarModule} from 'primeng/primeng';
 import { MapaComponent} from './componentes/mapa/mapa.component';
+import { PopupModalContentComponent } from './componentes/mapa/popup-modal-content.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import {TableModule} from 'primeng/table';
 //servicios
@@ -65,6 +66,7 @@ const appRoutes : Routes = [
         HeaderComponent,
         HomeComponent,
         MapaComponent,
+        PopupModalContentComponent,
         FooterComponent,
         CasosComponent,
         SucesosComponent,
