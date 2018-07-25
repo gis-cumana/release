@@ -7,6 +7,8 @@ import * as Turf from '@turf/turf';
 import * as leafletImage from 'leaflet-image';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
+import {PopupModalContent} from './popup-modal-content.component';
+
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
@@ -2144,41 +2146,16 @@ calcularAreaPunto(){
 
 		if(capaNueva.geojson.features.length){
 			
-			
-		
+			let _self = this;
+
 		  	let atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
 		  	//let att = this.capas.find((element) =>{return element.nombre == capaNueva.nombre}).atributos;
 		  	//let atributos = att.filter((element) =>{return element.nombre != "geom"});
 				let popup = function(feature, layer){
-		
-			  	let popupDiv = document.createElement("div");
-			  	let ul = document.createElement("ul");
-		
-				atributos.forEach((element) =>{
-		
-					if(element != "pk"){
-		
-						let li = document.createElement("li");
-						li.innerHTML = ""+element+": "+feature.properties[""+element];
-						ul.appendChild(li);
-					}
-				});
-		
-						let lat = document.createElement("li");
-						lat.innerHTML = "Latitud: "+feature.geometry.coordinates[1];
-						ul.appendChild(lat);
-		
-						let lng = document.createElement("li");
-						lng.innerHTML = "Longitud: "+feature.geometry.coordinates[0];
-						ul.appendChild(lng);
-		
-		
-				popupDiv.appendChild(ul);
-				layer.bindPopup(popupDiv);
-			}
 
-	let _self = this;
-		
+					_self.openPopupModal(atributos, feature);
+				}
+	
 	let myLayer = L.geoJSON(capaNueva.geojson, {
 		pointToLayer: function (feature, latlng) {
 			console.log(_self);
@@ -2495,6 +2472,52 @@ calcularAreaPunto(){
 		link.download = 'Download.jpg';
 		link.click();
 		
+	}
+
+	openPopupModal(atributos, feature){
+
+		let datos = [];
+		
+		atributos.forEach((element) =>{
+
+			if(element != "pk"){
+				datos.push({"atributo": element, "valor": feature.properties[element]});
+			}
+		});
+		
+		datos.push({"atributo": "lat", "valor": feature.geometry.coordinates[1]});
+		datos.push({"atributo": "lng", "valor": feature.geometry.coordinates[0]});
+
+	    const modalRef = this.modalService.open(PopupModalContent);
+	    modalRef.componentInstance.datos = datos;
+
+
+/*
+			  	let popupDiv = document.createElement("div");
+			  	let ul = document.createElement("ul");
+		
+				atributos.forEach((element) =>{
+
+					if(element != "pk"){
+		
+						let li = document.createElement("li");
+						li.innerHTML = ""+element+": "+feature.properties[""+element];
+						ul.appendChild(li);
+					}
+				});
+		
+						let lat = document.createElement("li");
+						lat.innerHTML = "Latitud: "+feature.geometry.coordinates[1];
+						ul.appendChild(lat);
+		
+						let lng = document.createElement("li");
+						lng.innerHTML = "Longitud: "+feature.geometry.coordinates[0];
+						ul.appendChild(lng);
+		
+		
+				popupDiv.appendChild(ul);
+				layer.bindPopup(popupDiv);
+*/
 	}
 
 }
