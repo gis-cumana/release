@@ -2147,20 +2147,53 @@ calcularAreaPunto(){
 		if(capaNueva.geojson.features.length){
 			
 			let _self = this;
+			let capaEspecial = 0;
 
 		  	let atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
 		  	//let att = this.capas.find((element) =>{return element.nombre == capaNueva.nombre}).atributos;
 		  	//let atributos = att.filter((element) =>{return element.nombre != "geom"});
 				let popup = function(feature, layer){
 
-					//_self.openPopupModal(atributos, feature);
+					if(capaEspecial == 0){
+
+
+					  	let popupDiv = document.createElement("div");
+					  	let ul = document.createElement("ul");
+				
+						atributos.forEach((element) =>{
+
+							if(element != "pk"){
+				
+								let li = document.createElement("li");
+								li.innerHTML = ""+element+": "+feature.properties[""+element];
+								ul.appendChild(li);
+							}
+						});
+				
+								let lat = document.createElement("li");
+								lat.innerHTML = "Latitud: "+feature.geometry.coordinates[1];
+								ul.appendChild(lat);
+				
+								let lng = document.createElement("li");
+								lng.innerHTML = "Longitud: "+feature.geometry.coordinates[0];
+								ul.appendChild(lng);
+				
+				
+						popupDiv.appendChild(ul);
+						layer.bindPopup(popupDiv);
+
+					}
+
 				}
+
 	
 	let myLayer = L.geoJSON(capaNueva.geojson, {
 		pointToLayer: function (feature, latlng) {
 			console.log(_self);
 			console.log(capaNueva);
 			if(capaNueva.nombre == "estudio_de_suelos"){
+
+				capaEspecial++;
 
 				let myIcon = L.icon({
 				    iconUrl: '../../../assets/images/perforacion_amarillo.png',
