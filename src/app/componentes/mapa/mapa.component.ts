@@ -2153,7 +2153,7 @@ calcularAreaPunto(){
 		  	//let atributos = att.filter((element) =>{return element.nombre != "geom"});
 				let popup = function(feature, layer){
 
-					_self.openPopupModal(atributos, feature);
+					//_self.openPopupModal(atributos, feature);
 				}
 	
 	let myLayer = L.geoJSON(capaNueva.geojson, {
@@ -2168,7 +2168,7 @@ calcularAreaPunto(){
 				    iconAnchor: [25, 25],
 				    popupAnchor: [-10, -10]
 				    });
-		        return L.marker(latlng, {icon: myIcon});
+		        return L.marker(latlng, {icon: myIcon}).on("click",function(e){ _self.openPopupModal(atributos, feature); });
 			}else{
 
 		        return L.circleMarker(latlng, estilo);
