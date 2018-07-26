@@ -22,3 +22,30 @@ flash-messages{
 	overflow-y: auto;
 	overflow-x: hidden;
 }
+
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(100,100,100,0.4); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+    background: rgba(0,0,0,0.5); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.7); 
+}
+
+/* Handle on active */
+::-webkit-scrollbar-thumb:active {
+    background: rgba(0,0,0,0.5); 
+}
