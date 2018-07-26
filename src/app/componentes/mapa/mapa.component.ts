@@ -2160,7 +2160,7 @@ calcularAreaPunto(){
 		pointToLayer: function (feature, latlng) {
 			console.log(_self);
 			console.log(capaNueva);
-			if(capaNueva.nombre == "perforaciones"){
+			if(capaNueva.nombre == "estudio_de_suelos"){
 
 				let myIcon = L.icon({
 				    iconUrl: '../../../assets/images/perforacion_amarillo.png',
