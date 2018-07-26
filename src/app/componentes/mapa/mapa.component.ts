@@ -2159,7 +2159,7 @@ calcularAreaPunto(){
 
 					  	let popupDiv = document.createElement("div");
 					  	let tabla = document.createElement("table");
-					  	tabla.setAttribute("class","table");
+					  	tabla.setAttribute("class","table popup-table");
 
 					  	let cabeza = document.createElement("thead");
 					  	let cTr = document.createElement("tr");
@@ -2182,6 +2182,7 @@ calcularAreaPunto(){
 
 								let tr = document.createElement("tr");
 								let td1 = document.createElement("td");
+								td1.setAttribute("class","col-left");
 								td1.innerHTML = element;
 								let td2 = document.createElement("td");
 								td2.innerHTML = feature.properties[""+element];
