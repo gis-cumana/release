@@ -2158,28 +2158,65 @@ calcularAreaPunto(){
 
 
 					  	let popupDiv = document.createElement("div");
-					  	let ul = document.createElement("ul");
+					  	let tabla = document.createElement("table");
+					  	tabla.setAttribute("class","table");
+
+					  	let cabeza = document.createElement("thead");
+					  	let cTr = document.createElement("tr");
+					  	let cTh1 = document.createElement("th");
+					  	cth1.innerHTML = "Atributo";
+					  	let cTh2 = document.createElement("th");
+					  	cth2.innerHTML = "Valor";
+
+					  	cTr.appendChild(cTh1);
+					  	cTr.appendChild(cTh2);
+					  	cabeza.appendChild(cTr);
+
+					  	tabla.appendChild(cabeza);
+
+					  	let cuerpo = document.createElement("tbody");
 				
 						atributos.forEach((element) =>{
 
 							if(element != "pk"){
-				
-								let li = document.createElement("li");
-								li.innerHTML = ""+element+": "+feature.properties[""+element];
-								ul.appendChild(li);
+
+								let tr = document.createElement("tr");
+								let td1 = document.createElement("td");
+								td1.innerHTML = element;
+								let td2 = document.createElement("td");
+								td2.innerHTML = feature.properties[""+element];
+
+								tr.appendChild(td1);
+								tr.appendChild(td2);
+
+								cuerpo.appendChild(tr);
 							}
 						});
 				
-								let lat = document.createElement("li");
-								lat.innerHTML = "Latitud: "+feature.geometry.coordinates[1];
-								ul.appendChild(lat);
+								let lat = document.createElement("tr");
+								let latn = document.createElement("td");
+								latn.innerHTML = "Latitud";
+								let latv = document.createElement("td");
+								latv.innerHTML = feature.geometry.coordinates[1];
 				
-								let lng = document.createElement("li");
-								lng.innerHTML = "Longitud: "+feature.geometry.coordinates[0];
-								ul.appendChild(lng);
+								lat.appendChild(latn);
+								lat.appendChild(latv);
+
+								let lng = document.createElement("tr");
+								let lngn = document.createElement("td");
+								lngn.innerHTML = "Longitud";
+								let lngv = document.createElement("td");
+								lngv.innerHTML = feature.geometry.coordinates[0];
+
+								lng.appendChild(lngn);
+								lng.appendChild(lngv);
+
+								cuerpo.appendChild(lat);
+								cuerpo.appendChild(lng);
+
+								tabla.appendChild(cuerpo);
 				
-				
-						popupDiv.appendChild(ul);
+						popupDiv.appendChild(tabla);
 						layer.bindPopup(popupDiv);
 
 					}
