@@ -89,6 +89,9 @@ const appRoutes : Routes = [
         ActualizarCapasComponent,
         EliminarCapasComponent
     ],
+    entryComponents: [
+        PopupModalContentComponent
+    ],
     imports: [
         NgbModalModule.forRoot(),
         NgbCollapseModule.forRoot(),
