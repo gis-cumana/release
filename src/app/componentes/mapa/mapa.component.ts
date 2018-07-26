@@ -2488,7 +2488,7 @@ calcularAreaPunto(){
 		datos.push({"atributo": "lat", "valor": feature.geometry.coordinates[1]});
 		datos.push({"atributo": "lng", "valor": feature.geometry.coordinates[0]});
 
-	    const modalRef = this.modalService.open(PopupModalContentComponent);
+	    const modalRef = this.modalService.open(PopupModalContentComponent,{ size: 'lg' });
 	    modalRef.componentInstance.datos = datos;
 
 
