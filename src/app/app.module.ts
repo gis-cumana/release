@@ -89,9 +89,6 @@ const appRoutes : Routes = [
         ActualizarCapasComponent,
         EliminarCapasComponent
     ],
-    entryComponents: [
-        PopupModalContentComponent
-    ],
     imports: [
         NgbModalModule.forRoot(),
         NgbCollapseModule.forRoot(),
@@ -111,7 +108,8 @@ const appRoutes : Routes = [
         ProgressBarModule
     ],
     entryComponents: [
-        ImportarCapasContent
+        ImportarCapasContent,
+        PopupModalContentComponent
     ],
     providers: [CapasService, CasosService, SucesosService, AuthService, AuthGuard, CategoriasService, DatosService],
     bootstrap: [AppComponent]
