@@ -2158,6 +2158,7 @@ calcularAreaPunto(){
 
 
 					  	let popupDiv = document.createElement("div");
+					  	popupdiv.setAttribute("class","popupDiv");
 					  	let tabla = document.createElement("table");
 					  	tabla.setAttribute("class","table popup-table");
 
@@ -2196,6 +2197,7 @@ calcularAreaPunto(){
 				
 								let lat = document.createElement("tr");
 								let latn = document.createElement("td");
+								latn.setAttribute("class","col-left");
 								latn.innerHTML = "Latitud";
 								let latv = document.createElement("td");
 								latv.innerHTML = feature.geometry.coordinates[1];
@@ -2206,6 +2208,7 @@ calcularAreaPunto(){
 								let lng = document.createElement("tr");
 								let lngn = document.createElement("td");
 								lngn.innerHTML = "Longitud";
+								lngn.setAttribute("class","col-left");
 								let lngv = document.createElement("td");
 								lngv.innerHTML = feature.geometry.coordinates[0];
 
