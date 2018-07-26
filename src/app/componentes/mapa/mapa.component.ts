@@ -2158,7 +2158,7 @@ calcularAreaPunto(){
 
 
 					  	let popupDiv = document.createElement("div");
-					  	popupdiv.setAttribute("class","popupDiv");
+					  	popupDiv.setAttribute("class","popupDiv");
 					  	let tabla = document.createElement("table");
 					  	tabla.setAttribute("class","table popup-table");
 
