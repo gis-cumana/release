@@ -2164,9 +2164,9 @@ calcularAreaPunto(){
 					  	let cabeza = document.createElement("thead");
 					  	let cTr = document.createElement("tr");
 					  	let cTh1 = document.createElement("th");
-					  	cth1.innerHTML = "Atributo";
+					  	cTh1.innerHTML = "Atributo";
 					  	let cTh2 = document.createElement("th");
-					  	cth2.innerHTML = "Valor";
+					  	cTh2.innerHTML = "Valor";
 
 					  	cTr.appendChild(cTh1);
 					  	cTr.appendChild(cTh2);
