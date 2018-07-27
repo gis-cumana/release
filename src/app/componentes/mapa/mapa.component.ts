@@ -2631,13 +2631,13 @@ calcularAreaPunto(){
 
 	toggleDistance(){
 
-		if(!document.querySelector(".distanceDialog.hidden")){
+		if(document.querySelector(".distanceDialog.hidden")){
 
-			document.querySelector(".distanceDialog").setAttribute("class",".distanceDialog.hidden");
+			document.querySelector(".distanceDialog.hidden").setAttribute("class","distanceDialog");
 		}
 		else{
 		
-			document.querySelector(".distanceDialog").setAttribute("class",".distanceDialog.hidden");
+			document.querySelector(".distanceDialog").setAttribute("class","distanceDialog hidden");
 		}
 
 	}
