@@ -2642,4 +2642,17 @@ calcularAreaPunto(){
 
 	}
 
+	toggleArea(){
+
+		if(document.querySelector(".areaDialog.hidden")){
+
+			document.querySelector(".areaDialog.hidden").setAttribute("class","areaDialog");
+		}
+		else{
+		
+			document.querySelector(".areaDialog").setAttribute("class","areaDialog hidden");
+		}
+
+	}
+
 }

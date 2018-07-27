@@ -416,4 +416,10 @@ export class HeaderComponent implements OnInit {
     boton.click();
   }
 
+  openMapArea(){
+
+    let boton = <HTMLElement>document.querySelector("#openMapArea");
+    boton.click();
+  }
+
 }

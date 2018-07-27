@@ -127,6 +127,11 @@
         (click)="openMapDistance()">
           <i class="fa fa-road fa-2x" aria-hidden="true"></i>
         </button>
+        <button *ngIf="isRouteMapa()" id="openAreaHeader"
+        type="button" class="btn btn-outline-info"
+        (click)="openMapArea()">
+          <i class="fa fa-road fa-2x" aria-hidden="true"></i>
+        </button>
       </form>
 
 

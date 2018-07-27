@@ -47,7 +47,7 @@ input.map-input {
 	color: white;   
 }
 
-.distanceDialog{
+.distanceDialog, .areaDialog{
     position: fixed;
     top: 80px;
     right: 50px;
