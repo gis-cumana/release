@@ -649,7 +649,7 @@ calcularAreaPunto(){
 		this.medidaArea = 0;
 	}
 
-	obtenerPunto(ev){
+	obtenerPunto(){
 
 		this.dibujandoCamino = false;
 		this.dibujandoPoligono = false;
