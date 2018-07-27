@@ -75,10 +75,12 @@
 
                     <ngb-accordion
                     #acc="ngbAccordion"
-                    activeIds="ngb-panel-0"
+                    [closeOthers]="true"
                     (panelChange)="limpiarCapasFiltradas()">
 
-                        <ngb-panel *ngFor="let cat of categorias" [title]="cat.nombre">
+                        <ngb-panel *ngFor="let cat of categorias; let i = index;" 
+                        [title]="cat.nombre"
+                        [id]="'static-'+i">
                           <ng-template ngbPanelContent>
                             <div class="row">
                               <div class="col-xs-12">
@@ -102,7 +104,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cerrar</button>
               </div>
             </ng-template>
 
@@ -123,6 +125,8 @@
           </li>
 -->
     </ul>
+    <ng-template *ngIf="!isRouteMapa()">
+      
     <form class="form-inline">
       <button class="btn btn-success" *ngIf="!logged" (click)="showLogin()">Iniciar sesión</button>
        <button class="btn btn-primary" *ngIf="!logged" (click)="showRegister()">Registrate</button>
@@ -136,6 +140,8 @@
       </div>
     </div>
     </form>
+
+    </ng-template>
   </div>
 </nav>
 
