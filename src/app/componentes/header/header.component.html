@@ -100,14 +100,7 @@
             </ng-template>
 
 
-            <a class="nav-link" id="dropdown02" (click)="open(traerCapasModal)">Visualizar Capas</a>
-
-
-            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdown02">
-              <button class="dropdown-item" *ngFor="let cat of categorias" (click)="filtrarCapas(cat.id)">{{cat.nombre}}</button>
-              <div class="dropdown-divider"></div>
-              <button class="dropdown-item" *ngFor="let cap of capasFiltradas" (click)="traerCapa(cap.nombre)">{{cap.nombre}}</button>
-            </div>
+            <a class="nav-link" (click)="open(traerCapasModal)">Visualizar Capas</a>
           </li>
 
 
