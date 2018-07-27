@@ -38,6 +38,10 @@ export class HeaderComponent implements OnInit {
   loading: boolean = false;
   user_logged = "Usurario";
 
+  filterOpen: boolean;
+  distanceOpen: boolean;
+  areaOpen: boolean;
+
   constructor(private router: Router, 
               private authService: AuthService,
               private capasService: CapasService, 
@@ -51,6 +55,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     
     eval("window.yo3 = this");
+
+    this.filterOpen = false;
+    this.distanceOpen = false;
+    this.areaOpen = false;
+
     
     this.is_autenticate();
 
@@ -406,20 +415,54 @@ export class HeaderComponent implements OnInit {
 
   openMapFilter(){
 
+    if(!this.filterOpen){
+    
+      if(this.distanceOpen){
+        this.openMapDistance();
+      }
+      if(this.areaOpen){
+        this.openMapArea();
+      }
+    }
+
     let boton = <HTMLElement>document.querySelector("#openMapFilter");
     boton.click();
+    this.filterOpen = !this.filterOpen;
   }
 
   openMapDistance(){
 
+    if(!this.distanceOpen){
+
+      if(this.filterOpen){
+        this.openMapFilter();
+      }
+      if(this.areaOpen){
+        this.openMapArea();
+      }
+    }
+
     let boton = <HTMLElement>document.querySelector("#openMapDistance");
     boton.click();
+    this.distanceOpen = !this.distanceOpen;
   }
 
   openMapArea(){
 
+    if(!this.areaOpen){
+
+      if(this.filterOpen){
+        this.openMapFilter();
+      }
+      if(this.distanceOpen){
+        this.openMapDistance();
+      }
+    }
+
+
     let boton = <HTMLElement>document.querySelector("#openMapArea");
     boton.click();
+    this.areaOpen = !this.areaOpen;
   }
 
 }

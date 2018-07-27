@@ -117,17 +117,32 @@
     </ul>
 
       <form class="form-inline">
-        <button *ngIf="isRouteMapa()" id="openFilterHeader" 
+        <button *ngIf="isRouteMapa() && filterOpen" id="openFilterHeader" 
+        type="button" class="btn btn-info"
+        (click)="openMapFilter()">
+          <i class="fa fa-filter fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa() && !filterOpen" id="openFilterHeader" 
         type="button" class="btn btn-outline-info"
         (click)="openMapFilter()">
           <i class="fa fa-filter fa-2x" aria-hidden="true"></i>
         </button>
-        <button *ngIf="isRouteMapa()" id="openDistanceHeader"
+        <button *ngIf="isRouteMapa() && distanceOpen" id="openDistanceHeader"
+        type="button" class="btn btn-info"
+        (click)="openMapDistance()">
+          <i class="fa fa-road fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa() && !distanceOpen" id="openDistanceHeader"
         type="button" class="btn btn-outline-info"
         (click)="openMapDistance()">
           <i class="fa fa-road fa-2x" aria-hidden="true"></i>
         </button>
-        <button *ngIf="isRouteMapa()" id="openAreaHeader"
+        <button *ngIf="isRouteMapa()  && areaOpen" id="openAreaHeader"
+        type="button" class="btn btn-info"
+        (click)="openMapArea()">
+          <i class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa()  && !areaOpen" id="openAreaHeader"
         type="button" class="btn btn-outline-info"
         (click)="openMapArea()">
           <i class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>
