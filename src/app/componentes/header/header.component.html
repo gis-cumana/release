@@ -117,11 +117,6 @@
     </ul>
 
       <form class="form-inline">
-        <button *ngIf="isRouteMapa() && filterOpen" id="openFilterHeader" 
-        type="button" class="btn btn-info"
-        (click)="openMapFilter()">
-          <i class="fa fa-filter fa-2x" aria-hidden="true"></i>
-        </button>
         <button *ngIf="isRouteMapa() && !filterOpen" id="openFilterHeader" 
         type="button" class="btn btn-outline-info"
         (click)="openMapFilter()">
