@@ -405,4 +405,10 @@ export class HeaderComponent implements OnInit {
   }
 
 
+  openMapFilter(){
+
+    let boton = <HTMLElement>document.querySelector("#openMapFilter");
+    boton.click();
+  }
+
 }

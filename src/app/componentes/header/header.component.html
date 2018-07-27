@@ -115,6 +115,16 @@
           </li>
 
     </ul>
+    <ng-template *ngIf="isRouteMapa()">
+      <form class="form-inline">
+        <button type="button"
+        class="btn btn-outline-info"
+        (click)="openMapFilter()">
+          <i class="fa fa-filter fa-2x" aria-hidden="true"></i>
+        </button>
+      </form>
+    </ng-template>
+
     <ng-template *ngIf="!isRouteMapa()">
       
     <form class="form-inline">

@@ -1,4 +1,8 @@
-<!--		<a class="dropdown-item" (click)="openFilter(filterContent)">Filtro</a> -->
+		<a class="dropdown-item"
+		style="display: none;"
+		id="openMapFilter"
+		(click)="openFilter(filterContent)"></a> 
+		
 
 		<ng-template #filterContent let-c="close" let-d="dismiss">
 		  <div class="modal-header">
