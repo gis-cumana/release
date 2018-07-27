@@ -216,13 +216,13 @@ export class HeaderComponent implements OnInit {
   	return this.isCollapsed;
   }
 
-  abrirSelectorArchivo(){
-    //document.getElementById("geojsonfile").click();
-    this.open();
-  }
+  open(content) {
 
-  open() {
-//    const modalRef = this.modalService.open();
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
   cargarGeojson(evento){
