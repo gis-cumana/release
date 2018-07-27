@@ -21,7 +21,9 @@ export class HeaderComponent implements OnInit {
 
   categorias: any;
   capas: any;
-
+///
+  capasPresentes: any[];
+///
   capasFiltradas: any;
 
   display: boolean = false;
@@ -51,6 +53,8 @@ export class HeaderComponent implements OnInit {
     eval("window.yo3 = this");
     
     this.is_autenticate();
+
+    this.capasPresentes = [];
 
     window.localStorage.categorias = JSON.stringify([]);
     window.localStorage.capas = JSON.stringify([]);
@@ -277,6 +281,15 @@ export class HeaderComponent implements OnInit {
   traerCapa(nombre){
 
     console.log(nombre);
+    
+    let guardada = this.capasPresentes.findIndex((el)=>{return el.nombre == nombre});
+    
+    if(guardada >= 0){
+        
+      window.localStorage.capaNueva = JSON.stringify(this.capasPresentes[guardada]);
+      document.getElementById("mostrarCapaNueva").click();
+      return false;
+    }
 
     this.loading = true;
     this.capasService.traer(nombre).subscribe(data =>{
@@ -291,6 +304,9 @@ export class HeaderComponent implements OnInit {
 
           window.localStorage.capaNueva = JSON.stringify(capaNueva);
           document.getElementById("mostrarCapaNueva").click();
+          if(!this.capasPresentes.find((el)=>{return el.nombre == capaNueva.nombre})){
+            this.capasPresentes.push(capaNueva);
+          }
           console.log(data.body);
           console.log(data);
         }
@@ -344,13 +360,6 @@ export class HeaderComponent implements OnInit {
 
   }
 */
-
-
-
-
-
-
-
 
 
 

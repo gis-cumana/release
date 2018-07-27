@@ -56,6 +56,63 @@
       <app-importar-capas [categorias]="categorias"></app-importar-capas>
     </li>   
 -->
+
+
+          <li *ngIf="isRouteMapa()" class="nav-item">
+
+
+            <ng-template #traerCapasModal let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Seleccionar capa</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-xs-12">
+
+
+                    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+                      <ng-template *ngFor="let cat of categorias">
+
+                        <ngb-panel [title]="cat.nombre" (click)="filtrarCapas(cat.id)">
+                          <ng-template ngbPanelContent>
+                            <div class="row">
+                              <div class="col-xs-12" *ngFor="let cap of capasFiltradas">
+                                <button class="btn btn-info"
+                                (click)="traerCapa(cap.nombre)">{{cap.nombre}}</button>
+                              </div>
+                            </div>
+                          </ng-template>
+                        </ngb-panel>   
+
+                      </ng-template>
+                    </ngb-accordion>
+
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+              </div>
+            </ng-template>
+
+
+            <a class="nav-link" id="dropdown02" (click)="open(traerCapasModal)">Visualizar Capas</a>
+
+
+            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdown02">
+              <button class="dropdown-item" *ngFor="let cat of categorias" (click)="filtrarCapas(cat.id)">{{cat.nombre}}</button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" *ngFor="let cap of capasFiltradas" (click)="traerCapa(cap.nombre)">{{cap.nombre}}</button>
+            </div>
+          </li>
+
+
+<!--
+
           <li *ngIf="isRouteMapa()" class="nav-item dropdown" ngbDropdown >
             <a class="nav-link dropdown-toggle" id="dropdown02" ngbDropdownToggle  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Visualizar Capas</a>
             <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdown02">
@@ -64,7 +121,7 @@
               <button class="dropdown-item" *ngFor="let cap of capasFiltradas" (click)="traerCapa(cap.nombre)">{{cap.nombre}}</button>
             </div>
           </li>
-
+-->
     </ul>
     <form class="form-inline">
       <button class="btn btn-success" *ngIf="!logged" (click)="showLogin()">Iniciar sesión</button>

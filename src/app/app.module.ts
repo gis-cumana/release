@@ -12,6 +12,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap/collapse/collapse.module';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap/accordion/accordion.module';
 import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap/popover/popover.module';
 
 
@@ -93,6 +94,7 @@ const appRoutes : Routes = [
         NgbModalModule.forRoot(),
         NgbCollapseModule.forRoot(),
         NgbDropdownModule.forRoot(),
+        NgbAccordionModule.forRoot(),
         NgbPopoverModule.forRoot(),
         FlashMessagesModule.forRoot(),
         RouterModule.forRoot(appRoutes),
