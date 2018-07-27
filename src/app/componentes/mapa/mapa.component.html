@@ -322,7 +322,7 @@
 		<div class="leaflet-control-layers leaflet-control leaflet-control-layers-expanded" id="formularioDistancia" (mouseenter)="prevenirInteraccion('d')" (mouseleave)="permitirInteraccion('d')">
 			
 			<div *ngIf="!distanceHovered&&!dibujandoCamino" style="font-size: 11px;"><i class="fa fa-road fa-2x" aria-hidden="true"></i></div>
-			<div *ngIf="distanceHovered||dibujandoCamino">				
+			<div *ngIf="distanceHovered">				
 
 				<form class="form">
 					
