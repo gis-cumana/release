@@ -73,12 +73,19 @@
                   <div class="col-xs-12">
 
 
-                    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-                      <ng-template *ngFor="let cat of categorias">
+                    <ngb-accordion
+                    #acc="ngbAccordion"
+                    activeIds="ngb-panel-0"
+                    (panelChange)="limpiarCapasFiltradas()">
 
-                        <ngb-panel [title]="cat.nombre" (click)="filtrarCapas(cat.id)">
+                        <ngb-panel *ngFor="let cat of categorias" [title]="cat.nombre">
                           <ng-template ngbPanelContent>
                             <div class="row">
+                              <div class="col-xs-12">
+                                <button type="button" class="btn btn-success" (click)="filtrarCapas(cat.id)">
+                                  Mostrar Capas
+                                </button>
+                              </div>
                               <div class="col-xs-12" *ngFor="let cap of capasFiltradas">
                                 <button class="btn btn-info"
                                 (click)="traerCapa(cap.nombre)">{{cap.nombre}}</button>
@@ -87,7 +94,7 @@
                           </ng-template>
                         </ngb-panel>   
 
-                      </ng-template>
+
                     </ngb-accordion>
 
                     

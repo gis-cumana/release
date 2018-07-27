@@ -225,6 +225,10 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  limpiarCapasFiltradas(){
+    this.capasFiltradas = [];
+  }
+
   cargarGeojson(evento){
 
     let nav = this;
