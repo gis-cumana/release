@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CategoriasService } from '../../services/categorias/categorias.service'
 import { CapasService } from '../../services/capas/capas.service'
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -14,7 +14,7 @@ import {PopupModalContentComponent} from './popup-modal-content.component';
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.css']
 })
-export class MapaComponent implements OnInit {
+export class MapaComponent implements OnInit, OnDestroy {
 
 
   activeMap: any;
@@ -114,9 +114,7 @@ export class MapaComponent implements OnInit {
 
   ngOnInit() {
 
-  	if(window.localStorage.lastLayer){
-  		window.localStorage.removeItem("lastLayer");
-  	}
+  	this.limpiarLocalStorage();
 
 	this.claseBotonFiltro = "leaflet-control-layers leaflet-control leaflet-control-layers-expanded nomargin";
 
@@ -261,6 +259,40 @@ export class MapaComponent implements OnInit {
 	eval("window.yo = this");
   }
 
+  ngOnDestroy(){
+
+  	this.limpiarLocalStorage();
+  }
+
+
+  limpiarLocalStorage(){
+
+
+  	if(window.localStorage.lastLayer){
+	  	window.localStorage.removeItem("lastLayer");
+  	}
+
+	if(window.localStorage.capaActiva){
+		window.localStorage.removeItem("capaActiva");
+	}
+
+	if(window.localStorage.coordenadas){
+		window.localStorage.removeItem("coordenadas");
+	}
+
+	if(window.localStorage.capas){
+		window.localStorage.removeItem("capas");
+	}
+
+	if(window.localStorage.categorias){
+		window.localStorage.removeItem("categorias");
+	}
+
+	if(window.localStorage.capasActivas){
+		window.localStorage.removeItem("capasActivas");
+	}
+
+  }
 
 
   initDraw(){
@@ -2082,6 +2114,7 @@ calcularAreaPunto(){
 	this.control.setPosition('topleft');
 	
 	this.capasActivas = Object.keys(this.overlayMaps);
+	window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
 
 	if(capaNueva.dontpush){
 
@@ -2136,6 +2169,7 @@ calcularAreaPunto(){
 	this.control.setPosition('topleft');
 
 	this.capasActivas = Object.keys(this.overlayMaps);
+	window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
 
 	if(capaNueva.dontpush) return false;
 
@@ -2259,6 +2293,7 @@ calcularAreaPunto(){
 	this.control.setPosition('topleft');
 
 	this.capasActivas = Object.keys(this.overlayMaps);
+	window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
 
 	if(capaNueva.dontpush) return false;
 
