@@ -415,28 +415,14 @@ export class HeaderComponent implements OnInit {
 
   openMapFilter(){
 
-    if(!this.filterOpen){
-    
-      if(this.distanceOpen){
-        this.openMapDistance();
-      }
-      if(this.areaOpen){
-        this.openMapArea();
-      }
-    }
-
     let boton = <HTMLElement>document.querySelector("#openMapFilter");
     boton.click();
-    this.filterOpen = !this.filterOpen;
   }
 
   openMapDistance(){
 
     if(!this.distanceOpen){
 
-      if(this.filterOpen){
-        this.openMapFilter();
-      }
       if(this.areaOpen){
         this.openMapArea();
       }
@@ -451,9 +437,6 @@ export class HeaderComponent implements OnInit {
 
     if(!this.areaOpen){
 
-      if(this.filterOpen){
-        this.openMapFilter();
-      }
       if(this.distanceOpen){
         this.openMapDistance();
       }
