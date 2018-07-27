@@ -285,8 +285,14 @@ export class HeaderComponent implements OnInit {
 
   montarDatos(){
 
-    this.categorias = JSON.parse(window.localStorage.categorias);
-    this.capas = JSON.parse(window.localStorage.capas);
+    if(window.localStorage.categorias){
+    
+      this.categorias = JSON.parse(window.localStorage.categorias);
+    }
+    if(window.localStorage.capas){
+
+      this.capas = JSON.parse(window.localStorage.capas);
+    }
 
   }
 
