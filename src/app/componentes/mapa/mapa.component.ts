@@ -2655,4 +2655,18 @@ calcularAreaPunto(){
 
 	}
 
+
+	togglePoint(){
+
+		if(document.querySelector(".pointDialog.hidden")){
+
+			document.querySelector(".pointDialog.hidden").setAttribute("class","pointDialog");
+		}
+		else{
+		
+			document.querySelector(".pointDialog").setAttribute("class","pointDialog hidden");
+		}
+
+	}
+
 }

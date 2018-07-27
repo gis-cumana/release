@@ -12,6 +12,48 @@
 		(click)="toggleArea()">
 		</a> 
 
+<div class="pointDialog hidden">
+
+			<form class="form">
+				
+				<div class="row">
+					<div class="form-group col">
+						<label for="searchlat" class="control-label">Latitud</label>
+						<input type="number" min="-90" max="90" class="form-control" name="searchlat" [(ngModel)]="searchPoint.lat" />
+					</div>
+				</div>			
+	
+				<div class="row">
+					<div class="form-group col">
+						<label for="searchlng" class="control-label">Longitud</label>
+						<input type="number" min="-180" max="180" class="form-control" name="searchlng" [(ngModel)]="searchPoint.lng" />
+					</div>
+				</div>			
+
+				<div class="row">
+					<div class="form-group col">
+						<label for="searchrad" class="control-label">Radio(mts.)</label>
+						<input type="number" min="1" class="form-control map-input" name="searchrad" [(ngModel)]="searchPoint.radius" />
+					</div>
+				</div>				
+
+				<div class="row">
+					<div class="form-group col">
+						<label for="searchradArea" class="control-label">Area</label>
+						<input type="number" min="1" class="form-control map-input" name="searchradArea" [(ngModel)]="searchPoint.area" disabled/>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group col">
+						<button type="button" class="btn btn-outline-danger" (click)="limpiarPunto()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
+						<button type="button" class="btn btn-outline-warning" (click)="obtenerPunto()"> <i class="fa fa-street-view" aria-hidden="true"></i> </button>
+						<button type="button" class="btn btn-outline-info" (click)="encontrarPunto()"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+					</div>
+				</div>
+			</form>
+
+</div>
 <div class="areaDialog hidden">
 
 	<div class="row">
@@ -313,7 +355,7 @@
 		<div class="leaflet-control-layers leaflet-control leaflet-control-layers-expanded" id="formularioPunto" (mouseenter)="prevenirInteraccion('p')" (mouseleave)="permitirInteraccion('p')">
 
 			<div *ngIf="!pointHovered&&!dibujandoPunto"><i class="fa fa-street-view fa-2x" aria-hidden="true"></i></div>
-			<div *ngIf="pointHovered||dibujandoPunto">
+			<div *ngIf="pointHovered">
 
 			<form class="form">
 				

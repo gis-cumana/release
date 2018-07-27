@@ -142,6 +142,16 @@
         (click)="openMapArea()">
           <i class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>
         </button>
+        <button *ngIf="isRouteMapa()  && pointOpen" id="openPointHeader"
+        type="button" class="btn btn-info"
+        (click)="openMapPoint()">
+          <i class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa()  && !pointOpen" id="openPointHeader"
+        type="button" class="btn btn-outline-info"
+        (click)="openMapPoint()">
+          <i class="fa fa-street-view fa-2x" aria-hidden="true"></i>
+        </button>
       </form>
 
 
