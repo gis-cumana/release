@@ -122,6 +122,11 @@
         (click)="openMapFilter()">
           <i class="fa fa-filter fa-2x" aria-hidden="true"></i>
         </button>
+        <button *ngIf="isRouteMapa()" id="openDistanceHeader"
+        type="button" class="btn btn-outline-info"
+        (click)="openMapDistance()">
+          <i class="fa fa-road fa-2x" aria-hidden="true"></i>
+        </button>
       </form>
 
 

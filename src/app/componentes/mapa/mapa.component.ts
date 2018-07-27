@@ -2629,4 +2629,17 @@ calcularAreaPunto(){
 */
 	}
 
+	toggleDistance(){
+
+		if(!document.querySelector(".distanceDialog.hidden")){
+
+			document.querySelector(".distanceDialog").setAttribute("class",".distanceDialog.hidden");
+		}
+		else{
+		
+			document.querySelector(".distanceDialog").setAttribute("class",".distanceDialog.hidden");
+		}
+
+	}
+
 }

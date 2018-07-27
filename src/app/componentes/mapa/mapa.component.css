@@ -46,3 +46,20 @@ input.map-input {
 .dark-modal .close {
 	color: white;   
 }
+
+.distanceDialog{
+    position: fixed;
+    top: 80px;
+    right: 100px;
+    z-index: 990;
+    width: 60px;
+    height: 150px;
+}
+
+.hidden{
+    display: none;
+}
+
+.hidden *{
+    display: none;
+}
