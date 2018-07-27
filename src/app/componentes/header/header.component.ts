@@ -225,8 +225,13 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  limpiarCapasFiltradas(){
+  limpiarCapasFiltradas(ev){
     this.capasFiltradas = [];
+    if(ev.nextState){
+
+      let boton = <HTMLElement>document.querySelector("#"+ev.panelId+" button.btn-filter");
+      boton.click();
+    }
   }
 
   cargarGeojson(evento){
@@ -281,6 +286,8 @@ export class HeaderComponent implements OnInit {
     this.capas = JSON.parse(window.localStorage.capas);
 
   }
+
+
 
   traerCapa(nombre){
 
@@ -366,6 +373,27 @@ export class HeaderComponent implements OnInit {
 */
 
 
+  isLayerSelected(nombre){
+
+    if(!window.localStorage.capasActivas){
+
+      return false;
+    }else{
+
+      let capas = JSON.parse(window.localStorage.capasActivas);
+
+      if(capas.find((capa)=>{return capa == nombre})){
+
+        return true;
+      }
+      else{
+
+        return false;
+      }
+
+    }
+
+  }
 
 
 }
