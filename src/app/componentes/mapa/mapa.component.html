@@ -13,67 +13,40 @@
 		</a> 
 
 <div class="areaDialog hidden">
-				<form class="form">
-					
-					<div class="row">
-						<div class="form-group col">
-							<table class="table">
-							  <caption>Unidad de area
-							  	<br>
-							  	<button type="button" class="btn btn-outline-info" (click)="unidadArea='Km2'" >Km2</button>
-							  	<button type="button" class="btn btn-outline-info" (click)="unidadArea='m2'" >m2</button>
-							  </caption>
 
-							  <thead>
-							    <tr>
-							      <th *ngIf="unidadArea=='Km2'" scope="col">Área (Km2.)</th>
-							      <th *ngIf="unidadArea=='m2'" scope="col">Área (m2.)</th>
-							    </tr>
-							  </thead>
-							  <tbody>
-							    <tr>
-							      <td *ngIf="unidadArea=='Km2'">{{medidaArea.toFixed(8)}}</td>
-							      <td *ngIf="unidadArea=='m2'">{{(medidaArea*1000000).toFixed(8)}}</td>
-							    </tr>
-							  </tbody>
-							</table>
-						</div>
-					</div>
+	<div class="row">
+		<div class="col">
+			<table class="table">
+				<caption>Unidad de area
+					<br>
+					<button type="button" class="btn btn-outline-info" (click)="unidadArea='Km2'" >Km2</button>
+					<button type="button" class="btn btn-outline-info" (click)="unidadArea='m2'" >m2</button>
+				</caption>
 
-					<div class="row" >
-						<div class="form-group col">
-							<table class="table">
+				<thead>
+					<tr>
+						<th *ngIf="unidadArea=='Km2'" scope="col">Área (Km2.)</th>
+						<th *ngIf="unidadArea=='m2'" scope="col">Área (m2.)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td *ngIf="unidadArea=='Km2'">{{medidaArea.toFixed(8)}}</td>
+						<td *ngIf="unidadArea=='m2'">{{(medidaArea*1000000).toFixed(8)}}</td>
+					</tr>
+				</tbody>
+			</table>			
+		</div>
+	</div>
 
-							  <caption>Unidad de distancia
-							  	<br>
-							  	<button type="button" class="btn btn-outline-info" (click)="unidadPerimetro='Km'" >Km</button>
-							  	<button type="button" class="btn btn-outline-info" (click)="unidadPerimetro='m'" >mts</button>
-							  </caption>
 
-							  <thead>
-							    <tr>
-							      <th *ngIf="unidadPerimetro=='Km'" scope="col">Perímetro (Km.)</th>
-							      <th *ngIf="unidadPerimetro=='m'" scope="col">Perímetro (mts.)</th>
-							    </tr>
-							  </thead>
-							  <tbody>
-							    <tr>
-							      <td *ngIf="unidadPerimetro=='Km'">{{medidaDistancia.toFixed(8)}}</td>
-							      <td *ngIf="unidadPerimetro=='m'">{{(medidaDistancia*1000).toFixed(8)}}</td>
-							    </tr>
-							  </tbody>
-							</table>
-						</div>
-					</div>
+	<div class="row">
+		<div class="form-group col">
+			<button type="button" class="btn btn-outline-danger" (click)="limpiarPoligono()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
+			<button type="button" class="btn btn-outline-info" (click)="medirAreaDibujada()"> <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
+		</div>
+	</div>
 
-					<div class="row">
-						<div class="form-group col">
-							<button type="button" class="btn btn-outline-danger" (click)="limpiarPoligono()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
-							<button type="button" class="btn btn-outline-warning" (click)="medirAreaElegida()"> <i class="fa fa-bandcamp" aria-hidden="true"></i> </button>
-							<button type="button" class="btn btn-outline-info" (click)="medirAreaDibujada()"> <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
-						</div>
-					</div>
-				</form>
 </div>
 <div class="distanceDialog hidden">
 				<form class="form">
@@ -105,7 +78,6 @@
 					<div class="row">
 						<div class="form-group col">
 							<button type="button" class="btn btn-outline-danger" (click)="limpiarCamino()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
-							<button type="button" class="btn btn-outline-warning" (click)="medirCaminoElegido()"> <i class="fa fa-road" aria-hidden="true"></i> </button>
 							<button type="button" class="btn btn-outline-info" (click)="medirCaminoDibujado()"> <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
 						</div>
 					</div>
