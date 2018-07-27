@@ -229,8 +229,11 @@ export class HeaderComponent implements OnInit {
     this.capasFiltradas = [];
     if(ev.nextState){
 
-      let boton = <HTMLElement>document.querySelector("#"+ev.panelId+" button.btn-filter");
-      boton.click();
+      setTimeout(()=>{
+
+        let boton = <HTMLElement>document.querySelector("#"+ev.panelId+" button.btn-filter");
+        boton.click();
+      },100);
     }
   }
 
