@@ -105,6 +105,8 @@ export class MapaComponent implements OnInit, OnDestroy {
 	foto: any;
 	fotoDibujada: boolean;
 
+	capasGeo: any;
+
 
   constructor(
   			private flashMessage: FlashMessagesService,
@@ -115,6 +117,16 @@ export class MapaComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
   	this.limpiarLocalStorage();
+
+  	this.capasGeo = [
+  		{usado: false, nombre: "geo_amarillo"},
+  		{usado: false, nombre: "geo_blanco"},
+  		{usado: false, nombre: "geo_rojo"},
+  		{usado: false, nombre: "geo_azul"},
+  		{usado: false, nombre: "geo_rosa"},
+  		{usado: false, nombre: "geo_aqua"},
+  		{usado: false, nombre: "geo_c"}
+  	]
 
 	this.claseBotonFiltro = "leaflet-control-layers leaflet-control leaflet-control-layers-expanded nomargin";
 
@@ -2267,13 +2279,23 @@ calcularAreaPunto(){
 			console.log(_self);
 			console.log(capaNueva);
 			let myRe = new RegExp("geo","i");
-			
+
 			if(myRe.test(capaNueva.nombre)){
+
+				if(!_self.capasGeo.find((el)=>{return el.usado == false})){
+
+					for(let i = 0, j = _self.capasGeo.length; i<j; i++){
+						_self.capasGeo[i].usado = false;
+					}
+				}
 
 				capaEspecial++;
 
+				let indiceIcono = _self.capasGeo.findIndex((el)=>{return el.usado == false});
+				_self.capasGeo[indiceIcono].usado = true;
+
 				let myIcon = L.icon({
-				    iconUrl: '../../../assets/images/perforacion_amarillo.png',
+				    iconUrl: '../../../assets/images/'+_self.capasGeo[indiceIcono].nombre,
 				    iconSize: [50,50],
 				    iconAnchor: [25, 25],
 				    popupAnchor: [-10, -10]
