@@ -425,10 +425,10 @@ export class MapaComponent implements OnInit, OnDestroy {
 
 	});
 
-	this.configurarControlFiltro2();
-	this.configurarControlDistancia();
-	this.configurarControlArea();
-	this.configurarControlBusqueda();
+	//this.configurarControlFiltro2();
+	//this.configurarControlDistancia();
+	//this.configurarControlArea();
+	//this.configurarControlBusqueda();
 //	this.configurarControlFiltro();
   }
 
