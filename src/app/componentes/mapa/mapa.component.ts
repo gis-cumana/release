@@ -2266,7 +2266,9 @@ calcularAreaPunto(){
 		pointToLayer: function (feature, latlng) {
 			console.log(_self);
 			console.log(capaNueva);
-			if(capaNueva.nombre == "estudio_de_suelos"){
+			let myRe = new RegExp("geo","i");
+			
+			if(myRe.test(capaNueva.nombre)){
 
 				capaEspecial++;
 
