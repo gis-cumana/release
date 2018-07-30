@@ -119,13 +119,11 @@ export class MapaComponent implements OnInit, OnDestroy {
   	this.limpiarLocalStorage();
 
   	this.capasGeo = [
-  		{usado: false, nombre: "geo_amarillo"},
-  		{usado: false, nombre: "geo_blanco"},
-  		{usado: false, nombre: "geo_rojo"},
-  		{usado: false, nombre: "geo_azul"},
-  		{usado: false, nombre: "geo_rosa"},
-  		{usado: false, nombre: "geo_aqua"},
-  		{usado: false, nombre: "geo_c"}
+  		{usado: false, nombre: "punto_geotecnia_1.png"},
+  		{usado: false, nombre: "punto_geotecnia_2.png"},
+  		{usado: false, nombre: "punto_geotecnia_3.png"},
+  		{usado: false, nombre: "punto_geotecnia_4.png"},
+  		{usado: false, nombre: "punto_geotecnia_5.png"}
   	]
 
 	this.claseBotonFiltro = "leaflet-control-layers leaflet-control leaflet-control-layers-expanded nomargin";
@@ -2296,8 +2294,11 @@ calcularAreaPunto(){
 
 				let myIcon = L.icon({
 				    iconUrl: '../../../assets/images/'+_self.capasGeo[indiceIcono].nombre,
-				    iconSize: [50,50],
-				    iconAnchor: [25, 25],
+				    iconSize: [82,135],
+				    iconAnchor: [41, 65],
+				    shadowUrl: '../../../assets/images/sombra_puntos_geo.png',
+				    iconSize: [104,100],
+				    iconAnchor: [52, 50],
 				    popupAnchor: [-10, -10]
 				    });
 		        return L.marker(latlng, {icon: myIcon}).on("click",function(e){ _self.openPopupModal(atributos, feature); });
