@@ -14,3 +14,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40ff7777', e
 .center{
     display: block; text-align: center; margin: auto;
 }
+
+.omni-nav{
+	z-index: 990;
+}
+
+.btn-filter{
+	display: none;
+}

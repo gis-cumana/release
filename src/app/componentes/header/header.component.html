@@ -1,9 +1,13 @@
 <input type="file" name="file" id="geojsonfile" style="display: none" (change)="cargarGeojson($event)">
 <button type="button" id="montar" style="display: none" (click)="montarDatos()"></button>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar omni-nav navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" routerLink="/" >
     <img src="assets/images/logo.png" style="float: left" width="250" height="55">
+  </a>
+
+  <a class="navbar-brand" routerLink="/" >
+    <i class="fa fa-home" aria-hidden="true"></i>
   </a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,6 +33,17 @@
       </div>
     </li>    
 -->
+
+         <li *ngIf="isRouteMapa()" class="nav-item dropdown" ngbDropdown >
+            <a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
+            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdown01">
+              <app-categorias></app-categorias>
+              <app-capas></app-capas>
+              <div class="dropdown-divider"></div>
+              <app-importar-capas [categorias]="categorias"></app-importar-capas>
+            </div>
+        </li>
+<!--
     <li class="nav-item" *ngIf="isRouteMapa()">
       <app-categorias></app-categorias>
     </li>   
@@ -40,21 +55,108 @@
     <li class="nav-item" *ngIf="isRouteMapa()">
       <app-importar-capas [categorias]="categorias"></app-importar-capas>
     </li>   
+-->
 
-          <li class="nav-item dropdown" ngbDropdown >
-            <a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</a>
-            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdown01">
-              <a class="dropdown-item" *ngFor="let cat of categorias" (click)="filtrarCapas(cat.id)">{{cat.nombre}}</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown" ngbDropdown>
-            <a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Capas</a>
-            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdown01">
-              <a class="dropdown-item" *ngFor="let cap of capasFiltradas" (click)="traerCapa(cap.nombre)">{{cap.nombre}}</a>
-            </div>
+
+          <li *ngIf="isRouteMapa()" class="nav-item">
+
+
+            <ng-template #content let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Seleccionar capa</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-xs-12">
+
+
+                    <ngb-accordion
+                    #acc="ngbAccordion"
+                    [closeOthers]="true"
+                    (panelChange)="limpiarCapasFiltradas($event)">
+
+                        <ngb-panel *ngFor="let cat of categorias; let i = index;" 
+                        [title]="cat.nombre"
+                        [id]="'static-'+i">
+                          <ng-template ngbPanelContent>
+                            <div class="row">
+                                <button type="button"
+                                class="btn btn-success btn-filter"
+                                (click)="filtrarCapas(cat.id)">
+                                </button>
+                              <div class="col-xs-12" *ngFor="let cap of capasFiltradas">
+                                <button *ngIf="!isLayerSelected(cap.nombre)" class="btn btn-outline-info"
+                                (click)="traerCapa(cap.nombre)">{{cap.nombre}}</button>
+
+                                <button *ngIf="isLayerSelected(cap.nombre)" class="btn btn-info"
+                                (click)="traerCapa(cap.nombre)">{{cap.nombre}}</button>
+                              </div>
+                            </div>
+                          </ng-template>
+                        </ngb-panel>   
+
+
+                    </ngb-accordion>
+
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cerrar</button>
+              </div>
+            </ng-template>
+
+
+            <a class="nav-link" (click)="open(content)">Visualizar Capas</a>
           </li>
 
     </ul>
+
+      <form class="form-inline">
+        <button *ngIf="isRouteMapa()" id="openFilterHeader" 
+        type="button" class="btn btn-outline-info"
+        (click)="openMapFilter()">
+          <i class="fa fa-filter fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa() && distanceOpen" id="openDistanceHeader"
+        type="button" class="btn btn-info"
+        (click)="openMapDistance()">
+          <i class="fa fa-road fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa() && !distanceOpen" id="openDistanceHeader"
+        type="button" class="btn btn-outline-info"
+        (click)="openMapDistance()">
+          <i class="fa fa-road fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa()  && areaOpen" id="openAreaHeader"
+        type="button" class="btn btn-info"
+        (click)="openMapArea()">
+          <i class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa()  && !areaOpen" id="openAreaHeader"
+        type="button" class="btn btn-outline-info"
+        (click)="openMapArea()">
+          <i class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa()  && pointOpen" id="openPointHeader"
+        type="button" class="btn btn-info"
+        (click)="openMapPoint()">
+          <i class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa()  && !pointOpen" id="openPointHeader"
+        type="button" class="btn btn-outline-info"
+        (click)="openMapPoint()">
+          <i class="fa fa-street-view fa-2x" aria-hidden="true"></i>
+        </button>
+      </form>
+
+
+    <ng-template *ngIf="!isRouteMapa()">
+      
     <form class="form-inline">
       <button class="btn btn-success" *ngIf="!logged" (click)="showLogin()">Iniciar sesión</button>
        <button class="btn btn-primary" *ngIf="!logged" (click)="showRegister()">Registrate</button>
@@ -68,20 +170,13 @@
       </div>
     </div>
     </form>
+
+    </ng-template>
   </div>
 </nav>
 
 <p-dialog header="Registrar nuevo usuario" width="400" modal="true" [(visible)]="display">
 <p-progressBar mode="indeterminate" *ngIf="loading"></p-progressBar>
-  <!--<div class="center">
-   <button type="button" class="btn btn-info">
-      <span class="fa fa-facebook"></span>
-      Registrate con Facebook</button>
-    <br/>
-    <button type="button" class="btn btn-danger">
-      <span class="fa fa-google-plus"></span>
-      Registrate con Google</button> <br/>
-  </div>-->
 
   <fieldset class="form-group">
     <label for="nombre" class="bmd-label-floating">Nombre</label>
@@ -115,15 +210,6 @@
 <p-dialog header="Iniciar sesión" width="400" modal="true" [(visible)]="registro">
 <p-progressBar mode="indeterminate" *ngIf="loading"></p-progressBar>
 <p-growl [(value)]="msgs"></p-growl>
-  <!--<div class="center">
-    <button type="button" class="btn btn-info">
-      <span class="fa fa-facebook"></span>
-      Iniciar con Facebook</button>
-    <br/>
-    <button type="button" class="btn btn-danger">
-      <span class="fa fa-google-plus"></span>
-      Iniciar con Google</button> <br/>
-  </div>-->
 
   <fieldset class="form-group">
     <label for="email" class="bmd-label-floating">Correo Electronico</label>

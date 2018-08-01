@@ -7,9 +7,11 @@ import { Output, EventEmitter } from '@angular/core';
 import { CapasService } from '../../services/capas/capas.service'
 import { CategoriasService } from '../../services/categorias/categorias.service'
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-header',
+  providers: [NgbDropdownConfig],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
@@ -19,7 +21,9 @@ export class HeaderComponent implements OnInit {
 
   categorias: any;
   capas: any;
-
+///
+  capasPresentes: any[];
+///
   capasFiltradas: any;
 
   display: boolean = false;
@@ -34,17 +38,34 @@ export class HeaderComponent implements OnInit {
   loading: boolean = false;
   user_logged = "Usurario";
 
+  filterOpen: boolean;
+  distanceOpen: boolean;
+  areaOpen: boolean;
+  pointOpen: boolean;
+
   constructor(private router: Router, 
               private authService: AuthService,
               private capasService: CapasService, 
               private categoriasService: CategoriasService, 
-              private modalService: NgbModal) { }
+              private modalService: NgbModal,
+              config: NgbDropdownConfig) { 
+
+                config.autoClose = false;
+              }
 
   ngOnInit() {
     
     eval("window.yo3 = this");
+
+    this.filterOpen = false;
+    this.distanceOpen = false;
+    this.areaOpen = false;
+    this.pointOpen = false;
+
     
     this.is_autenticate();
+
+    this.capasPresentes = [];
 
     window.localStorage.categorias = JSON.stringify([]);
     window.localStorage.capas = JSON.stringify([]);
@@ -206,13 +227,25 @@ export class HeaderComponent implements OnInit {
   	return this.isCollapsed;
   }
 
-  abrirSelectorArchivo(){
-    //document.getElementById("geojsonfile").click();
-    this.open();
+  open(content) {
+
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      
+    }, (reason) => {
+      
+    });
   }
 
-  open() {
-//    const modalRef = this.modalService.open();
+  limpiarCapasFiltradas(ev){
+    this.capasFiltradas = [];
+    if(ev.nextState){
+
+      setTimeout(()=>{
+
+        let boton = <HTMLElement>document.querySelector("#"+ev.panelId+" button.btn-filter");
+        boton.click();
+      },100);
+    }
   }
 
   cargarGeojson(evento){
@@ -263,14 +296,31 @@ export class HeaderComponent implements OnInit {
 
   montarDatos(){
 
-    this.categorias = JSON.parse(window.localStorage.categorias);
-    this.capas = JSON.parse(window.localStorage.capas);
+    if(window.localStorage.categorias){
+    
+      this.categorias = JSON.parse(window.localStorage.categorias);
+    }
+    if(window.localStorage.capas){
+
+      this.capas = JSON.parse(window.localStorage.capas);
+    }
 
   }
+
+
 
   traerCapa(nombre){
 
     console.log(nombre);
+    
+    let guardada = this.capasPresentes.findIndex((el)=>{return el.nombre == nombre});
+    
+    if(guardada >= 0){
+        
+      window.localStorage.capaNueva = JSON.stringify(this.capasPresentes[guardada]);
+      document.getElementById("mostrarCapaNueva").click();
+      return false;
+    }
 
     this.loading = true;
     this.capasService.traer(nombre).subscribe(data =>{
@@ -285,6 +335,9 @@ export class HeaderComponent implements OnInit {
 
           window.localStorage.capaNueva = JSON.stringify(capaNueva);
           document.getElementById("mostrarCapaNueva").click();
+          if(!this.capasPresentes.find((el)=>{return el.nombre == capaNueva.nombre})){
+            this.capasPresentes.push(capaNueva);
+          }
           console.log(data.body);
           console.log(data);
         }
@@ -340,13 +393,84 @@ export class HeaderComponent implements OnInit {
 */
 
 
+  isLayerSelected(nombre){
+
+    if(!window.localStorage.capasActivas){
+
+      return false;
+    }else{
+
+      let capas = JSON.parse(window.localStorage.capasActivas);
+
+      if(capas.find((capa)=>{return capa == nombre})){
+
+        return true;
+      }
+      else{
+
+        return false;
+      }
+
+    }
+
+  }
+
+  openMapFilter(){
+
+    let boton = <HTMLElement>document.querySelector("#openMapFilter");
+    boton.click();
+  }
+
+  openMapDistance(){
+
+    if(!this.distanceOpen){
+
+      if(this.areaOpen){
+        this.openMapArea();
+      }
+      if(this.pointOpen){
+        this.openMapPoint();
+      }
+    }
+
+    let boton = <HTMLElement>document.querySelector("#openMapDistance");
+    boton.click();
+    this.distanceOpen = !this.distanceOpen;
+  }
+
+  openMapArea(){
+
+    if(!this.areaOpen){
+
+      if(this.distanceOpen){
+        this.openMapDistance();
+      }
+      if(this.pointOpen){
+        this.openMapPoint();
+      }
+    }
 
 
+    let boton = <HTMLElement>document.querySelector("#openMapArea");
+    boton.click();
+    this.areaOpen = !this.areaOpen;
+  }
 
+  openMapPoint(){
 
+    if(!this.pointOpen){
 
+      if(this.distanceOpen){
+        this.openMapDistance();
+      }
+      if(this.areaOpen){
+        this.openMapArea();
+      }
+    }
 
-
-
+    let boton = <HTMLElement>document.querySelector("#openMapPoint");
+    boton.click();
+    this.pointOpen = !this.areaOpen;
+  }
 
 }

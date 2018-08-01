@@ -12,11 +12,13 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap/collapse/collapse.module';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap/accordion/accordion.module';
 import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap/popover/popover.module';
 
 
 import {GalleriaModule, ButtonModule, DialogModule, GrowlModule, ProgressBarModule} from 'primeng/primeng';
 import { MapaComponent} from './componentes/mapa/mapa.component';
+import { PopupModalContentComponent } from './componentes/mapa/popup-modal-content.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import {TableModule} from 'primeng/table';
 //servicios
@@ -65,6 +67,7 @@ const appRoutes : Routes = [
         HeaderComponent,
         HomeComponent,
         MapaComponent,
+        PopupModalContentComponent,
         FooterComponent,
         CasosComponent,
         SucesosComponent,
@@ -91,6 +94,7 @@ const appRoutes : Routes = [
         NgbModalModule.forRoot(),
         NgbCollapseModule.forRoot(),
         NgbDropdownModule.forRoot(),
+        NgbAccordionModule.forRoot(),
         NgbPopoverModule.forRoot(),
         FlashMessagesModule.forRoot(),
         RouterModule.forRoot(appRoutes),
@@ -106,7 +110,8 @@ const appRoutes : Routes = [
         ProgressBarModule
     ],
     entryComponents: [
-        ImportarCapasContent
+        ImportarCapasContent,
+        PopupModalContentComponent
     ],
     providers: [CapasService, CasosService, SucesosService, AuthService, AuthGuard, CategoriasService, DatosService],
     bootstrap: [AppComponent]

@@ -26,7 +26,7 @@
               }
             ],
             "styles": [
-              "node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/leaflet/dist/leaflet.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/leaflet-sidebar-v2/css/leaflet-sidebar.min.css",

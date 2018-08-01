@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CategoriasService } from '../../services/categorias/categorias.service'
 import { CapasService } from '../../services/capas/capas.service'
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -7,12 +7,14 @@ import * as Turf from '@turf/turf';
 import * as leafletImage from 'leaflet-image';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
+import {PopupModalContentComponent} from './popup-modal-content.component';
+
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.css']
 })
-export class MapaComponent implements OnInit {
+export class MapaComponent implements OnInit, OnDestroy {
 
 
   activeMap: any;
@@ -103,6 +105,8 @@ export class MapaComponent implements OnInit {
 	foto: any;
 	fotoDibujada: boolean;
 
+	capasGeo: any;
+
 
   constructor(
   			private flashMessage: FlashMessagesService,
@@ -112,9 +116,15 @@ export class MapaComponent implements OnInit {
 
   ngOnInit() {
 
-  	if(window.localStorage.lastLayer){
-  		window.localStorage.removeItem("lastLayer");
-  	}
+  	this.limpiarLocalStorage();
+
+  	this.capasGeo = [
+  		{usado: false, nombre: "punto_geotecnia_1.png"},
+  		{usado: false, nombre: "punto_geotecnia_2.png"},
+  		{usado: false, nombre: "punto_geotecnia_3.png"},
+  		{usado: false, nombre: "punto_geotecnia_4.png"},
+  		{usado: false, nombre: "punto_geotecnia_5.png"}
+  	]
 
 	this.claseBotonFiltro = "leaflet-control-layers leaflet-control leaflet-control-layers-expanded nomargin";
 
@@ -259,6 +269,40 @@ export class MapaComponent implements OnInit {
 	eval("window.yo = this");
   }
 
+  ngOnDestroy(){
+
+  	this.limpiarLocalStorage();
+  }
+
+
+  limpiarLocalStorage(){
+
+
+  	if(window.localStorage.lastLayer){
+	  	window.localStorage.removeItem("lastLayer");
+  	}
+
+	if(window.localStorage.capaActiva){
+		window.localStorage.removeItem("capaActiva");
+	}
+
+	if(window.localStorage.coordenadas){
+		window.localStorage.removeItem("coordenadas");
+	}
+
+	if(window.localStorage.capas){
+		window.localStorage.removeItem("capas");
+	}
+
+	if(window.localStorage.categorias){
+		window.localStorage.removeItem("categorias");
+	}
+
+	if(window.localStorage.capasActivas){
+		window.localStorage.removeItem("capasActivas");
+	}
+
+  }
 
 
   initDraw(){
@@ -391,10 +435,10 @@ export class MapaComponent implements OnInit {
 
 	});
 
-	this.configurarControlFiltro2();
-	this.configurarControlDistancia();
-	this.configurarControlArea();
-	this.configurarControlBusqueda();
+	//this.configurarControlFiltro2();
+	//this.configurarControlDistancia();
+	//this.configurarControlArea();
+	//this.configurarControlBusqueda();
 //	this.configurarControlFiltro();
   }
 
@@ -539,7 +583,7 @@ calcularAreaPunto(){
 			a[0]["style"]="display: none;" 
 			a[1]["style"]="display: block;" 
 		}
-		if(el == 'f'){
+		if(el == 'pic'){
 			let a = document.querySelectorAll("#formularioFoto>div")
 			a[0]["style"]="display: none;" 
 			a[1]["style"]="display: block;" 
@@ -570,7 +614,7 @@ calcularAreaPunto(){
 			a[0]["style"]="display: block;" 
 			a[1]["style"]="display: none;" 
 		}
-		if(el == 'f'){
+		if(el == 'pic'){
 			let a = document.querySelectorAll("#formularioFoto>div")
 			a[0]["style"]="display: block;" 
 			a[1]["style"]="display: none;" 
@@ -615,7 +659,7 @@ calcularAreaPunto(){
 		this.medidaArea = 0;
 	}
 
-	obtenerPunto(ev){
+	obtenerPunto(){
 
 		this.dibujandoCamino = false;
 		this.dibujandoPoligono = false;
@@ -1077,7 +1121,6 @@ calcularAreaPunto(){
 					}
 
 					this.puntosEnEdicion = L.geoJSON(this.geojsonEditable, {
-			
 						pointToLayer: function (feature, latlng) {
 				        	return L.circleMarker(latlng, {
 										radius: 8,
@@ -1931,8 +1974,9 @@ calcularAreaPunto(){
 
   	let match = false;
 
-	console.log("Largo: "+geoJson.features.length);
-	if (geoJson.features.length == 0){ 
+  	let largo = geoJson.features.length;
+	console.log("Largo: "+largo);
+	if (largo == 0){ 
 		
 		console.log("No hay features");		
 	}
@@ -2022,6 +2066,13 @@ calcularAreaPunto(){
 
   	console.log(capaNueva);
 
+
+	if(!capaNueva.geojson.features.length){
+
+		this.geoJsons.push(capaNueva);
+		return false;
+	}
+
   	let atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
 	let popup = function(feature, layer){
 
@@ -2073,6 +2124,7 @@ calcularAreaPunto(){
 	this.control.setPosition('topleft');
 	
 	this.capasActivas = Object.keys(this.overlayMaps);
+	window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
 
 	if(capaNueva.dontpush){
 
@@ -2089,8 +2141,14 @@ calcularAreaPunto(){
 
   addLineLayerToControl(capaNueva, estilo){
 
-  	let atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
 
+	if(!capaNueva.geojson.features.length){
+
+		this.geoJsons.push(capaNueva);
+		return false;
+	}
+
+  	let atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
 	let popup = function(feature, layer){
 
 	  	let popupDiv = document.createElement("div");
@@ -2121,6 +2179,7 @@ calcularAreaPunto(){
 	this.control.setPosition('topleft');
 
 	this.capasActivas = Object.keys(this.overlayMaps);
+	window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
 
 	if(capaNueva.dontpush) return false;
 
@@ -2131,42 +2190,122 @@ calcularAreaPunto(){
 
 		if(capaNueva.geojson.features.length){
 			
-			
-		
+			let _self = this;
+			let capaEspecial = 0;
+
 		  	let atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
 		  	//let att = this.capas.find((element) =>{return element.nombre == capaNueva.nombre}).atributos;
 		  	//let atributos = att.filter((element) =>{return element.nombre != "geom"});
 				let popup = function(feature, layer){
-		
-			  	let popupDiv = document.createElement("div");
-			  	let ul = document.createElement("ul");
-		
-				atributos.forEach((element) =>{
-		
-					if(element != "pk"){
-		
-						let li = document.createElement("li");
-						li.innerHTML = ""+element+": "+feature.properties[""+element];
-						ul.appendChild(li);
+
+					if(capaEspecial == 0){
+
+
+					  	let popupDiv = document.createElement("div");
+					  	popupDiv.setAttribute("class","popupDiv");
+					  	let tabla = document.createElement("table");
+					  	tabla.setAttribute("class","table popup-table");
+
+					  	let cabeza = document.createElement("thead");
+					  	let cTr = document.createElement("tr");
+					  	let cTh1 = document.createElement("th");
+					  	cTh1.innerHTML = "Atributo";
+					  	let cTh2 = document.createElement("th");
+					  	cTh2.innerHTML = "Valor";
+
+					  	cTr.appendChild(cTh1);
+					  	cTr.appendChild(cTh2);
+					  	cabeza.appendChild(cTr);
+
+					  	tabla.appendChild(cabeza);
+
+					  	let cuerpo = document.createElement("tbody");
+				
+						atributos.forEach((element) =>{
+
+							if(element != "pk"){
+
+								let tr = document.createElement("tr");
+								let td1 = document.createElement("td");
+								td1.setAttribute("class","col-left");
+								td1.innerHTML = element;
+								let td2 = document.createElement("td");
+								td2.innerHTML = feature.properties[""+element];
+
+								tr.appendChild(td1);
+								tr.appendChild(td2);
+
+								cuerpo.appendChild(tr);
+							}
+						});
+				
+								let lat = document.createElement("tr");
+								let latn = document.createElement("td");
+								latn.setAttribute("class","col-left");
+								latn.innerHTML = "Latitud";
+								let latv = document.createElement("td");
+								latv.innerHTML = feature.geometry.coordinates[1];
+				
+								lat.appendChild(latn);
+								lat.appendChild(latv);
+
+								let lng = document.createElement("tr");
+								let lngn = document.createElement("td");
+								lngn.innerHTML = "Longitud";
+								lngn.setAttribute("class","col-left");
+								let lngv = document.createElement("td");
+								lngv.innerHTML = feature.geometry.coordinates[0];
+
+								lng.appendChild(lngn);
+								lng.appendChild(lngv);
+
+								cuerpo.appendChild(lat);
+								cuerpo.appendChild(lng);
+
+								tabla.appendChild(cuerpo);
+				
+						popupDiv.appendChild(tabla);
+						layer.bindPopup(popupDiv);
+
 					}
-				});
-		
-						let lat = document.createElement("li");
-						lat.innerHTML = "Latitud: "+feature.geometry.coordinates[1];
-						ul.appendChild(lat);
-		
-						let lng = document.createElement("li");
-						lng.innerHTML = "Longitud: "+feature.geometry.coordinates[0];
-						ul.appendChild(lng);
-		
-		
-				popupDiv.appendChild(ul);
-				layer.bindPopup(popupDiv);
-			}
-		
+
+				}
+
+	
 	let myLayer = L.geoJSON(capaNueva.geojson, {
 		pointToLayer: function (feature, latlng) {
-	        return L.circleMarker(latlng, estilo);
+			console.log(_self);
+			console.log(capaNueva);
+			let myRe = new RegExp("geo","i");
+
+			if(myRe.test(capaNueva.nombre)){
+
+				if(!_self.capasGeo.find((el)=>{return el.usado == false})){
+
+					for(let i = 0, j = _self.capasGeo.length; i<j; i++){
+						_self.capasGeo[i].usado = false;
+					}
+				}
+
+				capaEspecial++;
+
+				let indiceIcono = _self.capasGeo.findIndex((el)=>{return el.usado == false});
+				_self.capasGeo[indiceIcono].usado = true;
+
+				let myIcon = L.icon({
+				    iconUrl: '../../../assets/images/'+_self.capasGeo[indiceIcono].nombre,
+				    iconSize: [82,135],
+				    iconAnchor: [41, 65],
+				    shadowUrl: '../../../assets/images/sombra_puntos_geo.png',
+				    iconSize: [104,100],
+				    iconAnchor: [52, 50],
+				    popupAnchor: [-10, -10]
+				    });
+		        return L.marker(latlng, {icon: myIcon}).on("click",function(e){ _self.openPopupModal(atributos, feature); });
+			}else{
+
+		        return L.circleMarker(latlng, estilo);
+			}
 	    },
 	    onEachFeature: popup}).addTo(this.activeMap);
 
@@ -2179,6 +2318,7 @@ calcularAreaPunto(){
 	this.control.setPosition('topleft');
 
 	this.capasActivas = Object.keys(this.overlayMaps);
+	window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
 
 	if(capaNueva.dontpush) return false;
 
@@ -2316,7 +2456,9 @@ calcularAreaPunto(){
   		return false;
   	}
 
-  	this.activeMap.removeLayer(this.overlayMaps[""+evento.nombre]);
+  	if(this.overlayMaps[evento.nombre]){
+	  	this.activeMap.removeLayer(this.overlayMaps[""+evento.nombre]);
+  	}
 
   	evento.dontpush = true;
 
@@ -2464,6 +2606,92 @@ calcularAreaPunto(){
 		link.download = 'Download.jpg';
 		link.click();
 		
+	}
+
+	openPopupModal(atributos, feature){
+
+		let datos = [];
+		
+		atributos.forEach((element) =>{
+
+			if(element != "pk"){
+				datos.push({"atributo": element, "valor": feature.properties[element]});
+			}
+		});
+		
+		datos.push({"atributo": "lat", "valor": feature.geometry.coordinates[1]});
+		datos.push({"atributo": "lng", "valor": feature.geometry.coordinates[0]});
+
+	    const modalRef = this.modalService.open(PopupModalContentComponent,{ size: 'lg' });
+	    modalRef.componentInstance.datos = datos;
+
+
+/*
+			  	let popupDiv = document.createElement("div");
+			  	let ul = document.createElement("ul");
+		
+				atributos.forEach((element) =>{
+
+					if(element != "pk"){
+		
+						let li = document.createElement("li");
+						li.innerHTML = ""+element+": "+feature.properties[""+element];
+						ul.appendChild(li);
+					}
+				});
+		
+						let lat = document.createElement("li");
+						lat.innerHTML = "Latitud: "+feature.geometry.coordinates[1];
+						ul.appendChild(lat);
+		
+						let lng = document.createElement("li");
+						lng.innerHTML = "Longitud: "+feature.geometry.coordinates[0];
+						ul.appendChild(lng);
+		
+		
+				popupDiv.appendChild(ul);
+				layer.bindPopup(popupDiv);
+*/
+	}
+
+	toggleDistance(){
+
+		if(document.querySelector(".distanceDialog.hidden")){
+
+			document.querySelector(".distanceDialog.hidden").setAttribute("class","distanceDialog");
+		}
+		else{
+		
+			document.querySelector(".distanceDialog").setAttribute("class","distanceDialog hidden");
+		}
+
+	}
+
+	toggleArea(){
+
+		if(document.querySelector(".areaDialog.hidden")){
+
+			document.querySelector(".areaDialog.hidden").setAttribute("class","areaDialog");
+		}
+		else{
+		
+			document.querySelector(".areaDialog").setAttribute("class","areaDialog hidden");
+		}
+
+	}
+
+
+	togglePoint(){
+
+		if(document.querySelector(".pointDialog.hidden")){
+
+			document.querySelector(".pointDialog.hidden").setAttribute("class","pointDialog");
+		}
+		else{
+		
+			document.querySelector(".pointDialog").setAttribute("class","pointDialog hidden");
+		}
+
 	}
 
 }

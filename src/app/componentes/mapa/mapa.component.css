@@ -1,15 +1,16 @@
 #mapa { 
-width: 100%;
-height: 85%;
+    width: 100%;
+    height: 85%;
 }
 
 .row-full{
-bottom: 0;
-left: 0;
-padding: 0px;
-position: fixed;
-right: 0;
-top: 15%;
+    position: fixed;
+    z-index: 980;
+    height: 100vh;
+    width: 100%;
+    top: 80px;
+    left: 0px;
+    padding: 0px;
 }
 
 div.nomargin, div.nomargin *{
@@ -44,4 +45,21 @@ input.map-input {
 }
 .dark-modal .close {
 	color: white;   
+}
+
+.distanceDialog, .areaDialog, .pointDialog{
+    position: fixed;
+    top: 80px;
+    right: 50px;
+    z-index: 990;
+    background: rgba(255,255,255,1);
+    border-radius: 5px;
+}
+
+.hidden{
+    display: none;
+}
+
+.hidden *{
+    display: none;
 }
