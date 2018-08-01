@@ -14,6 +14,8 @@ export class BuscarCapasComponent implements OnInit {
 	capaNueva: any;
 
   capasFiltradas: any;
+
+  filtrarEnCola: boolean;
   
   @Input() categoria;
 
@@ -71,6 +73,9 @@ export class BuscarCapasComponent implements OnInit {
 				element.geometria = element.atributos.find((element) =>{return element.nombre=="geom"}).tipo;
 
 			});
+
+      this.filtrarEnCola = false;
+      this.filtrarCapas(this.categoria);
 		}
 		else{
 		  	this.capas = [];
@@ -120,11 +125,18 @@ export class BuscarCapasComponent implements OnInit {
 
   filtrarCapas(categoria){
 
-    if(categoria == ""){
-      this.capasFiltradas = this.capas;
+    if(this.capas){
+
+      if(categoria == ""){
+        this.capasFiltradas = this.capas;
+      }
+      else{
+        this.capasFiltradas = this.capas.filter((el)=>{return el.categoria.id == categoria.id});
+      }
     }
     else{
-      this.capasFiltradas = this.capas.filter((el)=>{return el.categoria.id == categoria.id});
+
+      this.filtrarEnCola = true;    
     }
 
   }
