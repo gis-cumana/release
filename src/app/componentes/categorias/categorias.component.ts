@@ -43,7 +43,7 @@ export class CategoriasComponent implements OnInit {
 
   cerrarModal() {
    
-    let el = <HTMLElement>document.querySelector("#botonCerrarCat);
+    let el = <HTMLElement>document.querySelector("#botonCerrarCat");
     el.click();
   }
 
