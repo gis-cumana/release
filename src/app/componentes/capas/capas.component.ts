@@ -20,6 +20,8 @@ export class CapasComponent implements OnInit {
 
   modalAbierta: boolean;
 
+  filtrarEnCola: boolean;
+
   constructor(private categoriasService: CategoriasService, private modalService: NgbModal){ }
 
   ngOnInit() {
@@ -33,6 +35,10 @@ export class CapasComponent implements OnInit {
       if(data.status == 200){
       
         this.categorias = data.body;
+        if(this.filtrarEnCola == true){
+          this.filtrarCapasPorCategoria();
+          this.filtrarEnCola = false;
+        }
       }
       else{
           console.log(data);
@@ -77,8 +83,13 @@ export class CapasComponent implements OnInit {
 
   filtrarCapasPorCategoria(){
 
-    let el = <HTMLElement>document.querySelector("#filtrarCapasBoton");
-    el.click();
+    if(this.categorias){
+      let el = <HTMLElement>document.querySelector("#filtrarCapasBoton");
+      el.click();
+    }
+    else{
+      this.filtrarEnCola = true;
+    }
   }
 
   agregarCapa(obj){
