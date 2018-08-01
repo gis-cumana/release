@@ -49,7 +49,7 @@ export class CategoriasComponent implements OnInit {
 
     console.log(categoria);
     window.localStorage.categoriaParaCapa(JSON.stringify(categoria));
-    console.log(categoriaParaCapa);
+    console.log(window.localStorage.categoriaParaCapa);
     this.cerrarModal();
     let el = <HTMLElement>document.querySelector("#abrirAdminCapa");
     el.click();
