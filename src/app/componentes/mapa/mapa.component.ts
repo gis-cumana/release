@@ -2337,46 +2337,43 @@ calcularAreaPunto(){
 
 				let iconoNuevo = L.icon({
 				    iconUrl: '../../../assets/images/'+_self.capasGeo[indiceIcono].nombre,
-				    shadowUrl: '../../../assets/images/sombra_puntos_geo.png',
 				    iconSize: [40,70],
-				    shadowSize: [50,50],
 				    iconAnchor: [20, 35],
-				    shadowAnchor: [25, 25],
 				    popupAnchor: [-10, -10]
 				    });
 			}
 
 	
-	let myLayer = L.geoJSON(capaNueva.geojson, {
-		pointToLayer: function (feature, latlng) {
+			let myLayer = L.geoJSON(capaNueva.geojson, {
+				pointToLayer: function (feature, latlng) {
 
-			console.log(capaNueva);
-			let myRe = new RegExp("geo","i");
+					console.log(capaNueva);
+					let myRe = new RegExp("geo","i");
 
-			if(iconoNuevo){
+					if(iconoNuevo){
 
-		        return L.marker(latlng, {icon: iconoNuevo});
-			}else{
+				        return L.marker(latlng, {icon: iconoNuevo});
+					}else{
 
-		        return L.circleMarker(latlng, estilo);
-			}
-	    },
-	    onEachFeature: popup}).addTo(this.activeMap);
+				        return L.circleMarker(latlng, estilo);
+					}
+			    },
+			    onEachFeature: popup}).addTo(this.activeMap);
 
-	let nombre = capaNueva.nombre;
+			let nombre = capaNueva.nombre;
 
-	this.overlayMaps[""+capaNueva.nombre] = myLayer;
+			this.overlayMaps[""+capaNueva.nombre] = myLayer;
 
-	this.activeMap.removeControl(this.control);
-	this.control = L.control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
-	this.control.setPosition('topleft');
+			this.activeMap.removeControl(this.control);
+			this.control = L.control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
+			this.control.setPosition('topleft');
 
-	this.capasActivas = Object.keys(this.overlayMaps);
-	window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
+			this.capasActivas = Object.keys(this.overlayMaps);
+			window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
 
-	if(capaNueva.dontpush) return false;
+			if(capaNueva.dontpush) return false;
 
-	this.geoJsons.push(capaNueva);
+			this.geoJsons.push(capaNueva);
 
 
 			
