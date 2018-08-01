@@ -2239,80 +2239,74 @@ calcularAreaPunto(){
 			let capaEspecial = 0;
 
 		  	let atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
-		  	//let att = this.capas.find((element) =>{return element.nombre == capaNueva.nombre}).atributos;
-		  	//let atributos = att.filter((element) =>{return element.nombre != "geom"});
+
 				let popup = function(feature, layer){
 
-					if(capaEspecial == 0){
+					let popupDiv = document.createElement("div");
+					popupDiv.setAttribute("class","popupDiv");
+					let tabla = document.createElement("table");
+					tabla.setAttribute("class","table popup-table");
 
+					let cabeza = document.createElement("thead");
+					let cTr = document.createElement("tr");
+					let cTh1 = document.createElement("th");
+					cTh1.innerHTML = "Atributo";
+					let cTh2 = document.createElement("th");
+					cTh2.innerHTML = "Valor";
 
-					  	let popupDiv = document.createElement("div");
-					  	popupDiv.setAttribute("class","popupDiv");
-					  	let tabla = document.createElement("table");
-					  	tabla.setAttribute("class","table popup-table");
+					cTr.appendChild(cTh1);
+					cTr.appendChild(cTh2);
+					cabeza.appendChild(cTr);
 
-					  	let cabeza = document.createElement("thead");
-					  	let cTr = document.createElement("tr");
-					  	let cTh1 = document.createElement("th");
-					  	cTh1.innerHTML = "Atributo";
-					  	let cTh2 = document.createElement("th");
-					  	cTh2.innerHTML = "Valor";
+					tabla.appendChild(cabeza);
 
-					  	cTr.appendChild(cTh1);
-					  	cTr.appendChild(cTh2);
-					  	cabeza.appendChild(cTr);
-
-					  	tabla.appendChild(cabeza);
-
-					  	let cuerpo = document.createElement("tbody");
+					let cuerpo = document.createElement("tbody");
 				
-						atributos.forEach((element) =>{
+					atributos.forEach((element) =>{
 
-							if(element != "pk"){
+						if(element != "pk"){
 
-								let tr = document.createElement("tr");
-								let td1 = document.createElement("td");
-								td1.setAttribute("class","col-left");
-								td1.innerHTML = element;
-								let td2 = document.createElement("td");
-								td2.innerHTML = feature.properties[""+element];
+							let tr = document.createElement("tr");
+							let td1 = document.createElement("td");
+							td1.setAttribute("class","col-left");
+							td1.innerHTML = element;
+							let td2 = document.createElement("td");
+							td2.innerHTML = feature.properties[""+element];
 
-								tr.appendChild(td1);
-								tr.appendChild(td2);
+							tr.appendChild(td1);
+							tr.appendChild(td2);
 
-								cuerpo.appendChild(tr);
-							}
-						});
+							cuerpo.appendChild(tr);
+						}
+					});
 				
-								let lat = document.createElement("tr");
-								let latn = document.createElement("td");
-								latn.setAttribute("class","col-left");
-								latn.innerHTML = "Latitud";
-								let latv = document.createElement("td");
-								latv.innerHTML = feature.geometry.coordinates[1];
+					let lat = document.createElement("tr");
+					let latn = document.createElement("td");
+					latn.setAttribute("class","col-left");
+					latn.innerHTML = "Latitud";
+					let latv = document.createElement("td");
+					latv.innerHTML = feature.geometry.coordinates[1];
 				
-								lat.appendChild(latn);
-								lat.appendChild(latv);
+					lat.appendChild(latn);
+					lat.appendChild(latv);
 
-								let lng = document.createElement("tr");
-								let lngn = document.createElement("td");
-								lngn.innerHTML = "Longitud";
-								lngn.setAttribute("class","col-left");
-								let lngv = document.createElement("td");
-								lngv.innerHTML = feature.geometry.coordinates[0];
+					let lng = document.createElement("tr");
+					let lngn = document.createElement("td");
+					lngn.innerHTML = "Longitud";
+					lngn.setAttribute("class","col-left");
+					let lngv = document.createElement("td");
+					lngv.innerHTML = feature.geometry.coordinates[0];
 
-								lng.appendChild(lngn);
-								lng.appendChild(lngv);
+					lng.appendChild(lngn);
+					lng.appendChild(lngv);
 
-								cuerpo.appendChild(lat);
-								cuerpo.appendChild(lng);
+					cuerpo.appendChild(lat);
+					cuerpo.appendChild(lng);
 
-								tabla.appendChild(cuerpo);
+					tabla.appendChild(cuerpo);
 				
-						popupDiv.appendChild(tabla);
-						layer.bindPopup(popupDiv);
-
-					}
+					popupDiv.appendChild(tabla);
+					layer.bindPopup(popupDiv);
 
 				}
 
@@ -2347,10 +2341,7 @@ calcularAreaPunto(){
 			let myLayer = L.geoJSON(capaNueva.geojson, {
 				pointToLayer: function (feature, latlng) {
 
-					console.log(capaNueva);
-					let myRe = new RegExp("geo","i");
-
-					if(iconoNuevo){
+					if(iconoNuevo != null){
 
 				        return L.marker(latlng, {icon: iconoNuevo});
 					}else{
@@ -2374,9 +2365,6 @@ calcularAreaPunto(){
 			if(capaNueva.dontpush) return false;
 
 			this.geoJsons.push(capaNueva);
-
-
-			
 			
 		}
 		else{
