@@ -2294,11 +2294,11 @@ calcularAreaPunto(){
 
 				let myIcon = L.icon({
 				    iconUrl: '../../../assets/images/'+_self.capasGeo[indiceIcono].nombre,
-				    iconSize: [82,135],
-				    iconAnchor: [41, 65],
 				    shadowUrl: '../../../assets/images/sombra_puntos_geo.png',
-				    iconSize: [104,100],
-				    iconAnchor: [52, 50],
+				    iconSize: [82,135],
+				    shadowSize: [104,100],
+				    iconAnchor: [41, 65],
+				    shadowAnchor: [52, 50],
 				    popupAnchor: [-10, -10]
 				    });
 		        return L.marker(latlng, {icon: myIcon}).on("click",function(e){ _self.openPopupModal(atributos, feature); });
