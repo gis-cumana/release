@@ -71,6 +71,7 @@ export class MapaComponent implements OnInit, OnDestroy {
   searchControl: any;
   medirDistanciaControl: any;
   medirAreaControl: any;
+  irCentrolControl: any;
   searchPoint: any;
 
   marcadorBusqueda: any;
@@ -435,6 +436,8 @@ export class MapaComponent implements OnInit, OnDestroy {
 
 	});
 
+	this.configurarControlCentro();
+	
 	//this.configurarControlFiltro2();
 	//this.configurarControlDistancia();
 	//this.configurarControlArea();
@@ -1030,6 +1033,48 @@ calcularAreaPunto(){
 	var items = [];
 
 	this.medirAreaControl = L.control["medirArea"]({
+	  data: items
+	}).addTo(this.activeMap);
+	
+  }
+
+  configurarControlCentro(){
+  	
+///INICIO CONTROL
+	
+
+	L.Control["IrCentro"] = L.Control.extend({
+  options: {
+
+    position: 'topright'
+  },
+  initialize: function (options) {
+
+    L.Util.setOptions(this, options);
+  },
+  onAdd: function (map) {
+
+    this.form = document.getElementById("formularioHome");
+    return this.form;
+  },
+  onRemove: function (map) {
+    // when removed
+  },
+  submit: function(e) {
+    L.DomEvent.preventDefault(e);
+  }
+});
+
+
+///FIN CONTROL
+
+	L.control["irCentro"] = function(id, options) {
+	  return new L.Control["IrCentro"](id, options);
+	}
+
+	var items = [];
+
+	this.irCentroControl = L.control["irCentro"]({
 	  data: items
 	}).addTo(this.activeMap);
 	
@@ -2692,6 +2737,10 @@ calcularAreaPunto(){
 			document.querySelector(".pointDialog").setAttribute("class","pointDialog hidden");
 		}
 
+	}
+
+	irCentro(){
+		this.activeMap.setView([10.456389, -64.1675]);
 	}
 
 }
