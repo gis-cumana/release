@@ -30,7 +30,7 @@ export class CategoriasComponent implements OnInit {
 
   open(content) {
 
-    this.modalService.open(content).result.then((result) => {
+    this.modalService.open(content, { size: 'lg' }).result.then((result) => {
       this.modalAbierta = true;
     }, (reason) => {
   
