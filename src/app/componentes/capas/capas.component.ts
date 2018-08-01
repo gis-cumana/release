@@ -67,7 +67,7 @@ export class CapasComponent implements OnInit {
     this.modalService.open(content, { size: 'lg' }).result.then((result) => {
       this.modalAbierta = true;
       setTimeout(()=>{
-        __self.filtrarCapasPorCategoria();
+        _self.filtrarCapasPorCategoria();
       },250);
     }, (reason) => {
   

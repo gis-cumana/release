@@ -13,7 +13,7 @@ export class BuscarCapasComponent implements OnInit {
 	capas: any;
 	capaNueva: any;
 
-  capasFitradas: any;
+  capasFiltradas: any;
   
   @Input() categoria;
 

@@ -62,7 +62,7 @@ export class BuscarCategoriasComponent implements OnInit {
   }
 
   administrarCapasCategoria(categoria){
-  	this.administrarCapasRequerida.emit(categoria);
+  	this.administrarCapaRequerida.emit(categoria);
   }
 
 }
