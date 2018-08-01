@@ -43,8 +43,6 @@ export class CategoriasComponent implements OnInit {
 
   cerrarModal() {
    
-    let el = <HTMLElement>document.querySelector("#botonCerrarCat");
-    el.click();
   }
 
   administrarCapa(categoria){
@@ -52,9 +50,21 @@ export class CategoriasComponent implements OnInit {
     console.log(categoria);
     window.localStorage.categoriaParaCapa(categoria.id);
     console.log(window.localStorage.categoriaParaCapa);
-    this.cerrarModal();
-    let el = <HTMLElement>document.querySelector("#abrirAdminCapa");
-    el.click();
+
+    setTimeout(()=>{
+
+      console.log("Cerrando modal");    
+      let el1 = <HTMLElement>document.querySelector("#botonCerrarCat");
+      el1.click();
+    },100);
+
+    setTimeout(()=>{
+
+      console.log("Abriendo la otra modal");    
+      let el2 = <HTMLElement>document.querySelector("#abrirAdminCapa");
+      el2.click();
+    },200);
+
   }
 
   agregarCategoria(obj){
