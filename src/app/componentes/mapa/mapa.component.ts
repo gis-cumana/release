@@ -7,8 +7,6 @@ import * as Turf from '@turf/turf';
 import * as leafletImage from 'leaflet-image';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
-import {PopupModalContentComponent} from './popup-modal-content.component';
-
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
@@ -2346,7 +2344,7 @@ calcularAreaPunto(){
 				    shadowAnchor: [52, 50],
 				    popupAnchor: [-10, -10]
 				    });
-		        return L.marker(latlng, {icon: myIcon}).on("click",function(e){ _self.openPopupModal(atributos, feature); });
+		        return L.marker(latlng, {icon: myIcon});
 			}else{
 
 		        return L.circleMarker(latlng, estilo);
