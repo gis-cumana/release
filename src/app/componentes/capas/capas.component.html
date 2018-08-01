@@ -11,6 +11,7 @@
 		<div class="modal-body">
 
 			<app-buscar-capas 
+				[categoria]="categoria"
 				[categorias]="categorias"
 				(capaCambiada)="agregarCapa($event)" 
 				(capaActualizada)="actualizarCapa($event)" 
