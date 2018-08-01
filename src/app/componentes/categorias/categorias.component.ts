@@ -16,6 +16,8 @@ export class CategoriasComponent implements OnInit {
 
   modalAbierta: boolean;
 
+  modalRef: any;
+
   constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
@@ -30,7 +32,7 @@ export class CategoriasComponent implements OnInit {
 
   open(content) {
 
-    this.modalService.open(content, { size: 'lg' }).result.then((result) => {
+    this.modalRef = this.modalService.open(content, { size: 'lg' }).result.then((result) => {
       this.modalAbierta = true;
     }, (reason) => {
   
@@ -38,6 +40,18 @@ export class CategoriasComponent implements OnInit {
 
   }
 
+  cerrarModal() {
+
+    this.modalRef.close();
+  }
+
+  administrarCapa(categoria){
+
+    window.localStorage.categoriaParaCapa(JSON.stringify(categoria));
+    this.cerrarModal();
+    let el = <HTMLElement>document.querySelector("#abrirAdminCapa");
+    el.click();
+  }
 
   agregarCategoria(obj){
   	this.categoria = obj;
