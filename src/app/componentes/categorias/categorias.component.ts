@@ -48,9 +48,8 @@ export class CategoriasComponent implements OnInit {
   administrarCapa(categoria){
 
     console.log(categoria);
-    window.localStorage.categoriaParaCapa(categoria.id);
+    window.localStorage.categoriaParaCapa = categoria.id;
     console.log(window.localStorage.categoriaParaCapa);
-
     setTimeout(()=>{
 
       console.log("Cerrando modal");    
