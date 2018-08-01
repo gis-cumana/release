@@ -2651,52 +2651,6 @@ calcularAreaPunto(){
 		
 	}
 
-	openPopupModal(atributos, feature){
-
-		let datos = [];
-		
-		atributos.forEach((element) =>{
-
-			if(element != "pk"){
-				datos.push({"atributo": element, "valor": feature.properties[element]});
-			}
-		});
-		
-		datos.push({"atributo": "lat", "valor": feature.geometry.coordinates[1]});
-		datos.push({"atributo": "lng", "valor": feature.geometry.coordinates[0]});
-
-	    const modalRef = this.modalService.open(PopupModalContentComponent,{ size: 'lg' });
-	    modalRef.componentInstance.datos = datos;
-
-
-/*
-			  	let popupDiv = document.createElement("div");
-			  	let ul = document.createElement("ul");
-		
-				atributos.forEach((element) =>{
-
-					if(element != "pk"){
-		
-						let li = document.createElement("li");
-						li.innerHTML = ""+element+": "+feature.properties[""+element];
-						ul.appendChild(li);
-					}
-				});
-		
-						let lat = document.createElement("li");
-						lat.innerHTML = "Latitud: "+feature.geometry.coordinates[1];
-						ul.appendChild(lat);
-		
-						let lng = document.createElement("li");
-						lng.innerHTML = "Longitud: "+feature.geometry.coordinates[0];
-						ul.appendChild(lng);
-		
-		
-				popupDiv.appendChild(ul);
-				layer.bindPopup(popupDiv);
-*/
-	}
-
 	toggleDistance(){
 
 		if(document.querySelector(".distanceDialog.hidden")){
