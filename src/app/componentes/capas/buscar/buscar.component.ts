@@ -13,6 +13,9 @@ export class BuscarCapasComponent implements OnInit {
 	capas: any;
 	capaNueva: any;
 
+  capasFitradas: any;
+  
+  @Input() categoria;
 
 	@Input() categorias;
 	@Output() capaCambiada = new EventEmitter<any>();
@@ -35,6 +38,7 @@ export class BuscarCapasComponent implements OnInit {
   		atributos: []
   	}
 
+    this.filtrarCapas(this.categoria);
 
   	this.capas = [];
 
@@ -114,5 +118,15 @@ export class BuscarCapasComponent implements OnInit {
 
   }
 
+  filtrarCapas(categoria){
+
+    if(categoria == ""){
+      this.capasFiltradas = this.capas;
+    }
+    else{
+      this.capasFiltradas = this.capas.filter((el)=>{return el.categoria.id == categoria.id});
+    }
+
+  }
 
 }

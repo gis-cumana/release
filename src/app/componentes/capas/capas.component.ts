@@ -16,6 +16,8 @@ export class CapasComponent implements OnInit {
 	capa: any;
   categorias: any;
 
+  categoria: string;
+
   modalAbierta: boolean;
 
   constructor(private categoriasService: CategoriasService, private modalService: NgbModal){ }
@@ -48,12 +50,35 @@ export class CapasComponent implements OnInit {
 
   open(content) {
 
+    let _self = this;
+
+    if(window.localStorage.categoriaParaCapa){
+      this.categoria = JSON.parse(window.localStorage.categoriaParaCapa);
+      window.localStorage.removeItem("categoriaParaCapa");
+    }
+    else{
+      this.categoria = "";
+    }
+
+    this.crearActivado = false;
+    this.editarActivado = false;
+    this.borrarActivado = false;
+
     this.modalService.open(content, { size: 'lg' }).result.then((result) => {
       this.modalAbierta = true;
+      setTimeout(()=>{
+        __self.filtrarCapasPorCategoria();
+      },250);
     }, (reason) => {
   
     });
 
+  }
+
+  filtrarCapasPorCategoria(){
+
+    let el = <HTMLElement>document.querySelector("#filtrarCapasBoton");
+    el.click();
   }
 
   agregarCapa(obj){
