@@ -29,6 +29,8 @@ export class CapasComponent implements OnInit {
     this.modalAbierta = false;
 
     this.categorias = [];
+    
+    this.categoria = "";
 
     this.categoriasService.obtener().subscribe(data =>{
       console.log(data)

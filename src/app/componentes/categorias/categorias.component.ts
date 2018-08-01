@@ -47,7 +47,9 @@ export class CategoriasComponent implements OnInit {
 
   administrarCapa(categoria){
 
+    console.log(categoria);
     window.localStorage.categoriaParaCapa(JSON.stringify(categoria));
+    console.log(categoriaParaCapa);
     this.cerrarModal();
     let el = <HTMLElement>document.querySelector("#abrirAdminCapa");
     el.click();
