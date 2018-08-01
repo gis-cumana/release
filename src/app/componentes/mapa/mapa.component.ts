@@ -2236,7 +2236,6 @@ calcularAreaPunto(){
 		if(capaNueva.geojson.features.length){
 			
 			let _self = this;
-			let capaEspecial = 0;
 
 		  	let atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
 
@@ -2324,12 +2323,10 @@ calcularAreaPunto(){
 					}
 				}
 
-				capaEspecial++;
-
 				let indiceIcono = _self.capasGeo.findIndex((el)=>{return el.usado == false});
 				_self.capasGeo[indiceIcono].usado = true;
 
-				let iconoNuevo = L.icon({
+				iconoNuevo = L.icon({
 				    iconUrl: '../../../assets/images/'+_self.capasGeo[indiceIcono].nombre,
 				    iconSize: [40,70],
 				    iconAnchor: [20, 35],
