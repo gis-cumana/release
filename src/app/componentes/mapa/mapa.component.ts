@@ -2316,11 +2316,9 @@ calcularAreaPunto(){
 
 				}
 
-	
-	let myLayer = L.geoJSON(capaNueva.geojson, {
-		pointToLayer: function (feature, latlng) {
-			console.log(_self);
-			console.log(capaNueva);
+
+			let iconoNuevo = null;
+
 			let myRe = new RegExp("geo","i");
 
 			if(myRe.test(capaNueva.nombre)){
@@ -2337,7 +2335,7 @@ calcularAreaPunto(){
 				let indiceIcono = _self.capasGeo.findIndex((el)=>{return el.usado == false});
 				_self.capasGeo[indiceIcono].usado = true;
 
-				let myIcon = L.icon({
+				let iconoNuevo = L.icon({
 				    iconUrl: '../../../assets/images/'+_self.capasGeo[indiceIcono].nombre,
 				    shadowUrl: '../../../assets/images/sombra_puntos_geo.png',
 				    iconSize: [40,70],
@@ -2346,7 +2344,18 @@ calcularAreaPunto(){
 				    shadowAnchor: [25, 25],
 				    popupAnchor: [-10, -10]
 				    });
-		        return L.marker(latlng, {icon: myIcon});
+			}
+
+	
+	let myLayer = L.geoJSON(capaNueva.geojson, {
+		pointToLayer: function (feature, latlng) {
+
+			console.log(capaNueva);
+			let myRe = new RegExp("geo","i");
+
+			if(iconoNuevo){
+
+		        return L.marker(latlng, {icon: iconoNuevo});
 			}else{
 
 		        return L.circleMarker(latlng, estilo);
