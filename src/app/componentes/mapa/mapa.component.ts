@@ -2338,10 +2338,10 @@ calcularAreaPunto(){
 				let myIcon = L.icon({
 				    iconUrl: '../../../assets/images/'+_self.capasGeo[indiceIcono].nombre,
 				    shadowUrl: '../../../assets/images/sombra_puntos_geo.png',
-				    iconSize: [82,135],
-				    shadowSize: [104,100],
-				    iconAnchor: [41, 65],
-				    shadowAnchor: [52, 50],
+				    iconSize: [40,70],
+				    shadowSize: [50,50],
+				    iconAnchor: [20, 35],
+				    shadowAnchor: [25, 25],
 				    popupAnchor: [-10, -10]
 				    });
 		        return L.marker(latlng, {icon: myIcon});
