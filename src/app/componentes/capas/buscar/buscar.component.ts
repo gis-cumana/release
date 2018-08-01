@@ -74,6 +74,8 @@ export class BuscarCapasComponent implements OnInit {
 
 			});
 
+      console.log("LLEGUE CON LAS CAPAS");
+
       this.filtrarEnCola = false;
       this.filtrarCapas(this.categoria);
 		}
@@ -125,6 +127,8 @@ export class BuscarCapasComponent implements OnInit {
 
   filtrarCapas(categoria){
 
+    console.log("TRATARE DE FILTRAR LAS CAPAS");
+
     if(this.capas){
 
       if(categoria == ""){
@@ -136,6 +140,7 @@ export class BuscarCapasComponent implements OnInit {
     }
     else{
 
+      console.log("PERO NO HABIA CAPAS");
       this.filtrarEnCola = true;    
     }
 
