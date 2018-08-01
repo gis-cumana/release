@@ -3,7 +3,7 @@
 
 <nav class="navbar omni-nav navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" routerLink="/" >
-    <img src="assets/images/logo.png" style="float: left" width="250" height="55">
+    <img src="assets/images/logo-2.png" style="float: left" width="250" height="55">
   </a>
 
   <a class="navbar-brand" routerLink="/" >
@@ -121,6 +121,11 @@
         type="button" class="btn btn-outline-info"
         (click)="openMapFilter()">
           <i class="fa fa-filter fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa()" id="openDataHeader" 
+        type="button" class="btn btn-outline-info"
+        (click)="openMapData()">
+          <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
         </button>
         <button *ngIf="isRouteMapa() && distanceOpen" id="openDistanceHeader"
         type="button" class="btn btn-info"
