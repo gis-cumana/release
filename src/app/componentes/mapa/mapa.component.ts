@@ -71,7 +71,7 @@ export class MapaComponent implements OnInit, OnDestroy {
   searchControl: any;
   medirDistanciaControl: any;
   medirAreaControl: any;
-  irCentrolControl: any;
+  irCentroControl: any;
   searchPoint: any;
 
   marcadorBusqueda: any;
