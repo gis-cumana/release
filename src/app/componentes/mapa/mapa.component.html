@@ -324,7 +324,7 @@
 
 		<ng-template #cameraContent let-c="close" let-d="dismiss">
 		  <div class="modal-header">
-			    <h4>Capturar imagen<i class="fa fa-camera"></i></h4>
+			    <h4><i class="fa fa-camera"></i>Capturar imagen</h4>
 			    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
 			    	<span aria-hidden="true">&times;</span>
 				</button>
@@ -333,9 +333,18 @@
 			<div class="modal-body">
 
 				<div class="row">
-					<div class="col-12">
+					
+					<div class="col"></div>
+					<div class="col-auto">
 				            
 			            <div id="fotoCanvas"></div>
+				            
+					</div>
+					<div class="col"></div>
+				</div>
+
+				<div class="row">
+					<div class="col-12">
 				            
 			            <button type="button" class="btn btn-outline-info" (click)="tomarFoto()" [disabled]="loading"><i class="fa fa-camera"></i></button>
 			            <button type="button" class="btn btn-outline-success" (click)="descargarFoto()" [disabled]="!fotoDibujada"><i class="fa fa-download"></i></button>

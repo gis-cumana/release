@@ -2631,8 +2631,8 @@ calcularAreaPunto(){
 
 		var canvas = document.createElement("canvas");
 		canvas.setAttribute("id","myCanvas");
-		canvas.width = 150;
-		canvas.height = 150;
+		canvas.width = 300;
+		canvas.height = 300;
 
 		var ctx = canvas.getContext("2d");
 		
@@ -2641,7 +2641,7 @@ calcularAreaPunto(){
 			document.getElementById("fotoCanvas").appendChild(canvas);
 		}
 			
-		ctx.drawImage(img, 0, 0, 150, 150);
+		ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 	}
 	
 	descargarFoto(){
