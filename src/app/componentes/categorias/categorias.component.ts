@@ -42,8 +42,9 @@ export class CategoriasComponent implements OnInit {
   }
 
   cerrarModal() {
-
-    this.modalRef.close();
+   
+    let el = <HTMLElement>document.querySelector("#botonCerrarCat);
+    el.click();
   }
 
   administrarCapa(categoria){
