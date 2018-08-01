@@ -470,7 +470,7 @@ export class HeaderComponent implements OnInit {
 
     let boton = <HTMLElement>document.querySelector("#openMapPoint");
     boton.click();
-    this.pointOpen = !this.areaOpen;
+    this.pointOpen = !this.pointOpen;
   }
 
 }
