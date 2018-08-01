@@ -17,10 +17,10 @@ flash-messages{
 	font-weight: bold;
 }
 
-.popupDiv{
-	max-height: 50vh;
-	overflow-y: auto;
-	overflow-x: hidden;
+.leaflet-popup-content-wrapper{
+    max-height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 
