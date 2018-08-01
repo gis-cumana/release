@@ -27,6 +27,7 @@ export class CategoriasComponent implements OnInit {
   	this.crearActivado = false;
   	this.editarActivado = false;
   	this.borrarActivado = false;
+    eval("window.admincat = this");
   }
 
 
