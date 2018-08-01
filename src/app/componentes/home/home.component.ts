@@ -13,9 +13,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
         this.images = [];
-        this.images.push({source:'assets/images/indio.jpg', title:'El indio de cumana'});
+        this.images.push({source:'assets/images/indio.jpg', title:'El indio de Cumaná'});
         this.images.push({source:'assets/images/altagracia.jpg', title:'Calle el alacrán'});
-        this.images.push({source:'assets/images/arriba.jpg', title:'Cumana'});
+        this.images.push({source:'assets/images/arriba.jpg', title:'Cumaná'});
   }
 
 }
