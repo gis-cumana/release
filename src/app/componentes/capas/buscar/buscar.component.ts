@@ -131,7 +131,7 @@ export class BuscarCapasComponent implements OnInit {
         this.capasFiltradas = this.capas;
       }
       else{
-        this.capasFiltradas = this.capas.filter((el)=>{return el.categoria.id == categoria.id});
+        this.capasFiltradas = this.capas.filter((el)=>{return el.categoria.id == categoria});
       }
     }
     else{

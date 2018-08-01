@@ -61,7 +61,7 @@ export class CapasComponent implements OnInit {
     let _self = this;
 
     if(window.localStorage.categoriaParaCapa){
-      this.categoria = JSON.parse(window.localStorage.categoriaParaCapa);
+      this.categoria = window.localStorage.categoriaParaCapa;
       window.localStorage.removeItem("categoriaParaCapa");
     }
     else{
