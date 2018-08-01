@@ -1044,7 +1044,7 @@ calcularAreaPunto(){
 	L.Control["IrCentro"] = L.Control.extend({
   options: {
 
-    position: 'topright'
+    position: 'topleft'
   },
   initialize: function (options) {
 
