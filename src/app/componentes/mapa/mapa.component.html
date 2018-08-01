@@ -51,9 +51,9 @@
 				
 				<div class="row">
 					<div class="form-group col">
-						<button type="button" class="btn btn-outline-danger" (click)="limpiarPunto()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
-						<button type="button" class="btn btn-outline-warning" (click)="obtenerPunto()"> <i class="fa fa-street-view" aria-hidden="true"></i> </button>
-						<button type="button" class="btn btn-outline-info" (click)="encontrarPunto()"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+						<button type="button" class="btn btn-outline-danger btn-sm" (click)="limpiarPunto()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
+						<button type="button" class="btn btn-outline-warning btn-sm" (click)="obtenerPunto()"> <i class="fa fa-street-view" aria-hidden="true"></i> </button>
+						<button type="button" class="btn btn-outline-info btn-sm" (click)="encontrarPunto()"> <i class="fa fa-search" aria-hidden="true"></i> </button>
 					</div>
 				</div>
 			</form>
@@ -66,8 +66,8 @@
 			<table class="table">
 				<caption>Unidad de area
 					<br>
-					<button type="button" class="btn btn-outline-info" (click)="unidadArea='Km2'" >Km2</button>
-					<button type="button" class="btn btn-outline-info" (click)="unidadArea='m2'" >m2</button>
+					<button type="button" class="btn btn-outline-info btn-sm" (click)="unidadArea='Km2'" >Km2</button>
+					<button type="button" class="btn btn-outline-info btn-sm" (click)="unidadArea='m2'" >m2</button>
 				</caption>
 
 				<thead>
@@ -89,8 +89,8 @@
 
 	<div class="row">
 		<div class="form-group col">
-			<button type="button" class="btn btn-outline-danger" (click)="limpiarPoligono()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
-			<button type="button" class="btn btn-outline-info" (click)="medirAreaDibujada()"> <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
+			<button type="button" class="btn btn-outline-danger btn-sm" (click)="limpiarPoligono()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
+			<button type="button" class="btn btn-outline-info btn-sm" (click)="medirAreaDibujada()"> <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
 		</div>
 	</div>
 
@@ -103,8 +103,8 @@
 							<table class="table">
 							  <caption>Unidad de distancia
 							  	<br>
-							  	<button type="button" class="btn btn-outline-info" (click)="unidadDistancia='Km'" >Km</button>
-							  	<button type="button" class="btn btn-outline-info" (click)="unidadDistancia='m'" >mts</button>
+							  	<button type="button" class="btn btn-outline-info btn-sm" (click)="unidadDistancia='Km'" >Km</button>
+							  	<button type="button" class="btn btn-outline-info btn-sm" (click)="unidadDistancia='m'" >mts</button>
 							  </caption>
 							  <thead>
 							    <tr>
@@ -124,8 +124,8 @@
 
 					<div class="row">
 						<div class="form-group col">
-							<button type="button" class="btn btn-outline-danger" (click)="limpiarCamino()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
-							<button type="button" class="btn btn-outline-info" (click)="medirCaminoDibujado()"> <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
+							<button type="button" class="btn btn-outline-danger btn-sm" (click)="limpiarCamino()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
+							<button type="button" class="btn btn-outline-info btn-sm" (click)="medirCaminoDibujado()"> <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
 						</div>
 					</div>
 				</form>	
@@ -307,7 +307,7 @@
 
 		<div class="leaflet-control-layers leaflet-control leaflet-control-layers-expanded" id="formularioHome">
 			<div class="text-center">
-				<button type="button" class="btn btn-outline-secondary" (click)="irCentro()">
+				<button type="button" class="btn btn-outline-secondary btn-sm" (click)="irCentro()">
 					<i class="fa fa-home fa-2x" aria-hidden="true"></i>
 				</button>
 			</div>
