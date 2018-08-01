@@ -331,7 +331,11 @@ export class MapaComponent implements OnInit, OnDestroy {
 		renderer: L.canvas()
 	});
 
+
+	this.configurarControlCentro();
+
 	this.configurarControlDatos();
+
 	this.configurarControlFoto();
 
 	this.baseMaps = {
@@ -433,8 +437,6 @@ export class MapaComponent implements OnInit, OnDestroy {
 		}
 
 	});
-
-	this.configurarControlCentro();
 	
 	//this.configurarControlFiltro2();
 	//this.configurarControlDistancia();
