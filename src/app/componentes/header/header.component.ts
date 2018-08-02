@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit {
   distanceOpen: boolean;
   areaOpen: boolean;
   pointOpen: boolean;
+  dataOpen: boolean;
 
   constructor(private router: Router, 
               private authService: AuthService,
@@ -61,6 +62,7 @@ export class HeaderComponent implements OnInit {
     this.distanceOpen = false;
     this.areaOpen = false;
     this.pointOpen = false;
+    this.dataOpen = false;
 
     
     this.is_autenticate();
@@ -431,6 +433,9 @@ export class HeaderComponent implements OnInit {
       if(this.pointOpen){
         this.openMapPoint();
       }
+      if(this.dataOpen){
+        this.openMapData();
+      }
     }
 
     let boton = <HTMLElement>document.querySelector("#openMapDistance");
@@ -447,6 +452,9 @@ export class HeaderComponent implements OnInit {
       }
       if(this.pointOpen){
         this.openMapPoint();
+      }
+      if(this.dataOpen){
+        this.openMapData();
       }
     }
 
@@ -466,11 +474,34 @@ export class HeaderComponent implements OnInit {
       if(this.areaOpen){
         this.openMapArea();
       }
+      if(this.dataOpen){
+        this.openMapData();
+      }
     }
 
     let boton = <HTMLElement>document.querySelector("#openMapPoint");
     boton.click();
     this.pointOpen = !this.pointOpen;
+  }
+
+  openMapData(){
+
+    if(!this.dataOpen){
+
+      if(this.distanceOpen){
+        this.openMapDistance();
+      }
+      if(this.areaOpen){
+        this.openMapArea();
+      }
+      if(this.pointOpen){
+        this.openMapPoint();
+      }
+    }
+
+    let boton = <HTMLElement>document.querySelector("#openMapData");
+    boton.click();
+    this.dataOpen = !this.dataOpen;
   }
 
 }

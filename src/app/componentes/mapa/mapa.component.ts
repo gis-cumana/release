@@ -334,7 +334,7 @@ export class MapaComponent implements OnInit, OnDestroy {
 
 	this.configurarControlCentro();
 
-	this.configurarControlDatos();
+	//this.configurarControlDatos();
 
 	this.configurarControlFoto();
 
@@ -2680,6 +2680,20 @@ calcularAreaPunto(){
 		else{
 		
 			document.querySelector(".pointDialog").setAttribute("class","pointDialog hidden");
+		}
+
+	}
+
+
+	toggleData(){
+
+		if(document.querySelector(".dataDialog.hidden")){
+
+			document.querySelector(".dataDialog.hidden").setAttribute("class","dataDialog");
+		}
+		else{
+		
+			document.querySelector(".dataDialog").setAttribute("class","dataDialog hidden");
 		}
 
 	}

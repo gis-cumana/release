@@ -118,7 +118,12 @@
         (click)="openMapFilter()">
           <i class="fa fa-filter fa-2x" aria-hidden="true"></i>
         </button>
-        <button *ngIf="isRouteMapa()" id="openDataHeader" 
+        <button *ngIf="isRouteMapa() && dataOpen" id="openDataHeader" 
+        type="button" class="btn btn-info"
+        (click)="openMapData()">
+          <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa() && !dataOpen" id="openDataHeader" 
         type="button" class="btn btn-outline-info"
         (click)="openMapData()">
           <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
