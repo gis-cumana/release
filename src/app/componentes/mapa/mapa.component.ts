@@ -19,6 +19,7 @@ export class MapaComponent implements OnInit, OnDestroy {
 
   baseMaps: any;
   overlayMaps: any;
+  colorOverlayMaps: any;
   control: any;
 
   geoJsons: any;
@@ -206,6 +207,7 @@ export class MapaComponent implements OnInit, OnDestroy {
   	this.control = [];
   	this.baseMaps = {};
   	this.overlayMaps = {};
+  	this.colorOverlayMaps = [];
   	this.geoJsons = [];
 
   	this.inicializarGeojsons();
@@ -2366,35 +2368,49 @@ calcularAreaPunto(){
 
 			this.activeMap.removeControl(this.control);
 			this.control = L.control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
-			this.control.setPosition('topleft');
+			this.control.setPosition('topright');
 
 			this.capasActivas = Object.keys(this.overlayMaps);
 			window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
 
+			let indiceColor = this.colorOverlayMaps.findIndex((el)=>{return el.capa == capaNueva.nombre});
+
+			this.colorOverlayMaps.push({
+				"capa": capaNueva.nombre,
+				"tipo": iconoNuevo.icon != null ? "icono" : "color",
+				"target": iconoNuevo.icon != null ? iconoNuevo.ruta : randomColor
+			});
+
+
+
+			this.colorOverlayMaps.forEach((color)=>{
 
 				let etiquetas = document.querySelectorAll(".leaflet-control-layers-overlays > label");
-
 				let etiqueta = <HTMLElement>etiquetas[etiquetas.length-1].querySelector("div");
 
-			if(iconoNuevo.icono != null){
 
-				let iconito = document.createElement("div");
-				iconito.setAttribute("class","cuadrito redondo");
-				let imagen = document.createElement("img");
-				imagen.setAttribute("class","iconimg");	
-				imagen.src = iconoNuevo.ruta;
-				iconito.appendChild(imagen)
+				if(color.tipo == "icono"){
 
-				etiqueta.appendChild(iconito);
-			}
-			else{
+					let iconito = document.createElement("div");
+					iconito.setAttribute("class","cuadrito redondo");
+					let imagen = document.createElement("img");
+					imagen.setAttribute("class","iconimg");	
+					imagen.src = color.target;
+					iconito.appendChild(imagen)
 
-				let cuadrito = document.createElement("div");
-				cuadrito.setAttribute("class","cuadrito");
-				cuadrito.style.backgroundColor = randomColor;
+					etiqueta.appendChild(iconito);
+				}
+				else{
 
-				etiqueta.appendChild(cuadrito);
-			}
+					let cuadrito = document.createElement("div");
+					cuadrito.setAttribute("class","cuadrito");
+					cuadrito.style.backgroundColor = color.target;
+
+					etiqueta.appendChild(cuadrito);
+				}
+
+			});
+
 
 			if(capaNueva.dontpush) return false;
 
