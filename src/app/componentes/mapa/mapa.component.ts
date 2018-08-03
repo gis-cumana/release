@@ -2383,16 +2383,16 @@ calcularAreaPunto(){
 
 
 
-			this.colorOverlayMaps.forEach((color)=>{
+			this.colorOverlayMaps.forEach((color, index)=>{
 
 				let etiquetas = document.querySelectorAll(".leaflet-control-layers-overlays > label");
-				let etiqueta = <HTMLElement>etiquetas[etiquetas.length-1].querySelector("div");
+				let etiqueta = <HTMLElement>etiquetas[index].querySelector("div");
 
 
 				if(color.tipo == "icono"){
 
 					let iconito = document.createElement("div");
-					iconito.setAttribute("class","cuadrito redondo");
+					iconito.setAttribute("class","cuadrito");
 					let imagen = document.createElement("img");
 					imagen.setAttribute("class","iconimg");	
 					imagen.src = color.target;
