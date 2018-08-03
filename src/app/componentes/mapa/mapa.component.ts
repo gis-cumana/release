@@ -2501,7 +2501,7 @@ calcularAreaPunto(){
 
 			}
 
-			return {icono; iconoNuevo, ruta: ruta};
+			return {icono: iconoNuevo, ruta: ruta};
 
 	}
 
