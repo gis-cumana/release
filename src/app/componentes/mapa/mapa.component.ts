@@ -2376,7 +2376,7 @@ calcularAreaPunto(){
 
 				let etiqueta = <HTMLElement>etiquetas[etiquetas.length-1].querySelector("div");
 
-			if(iconoNuevo != null){
+			if(iconoNuevo.icono != null){
 
 				let iconito = document.createElement("div");
 				iconito.setAttribute("class","cuadrito redondo");
