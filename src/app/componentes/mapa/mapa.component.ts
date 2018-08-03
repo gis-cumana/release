@@ -2355,7 +2355,7 @@ calcularAreaPunto(){
 				        return L.marker(latlng, {icon: iconoNuevo.icono});
 					}else{
 
-				        return L.circle(latlng, estilo);
+				        return L.circleMarker(latlng, estilo);
 					}
 			    },
 			    onEachFeature: popup}).addTo(this.activeMap);
