@@ -2085,7 +2085,7 @@ calcularAreaPunto(){
 			  }
 			}
 
-			this.addPolygonLayerToControl(capaNueva, polygonStyle, randomColor);
+			this.addPolygonLayerToControl(capaNueva, polygonStyle, upperColor);
 
 		break;
 
@@ -2104,7 +2104,7 @@ calcularAreaPunto(){
 				}
 			}
 
-			this.addLineLayerToControl(capaNueva, lineStyle, randomColor);
+			this.addLineLayerToControl(capaNueva, lineStyle, upperColor);
 
 		break;
 
@@ -2128,7 +2128,7 @@ calcularAreaPunto(){
 
 			}
 
-			this.addPointLayerToControl(capaNueva, circleStyle, randomColor);
+			this.addPointLayerToControl(capaNueva, circleStyle, upperColor);
 
 		break;
 
