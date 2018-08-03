@@ -2064,17 +2064,19 @@ calcularAreaPunto(){
   	let geoJson = capaNueva.geojson;
   	let tipo = this.capas.find((element) =>{return element.nombre == capaNueva.nombre}).tipo;
 
-  	let randomColor = "#" + Math.random().toString(16).slice(2, 8);
-  	console.log("Color generado: "+randomColor.toUpperCase());
-
 	switch(tipo){
 
 		case 'Polygon':
 		case 'MultiPolygon':
 
+		  	let randomColor = "#" + Math.random().toString(16).slice(2, 8);
+		  	let upperColor = randomColor.toUpperCase()
+		  	console.log("Color generado: "+randomColor.toUpperCase());
+
+
 			let polygonStyle = function(){
 			  return { 
-			    fillColor: randomColor.toUpperCase(),
+			    fillColor: upperColor,
 			    weight: 1,
 			    opacity: 1,
 			    color: 'white',
@@ -2090,6 +2092,10 @@ calcularAreaPunto(){
 		case 'LineString':
 		case 'MultiLineString':
 
+		  	let randomColor = "#" + Math.random().toString(16).slice(2, 8);
+		  	let upperColor = randomColor.toUpperCase()
+		  	console.log("Color generado: "+randomColor.toUpperCase());
+
 			let lineStyle = function(){
 				return {
 				    "color": randomColor,
@@ -2104,6 +2110,10 @@ calcularAreaPunto(){
 
 		case 'Point':
 		case 'MultiPoint':
+
+		  	let randomColor = "#" + Math.random().toString(16).slice(2, 8);
+		  	let upperColor = randomColor.toUpperCase()
+		  	console.log("Color generado: "+randomColor.toUpperCase());
 
 			let circleStyle = function(){
 
