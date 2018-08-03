@@ -2375,7 +2375,7 @@ calcularAreaPunto(){
 
 				let etiquetas = document.querySelectorAll(".leaflet-control-layers-overlays > label");
 
-				let etiqueta = <HTMLElement>etiquetas[etiquetas.length-1];
+				let etiqueta = <HTMLElement>etiquetas[etiquetas.length-1].querySelector("div");
 
 			if(iconoNuevo != null){
 
