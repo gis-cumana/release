@@ -24,6 +24,23 @@ flash-messages{
 }
 
 
+.leaflet-control-layers-overlays > label > div{
+  height: 30px;
+}
+
+.cuadrito{
+  float: right;
+  margin-left: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.iconimg{
+  width: 25px;
+  height: 25px;
+}
+
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;

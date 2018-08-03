@@ -2064,6 +2064,7 @@ calcularAreaPunto(){
   	let geoJson = capaNueva.geojson;
   	let tipo = this.capas.find((element) =>{return element.nombre == capaNueva.nombre}).tipo;
 
+  	let randomColor = "#" + Math.random().toString(16).slice(2, 8);
 
 	switch(tipo){
 
@@ -2072,7 +2073,7 @@ calcularAreaPunto(){
 
 			let polygonStyle = function(){
 			  return { 
-			    fillColor: '#ff0000',
+			    fillColor: randomColor,
 			    weight: 1,
 			    opacity: 1,
 			    color: 'white',
@@ -2081,7 +2082,7 @@ calcularAreaPunto(){
 			  }
 			}
 
-			this.addPolygonLayerToControl(capaNueva, polygonStyle);
+			this.addPolygonLayerToControl(capaNueva, polygonStyle, randomColor);
 
 		break;
 
@@ -2090,13 +2091,13 @@ calcularAreaPunto(){
 
 			let lineStyle = function(){
 				return {
-				    "color": '#08519c',
+				    "color": randomColor,
 				    "weight": 5,
 				    "opacity": 0.65
 				}
 			}
 
-			this.addLineLayerToControl(capaNueva, lineStyle);
+			this.addLineLayerToControl(capaNueva, lineStyle, randomColor);
 
 		break;
 
@@ -2107,7 +2108,7 @@ calcularAreaPunto(){
 
 				return {
 				    radius: 8,
-				    fillColor: "#ff7800",
+				    fillColor: randomColor,
 				    color: "#000",
 				    weight: 1,
 				    opacity: 1,
@@ -2116,7 +2117,7 @@ calcularAreaPunto(){
 
 			}
 
-			this.addPointLayerToControl(capaNueva, circleStyle)
+			this.addPointLayerToControl(capaNueva, circleStyle, randomColor);
 
 		break;
 
@@ -2130,7 +2131,7 @@ calcularAreaPunto(){
 
   }
 
-  addPolygonLayerToControl(capaNueva, estilo){
+  addPolygonLayerToControl(capaNueva, estilo, randomColor){
 
   	console.log(capaNueva);
 
@@ -2207,7 +2208,7 @@ calcularAreaPunto(){
 
   }
 
-  addLineLayerToControl(capaNueva, estilo){
+  addLineLayerToControl(capaNueva, estilo, randomColor){
 
 
 	if(!capaNueva.geojson.features.length){
@@ -2254,7 +2255,7 @@ calcularAreaPunto(){
 	this.geoJsons.push(capaNueva);
   }
 
-  addPointLayerToControl(capaNueva, estilo){
+  addPointLayerToControl(capaNueva, estilo, randomColor){
 
 		if(capaNueva.geojson.features.length){
 			
@@ -2341,7 +2342,7 @@ calcularAreaPunto(){
 
 					if(iconoNuevo != null){
 
-				        return L.marker(latlng, {icon: iconoNuevo});
+				        return L.marker(latlng, {icon: iconoNuevo.icono});
 					}else{
 
 				        return L.circleMarker(latlng, estilo);
@@ -2359,6 +2360,31 @@ calcularAreaPunto(){
 
 			this.capasActivas = Object.keys(this.overlayMaps);
 			window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
+
+
+				let etiquetas = document.querySelectorAll(".leaflet-control-layers-overlays > label");
+
+				let etiqueta = <HTMLElement>etiquetas[etiquetas.length-1];
+
+			if(iconoNuevo != null){
+
+				let iconito = document.createElement("div");
+				iconito.setAttribute("class","cuadrito");
+				let imagen = document.createElement("img");
+				imagen.setAttribute("class","iconimg");
+				imagen.src = iconoNuevo.ruta;
+				iconito.appendChild(imagen)
+
+				etiqueta.appendChild(iconito);
+			}
+			else{
+
+				let cuadrito = document.createElement("div");
+				cuadrito.setAttribute("class","cuadrito");
+				cuadrito.style.backgroundColor = randomColor;
+
+				etiqueta.appendChild(cuadrito);
+			}
 
 			if(capaNueva.dontpush) return false;
 
@@ -2386,6 +2412,7 @@ calcularAreaPunto(){
 			let _self = this;
 
 			let iconoNuevo = null;
+			let ruta = "";
 
 			let myRe = new RegExp("geo","i");
 
@@ -2407,8 +2434,10 @@ calcularAreaPunto(){
 						let indiceIcono = _self.capasGeo[empresa].findIndex((el)=>{return el.usado == false});
 						_self.capasGeo[empresa][indiceIcono].usado = true;
 
+						ruta = '../../../assets/images/'+_self.capasGeo[empresa][indiceIcono].nombre;
+
 						iconoNuevo = L.icon({
-						    iconUrl: '../../../assets/images/'+_self.capasGeo[empresa][indiceIcono].nombre,
+						    iconUrl: ruta,
 						    iconSize: [40,70],
 						    iconAnchor: [20, 35],
 						    popupAnchor: [-10, -10]
@@ -2431,8 +2460,10 @@ calcularAreaPunto(){
 						let indiceIcono = _self.capasGeo.comun.findIndex((el)=>{return el.usado == false});
 						_self.capasGeo.comun[indiceIcono].usado = true;
 
+						ruta = '../../../assets/images/'+_self.capasGeo.comun[indiceIcono].nombre;
+
 						iconoNuevo = L.icon({
-						    iconUrl: '../../../assets/images/'+_self.capasGeo.comun[indiceIcono].nombre,
+						    iconUrl: ruta,
 						    iconSize: [40,70],
 						    iconAnchor: [20, 35],
 						    popupAnchor: [-10, -10]
@@ -2455,8 +2486,10 @@ calcularAreaPunto(){
 					let indiceIcono = _self.capasGeo.comun.findIndex((el)=>{return el.usado == false});
 					_self.capasGeo.comun[indiceIcono].usado = true;
 
+					ruta = '../../../assets/images/'+_self.capasGeo.comun[indiceIcono].nombre;
+
 					iconoNuevo = L.icon({
-					    iconUrl: '../../../assets/images/'+_self.capasGeo.comun[indiceIcono].nombre,
+					    iconUrl: ruta,
 					    iconSize: [40,70],
 					    iconAnchor: [20, 35],
 					    popupAnchor: [-10, -10]
@@ -2468,7 +2501,7 @@ calcularAreaPunto(){
 
 			}
 
-			return iconoNuevo;
+			return {icono; iconoNuevo, ruta: ruta};
 
 	}
 
