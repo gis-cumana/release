@@ -2393,7 +2393,7 @@ calcularAreaPunto(){
 
 				if(atributos.find((el)=>{return el.toLowerCase() == "empresa"})){
 
-					let empresa = capaNueva.geojson.features[0].empresa.toLowerCase();
+					let empresa = capaNueva.geojson.features[0].properties.empresa.toLowerCase();
 					if(this.capasGeo[empresa]){
 
 
