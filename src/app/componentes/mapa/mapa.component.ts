@@ -2115,7 +2115,7 @@ calcularAreaPunto(){
 		case 'MultiPoint':
 
 		  	randomColor = "#" + Math.random().toString(16).slice(2, 8);
-		  	upperColor = randomColor.toUpperCase()
+		  	upperColor = randomColor.toUpperCase();
 		  	console.log("Color generado: "+randomColor.toUpperCase());
 
 			let circleStyle =  {
@@ -2350,7 +2350,7 @@ calcularAreaPunto(){
 			let myLayer = L.geoJSON(capaNueva.geojson, {
 				pointToLayer: function (feature, latlng) {
 
-					if(iconoNuevo != null){
+					if(iconoNuevo.icono != null){
 
 				        return L.marker(latlng, {icon: iconoNuevo.icono});
 					}else{
