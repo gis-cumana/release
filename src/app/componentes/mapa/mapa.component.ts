@@ -2377,8 +2377,8 @@ calcularAreaPunto(){
 
 			this.colorOverlayMaps.push({
 				"capa": capaNueva.nombre,
-				"tipo": iconoNuevo.icon != null ? "icono" : "color",
-				"target": iconoNuevo.icon != null ? iconoNuevo.ruta : randomColor
+				"tipo": iconoNuevo.icono != null ? "icono" : "color",
+				"target": iconoNuevo.icono != null ? iconoNuevo.ruta : randomColor
 			});
 
 
