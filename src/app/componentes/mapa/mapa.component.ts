@@ -125,9 +125,27 @@ export class MapaComponent implements OnInit, OnDestroy {
 	  		{usado: false, nombre: "punto_geotecnia_4.png"},
 	  		{usado: false, nombre: "punto_geotecnia_5.png"}
   		],
-  		bid: [{usado: false, nombre: "punto_geotecnia_bid_1.png"}],
-  		camudoca: [{usado: false, nombre: "punto_geotecnia_camudoca_1.png"}],
-  		pdvsa: [{usado: false, nombre: "punto_geotecnia_pdvsa_1.png"}]
+  		bid: [
+  			{usado: false, nombre: "punto_geotecnia_bid_1.png"},
+  			{usado: false, nombre: "punto_geotecnia_bid_2.png"},
+  			{usado: false, nombre: "punto_geotecnia_bid_3.png"},
+  			{usado: false, nombre: "punto_geotecnia_bid_4.png"},
+  			{usado: false, nombre: "punto_geotecnia_bid_5.png"},
+  		],
+  		camudoca: [
+  			{usado: false, nombre: "punto_geotecnia_camudoca_1.png"},
+  			{usado: false, nombre: "punto_geotecnia_camudoca_2.png"},
+  			{usado: false, nombre: "punto_geotecnia_camudoca_3.png"},
+  			{usado: false, nombre: "punto_geotecnia_camudoca_4.png"},
+  			{usado: false, nombre: "punto_geotecnia_camudoca_5.png"}
+  		],
+  		pdvsa: [
+  			{usado: false, nombre: "punto_geotecnia_pdvsa_1.png"},
+  			{usado: false, nombre: "punto_geotecnia_pdvsa_2.png"},
+  			{usado: false, nombre: "punto_geotecnia_pdvsa_3.png"},
+  			{usado: false, nombre: "punto_geotecnia_pdvsa_4.png"},
+  			{usado: false, nombre: "punto_geotecnia_pdvsa_5.png"}
+  		]
   	]
 
 	this.claseBotonFiltro = "leaflet-control-layers leaflet-control leaflet-control-layers-expanded nomargin";
