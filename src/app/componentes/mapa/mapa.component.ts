@@ -2065,6 +2065,7 @@ calcularAreaPunto(){
   	let tipo = this.capas.find((element) =>{return element.nombre == capaNueva.nombre}).tipo;
 
   	let randomColor = "#" + Math.random().toString(16).slice(2, 8);
+  	console.log("Color generado: "+randomColor.toUpperCase());
 
 	switch(tipo){
 
@@ -2073,7 +2074,7 @@ calcularAreaPunto(){
 
 			let polygonStyle = function(){
 			  return { 
-			    fillColor: randomColor,
+			    fillColor: randomColor.toUpperCase(),
 			    weight: 1,
 			    opacity: 1,
 			    color: 'white',
@@ -2369,9 +2370,9 @@ calcularAreaPunto(){
 			if(iconoNuevo != null){
 
 				let iconito = document.createElement("div");
-				iconito.setAttribute("class","cuadrito");
+				iconito.setAttribute("class","cuadrito redondo");
 				let imagen = document.createElement("img");
-				imagen.setAttribute("class","iconimg");
+				imagen.setAttribute("class","iconimg");	
 				imagen.src = iconoNuevo.ruta;
 				iconito.appendChild(imagen)
 
