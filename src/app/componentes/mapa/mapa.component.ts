@@ -2118,9 +2118,7 @@ calcularAreaPunto(){
 		  	upperColor = randomColor.toUpperCase()
 		  	console.log("Color generado: "+randomColor.toUpperCase());
 
-			let circleStyle = function(){
-
-				return {
+			let circleStyle =  {
 				    radius: 8,
 				    fillColor: randomColor,
 				    color: "#000",
@@ -2128,8 +2126,6 @@ calcularAreaPunto(){
 				    opacity: 1,
 				    fillOpacity: 0.8
 				}
-
-			}
 
 			this.addPointLayerToControl(capaNueva, circleStyle, upperColor);
 
