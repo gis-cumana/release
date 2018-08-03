@@ -118,11 +118,16 @@ export class MapaComponent implements OnInit, OnDestroy {
   	this.limpiarLocalStorage();
 
   	this.capasGeo = [
-  		{usado: false, nombre: "punto_geotecnia_1.png"},
-  		{usado: false, nombre: "punto_geotecnia_2.png"},
-  		{usado: false, nombre: "punto_geotecnia_3.png"},
-  		{usado: false, nombre: "punto_geotecnia_4.png"},
-  		{usado: false, nombre: "punto_geotecnia_5.png"}
+  		comun: [
+	  		{usado: false, nombre: "punto_geotecnia_1.png"},
+	  		{usado: false, nombre: "punto_geotecnia_2.png"},
+	  		{usado: false, nombre: "punto_geotecnia_3.png"},
+	  		{usado: false, nombre: "punto_geotecnia_4.png"},
+	  		{usado: false, nombre: "punto_geotecnia_5.png"}
+  		],
+  		bid: [{usado: false, nombre: "punto_geotecnia_bid_1.png"}],
+  		camudoca: [{usado: false, nombre: "punto_geotecnia_camudoca_1.png"}],
+  		pdvsa: [{usado: false, nombre: "punto_geotecnia_pdvsa_1.png"}]
   	]
 
 	this.claseBotonFiltro = "leaflet-control-layers leaflet-control leaflet-control-layers-expanded nomargin";
@@ -2310,29 +2315,7 @@ calcularAreaPunto(){
 				}
 
 
-			let iconoNuevo = null;
-
-			let myRe = new RegExp("geo","i");
-
-			if(myRe.test(capaNueva.nombre)){
-
-				if(!_self.capasGeo.find((el)=>{return el.usado == false})){
-
-					for(let i = 0, j = _self.capasGeo.length; i<j; i++){
-						_self.capasGeo[i].usado = false;
-					}
-				}
-
-				let indiceIcono = _self.capasGeo.findIndex((el)=>{return el.usado == false});
-				_self.capasGeo[indiceIcono].usado = true;
-
-				iconoNuevo = L.icon({
-				    iconUrl: '../../../assets/images/'+_self.capasGeo[indiceIcono].nombre,
-				    iconSize: [40,70],
-				    iconAnchor: [20, 35],
-				    popupAnchor: [-10, -10]
-				    });
-			}
+			let iconoNuevo = this.getGeoIcon(capaNueva, atributos);
 
 	
 			let myLayer = L.geoJSON(capaNueva.geojson, {
@@ -2377,6 +2360,97 @@ calcularAreaPunto(){
 
 		this.addOverlayToControl(shape);
 
+
+	}
+
+	getGeoIcon(capaNueva, atributos){
+
+			let _self = this;
+
+			let iconoNuevo = null;
+
+			let myRe = new RegExp("geo","i");
+
+			if(myRe.test(capaNueva.nombre)){
+
+				if(atributos.find((el)=>{return el.toLowerCase() == "empresa"})){
+
+					let empresa = capaNueva.geojson.features[0].empresa.toLowerCase();
+					if(this.capasGeo[empresa]){
+
+
+						if(!_self.capasGeo[empresa].find((el)=>{return el.usado == false})){
+
+							for(let i = 0, j = _self.capasGeo[empresa].length; i<j; i++){
+								_self.capasGeo[empresa][i].usado = false;
+							}
+						}
+
+						let indiceIcono = _self.capasGeo[empresa].findIndex((el)=>{return el.usado == false});
+						_self.capasGeo[empresa][indiceIcono].usado = true;
+
+						iconoNuevo = L.icon({
+						    iconUrl: '../../../assets/images/'+_self.capasGeo[empresa][indiceIcono].nombre,
+						    iconSize: [40,70],
+						    iconAnchor: [20, 35],
+						    popupAnchor: [-10, -10]
+						    });
+
+
+
+					}
+					else{
+
+
+
+						if(!_self.capasGeo.comun.find((el)=>{return el.usado == false})){
+
+							for(let i = 0, j = _self.capasGeo.comun.length; i<j; i++){
+								_self.capasGeo.comun[i].usado = false;
+							}
+						}
+
+						let indiceIcono = _self.capasGeo.comun.findIndex((el)=>{return el.usado == false});
+						_self.capasGeo.comun[indiceIcono].usado = true;
+
+						iconoNuevo = L.icon({
+						    iconUrl: '../../../assets/images/'+_self.capasGeo.comun[indiceIcono].nombre,
+						    iconSize: [40,70],
+						    iconAnchor: [20, 35],
+						    popupAnchor: [-10, -10]
+						    });
+
+
+					}
+
+				}
+				else{
+
+
+					if(!_self.capasGeo.comun.find((el)=>{return el.usado == false})){
+
+						for(let i = 0, j = _self.capasGeo.comun.length; i<j; i++){
+							_self.capasGeo.comun[i].usado = false;
+						}
+					}
+
+					let indiceIcono = _self.capasGeo.comun.findIndex((el)=>{return el.usado == false});
+					_self.capasGeo.comun[indiceIcono].usado = true;
+
+					iconoNuevo = L.icon({
+					    iconUrl: '../../../assets/images/'+_self.capasGeo.comun[indiceIcono].nombre,
+					    iconSize: [40,70],
+					    iconAnchor: [20, 35],
+					    popupAnchor: [-10, -10]
+					    });
+
+
+
+				}
+
+			}
+
+			return iconoNuevo;
 
 	}
 
