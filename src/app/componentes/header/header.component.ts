@@ -356,7 +356,10 @@ export class HeaderComponent implements OnInit {
 
   isRouteMapa(){
     
-    if(this.router.url == "/mapa"){
+    let myRe = new RegExp("mapa","i");
+
+
+    if(myRe.test(this.router.url)){
       return true;
     }
     else{
