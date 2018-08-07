@@ -2750,7 +2750,7 @@ calcularAreaPunto(){
 				init2.fotoDibujada = true;
 				init2.loading = false;
 				init2.foto = img;
-			})
+			});
 		});
 	}
 	
