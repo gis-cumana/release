@@ -1,38 +1,11 @@
 <footer class="footer">
       <nav class="navbar navbar-dark bg-default navbar-fixed-bottom">
-    <div class="container">
-       <div class="container-fluid">
-        <div class="row">
-
-         <div class="col-md-4">
-                <h5 class="title">Instituciones patrocinantes</h5>
-                 <ul>
-                <li> <a href="http://csudo.sucre.udo.edu.ve/"> Centro Sismologico de Oriente </a></li>
-                 <li><a href="https://www.iadb.org/es"> Banco Interamericano de Desarrollo</a></li>
-                 <li><a href="https://www.alcaldiadecumana.org/">Alcaldia del Municipio Sucre</a></li>
-                 </ul>
-            </div>
-
-            <div class="col-md-4">
-                <h5 class="title">Investigadores</h5>
-                 <ul>
-                    <li><a href="mailto:falvarez@udo.edu.ve">Lcdo. Francisco Álvarez Ortiz</a></li>
-                    <li><a href="mailto:jlrojas@udo.edu.ve">Dr. Jorge Rojas</a></li>
-                    <li><a href="mailto:jlrojas@udo.edu.ve">Msc. Ysimar Carvajal</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-4">
-                <h5 class="title">
-                Contactanos
-                </h5>
-                Centro de Sismologia de Oriente <br/>
-                Dirección: Av. Universidad Cerro del medio,
-                parte alta del decanato. Cumaná, Estado Sucre. <br/>
-                Teléfono: (0293) - 4002403 - 4516756
-
-            </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-6 col-sm-4 col-lg-2" *ngFor="let ventana of ventanas">
+          <button type="button" class="btn btn-outline-info" (click)="abrirModal(ventana)"></button>
         </div>
+      </div>
     </div>
 
     <!--Copyright-->
