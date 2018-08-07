@@ -12,7 +12,9 @@ export class FooterComponent implements OnInit {
 
 	ventanaActiva: any;
 
-  constructor() { }
+
+  constructor(private modalService: NgbModal) { }
+
 
   ngOnInit() {
   	this.ventanas = [
