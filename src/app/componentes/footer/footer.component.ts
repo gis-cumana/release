@@ -40,7 +40,7 @@ export class FooterComponent implements OnInit {
   		{
   		"nombre": "MSc. Francisco Alvarez",
   		"correo": "faovenezuela@gmail.com",
-  		"telefono": "0414-8242002"
+  		"telefono": "0414-8242002",
   		"foto": "francisco.jpeg"
   		},
   		{
