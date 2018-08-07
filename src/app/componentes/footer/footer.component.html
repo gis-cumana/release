@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-6 col-sm-4 col-lg-2" *ngFor="let ventana of ventanas;">
-          <button type="button" class="btn btn-outline-info" (click)="abrirModal(ventana)"></button>
+          <button type="button" class="btn btn-outline-info" (click)="abrirModal(ventana)">{{ventana}}</button>
         </div>
       </div>
     </div>
