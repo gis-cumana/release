@@ -12,6 +12,8 @@ export class FooterComponent implements OnInit {
 
 	ventanaActiva: any;
 
+	modalRef: any;
+
 
   constructor(private modalService: NgbModal) { }
 
@@ -29,7 +31,12 @@ export class FooterComponent implements OnInit {
 
   abrirModal(ventana, content){
   	this.seleccionarVentana(ventana);
-  	this.open(content);
+
+    this.modalRef = this.modalService.open(content, { size: 'lg' }).result.then((result) => {
+
+    }, (reason) => {
+  
+    });
   }
 
   seleccionarVentana(ventana){

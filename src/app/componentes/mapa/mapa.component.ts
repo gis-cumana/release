@@ -2698,15 +2698,8 @@ calcularAreaPunto(){
 
     });
 
-			var el = document.getElementsByClassName("modal-content");
-			el[0].setAttribute("style","background-color: rgba(255,255,255,0.4)");
-
-    	setTimeout(() =>{
-			/*
-			var el2 = document.getElementById("filterSet");
-			el2.setAttribute("style","background-color: rgba(255,255,255,0.1); border: 3px solid rgba(221, 221, 221, 0.4)");
-			*/
-    	}, 100)
+	var el = document.getElementsByClassName("modal-content");
+	el[0].setAttribute("style","background-color: rgba(255,255,255,0.4)");
   }
 
   limpiarFiltro(){
