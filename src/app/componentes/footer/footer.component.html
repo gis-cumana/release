@@ -1,9 +1,25 @@
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+          <h4 class="modal-title text-danger">{{ventanaActiva}}</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="c('Close click')">Cerrar</button>
+      </div>      
+    </ng-template>
+
 <footer class="footer">
 <nav class="navbar navbar-dark bg-default navbar-fixed-bottom">
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-6 col-sm-4 separada" *ngFor="let ventana of ventanas;">
-          <button type="button" class="btn btn-outline-info btn-block" (click)="abrirModal(infoContent)">{{ventana}}</button>
+          <button type="button" class="btn btn-outline-info btn-block" (click)="abrirModal(content)">{{ventana}}</button>
         </div>
       </div>
     </div>
@@ -16,17 +32,3 @@
     </div>
 </nav>
 </footer>
-
-    <ng-template #infoContent let-c="close" let-d="dismiss">
-      <div class="modal-header">
-          <h4 class="modal-title text-danger">{{ventanaActiva}}</h4>
-          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-
-
-      </div>
-    </ng-template>
