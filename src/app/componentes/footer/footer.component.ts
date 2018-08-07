@@ -9,7 +9,6 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class FooterComponent implements OnInit {
 
 	ventanas: any[];
-
 	investigadores: any[];
 	desarrolladores: any[];
 
