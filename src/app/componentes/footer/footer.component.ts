@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+	ventanas: any[];
+
   constructor() { }
 
   ngOnInit() {
+  	this.ventanas = [
+  		"Proyecto",
+  		"Contactanos",
+  		"Terminos y Condiciones",
+  		"Investigadores",
+  		"Desarrolladores",
+  		"Acerca de..."
+  	]
+  }
+
+  abrirModal(ventana){
+  
   }
 
 }
