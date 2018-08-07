@@ -26,10 +26,13 @@ export class FooterComponent implements OnInit {
   }
 
   abrirModal(ventana, content){
-  	this.ventanaActiva = ventana;
+  	this.seleccionarVentana(ventana);
   	this.open(content);
   }
 
+  seleccionarVentana(ventana){
+  	this.ventanaActiva = ventana;
+  }
 
   open(content) {
 
