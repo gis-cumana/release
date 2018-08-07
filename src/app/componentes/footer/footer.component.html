@@ -16,3 +16,17 @@
     </div>
 </nav>
 </footer>
+
+    <ng-template #infoContent let-c="close" let-d="dismiss">
+      <div class="modal-header">
+          <h4 class="modal-title text-danger">{{ventanaActiva}}</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+
+      </div>
+    </ng-template>
