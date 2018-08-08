@@ -18,7 +18,7 @@ img.proyecto{
 	margin-bottom: 0.25rem;
 }
 
-div.modal-content div.row.cabecera img{
+img.cabecera{
 	display: block;
 	height: 70px;
 	margin: auto;
