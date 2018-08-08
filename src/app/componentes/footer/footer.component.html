@@ -200,6 +200,23 @@
           </div>
         </div>
 
+        <div class="container" *ngIf="ventanaActiva==ventanas[5]">
+          <div class="row">
+            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+
+                <div class="card text-center">
+                  <img class="card-img-top img-about" src="./assets/images/logo-2.png">
+                  <div class="card-body">
+                    <p class="card-text text-danger">{{desarrollador.nombre}}</p>
+                    <p class="card-text">Mail: {{desarrollador.correo}}</p>
+                    <p class="card-text">Tel: {{desarrollador.telefono}}</p>
+                  </div>
+                </div>              
+              
+            </div>
+          </div>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" (click)="c('Close click')">Cerrar</button>
