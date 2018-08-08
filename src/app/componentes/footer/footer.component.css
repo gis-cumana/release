@@ -17,3 +17,8 @@ img.proyecto{
 	margin-top: 0.25rem;
 	margin-bottom: 0.25rem;
 }
+
+div.modal-header img{
+	height: 70px;
+	margin: auto;
+}
