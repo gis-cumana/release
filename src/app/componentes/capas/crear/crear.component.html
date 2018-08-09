@@ -19,7 +19,7 @@
 			</div>
 			<div class="form-group col">
 				<label class="control-label" for="geometria">Geometria</label>
-				<select class="form-control" name="geometria" [(ngModel)]="capaNueva.geometria">
+				<select class="form-control" name="geometria" [(ngModel)]="capaNueva.geometria" (change)="inicializarFigura()">
 					<option value="" selected disabled></option>
 					<option value="Point">PUNTO</option>
 					<option value="LineString">LINEA</option>
@@ -67,7 +67,7 @@
 				      </td>
 				      <td><button type="button" class="btn btn-outline-success" (click)="agregarPropiedad()"><i class="fa fa-plus"></i></button></td>
 				    </tr>
-				    <tr>
+				    <tr *ngIf="capaNueva.geometria == 'Point' || capaNueva.geometria == 'MultiPoint' ">
 				      <th scope="row"></th>
 				      <td>Figura</td>
 				      <td>

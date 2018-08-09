@@ -30,9 +30,8 @@ export class CrearCapasComponent implements OnInit {
   ngOnInit() {
 
     this.loading = false;
-
-    this.figura = "";
-    this.color = "#0000FF";
+    
+    this.inicializarFigura();
 
   	this.propiedadNueva = {
   		nombre: "",
@@ -172,6 +171,11 @@ export class CrearCapasComponent implements OnInit {
 
 
 
+  }
+  
+  inicializarFigura(){
+    this.color = "#0000FF";
+    this.figura = "";
   }
 
 }
