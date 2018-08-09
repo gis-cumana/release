@@ -23,9 +23,16 @@
 				  </thead>
 				  <tbody>
 				    <tr *ngFor="let propiedad of capaActiva.atributos; let i = index; ">
-				      <th scope="row" *ngIf="propiedad.nombre!='geom'">{{i+1}}</th>
-				      <td *ngIf="propiedad.nombre!='geom'">{{propiedad.nombre}}</td>
-				      <td *ngIf="propiedad.nombre!='geom'"><input class="form-control-sm" [type]="propiedad.tipo" [name]="propiedad.nombre" [(ngModel)]="atributos[''+propiedad.nombre]"></td>
+				      <th scope="row"
+				      *ngIf="propiedad.nombre!='geom' &&
+				      		propiedad.nombre!='figura' &&
+				      		propiedad.nombre!='color'">{{i+1}}</th>
+				      <td *ngIf="propiedad.nombre!='geom' &&
+				      		propiedad.nombre!='figura' &&
+				      		propiedad.nombre!='color'">{{propiedad.nombre}}</td>
+				      <td *ngIf="propiedad.nombre!='geom' &&
+				      		propiedad.nombre!='figura' &&
+				      		propiedad.nombre!='color'"><input class="form-control-sm" [type]="propiedad.tipo" [name]="propiedad.nombre" [(ngModel)]="atributos[''+propiedad.nombre]"></td>
 				    </tr>
 				  </tbody>
 				</table>
