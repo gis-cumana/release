@@ -16,11 +16,11 @@
   			<form>
   				
   				<div class="row" *ngFor="let att of estructura;let i = index; ">
-  					<div class="col-6" *ngIf="att.tipo=='Text'">
+  					<div class="col-6" *ngIf="att.tipo=='Text' && att.nombre!='figura' && att.nombre=='color'">
   						<label class="control-label" [for]="att.nombre">{{att.nombre}}</label>
   						<input type="text" class="form-control" [name]="att.nombre" [(ngModel)]="dato.properties[''+att.nombre]" disabled>
   					</div>
-  					<div class="col-6" *ngIf="att.tipo!='Text'">
+  					<div class="col-6" *ngIf="att.tipo!='Text' && att.nombre!='figura' && att.nombre=='color'">
   						<label [for]="att.nombre">{{att.nombre}}</label>
   						<input type="number" class="form-control" [name]="att.nombre" [(ngModel)]="dato.properties[''+att.nombre]" disabled>
   					</div>
