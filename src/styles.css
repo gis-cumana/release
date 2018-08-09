@@ -17,12 +17,29 @@ flash-messages{
 	font-weight: bold;
 }
 
-.popupDiv{
-	max-height: 50vh;
-	overflow-y: auto;
-	overflow-x: hidden;
+.leaflet-popup-content-wrapper{
+    max-height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
+
+.leaflet-control-layers-overlays > label > div{
+  height: 30px;
+}
+
+.cuadrito{
+  float: right;
+  margin-left: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.iconimg{
+  width: 25px;
+  height: 25px;
+}
 
 ::-webkit-scrollbar {
     width: 5px;

@@ -23,7 +23,7 @@
 			      <th scope="row">{{i+1}}</th>
 			      <td>{{categoria.nombre}}</td>
 			      <td>{{categoria.descripcion}}</td>
-			      <td><button type="button" class="btn btn-outline-info"><i class="fa fa-search"></i></button></td>
+			      <td><button type="button" class="btn btn-outline-info" (click)="administrarCapasCategoria(categoria)"><i class="fa fa-search"></i></button></td>
 			      <td><button type="button" class="btn btn-outline-warning" (click)="editarCategoria(categoria)"><i class="fa fa-pencil-square-o"></i></button></td>
 			      <td><button type="button" class="btn btn-outline-danger" (click)="eliminarCategoria(categoria)" [disabled]="!categoria.eliminable"><i class="fa fa-trash-o"></i></button></td>
 			    </tr>			    

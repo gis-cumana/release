@@ -17,6 +17,34 @@
 		(click)="togglePoint()">
 		</a> 
 
+		<a style="display: none;"
+		id="openMapData"
+		(click)="toggleData()">
+		</a> 
+
+<div class="dataDialog hidden">
+
+				<div class="row">
+					<div class="col-12">
+
+
+						<app-datos 
+						[categorias]="categoriaActiva" 
+						[capasActivas]="capasActivas"
+						[capas]="geoJsons"
+						[estructuras]="capas"
+						(coordenadaActualizada)="actualizarGeojsonEditable($event)"
+						(capaCerrada)="trancarExterno()"
+						(mapaRefrescadoRequerido)="refrescarMapa($event)">	
+						</app-datos>
+
+
+
+					</div>
+				</div>
+
+
+</div>
 <div class="pointDialog hidden">
 
 			<form class="form">
@@ -24,36 +52,36 @@
 				<div class="row">
 					<div class="form-group col">
 						<label for="searchlat" class="control-label">Latitud</label>
-						<input type="number" min="-90" max="90" class="form-control" name="searchlat" [(ngModel)]="searchPoint.lat" />
+						<input type="number" min="-90" max="90" class="form-control form-control-sm" name="searchlat" [(ngModel)]="searchPoint.lat" />
 					</div>
 				</div>			
 	
 				<div class="row">
 					<div class="form-group col">
 						<label for="searchlng" class="control-label">Longitud</label>
-						<input type="number" min="-180" max="180" class="form-control" name="searchlng" [(ngModel)]="searchPoint.lng" />
+						<input type="number" min="-180" max="180" class="form-control form-control-sm" name="searchlng" [(ngModel)]="searchPoint.lng" />
 					</div>
 				</div>			
 
 				<div class="row">
 					<div class="form-group col">
 						<label for="searchrad" class="control-label">Radio(mts.)</label>
-						<input type="number" min="1" class="form-control map-input" name="searchrad" [(ngModel)]="searchPoint.radius" />
+						<input type="number" min="1" class="form-control form-control-sm map-input" name="searchrad" [(ngModel)]="searchPoint.radius" />
 					</div>
 				</div>				
 
 				<div class="row">
 					<div class="form-group col">
 						<label for="searchradArea" class="control-label">Area</label>
-						<input type="number" min="1" class="form-control map-input" name="searchradArea" [(ngModel)]="searchPoint.area" disabled/>
+						<input type="number" min="1" class="form-control form-control-sm map-input" name="searchradArea" [(ngModel)]="searchPoint.area" disabled/>
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="form-group col">
-						<button type="button" class="btn btn-outline-danger" (click)="limpiarPunto()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
-						<button type="button" class="btn btn-outline-warning" (click)="obtenerPunto()"> <i class="fa fa-street-view" aria-hidden="true"></i> </button>
-						<button type="button" class="btn btn-outline-info" (click)="encontrarPunto()"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+						<button type="button" class="btn btn-outline-danger btn-sm" (click)="limpiarPunto()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
+						<button type="button" class="btn btn-outline-warning btn-sm" (click)="obtenerPunto()"> <i class="fa fa-street-view" aria-hidden="true"></i> </button>
+						<button type="button" class="btn btn-outline-info btn-sm" (click)="encontrarPunto()"> <i class="fa fa-search" aria-hidden="true"></i> </button>
 					</div>
 				</div>
 			</form>
@@ -66,8 +94,8 @@
 			<table class="table">
 				<caption>Unidad de area
 					<br>
-					<button type="button" class="btn btn-outline-info" (click)="unidadArea='Km2'" >Km2</button>
-					<button type="button" class="btn btn-outline-info" (click)="unidadArea='m2'" >m2</button>
+					<button type="button" class="btn btn-outline-info btn-sm" (click)="unidadArea='Km2'" >Km2</button>
+					<button type="button" class="btn btn-outline-info btn-sm" (click)="unidadArea='m2'" >m2</button>
 				</caption>
 
 				<thead>
@@ -89,8 +117,8 @@
 
 	<div class="row">
 		<div class="form-group col">
-			<button type="button" class="btn btn-outline-danger" (click)="limpiarPoligono()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
-			<button type="button" class="btn btn-outline-info" (click)="medirAreaDibujada()"> <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
+			<button type="button" class="btn btn-outline-danger btn-sm" (click)="limpiarPoligono()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
+			<button type="button" class="btn btn-outline-info btn-sm" (click)="medirAreaDibujada()"> <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
 		</div>
 	</div>
 
@@ -103,8 +131,8 @@
 							<table class="table">
 							  <caption>Unidad de distancia
 							  	<br>
-							  	<button type="button" class="btn btn-outline-info" (click)="unidadDistancia='Km'" >Km</button>
-							  	<button type="button" class="btn btn-outline-info" (click)="unidadDistancia='m'" >mts</button>
+							  	<button type="button" class="btn btn-outline-info btn-sm" (click)="unidadDistancia='Km'" >Km</button>
+							  	<button type="button" class="btn btn-outline-info btn-sm" (click)="unidadDistancia='m'" >mts</button>
 							  </caption>
 							  <thead>
 							    <tr>
@@ -124,8 +152,8 @@
 
 					<div class="row">
 						<div class="form-group col">
-							<button type="button" class="btn btn-outline-danger" (click)="limpiarCamino()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
-							<button type="button" class="btn btn-outline-info" (click)="medirCaminoDibujado()"> <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
+							<button type="button" class="btn btn-outline-danger btn-sm" (click)="limpiarCamino()"> <i class="fa fa-eraser" aria-hidden="true"></i> </button>
+							<button type="button" class="btn btn-outline-info btn-sm" (click)="medirCaminoDibujado()"> <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
 						</div>
 					</div>
 				</form>	
@@ -294,7 +322,7 @@
 								</div>
 
 							</fieldset>
-							
+
 
 						</form>
 					</div>
@@ -305,24 +333,56 @@
 		</div>		
 
 
-		<div class="leaflet-control-layers leaflet-control leaflet-control-layers-expanded" id="formularioFoto" (mouseenter)="prevenirInteraccion('pic')" (mouseleave)="permitirInteraccion('pic')">
+		<div class="leaflet-control-layers leaflet-control leaflet-control-layers-expanded" id="formularioHome">
+			<div class="text-center">
+				<button type="button" class="btn btn-outline-secondary btn-sm" (click)="irCentro()">
+					<i class="fa fa-home fa-2x" aria-hidden="true"></i>
+				</button>
+			</div>
+		</div>
+		<div class="leaflet-control-layers leaflet-control leaflet-control-layers-expanded" id="formularioFoto">
 
-			<div style="display: block;" class="text-center"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></div>
+			<div style="display: block;" class="text-center">
+				<button type="button" class="btn btn-outline-secondary btn-sm"
+				(click)="openFilter(cameraContent)">
+					<i class="fa fa-camera fa-2x" aria-hidden="true"></i>
+				</button>
+			</div>
 			<div style="display: none;">
 
-				<div class="row" style="width: 400px;">
-					<div class="col-12">
+		<ng-template #cameraContent let-c="close" let-d="dismiss">
+		  <div class="modal-header">
+			    <h4><i class="fa fa-camera"></i>Capturar imagen</h4>
+			    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			    	<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
 
+			<div class="modal-body">
 
-			            <h5>Capturar imagen<i class="fa fa-camera"></i></h5>
+				<div class="row">
+					
+					<div class="col"></div>
+					<div class="col-auto">
 				            
 			            <div id="fotoCanvas"></div>
+				            
+					</div>
+					<div class="col"></div>
+				</div>
+
+				<div class="row">
+					<div class="col-12">
 				            
 			            <button type="button" class="btn btn-outline-info" (click)="tomarFoto()" [disabled]="loading"><i class="fa fa-camera"></i></button>
 			            <button type="button" class="btn btn-outline-success" (click)="descargarFoto()" [disabled]="!fotoDibujada"><i class="fa fa-download"></i></button>
 
 					</div>
 				</div>
+
+			</div>
+		</ng-template>
+
 				
 			</div> <!-- FIN DE FORMULARIO -->
 
@@ -337,15 +397,15 @@
 					<div class="col-12">
 
 
-<app-datos 
-[categorias]="categoriaActiva" 
-[capasActivas]="capasActivas"
-[capas]="geoJsons"
-[estructuras]="capas"
-(coordenadaActualizada)="actualizarGeojsonEditable($event)"
-(capaCerrada)="trancarExterno()"
-(mapaRefrescadoRequerido)="refrescarMapa($event)">	
-</app-datos>
+						<app-datos 
+						[categorias]="categoriaActiva" 
+						[capasActivas]="capasActivas"
+						[capas]="geoJsons"
+						[estructuras]="capas"
+						(coordenadaActualizada)="actualizarGeojsonEditable($event)"
+						(capaCerrada)="trancarExterno()"
+						(mapaRefrescadoRequerido)="refrescarMapa($event)">	
+						</app-datos>
 
 
 

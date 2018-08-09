@@ -47,10 +47,11 @@ input.map-input {
 	color: white;   
 }
 
-.distanceDialog, .areaDialog, .pointDialog{
+.distanceDialog, .areaDialog, .pointDialog, .dataDialog{
     position: fixed;
     top: 80px;
     right: 50px;
+    max-width: 50%;
     z-index: 990;
     background: rgba(255,255,255,1);
     border-radius: 5px;

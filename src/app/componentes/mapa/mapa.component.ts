@@ -7,8 +7,6 @@ import * as Turf from '@turf/turf';
 import * as leafletImage from 'leaflet-image';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
-import {PopupModalContentComponent} from './popup-modal-content.component';
-
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
@@ -21,6 +19,7 @@ export class MapaComponent implements OnInit, OnDestroy {
 
   baseMaps: any;
   overlayMaps: any;
+  colorOverlayMaps: any;
   control: any;
 
   geoJsons: any;
@@ -71,6 +70,7 @@ export class MapaComponent implements OnInit, OnDestroy {
   searchControl: any;
   medirDistanciaControl: any;
   medirAreaControl: any;
+  irCentroControl: any;
   searchPoint: any;
 
   marcadorBusqueda: any;
@@ -118,13 +118,28 @@ export class MapaComponent implements OnInit, OnDestroy {
 
   	this.limpiarLocalStorage();
 
-  	this.capasGeo = [
-  		{usado: false, nombre: "punto_geotecnia_1.png"},
-  		{usado: false, nombre: "punto_geotecnia_2.png"},
-  		{usado: false, nombre: "punto_geotecnia_3.png"},
-  		{usado: false, nombre: "punto_geotecnia_4.png"},
-  		{usado: false, nombre: "punto_geotecnia_5.png"}
-  	]
+  	this.capasGeo = {
+  		comun: [
+	  		{usado: false, nombre: "punto_geotecnia_1.png"},
+	  		{usado: false, nombre: "punto_geotecnia_2.png"},
+	  		{usado: false, nombre: "punto_geotecnia_3.png"},
+	  		{usado: false, nombre: "punto_geotecnia_4.png"},
+	  		{usado: false, nombre: "punto_geotecnia_5.png"}
+  		],
+  		bid: [
+  			{usado: false, nombre: "punto_geotecnia_bid_1.png"}
+  		],
+  		camudoca: [
+  			{usado: false, nombre: "punto_geotecnia_camudoca_1.png"},
+  			{usado: false, nombre: "punto_geotecnia_camudoca_2.png"},
+  			{usado: false, nombre: "punto_geotecnia_camudoca_3.png"},
+  			{usado: false, nombre: "punto_geotecnia_camudoca_4.png"},
+  			{usado: false, nombre: "punto_geotecnia_camudoca_5.png"}
+  		],
+  		pdvsa: [
+  			{usado: false, nombre: "punto_geotecnia_pdvsa_2.png"}
+  		]
+  	}
 
 	this.claseBotonFiltro = "leaflet-control-layers leaflet-control leaflet-control-layers-expanded nomargin";
 
@@ -184,6 +199,7 @@ export class MapaComponent implements OnInit, OnDestroy {
   	this.control = [];
   	this.baseMaps = {};
   	this.overlayMaps = {};
+  	this.colorOverlayMaps = [];
   	this.geoJsons = [];
 
   	this.inicializarGeojsons();
@@ -332,7 +348,11 @@ export class MapaComponent implements OnInit, OnDestroy {
 		renderer: L.canvas()
 	});
 
-	this.configurarControlDatos();
+
+	this.configurarControlCentro();
+
+	//this.configurarControlDatos();
+
 	this.configurarControlFoto();
 
 	this.baseMaps = {
@@ -434,7 +454,7 @@ export class MapaComponent implements OnInit, OnDestroy {
 		}
 
 	});
-
+	
 	//this.configurarControlFiltro2();
 	//this.configurarControlDistancia();
 	//this.configurarControlArea();
@@ -1030,6 +1050,48 @@ calcularAreaPunto(){
 	var items = [];
 
 	this.medirAreaControl = L.control["medirArea"]({
+	  data: items
+	}).addTo(this.activeMap);
+	
+  }
+
+  configurarControlCentro(){
+  	
+///INICIO CONTROL
+	
+
+	L.Control["IrCentro"] = L.Control.extend({
+  options: {
+
+    position: 'topleft'
+  },
+  initialize: function (options) {
+
+    L.Util.setOptions(this, options);
+  },
+  onAdd: function (map) {
+
+    this.form = document.getElementById("formularioHome");
+    return this.form;
+  },
+  onRemove: function (map) {
+    // when removed
+  },
+  submit: function(e) {
+    L.DomEvent.preventDefault(e);
+  }
+});
+
+
+///FIN CONTROL
+
+	L.control["irCentro"] = function(id, options) {
+	  return new L.Control["IrCentro"](id, options);
+	}
+
+	var items = [];
+
+	this.irCentroControl = L.control["irCentro"]({
 	  data: items
 	}).addTo(this.activeMap);
 	
@@ -1996,15 +2058,22 @@ calcularAreaPunto(){
   	let geoJson = capaNueva.geojson;
   	let tipo = this.capas.find((element) =>{return element.nombre == capaNueva.nombre}).tipo;
 
+  	let randomColor = "";
+  	let upperColor = "";
 
 	switch(tipo){
 
 		case 'Polygon':
 		case 'MultiPolygon':
 
+		  	randomColor = "#" + Math.random().toString(16).slice(2, 8);
+		  	upperColor = randomColor.toUpperCase()
+		  	console.log("Color generado: "+randomColor.toUpperCase());
+
+
 			let polygonStyle = function(){
 			  return { 
-			    fillColor: '#ff0000',
+			    fillColor: upperColor,
 			    weight: 1,
 			    opacity: 1,
 			    color: 'white',
@@ -2013,42 +2082,46 @@ calcularAreaPunto(){
 			  }
 			}
 
-			this.addPolygonLayerToControl(capaNueva, polygonStyle);
+			this.addPolygonLayerToControl(capaNueva, polygonStyle, upperColor);
 
 		break;
 
 		case 'LineString':
 		case 'MultiLineString':
 
+		  	randomColor = "#" + Math.random().toString(16).slice(2, 8);
+		  	upperColor = randomColor.toUpperCase()
+		  	console.log("Color generado: "+randomColor.toUpperCase());
+
 			let lineStyle = function(){
 				return {
-				    "color": '#08519c',
+				    "color": randomColor,
 				    "weight": 5,
 				    "opacity": 0.65
 				}
 			}
 
-			this.addLineLayerToControl(capaNueva, lineStyle);
+			this.addLineLayerToControl(capaNueva, lineStyle, upperColor);
 
 		break;
 
 		case 'Point':
 		case 'MultiPoint':
 
-			let circleStyle = function(){
+		  	randomColor = "#" + Math.random().toString(16).slice(2, 8);
+		  	upperColor = randomColor.toUpperCase();
+		  	console.log("Color generado: "+randomColor.toUpperCase());
 
-				return {
+			let circleStyle =  {
 				    radius: 8,
-				    fillColor: "#ff7800",
+				    fillColor: randomColor,
 				    color: "#000",
 				    weight: 1,
 				    opacity: 1,
 				    fillOpacity: 0.8
 				}
 
-			}
-
-			this.addPointLayerToControl(capaNueva, circleStyle)
+			this.addPointLayerToControl(capaNueva, circleStyle, upperColor);
 
 		break;
 
@@ -2062,7 +2135,7 @@ calcularAreaPunto(){
 
   }
 
-  addPolygonLayerToControl(capaNueva, estilo){
+  addPolygonLayerToControl(capaNueva, estilo, randomColor){
 
   	console.log(capaNueva);
 
@@ -2139,7 +2212,7 @@ calcularAreaPunto(){
 
   }
 
-  addLineLayerToControl(capaNueva, estilo){
+  addLineLayerToControl(capaNueva, estilo, randomColor){
 
 
 	if(!capaNueva.geojson.features.length){
@@ -2186,146 +2259,154 @@ calcularAreaPunto(){
 	this.geoJsons.push(capaNueva);
   }
 
-  addPointLayerToControl(capaNueva, estilo){
+  addPointLayerToControl(capaNueva, estilo, randomColor){
 
 		if(capaNueva.geojson.features.length){
 			
 			let _self = this;
-			let capaEspecial = 0;
 
 		  	let atributos = Object.getOwnPropertyNames(capaNueva.geojson.features[0].properties);
-		  	//let att = this.capas.find((element) =>{return element.nombre == capaNueva.nombre}).atributos;
-		  	//let atributos = att.filter((element) =>{return element.nombre != "geom"});
+
 				let popup = function(feature, layer){
 
-					if(capaEspecial == 0){
+					let popupDiv = document.createElement("div");
+					popupDiv.setAttribute("class","popupDiv");
+					let tabla = document.createElement("table");
+					tabla.setAttribute("class","table popup-table");
 
+					let cabeza = document.createElement("thead");
+					let cTr = document.createElement("tr");
+					let cTh1 = document.createElement("th");
+					cTh1.innerHTML = "Atributo";
+					let cTh2 = document.createElement("th");
+					cTh2.innerHTML = "Valor";
 
-					  	let popupDiv = document.createElement("div");
-					  	popupDiv.setAttribute("class","popupDiv");
-					  	let tabla = document.createElement("table");
-					  	tabla.setAttribute("class","table popup-table");
+					cTr.appendChild(cTh1);
+					cTr.appendChild(cTh2);
+					cabeza.appendChild(cTr);
 
-					  	let cabeza = document.createElement("thead");
-					  	let cTr = document.createElement("tr");
-					  	let cTh1 = document.createElement("th");
-					  	cTh1.innerHTML = "Atributo";
-					  	let cTh2 = document.createElement("th");
-					  	cTh2.innerHTML = "Valor";
+					tabla.appendChild(cabeza);
 
-					  	cTr.appendChild(cTh1);
-					  	cTr.appendChild(cTh2);
-					  	cabeza.appendChild(cTr);
-
-					  	tabla.appendChild(cabeza);
-
-					  	let cuerpo = document.createElement("tbody");
+					let cuerpo = document.createElement("tbody");
 				
-						atributos.forEach((element) =>{
+					atributos.forEach((element) =>{
 
-							if(element != "pk"){
+						if(element != "pk"){
 
-								let tr = document.createElement("tr");
-								let td1 = document.createElement("td");
-								td1.setAttribute("class","col-left");
-								td1.innerHTML = element;
-								let td2 = document.createElement("td");
-								td2.innerHTML = feature.properties[""+element];
+							let tr = document.createElement("tr");
+							let td1 = document.createElement("td");
+							td1.setAttribute("class","col-left");
+							td1.innerHTML = element;
+							let td2 = document.createElement("td");
+							td2.innerHTML = feature.properties[""+element];
 
-								tr.appendChild(td1);
-								tr.appendChild(td2);
+							tr.appendChild(td1);
+							tr.appendChild(td2);
 
-								cuerpo.appendChild(tr);
-							}
-						});
+							cuerpo.appendChild(tr);
+						}
+					});
 				
-								let lat = document.createElement("tr");
-								let latn = document.createElement("td");
-								latn.setAttribute("class","col-left");
-								latn.innerHTML = "Latitud";
-								let latv = document.createElement("td");
-								latv.innerHTML = feature.geometry.coordinates[1];
+					let lat = document.createElement("tr");
+					let latn = document.createElement("td");
+					latn.setAttribute("class","col-left");
+					latn.innerHTML = "Latitud";
+					let latv = document.createElement("td");
+					latv.innerHTML = feature.geometry.coordinates[1];
 				
-								lat.appendChild(latn);
-								lat.appendChild(latv);
+					lat.appendChild(latn);
+					lat.appendChild(latv);
 
-								let lng = document.createElement("tr");
-								let lngn = document.createElement("td");
-								lngn.innerHTML = "Longitud";
-								lngn.setAttribute("class","col-left");
-								let lngv = document.createElement("td");
-								lngv.innerHTML = feature.geometry.coordinates[0];
+					let lng = document.createElement("tr");
+					let lngn = document.createElement("td");
+					lngn.innerHTML = "Longitud";
+					lngn.setAttribute("class","col-left");
+					let lngv = document.createElement("td");
+					lngv.innerHTML = feature.geometry.coordinates[0];
 
-								lng.appendChild(lngn);
-								lng.appendChild(lngv);
+					lng.appendChild(lngn);
+					lng.appendChild(lngv);
 
-								cuerpo.appendChild(lat);
-								cuerpo.appendChild(lng);
+					cuerpo.appendChild(lat);
+					cuerpo.appendChild(lng);
 
-								tabla.appendChild(cuerpo);
+					tabla.appendChild(cuerpo);
 				
-						popupDiv.appendChild(tabla);
-						layer.bindPopup(popupDiv);
-
-					}
+					popupDiv.appendChild(tabla);
+					layer.bindPopup(popupDiv);
 
 				}
+
+
+			let iconoNuevo = this.getGeoIcon(capaNueva, atributos);
 
 	
-	let myLayer = L.geoJSON(capaNueva.geojson, {
-		pointToLayer: function (feature, latlng) {
-			console.log(_self);
-			console.log(capaNueva);
-			let myRe = new RegExp("geo","i");
+			let myLayer = L.geoJSON(capaNueva.geojson, {
+				pointToLayer: function (feature, latlng) {
 
-			if(myRe.test(capaNueva.nombre)){
+					if(iconoNuevo.icono != null){
 
-				if(!_self.capasGeo.find((el)=>{return el.usado == false})){
+				        return L.marker(latlng, {icon: iconoNuevo.icono});
+					}else{
 
-					for(let i = 0, j = _self.capasGeo.length; i<j; i++){
-						_self.capasGeo[i].usado = false;
+				        return L.circleMarker(latlng, estilo);
 					}
+			    },
+			    onEachFeature: popup}).addTo(this.activeMap);
+
+			let nombre = capaNueva.nombre;
+
+			this.overlayMaps[""+capaNueva.nombre] = myLayer;
+
+			this.activeMap.removeControl(this.control);
+			this.control = L.control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
+			this.control.setPosition('topright');
+
+			this.capasActivas = Object.keys(this.overlayMaps);
+			window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
+
+			let indiceColor = this.colorOverlayMaps.findIndex((el)=>{return el.capa == capaNueva.nombre});
+
+			this.colorOverlayMaps.push({
+				"capa": capaNueva.nombre,
+				"tipo": iconoNuevo.icono != null ? "icono" : "color",
+				"target": iconoNuevo.icono != null ? iconoNuevo.ruta : randomColor
+			});
+
+
+
+			this.colorOverlayMaps.forEach((color, index)=>{
+
+				let etiquetas = document.querySelectorAll(".leaflet-control-layers-overlays > label");
+				let etiqueta = <HTMLElement>etiquetas[index].querySelector("div");
+
+
+				if(color.tipo == "icono"){
+
+					let iconito = document.createElement("div");
+					iconito.setAttribute("class","cuadrito");
+					let imagen = document.createElement("img");
+					imagen.setAttribute("class","iconimg");	
+					imagen.src = color.target;
+					iconito.appendChild(imagen)
+
+					etiqueta.appendChild(iconito);
+				}
+				else{
+
+					let cuadrito = document.createElement("div");
+					cuadrito.setAttribute("class","cuadrito");
+					cuadrito.style.backgroundColor = color.target;
+
+					etiqueta.appendChild(cuadrito);
 				}
 
-				capaEspecial++;
-
-				let indiceIcono = _self.capasGeo.findIndex((el)=>{return el.usado == false});
-				_self.capasGeo[indiceIcono].usado = true;
-
-				let myIcon = L.icon({
-				    iconUrl: '../../../assets/images/'+_self.capasGeo[indiceIcono].nombre,
-				    iconSize: [82,135],
-				    iconAnchor: [41, 65],
-				    shadowUrl: '../../../assets/images/sombra_puntos_geo.png',
-				    iconSize: [104,100],
-				    iconAnchor: [52, 50],
-				    popupAnchor: [-10, -10]
-				    });
-		        return L.marker(latlng, {icon: myIcon}).on("click",function(e){ _self.openPopupModal(atributos, feature); });
-			}else{
-
-		        return L.circleMarker(latlng, estilo);
-			}
-	    },
-	    onEachFeature: popup}).addTo(this.activeMap);
-
-	let nombre = capaNueva.nombre;
-
-	this.overlayMaps[""+capaNueva.nombre] = myLayer;
-
-	this.activeMap.removeControl(this.control);
-	this.control = L.control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
-	this.control.setPosition('topleft');
-
-	this.capasActivas = Object.keys(this.overlayMaps);
-	window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
-
-	if(capaNueva.dontpush) return false;
-
-	this.geoJsons.push(capaNueva);
+			});
 
 
-			
+			if(capaNueva.dontpush) return false;
+
+			this.geoJsons.push(capaNueva);
 			
 		}
 		else{
@@ -2341,6 +2422,104 @@ calcularAreaPunto(){
 
 		this.addOverlayToControl(shape);
 
+
+	}
+
+	getGeoIcon(capaNueva, atributos){
+
+			let _self = this;
+
+			let iconoNuevo = null;
+			let ruta = "";
+
+			let myRe = new RegExp("geo","i");
+
+			if(myRe.test(capaNueva.nombre)){
+
+				if(atributos.find((el)=>{return el.toLowerCase() == "empresa"})){
+
+					let empresa = capaNueva.geojson.features[0].properties.empresa.toLowerCase();
+					if(this.capasGeo[empresa]){
+
+
+						if(!_self.capasGeo[empresa].find((el)=>{return el.usado == false})){
+
+							for(let i = 0, j = _self.capasGeo[empresa].length; i<j; i++){
+								_self.capasGeo[empresa][i].usado = false;
+							}
+						}
+
+						let indiceIcono = _self.capasGeo[empresa].findIndex((el)=>{return el.usado == false});
+						_self.capasGeo[empresa][indiceIcono].usado = true;
+
+						ruta = '../../../assets/images/'+_self.capasGeo[empresa][indiceIcono].nombre;
+
+						iconoNuevo = L.icon({
+						    iconUrl: ruta,
+						    iconSize: [40,70],
+						    iconAnchor: [20, 35],
+						    popupAnchor: [-10, -10]
+						    });
+
+
+
+					}
+					else{
+
+
+
+						if(!_self.capasGeo.comun.find((el)=>{return el.usado == false})){
+
+							for(let i = 0, j = _self.capasGeo.comun.length; i<j; i++){
+								_self.capasGeo.comun[i].usado = false;
+							}
+						}
+
+						let indiceIcono = _self.capasGeo.comun.findIndex((el)=>{return el.usado == false});
+						_self.capasGeo.comun[indiceIcono].usado = true;
+
+						ruta = '../../../assets/images/'+_self.capasGeo.comun[indiceIcono].nombre;
+
+						iconoNuevo = L.icon({
+						    iconUrl: ruta,
+						    iconSize: [40,70],
+						    iconAnchor: [20, 35],
+						    popupAnchor: [-10, -10]
+						    });
+
+
+					}
+
+				}
+				else{
+
+
+					if(!_self.capasGeo.comun.find((el)=>{return el.usado == false})){
+
+						for(let i = 0, j = _self.capasGeo.comun.length; i<j; i++){
+							_self.capasGeo.comun[i].usado = false;
+						}
+					}
+
+					let indiceIcono = _self.capasGeo.comun.findIndex((el)=>{return el.usado == false});
+					_self.capasGeo.comun[indiceIcono].usado = true;
+
+					ruta = '../../../assets/images/'+_self.capasGeo.comun[indiceIcono].nombre;
+
+					iconoNuevo = L.icon({
+					    iconUrl: ruta,
+					    iconSize: [40,70],
+					    iconAnchor: [20, 35],
+					    popupAnchor: [-10, -10]
+					    });
+
+
+
+				}
+
+			}
+
+			return {icono: iconoNuevo, ruta: ruta};
 
 	}
 
@@ -2519,15 +2698,8 @@ calcularAreaPunto(){
 
     });
 
-			var el = document.getElementsByClassName("modal-content");
-			el[0].setAttribute("style","background-color: rgba(255,255,255,0.4)");
-
-    	setTimeout(() =>{
-			/*
-			var el2 = document.getElementById("filterSet");
-			el2.setAttribute("style","background-color: rgba(255,255,255,0.1); border: 3px solid rgba(221, 221, 221, 0.4)");
-			*/
-    	}, 100)
+	var el = document.getElementsByClassName("modal-content");
+	el[0].setAttribute("style","background-color: rgba(255,255,255,0.4)");
   }
 
   limpiarFiltro(){
@@ -2578,7 +2750,7 @@ calcularAreaPunto(){
 				init2.fotoDibujada = true;
 				init2.loading = false;
 				init2.foto = img;
-			})
+			});
 		});
 	}
 	
@@ -2586,8 +2758,8 @@ calcularAreaPunto(){
 
 		var canvas = document.createElement("canvas");
 		canvas.setAttribute("id","myCanvas");
-		canvas.width = 150;
-		canvas.height = 150;
+		canvas.width = 300;
+		canvas.height = 300;
 
 		var ctx = canvas.getContext("2d");
 		
@@ -2596,7 +2768,7 @@ calcularAreaPunto(){
 			document.getElementById("fotoCanvas").appendChild(canvas);
 		}
 			
-		ctx.drawImage(img, 0, 0, 150, 150);
+		ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 	}
 	
 	descargarFoto(){
@@ -2606,52 +2778,6 @@ calcularAreaPunto(){
 		link.download = 'Download.jpg';
 		link.click();
 		
-	}
-
-	openPopupModal(atributos, feature){
-
-		let datos = [];
-		
-		atributos.forEach((element) =>{
-
-			if(element != "pk"){
-				datos.push({"atributo": element, "valor": feature.properties[element]});
-			}
-		});
-		
-		datos.push({"atributo": "lat", "valor": feature.geometry.coordinates[1]});
-		datos.push({"atributo": "lng", "valor": feature.geometry.coordinates[0]});
-
-	    const modalRef = this.modalService.open(PopupModalContentComponent,{ size: 'lg' });
-	    modalRef.componentInstance.datos = datos;
-
-
-/*
-			  	let popupDiv = document.createElement("div");
-			  	let ul = document.createElement("ul");
-		
-				atributos.forEach((element) =>{
-
-					if(element != "pk"){
-		
-						let li = document.createElement("li");
-						li.innerHTML = ""+element+": "+feature.properties[""+element];
-						ul.appendChild(li);
-					}
-				});
-		
-						let lat = document.createElement("li");
-						lat.innerHTML = "Latitud: "+feature.geometry.coordinates[1];
-						ul.appendChild(lat);
-		
-						let lng = document.createElement("li");
-						lng.innerHTML = "Longitud: "+feature.geometry.coordinates[0];
-						ul.appendChild(lng);
-		
-		
-				popupDiv.appendChild(ul);
-				layer.bindPopup(popupDiv);
-*/
 	}
 
 	toggleDistance(){
@@ -2692,6 +2818,24 @@ calcularAreaPunto(){
 			document.querySelector(".pointDialog").setAttribute("class","pointDialog hidden");
 		}
 
+	}
+
+
+	toggleData(){
+
+		if(document.querySelector(".dataDialog.hidden")){
+
+			document.querySelector(".dataDialog.hidden").setAttribute("class","dataDialog");
+		}
+		else{
+		
+			document.querySelector(".dataDialog").setAttribute("class","dataDialog hidden");
+		}
+
+	}
+
+	irCentro(){
+		this.activeMap.setView([10.456389, -64.1675]);
 	}
 
 }

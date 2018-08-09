@@ -13,6 +13,11 @@ export class BuscarCapasComponent implements OnInit {
 	capas: any;
 	capaNueva: any;
 
+  capasFiltradas: any;
+
+  filtrarEnCola: boolean;
+  
+  @Input() categoria;
 
 	@Input() categorias;
 	@Output() capaCambiada = new EventEmitter<any>();
@@ -35,6 +40,7 @@ export class BuscarCapasComponent implements OnInit {
   		atributos: []
   	}
 
+    this.filtrarCapas(this.categoria);
 
   	this.capas = [];
 
@@ -67,6 +73,11 @@ export class BuscarCapasComponent implements OnInit {
 				element.geometria = element.atributos.find((element) =>{return element.nombre=="geom"}).tipo;
 
 			});
+
+      console.log("LLEGUE CON LAS CAPAS");
+
+      this.filtrarEnCola = false;
+      this.filtrarCapas(this.categoria);
 		}
 		else{
 		  	this.capas = [];
@@ -114,5 +125,25 @@ export class BuscarCapasComponent implements OnInit {
 
   }
 
+  filtrarCapas(categoria){
+
+    console.log("TRATARE DE FILTRAR LAS CAPAS");
+
+    if(this.capas){
+
+      if(categoria == ""){
+        this.capasFiltradas = this.capas;
+      }
+      else{
+        this.capasFiltradas = this.capas.filter((el)=>{return el.categoria.id == categoria});
+      }
+    }
+    else{
+
+      console.log("PERO NO HABIA CAPAS");
+      this.filtrarEnCola = true;    
+    }
+
+  }
 
 }

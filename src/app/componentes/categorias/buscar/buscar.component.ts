@@ -15,10 +15,10 @@ export class BuscarCategoriasComponent implements OnInit {
 	@Output() categoriaCambiada = new EventEmitter<any>();
 	@Output() categoriaActualizada = new EventEmitter<any>();
 	@Output() categoriaEliminada = new EventEmitter<any>();
+	@Output() administrarCapaRequerida = new EventEmitter<any>();
 
 
-  constructor(private categoriasService: CategoriasService
-  ) { }
+  constructor(private categoriasService: CategoriasService) { }
 
   ngOnInit() {
 
@@ -46,24 +46,6 @@ export class BuscarCategoriasComponent implements OnInit {
 		}
 	);
 
-/*
-	this.categorias = [{
-			nombre: "Categoria 1",
-			descripcion: "Descripcion 1",
-			eliminable: false
-		},
-		{
-			nombre: "Categoria 2",
-			descripcion: "Descripcion 2",
-			eliminable: true
-		},
-		{
-			nombre: "Categoria 3",
-			descripcion: "Descripcion 3",
-			eliminable: false
-		}
-	]
-*/
   }//Cierre ngOnInit
 
 
@@ -77,6 +59,11 @@ export class BuscarCategoriasComponent implements OnInit {
 
   eliminarCategoria(categoria){
   	this.categoriaEliminada.emit(categoria);
+  }
+
+  administrarCapasCategoria(categoria){
+    console.log(categoria);
+  	this.administrarCapaRequerida.emit(categoria);
   }
 
 }

@@ -16,7 +16,11 @@ export class CapasComponent implements OnInit {
 	capa: any;
   categorias: any;
 
+  categoria: string;
+
   modalAbierta: boolean;
+
+  filtrarEnCola: boolean;
 
   constructor(private categoriasService: CategoriasService, private modalService: NgbModal){ }
 
@@ -25,12 +29,18 @@ export class CapasComponent implements OnInit {
     this.modalAbierta = false;
 
     this.categorias = [];
+    
+    this.categoria = "";
 
     this.categoriasService.obtener().subscribe(data =>{
       console.log(data)
       if(data.status == 200){
       
         this.categorias = data.body;
+        if(this.filtrarEnCola == true){
+          this.filtrarCapasPorCategoria();
+          this.filtrarEnCola = false;
+        }
       }
       else{
           console.log(data);
@@ -48,12 +58,40 @@ export class CapasComponent implements OnInit {
 
   open(content) {
 
-    this.modalService.open(content).result.then((result) => {
+    let _self = this;
+
+    if(window.localStorage.categoriaParaCapa){
+      this.categoria = window.localStorage.categoriaParaCapa;
+      window.localStorage.removeItem("categoriaParaCapa");
+    }
+    else{
+      this.categoria = "";
+    }
+
+    this.crearActivado = false;
+    this.editarActivado = false;
+    this.borrarActivado = false;
+
+    this.modalService.open(content, { size: 'lg' }).result.then((result) => {
       this.modalAbierta = true;
+      setTimeout(()=>{
+        _self.filtrarCapasPorCategoria();
+      },250);
     }, (reason) => {
   
     });
 
+  }
+
+  filtrarCapasPorCategoria(){
+
+    if(this.categorias){
+      let el = <HTMLElement>document.querySelector("#filtrarCapasBoton");
+      el.click();
+    }
+    else{
+      this.filtrarEnCola = true;
+    }
   }
 
   agregarCapa(obj){

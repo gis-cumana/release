@@ -2,12 +2,8 @@
 <button type="button" id="montar" style="display: none" (click)="montarDatos()"></button>
 
 <nav class="navbar omni-nav navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLink="/" >
-    <img src="assets/images/logo.png" style="float: left" width="250" height="55">
-  </a>
-
-  <a class="navbar-brand" routerLink="/" >
-    <i class="fa fa-home" aria-hidden="true"></i>
+  <a class="navbar-brand" routerLink="/" ngbPopover="Inicio" placement="bottom" triggers="mouseenter:mouseleave">
+    <img src="assets/images/logo-2.png" style="float: left" width="250" height="55">
   </a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,6 +118,16 @@
         (click)="openMapFilter()">
           <i class="fa fa-filter fa-2x" aria-hidden="true"></i>
         </button>
+        <button *ngIf="isRouteMapa() && dataOpen" id="openDataHeader" 
+        type="button" class="btn btn-info"
+        (click)="openMapData()">
+          <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="isRouteMapa() && !dataOpen" id="openDataHeader" 
+        type="button" class="btn btn-outline-info"
+        (click)="openMapData()">
+          <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
+        </button>
         <button *ngIf="isRouteMapa() && distanceOpen" id="openDistanceHeader"
         type="button" class="btn btn-info"
         (click)="openMapDistance()">
@@ -145,7 +151,7 @@
         <button *ngIf="isRouteMapa()  && pointOpen" id="openPointHeader"
         type="button" class="btn btn-info"
         (click)="openMapPoint()">
-          <i class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-street-view fa-2x" aria-hidden="true"></i>
         </button>
         <button *ngIf="isRouteMapa()  && !pointOpen" id="openPointHeader"
         type="button" class="btn btn-outline-info"
