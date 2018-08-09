@@ -35,7 +35,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.min.js"
+              "node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.min.js",
+              "node_modules/leaflet-svg-shape-markers/dist/leaflet-svg-shape-markers.min.js"
             ]
           },
           "configurations": {

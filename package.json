@@ -35,6 +35,7 @@
     "leaflet-image": "^0.4.0",
     "leaflet-search": "^2.3.7",
     "leaflet-sidebar-v2": "^3.0.2",
+    "leaflet-svg-shape-markers": "^1.0.0",
     "primeicons": "^1.0.0-beta.9",
     "primeng": "^6.0.0",
     "rxjs": "^6.2.0",
