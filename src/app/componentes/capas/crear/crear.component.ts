@@ -16,6 +16,9 @@ export class CrearCapasComponent implements OnInit {
   propiedadNueva: any;
 
   categorias: any;
+  
+  figura: string;
+  color: string;
 
   @Input() capa: any;
   @Output() creacionTerminada = new EventEmitter<boolean>();
@@ -27,6 +30,9 @@ export class CrearCapasComponent implements OnInit {
   ngOnInit() {
 
     this.loading = false;
+
+    this.figura = "";
+    this.color = "#0000FF";
 
   	this.propiedadNueva = {
   		nombre: "",
@@ -98,6 +104,11 @@ export class CrearCapasComponent implements OnInit {
     this.capaNueva.tipo = this.capaNueva.geometria;
 
     console.log(this.capaNueva);
+    
+    if(this.figura != ""){
+      this.capaNueva.figura = this.figura;
+      this.capaNueva.color = this.color;
+    }
 
     this.loading = true;
     this.capasService.agregar(this.capaNueva).subscribe(data =>{

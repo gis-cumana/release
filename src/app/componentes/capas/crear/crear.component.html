@@ -26,7 +26,8 @@
 					<option value="Polygon">POLIGONO</option>
 					<option value="MultiPoint">MULTI-PUNTO</option>
 					<option value="MultiLineString">MULTI-LINEA</option>
-					<option value="MultiPolygon">MULTI-POLIGONO</option>				</select>
+					<option value="MultiPolygon">MULTI-POLIGONO</option>
+				</select>
 			</div>
 		</div>
 
@@ -65,6 +66,20 @@
 				      	</select>
 				      </td>
 				      <td><button type="button" class="btn btn-outline-success" (click)="agregarPropiedad()"><i class="fa fa-plus"></i></button></td>
+				    </tr>
+				    <tr>
+				      <th scope="row"></th>
+				      <td>Figura</td>
+				      <td>
+				      	<select class="form-control" [(ngModel)]="figura" name="tipo_figura">
+				      		<option value="" selected default>Ninguna</option>
+				      		<option value="square">Cuadrado</option>
+				      		<option value="triangle-up">Triángulo Comun</option>
+				      		<option value="triangle-down">Triangulo Inverso</option>
+				      		<option value="x">X</option>
+				      	</select>
+				      </td>
+				      <td><input type="color" name="color" [(ngModel)]="color" /></td>
 				    </tr>
 				  </tbody>
 				</table>
