@@ -50,7 +50,6 @@ export class AgregarDatosComponent implements OnInit {
   	this.capa = "";
   	this.capasFiltradas = [];
 
-
     let estruct = this.estructuras.find((element) =>{return element.nombre == this.capaElegida.nombre});
     this.elegirCapa(estruct);
 
@@ -58,8 +57,6 @@ export class AgregarDatosComponent implements OnInit {
       longitud: 0,
       latitud: 0
     };
-
-
 
   }
 
@@ -116,7 +113,12 @@ export class AgregarDatosComponent implements OnInit {
 
     this.capaActiva.atributos.forEach((element) =>{
       if(element.nombre!='geom'){
-        this.atributos[""+element.nombre] = element.tipo == 'Text' ?  "" : 0;
+        if(element.nombre == "figura" || element.nombre == "color"){
+          this.atributos[""+element.nombre] = element.tipo;
+        }
+        else{
+          this.atributos[""+element.nombre] = element.tipo == 'Text' ?  "" : 0;
+        }
       }
     });
 
