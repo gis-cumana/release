@@ -106,7 +106,7 @@ export class CrearCapasComponent implements OnInit {
     
     if(this.figura != ""){
       this.capaNueva.atributos.push({"nombre": "figura", "tipo": this.figura});
-      this.capaNueva.atributo.push({"nombre": "color", "tipo": this.color});
+      this.capaNueva.atributos.push({"nombre": "color", "tipo": this.color});
     }
 
     this.loading = true;
