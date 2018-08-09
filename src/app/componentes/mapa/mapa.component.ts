@@ -2291,7 +2291,7 @@ calcularAreaPunto(){
 				
 					atributos.forEach((element) =>{
 
-						if(element != "pk"){
+						if(element != "pk" && element != "figura" && element != "color"){
 
 							let tr = document.createElement("tr");
 							let td1 = document.createElement("td");
@@ -2345,8 +2345,15 @@ calcularAreaPunto(){
 				pointToLayer: function (feature, latlng) {
 
 					if(iconoNuevo.icono != null){
+						
+							if(iconoNuevo.color){
 
-				        return L.marker(latlng, {icon: iconoNuevo.icono});
+								return iconoNuevo.icono(latlng, {"figura": feature.properties.figura, "color": feature.properties.color});
+							}
+							else{
+								return L.marker(latlng, {icon: iconoNuevo.icono});
+							}
+
 					}else{
 
 				        return L.circleMarker(latlng, estilo);
@@ -2366,13 +2373,25 @@ calcularAreaPunto(){
 			window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
 
 			let indiceColor = this.colorOverlayMaps.findIndex((el)=>{return el.capa == capaNueva.nombre});
+		
+			if(iconoNuevo.color){
 
-			this.colorOverlayMaps.push({
-				"capa": capaNueva.nombre,
-				"tipo": iconoNuevo.icono != null ? "icono" : "color",
-				"target": iconoNuevo.icono != null ? iconoNuevo.ruta : randomColor
-			});
+				this.colorOverlayMaps.push({
+					"capa": capaNueva.nombre,
+					"tipo": "color",
+					"target": iconoNuevo.color
+				});
+				
+			}
+			else{
 
+				this.colorOverlayMaps.push({
+					"capa": capaNueva.nombre,
+					"tipo": iconoNuevo.icono != null ? "icono" : "color",
+					"target": iconoNuevo.icono != null ? iconoNuevo.ruta : randomColor
+				});
+
+			}
 
 
 			this.colorOverlayMaps.forEach((color, index)=>{
@@ -2431,6 +2450,23 @@ calcularAreaPunto(){
 
 			let iconoNuevo = null;
 			let ruta = "";
+			
+			if(atributos.find((el)=>{return el == "figura"})){
+
+				let color = capaNueva.geojson.features[0].properties.color;
+				let figura = capaNueva.geojson.features[0].properties.figura;
+
+				let icono = function(latlng, opciones){
+					return L.shapeMarker(latlng, {
+							fillColor: "#cccccc",
+							color: opciones.color,
+							shape: opciones.figura,
+							radius: 200
+						});
+				}
+				
+				return {icono: icono, color: color};
+			}
 
 			let myRe = new RegExp("geo","i");
 
