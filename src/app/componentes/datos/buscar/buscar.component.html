@@ -38,7 +38,9 @@
 				  <thead>
 				    <tr>
 				      <th scope="col">#</th>
-				      <th scope="col" *ngFor="let att of estructuraActiva">{{att.nombre}}</th>
+				      <ng-template *ngFor="let att of estructuraActiva">
+				      	<th scope="col" *ngIf="att.nombre!='figura' && att.nombre=='color'">{{att.nombre}}</th>
+				      </ng-template>
 				      <th scope="col"></th>
 				      <th scope="col"></th>
 				    </tr>
