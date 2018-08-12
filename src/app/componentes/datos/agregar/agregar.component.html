@@ -39,7 +39,7 @@
 				      	<select class="form-control" [(ngModel)]="figura" name="tipo_figura" [disabled]="registros > 0">
 				      		<option value="" selected default>Ninguna</option>
 				      		<option *ngFor="let icon of iconos" [value]="icon">
-				      			<i [class]="'fa '+icon" aria-hidden="true"></i>
+				      			<i [class]="'fa fa-'+icon" aria-hidden="true"></i>
 				      		</option>
 				      	</select>
 				      </td>
