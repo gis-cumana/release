@@ -2458,10 +2458,10 @@ calcularAreaPunto(){
 
 				let icono = function(latlng, opciones){
 					return L["shapeMarker"](latlng, {
-							fillColor: "#cccccc",
+							fillColor: opciones.color,
 							color: opciones.color,
 							shape: opciones.figura,
-							radius: 200
+							radius: 50
 						});
 				}
 				
