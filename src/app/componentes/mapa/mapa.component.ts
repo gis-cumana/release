@@ -2468,7 +2468,7 @@ calcularAreaPunto(){
 					    backgroundColor: "white"
 					};
 
-					return window["L"]["marker"]([48.13710, 11.57539], {
+					return window["L"]["marker"](latlng, {
 						icon: window["L"]["BeautifyIcon"]["icon"](options)
 					});
 				}
