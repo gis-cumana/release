@@ -4,8 +4,7 @@ import { CapasService } from '../../services/capas/capas.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 //import * as L from 'leaflet';
 
-declare const L: any;
-declare const L.shapeMarker: any;
+declare var L: any;
 
 import * as Turf from '@turf/turf';
 import * as leafletImage from 'leaflet-image';
