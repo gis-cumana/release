@@ -2459,12 +2459,18 @@ calcularAreaPunto(){
 				let figura = capaNueva.geojson.features[0].properties.figura;
 
 				let icono = function(latlng, opciones){
-					return window["L"]["shapeMarker"](latlng, {
-							fillColor: opciones.color,
-							color: opciones.color,
-							shape: opciones.figura,
-							radius: 50
-						});
+
+					let options = {
+					    icon: opciones.figura,
+					    iconShape: 'marker',
+					    borderColor: opciones.color,
+					    textColor: opciones.color,
+					    backgroundColor: "white"
+					};
+
+					return window["L"]["marker"]([48.13710, 11.57539], {
+						icon: window["L"]["BeautifyIcon"]["icon"](options)
+					});
 				}
 				return {icono: icono, color: color};
 			}
