@@ -2459,7 +2459,7 @@ calcularAreaPunto(){
 				let figura = capaNueva.geojson.features[0].properties.figura;
 
 				let icono = function(latlng, opciones){
-					return L["shapeMarker"](latlng, {
+					return window["L"]["shapeMarker"](latlng, {
 							fillColor: opciones.color,
 							color: opciones.color,
 							shape: opciones.figura,
