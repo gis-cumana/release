@@ -37,8 +37,7 @@
             ],
             "scripts": [
               "node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.min.js",
-              "src/assets/js/leaflet.js",
-              "src/assets/js/leaflet-beautify-marker-icon.js"
+              "src/assets/js/leaflet.js"
             ]
           },
           "configurations": {
