@@ -74,7 +74,7 @@ export class CrearCapasComponent implements OnInit {
     this.capaNueva.tipo = this.capaNueva.geometria;
      console.log(this.capaNueva);
     
-    if(this.capaNueva.tipo == "Point" || this.capaNueva.tipo == "MultiPoint){
+    if(this.capaNueva.tipo == "Point" || this.capaNueva.tipo == "MultiPoint"){
       this.capaNueva.atributos.push({"nombre": "figura", "tipo": "Text"});
       this.capaNueva.atributos.push({"nombre": "color", "tipo": "Text"});
     }
