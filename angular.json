@@ -33,10 +33,10 @@
               "node_modules/primeng/resources/primeng.css",
               "node_modules/primeng/resources/themes/bootstrap/theme.css",
               "src/assets/js/leaflet-beautify-marker-icon.css",
-              "src/styles.css",
+              "src/styles.css"
             ],
             "scripts": [
-              "node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.min.js"
+              "node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.min.js",
               "src/assets/js/leaflet.js",
               "src/assets/js/leaflet-beautify-marker-icon.js"
             ]

@@ -38,12 +38,9 @@
 				      <td *ngIf="propiedad.nombre=='figura'">
 				      	<select class="form-control" [(ngModel)]="figura" name="tipo_figura" [disabled]="registros > 0">
 				      		<option value="" selected default>Ninguna</option>
-				      		<option value="square">Cuadrado</option>
-				      		<option value="circle">Circulo</option>
-				      		<option value="diamond">Rombo</option>
-				      		<option value="triangle-up">Triángulo Comun</option>
-				      		<option value="triangle-down">Triangulo Inverso</option>
-				      		<option value="x">X</option>
+				      		<option *ngFor="let icon of iconList" [value]="icon">
+				      			<i [class]="'fa '+icon" aria-hidden="true"></i>
+				      		</option>
 				      	</select>
 				      </td>
 				      <th scope="row" *ngIf="propiedad.nombre=='color'">{{i+1}}</th>

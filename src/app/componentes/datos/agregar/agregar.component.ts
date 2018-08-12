@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CapasService } from '../../../services/capas/capas.service'
 import { CategoriasService } from '../../../services/categorias/categorias.service'
 
+import iconList from './iconList';
+
 @Component({
   selector: 'app-agregar-datos',
   templateUrl: './agregar.component.html',
