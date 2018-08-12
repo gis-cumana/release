@@ -33,6 +33,24 @@
 				      <td *ngIf="propiedad.nombre!='geom' &&
 				      		propiedad.nombre!='figura' &&
 				      		propiedad.nombre!='color'"><input class="form-control-sm" [type]="propiedad.tipo" [name]="propiedad.nombre" [(ngModel)]="atributos[''+propiedad.nombre]"></td>
+				      <th scope="row" *ngIf="propiedad.nombre=='figura'">{{i+1}}</th>
+				      <td *ngIf="propiedad.nombre=='figura'">{{propiedad.nombre}}</td>
+				      <td *ngIf="propiedad.nombre=='figura'">
+				      	<select class="form-control" [(ngModel)]="figura" name="tipo_figura" [disabled]="registros > 0">
+				      		<option value="" selected default>Ninguna</option>
+				      		<option value="square">Cuadrado</option>
+				      		<option value="circle">Circulo</option>
+				      		<option value="diamond">Rombo</option>
+				      		<option value="triangle-up">Triángulo Comun</option>
+				      		<option value="triangle-down">Triangulo Inverso</option>
+				      		<option value="x">X</option>
+				      	</select>
+				      </td>
+				      <th scope="row" *ngIf="propiedad.nombre=='color'">{{i+1}}</th>
+				      <td *ngIf="propiedad.nombre=='color'">{{propiedad.nombre}}</td>
+				      <td *ngIf="propiedad.nombre=='color'">
+				      	<input type="color" name="color" [(ngModel)]="color" [disabled]="registros > 0" />
+				      </td>
 				    </tr>
 				  </tbody>
 				</table>

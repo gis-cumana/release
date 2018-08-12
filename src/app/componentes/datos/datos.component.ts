@@ -20,9 +20,15 @@ export class DatosComponent implements OnInit {
 
   agregarDatosActivado: boolean;
 
+  figura: any;
+  color: any;
+
   constructor() { }
 
   ngOnInit() {
+    
+    this.figura = "";
+    this.color = "";
 
     this.agregarDatosActivado = false;
   }
@@ -51,7 +57,41 @@ export class DatosComponent implements OnInit {
   comenzarRegistro(evento){
 
     this.capaElegida = evento;
+      
+    this.elegirFigura();
+    
     this.agregarDatosActivado = true;
+  }
+  
+  elegirFigura(){
+
+    let estruct = this.estructuras.find((element) =>{return element.nombre == this.capaElegida.nombre});
+    
+    if(estruct.geometria == "Point"){
+      if(this.capaElegida.geojson.features.length > 0){
+        this.figura = this.capaElegida.geojson.features[0].properties.figura;
+        this.color = this.capaElegida.geojson.features[0].properties.color;
+      }
+      else{
+        this.figura = "";
+        this.color = "";
+      }
+    }
+    else if(estruct.geometria == "Point"){
+      if(this.capaElegida.geojson.features.length > 0){
+        this.figura = this.capaElegida.geojson.features[0].properties.figura;
+        this.color = this.capaElegida.geojson.features[0].properties.color;
+      }
+      else{
+        this.figura = "";
+        this.color = "";
+      }
+    }
+    else{
+      this.figura = null;
+      this.color = null;
+    }
+    
   }
 
 }

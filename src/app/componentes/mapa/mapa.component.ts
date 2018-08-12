@@ -137,7 +137,7 @@ export class MapaComponent implements OnInit, OnDestroy {
   			{usado: false, nombre: "punto_geotecnia_camudoca_5.png"}
   		],
   		pdvsa: [
-  			{usado: false, nombre: "punto_geotecnia_pdvsa_2.png"}
+  			{usado: false, nombre: "fondopuntopdvsa.png"}
   		]
   	}
 

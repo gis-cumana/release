@@ -16,6 +16,11 @@ export class AgregarDatosComponent implements OnInit {
   @Input() capas;
   @Input() capasActivas;
 	@Input() capaElegida;
+
+  @Input() figura;
+  @Input() color;
+  @Input() registros;
+
   @Output() agregarTerminado = new EventEmitter<any>();
   @Output() capaCerrada = new EventEmitter<any>();
 	@Output() coordenadaActualizada = new EventEmitter<any>();
@@ -433,6 +438,29 @@ export class AgregarDatosComponent implements OnInit {
   console.log(this.atributos);
 
     this.atributos.nuevo = true;
+    
+    if(this.capaActiva.tipo == "Point"){
+      
+      if(this.figura == ""){
+        return false;
+      }
+      if(this.color == ""){
+        return false;
+      }
+      this.atributos["figura"] = this.figura;
+      this.atributos["color"] = this.color;
+    }
+    if(this.capaActiva.tipo == "MultiPoint"){
+
+      if(this.figura == ""){
+        return false;
+      }
+      if(this.color == ""){
+        return false;
+      }
+      this.atributos["figura"] = this.figura;
+      this.atributos["color"] = this.color;
+    }
 
     let datos = {
       "nombre": this.capaActiva.nombre,
@@ -467,7 +495,8 @@ export class AgregarDatosComponent implements OnInit {
         }
       },
       error => {
-        console.log(error);
+       this.loading = false;
+       console.log(error);
       }
     );
   }
