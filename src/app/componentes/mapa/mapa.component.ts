@@ -2,10 +2,12 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CategoriasService } from '../../services/categorias/categorias.service';
 import { CapasService } from '../../services/capas/capas.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+
 //import * as L from 'leaflet';
 
 import * as Turf from '@turf/turf';
 import * as leafletImage from 'leaflet-image';
+
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -14,7 +16,6 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./mapa.component.css']
 })
 export class MapaComponent implements OnInit, OnDestroy {
-
 
   activeMap: any;
 
@@ -326,7 +327,7 @@ export class MapaComponent implements OnInit, OnDestroy {
 
 
 	let osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
-	let cartoUrl='https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
+	let cartoUrl='https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png';
 
 	const osm = window["L"]tileLayer(osmUrl, {
 	    attribution: 'Open Street Maps | CSUDO'
