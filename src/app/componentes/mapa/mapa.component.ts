@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CategoriasService } from '../../services/categorias/categorias.service'
-import { CapasService } from '../../services/capas/capas.service'
+import { CategoriasService } from '../../services/categorias/categorias.service';
+import { CapasService } from '../../services/capas/capas.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 //import * as L from 'leaflet';
 
