@@ -5,6 +5,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 //import * as L from 'leaflet';
 
 declare const L: any;
+declare const L.shapeMarker: any;
 
 import * as Turf from '@turf/turf';
 import * as leafletImage from 'leaflet-image';
