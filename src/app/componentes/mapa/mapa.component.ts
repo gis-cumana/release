@@ -329,25 +329,25 @@ export class MapaComponent implements OnInit, OnDestroy {
 	let osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
 	let cartoUrl='https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png';
 
-	const osm = window["L"]tileLayer(osmUrl, {
+	const osm = window["L"].tileLayer(osmUrl, {
 	    attribution: 'Open Street Maps | CSUDO'
 	});
 
-	const carto = window["L"]tileLayer(cartoUrl, {
+	const carto = window["L"].tileLayer(cartoUrl, {
 	    attribution: 'Carto Tiles | CSUDO'
 	});
 
-      const satelite_provider = window["L"]tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      const satelite_provider = window["L"].tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
           attribution: 'Satelital | CSUDO'
       });
 
-	this.activeMap = window["L"]map('mapid', {
+	this.activeMap = window["L"].map('mapid', {
 		center: [10.456389, -64.1675],
 		zoom: 11,
 		zoomControl: false,
 		layers: [osm],
 		preferCanvas: true,
-		renderer: window["L"]canvas()
+		renderer: window["L"].canvas()
 	});
 
 
@@ -367,11 +367,11 @@ export class MapaComponent implements OnInit, OnDestroy {
 
 	};
 
-	this.control = window["L"]control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
+	this.control = window["L"].control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
 	this.control.setPosition('topleft');
 
 
-	window["L"]control.zoom().addTo(this.activeMap);
+	window["L"].control.zoom().addTo(this.activeMap);
 
 	this.activeMap.on("click", (ev) =>{
 
@@ -720,7 +720,7 @@ calcularAreaPunto(){
 		popupDiv.appendChild(boton);
 
 		console.log("break 2");
-		this.marcadorBusqueda = window["L"]circle([this.searchPoint.lat, this.searchPoint.lng],{
+		this.marcadorBusqueda = window["L"].circle([this.searchPoint.lat, this.searchPoint.lng],{
 		    color: 'red',
 		    fillColor: '#f03',
 		    fillOpacity: 0.5,
@@ -762,14 +762,14 @@ calcularAreaPunto(){
 	
 	let init = this;
 	
-	window["L"]Control["Filtro"] = window["L"]Control.extend({
+	window["L"].Control["Filtro"] = window["L"].Control.extend({
   options: {
 
     position: 'topright'
   },
   initialize: function (options) {
 
-    window["L"]Util.setOptions(this, options);
+    window["L"].Util.setOptions(this, options);
   },
   onAdd: function (map) {
 
@@ -780,20 +780,20 @@ calcularAreaPunto(){
     // when removed
   },
   submit: function(e) {
-    window["L"]DomEvent.preventDefault(e);
+    window["L"].DomEvent.preventDefault(e);
   }
 });
 
 
 ///FIN CONTROL
 
-	window["L"]control["filtro"] = function(id, options) {
-	  return new window["L"]Control["Filtro"](id, options);
+	window["L"].control["filtro"] = function(id, options) {
+	  return new window["L"].Control["Filtro"](id, options);
 	}
 
 	var items = [];
 
-	this.filterControl = window["L"]control["filtro"]({
+	this.filterControl = window["L"].control["filtro"]({
 	  data: items
 	}).addTo(this.activeMap);
 	
@@ -805,14 +805,14 @@ calcularAreaPunto(){
 	
 	let init = this;
 	
-	window["L"]Control["Filtro2"] = window["L"]Control.extend({
+	window["L"].Control["Filtro2"] = window["L"].Control.extend({
   options: {
 
     position: 'topright'
   },
   initialize: function (options) {
 
-    window["L"]Util.setOptions(this, options);
+    window["L"].Util.setOptions(this, options);
   },
   onAdd: function (map) {
 
@@ -823,20 +823,20 @@ calcularAreaPunto(){
     // when removed
   },
   submit: function(e) {
-    window["L"]DomEvent.preventDefault(e);
+    window["L"].DomEvent.preventDefault(e);
   }
 });
 
 
 ///FIN CONTROL
 
-	window["L"]control["filtro2"] = function(id, options) {
-	  return new window["L"]Control["Filtro2"](id, options);
+	window["L"].control["filtro2"] = function(id, options) {
+	  return new window["L"].Control["Filtro2"](id, options);
 	}
 
 	var items = [];
 
-	this.filterControl2 = window["L"]control["filtro2"]({
+	this.filterControl2 = window["L"].control["filtro2"]({
 	  data: items
 	}).addTo(this.activeMap);
 	
@@ -849,14 +849,14 @@ calcularAreaPunto(){
 	
 	let init = this;
 	
-	window["L"]Control["Datos"] = window["L"]Control.extend({
+	window["L"].Control["Datos"] = window["L"].Control.extend({
   options: {
 
     position: 'topleft'
   },
   initialize: function (options) {
 
-    window["L"]Util.setOptions(this, options);
+    window["L"].Util.setOptions(this, options);
   },
   onAdd: function (map) {
 
@@ -867,20 +867,20 @@ calcularAreaPunto(){
     // when removed
   },
   submit: function(e) {
-    window["L"]DomEvent.preventDefault(e);
+    window["L"].DomEvent.preventDefault(e);
   }
 });
 
 
 ///FIN CONTROL
 
-	window["L"]control["datos"] = function(id, options) {
-	  return new window["L"]Control["Datos"](id, options);
+	window["L"].control["datos"] = function(id, options) {
+	  return new window["L"].Control["Datos"](id, options);
 	}
 
 	var items = [];
 
-	this.filterControl2 = window["L"]control["datos"]({
+	this.filterControl2 = window["L"].control["datos"]({
 	  data: items
 	}).addTo(this.activeMap);
 	
@@ -892,14 +892,14 @@ calcularAreaPunto(){
 	
 	let init = this;
 	
-	window["L"]Control["Foto"] = window["L"]Control.extend({
+	window["L"].Control["Foto"] = window["L"].Control.extend({
   options: {
 
     position: 'topleft'
   },
   initialize: function (options) {
 
-    window["L"]Util.setOptions(this, options);
+    window["L"].Util.setOptions(this, options);
   },
   onAdd: function (map) {
 
@@ -910,20 +910,20 @@ calcularAreaPunto(){
     // when removed
   },
   submit: function(e) {
-    window["L"]DomEvent.preventDefault(e);
+    window["L"].DomEvent.preventDefault(e);
   }
 });
 
 
 ///FIN CONTROL
 
-	window["L"]control["foto"] = function(id, options) {
-	  return new window["L"]Control["Foto"](id, options);
+	window["L"].control["foto"] = function(id, options) {
+	  return new window["L"].Control["Foto"](id, options);
 	}
 
 	var items = [];
 
-	this.fotoControl = window["L"]control["foto"]({
+	this.fotoControl = window["L"].control["foto"]({
 	  data: items
 	}).addTo(this.activeMap);
 	
@@ -936,14 +936,14 @@ calcularAreaPunto(){
 	
 	let init = this;
 	
-	window["L"]Control["Search"] = window["L"]Control.extend({
+	window["L"].Control["Search"] = window["L"].Control.extend({
   options: {
 
     position: 'topright'
   },
   initialize: function (options) {
 
-    window["L"]Util.setOptions(this, options);
+    window["L"].Util.setOptions(this, options);
   },
   onAdd: function (map) {
 
@@ -954,20 +954,20 @@ calcularAreaPunto(){
     // when removed
   },
   submit: function(e) {
-    window["L"]DomEvent.preventDefault(e);
+    window["L"].DomEvent.preventDefault(e);
   }
 });
 
 
 ///FIN CONTROL
 
-	window["L"]control["search"] = function(id, options) {
-	  return new window["L"]Control["Search"](id, options);
+	window["L"].control["search"] = function(id, options) {
+	  return new window["L"].Control["Search"](id, options);
 	}
 
 	var items = [];
 
-	this.searchControl = window["L"]control["search"]({
+	this.searchControl = window["L"].control["search"]({
 	  data: items
 	}).addTo(this.activeMap);
 	
@@ -978,14 +978,14 @@ calcularAreaPunto(){
 ///INICIO CONTROL
 	
 
-	window["L"]Control["MedirDistancia"] = window["L"]Control.extend({
+	window["L"].Control["MedirDistancia"] = window["L"].Control.extend({
   options: {
 
     position: 'topright'
   },
   initialize: function (options) {
 
-    window["L"]Util.setOptions(this, options);
+    window["L"].Util.setOptions(this, options);
   },
   onAdd: function (map) {
 
@@ -996,20 +996,20 @@ calcularAreaPunto(){
     // when removed
   },
   submit: function(e) {
-    window["L"]DomEvent.preventDefault(e);
+    window["L"].DomEvent.preventDefault(e);
   }
 });
 
 
 ///FIN CONTROL
 
-	window["L"]control["medirDistancia"] = function(id, options) {
-	  return new window["L"]Control["MedirDistancia"](id, options);
+	window["L"].control["medirDistancia"] = function(id, options) {
+	  return new window["L"].Control["MedirDistancia"](id, options);
 	}
 
 	var items = [];
 
-	this.medirDistanciaControl = window["L"]control["medirDistancia"]({
+	this.medirDistanciaControl = window["L"].control["medirDistancia"]({
 	  data: items
 	}).addTo(this.activeMap);
 	
@@ -1020,14 +1020,14 @@ calcularAreaPunto(){
 ///INICIO CONTROL
 	
 
-	window["L"]Control["MedirArea"] = window["L"]Control.extend({
+	window["L"].Control["MedirArea"] = window["L"].Control.extend({
   options: {
 
     position: 'topright'
   },
   initialize: function (options) {
 
-    window["L"]Util.setOptions(this, options);
+    window["L"].Util.setOptions(this, options);
   },
   onAdd: function (map) {
 
@@ -1038,20 +1038,20 @@ calcularAreaPunto(){
     // when removed
   },
   submit: function(e) {
-    window["L"]DomEvent.preventDefault(e);
+    window["L"].DomEvent.preventDefault(e);
   }
 });
 
 
 ///FIN CONTROL
 
-	window["L"]control["medirArea"] = function(id, options) {
-	  return new window["L"]Control["MedirArea"](id, options);
+	window["L"].control["medirArea"] = function(id, options) {
+	  return new window["L"].Control["MedirArea"](id, options);
 	}
 
 	var items = [];
 
-	this.medirAreaControl = window["L"]control["medirArea"]({
+	this.medirAreaControl = window["L"].control["medirArea"]({
 	  data: items
 	}).addTo(this.activeMap);
 	
@@ -1062,14 +1062,14 @@ calcularAreaPunto(){
 ///INICIO CONTROL
 	
 
-	window["L"]Control["IrCentro"] = window["L"]Control.extend({
+	window["L"].Control["IrCentro"] = window["L"].Control.extend({
   options: {
 
     position: 'topleft'
   },
   initialize: function (options) {
 
-    window["L"]Util.setOptions(this, options);
+    window["L"].Util.setOptions(this, options);
   },
   onAdd: function (map) {
 
@@ -1080,20 +1080,20 @@ calcularAreaPunto(){
     // when removed
   },
   submit: function(e) {
-    window["L"]DomEvent.preventDefault(e);
+    window["L"].DomEvent.preventDefault(e);
   }
 });
 
 
 ///FIN CONTROL
 
-	window["L"]control["irCentro"] = function(id, options) {
-	  return new window["L"]Control["IrCentro"](id, options);
+	window["L"].control["irCentro"] = function(id, options) {
+	  return new window["L"].Control["IrCentro"](id, options);
 	}
 
 	var items = [];
 
-	this.irCentroControl = window["L"]control["irCentro"]({
+	this.irCentroControl = window["L"].control["irCentro"]({
 	  data: items
 	}).addTo(this.activeMap);
 	
@@ -1184,9 +1184,9 @@ calcularAreaPunto(){
 						this.activeMap.removeLayer(this.puntosEnEdicion);
 					}
 
-					this.puntosEnEdicion = window["L"]geoJSON(this.geojsonEditable, {
+					this.puntosEnEdicion = window["L"].geoJSON(this.geojsonEditable, {
 						pointToLayer: function (feature, latlng) {
-				        	return window["L"]circleMarker(latlng, {
+				        	return window["L"].circleMarker(latlng, {
 										radius: 8,
 										fillColor: "#ff7800",
 										color: "#000",
@@ -1280,14 +1280,14 @@ calcularAreaPunto(){
 		this.geojsonCamino.features.push(camino);
   	}
 /*
-		this.caminoEnEdicion = window["L"]geoJSON(this.geojsonCamino, {style: {
+		this.caminoEnEdicion = window["L"].geoJSON(this.geojsonCamino, {style: {
 			"color": '#FFFF00',
 			"weight": 2,
 			"opacity": 0.65
 			}
 		}).addTo(this.activeMap);
 */
-		this.caminoEnEdicion = window["L"]geoJSON(this.geojsonCamino, {style: this.estiloEdicion}).addTo(this.activeMap);
+		this.caminoEnEdicion = window["L"].geoJSON(this.geojsonCamino, {style: this.estiloEdicion}).addTo(this.activeMap);
 
 		let init = this;
 
@@ -1416,10 +1416,10 @@ calcularAreaPunto(){
 
 
 
-	this.verticesEnEdicion = window["L"]geoJSON(this.geojsonVertices, {
+	this.verticesEnEdicion = window["L"].geoJSON(this.geojsonVertices, {
 			
 			pointToLayer: function (feature, latlng) {
-				return window["L"]circleMarker(latlng, {
+				return window["L"].circleMarker(latlng, {
 					radius: 6,
 					fillColor: "#FF0000",
 					color: "#FFFF00",
@@ -1546,7 +1546,7 @@ calcularAreaPunto(){
 
 	  	window.localStorage.verticeNuevo = JSON.stringify(punto);
 
-		this.verticeEnMovimiento = window["L"]circleMarker(punto, {
+		this.verticeEnMovimiento = window["L"].circleMarker(punto, {
 			radius: 6,
 			fillColor: "#819FF7",
 			color: "#00FF00",
@@ -1561,7 +1561,7 @@ calcularAreaPunto(){
 
   		this.activeMap.removeLayer(this.verticeEnMovimiento);
 
-		this.verticeEnMovimiento = window["L"]circleMarker(punto, {
+		this.verticeEnMovimiento = window["L"].circleMarker(punto, {
 			radius: 6,
 			fillColor: "#819FF7",
 			color: "#00FF00",
@@ -1766,7 +1766,7 @@ calcularAreaPunto(){
 
 	this.geojsonFigura.geometry.coordinates = coordenadas;
 /*	
-	this.figuraEnEdicion = window["L"]geoJSON(this.geojsonFigura, {style: {
+	this.figuraEnEdicion = window["L"].geoJSON(this.geojsonFigura, {style: {
 										fillColor: '#bdd7e7',
 									    weight: 2,
 									    opacity: 1,
@@ -1776,7 +1776,7 @@ calcularAreaPunto(){
 									}).addTo(this.activeMap);	
 */
 
-	this.figuraEnEdicion = window["L"]geoJSON(this.geojsonFigura, {style: this.estiloEdicion}).addTo(this.activeMap);
+	this.figuraEnEdicion = window["L"].geoJSON(this.geojsonFigura, {style: this.estiloEdicion}).addTo(this.activeMap);
 
 	this.caminoCerrado = true;
 
@@ -1893,10 +1893,10 @@ calcularAreaPunto(){
 				console.log(this.geojsonEditable);
 				let init = this;
 
-				this.puntosEnEdicion = window["L"]geoJSON(this.geojsonEditable, {
+				this.puntosEnEdicion = window["L"].geoJSON(this.geojsonEditable, {
 				
 					pointToLayer: function (feature, latlng) {
-						return window["L"]circleMarker(latlng, {
+						return window["L"].circleMarker(latlng, {
 										radius: 8,
 										fillColor: "#ff7800",
 										color: "#000",
@@ -2188,14 +2188,14 @@ calcularAreaPunto(){
 		layer.bindPopup(popupDiv);
 	}
 
-	let myLayer = window["L"]geoJSON(capaNueva.geojson, {style: estilo, onEachFeature: popup}).addTo(this.activeMap);
+	let myLayer = window["L"].geoJSON(capaNueva.geojson, {style: estilo, onEachFeature: popup}).addTo(this.activeMap);
 
 	let nombre = capaNueva.nombre;
 
 	this.overlayMaps[""+capaNueva.nombre] = myLayer;
 
 	this.activeMap.removeControl(this.control);
-	this.control = window["L"]control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
+	this.control = window["L"].control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
 	this.control.setPosition('topleft');
 	
 	this.capasActivas = Object.keys(this.overlayMaps);
@@ -2243,14 +2243,14 @@ calcularAreaPunto(){
 		layer.bindPopup(popupDiv);
 	}
 
-	let myLayer = window["L"]geoJSON(capaNueva.geojson, {style: estilo, onEachFeature: popup}).addTo(this.activeMap);
+	let myLayer = window["L"].geoJSON(capaNueva.geojson, {style: estilo, onEachFeature: popup}).addTo(this.activeMap);
 
 	let nombre = capaNueva.nombre;
 
 	this.overlayMaps[""+capaNueva.nombre] = myLayer;
 
 	this.activeMap.removeControl(this.control);
-	this.control = window["L"]control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
+	this.control = window["L"].control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
 	this.control.setPosition('topleft');
 
 	this.capasActivas = Object.keys(this.overlayMaps);
@@ -2343,7 +2343,7 @@ calcularAreaPunto(){
 			let iconoNuevo = this.getGeoIcon(capaNueva, atributos);
 
 	
-			let myLayer = window["L"]geoJSON(capaNueva.geojson, {
+			let myLayer = window["L"].geoJSON(capaNueva.geojson, {
 				pointToLayer: function (feature, latlng) {
 
 					if(iconoNuevo.icono != null){
@@ -2353,12 +2353,12 @@ calcularAreaPunto(){
 								return iconoNuevo.icono(latlng, {"figura": feature.properties.figura, "color": feature.properties.color});
 							}
 							else{
-								return window["L"]marker(latlng, {icon: iconoNuevo.icono});
+								return window["L"].marker(latlng, {icon: iconoNuevo.icono});
 							}
 
 					}else{
 
-				        return window["L"]circleMarker(latlng, estilo);
+				        return window["L"].circleMarker(latlng, estilo);
 					}
 			    },
 			    onEachFeature: popup}).addTo(this.activeMap);
@@ -2368,7 +2368,7 @@ calcularAreaPunto(){
 			this.overlayMaps[""+capaNueva.nombre] = myLayer;
 
 			this.activeMap.removeControl(this.control);
-			this.control = window["L"]control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
+			this.control = window["L"].control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
 			this.control.setPosition('topright');
 
 			this.capasActivas = Object.keys(this.overlayMaps);
@@ -2491,7 +2491,7 @@ calcularAreaPunto(){
 
 						ruta = '../../../assets/images/'+_self.capasGeo[empresa][indiceIcono].nombre;
 
-						iconoNuevo = window["L"]icon({
+						iconoNuevo = window["L"].icon({
 						    iconUrl: ruta,
 						    iconSize: [40,70],
 						    iconAnchor: [20, 35],
@@ -2517,7 +2517,7 @@ calcularAreaPunto(){
 
 						ruta = '../../../assets/images/'+_self.capasGeo.comun[indiceIcono].nombre;
 
-						iconoNuevo = window["L"]icon({
+						iconoNuevo = window["L"].icon({
 						    iconUrl: ruta,
 						    iconSize: [40,70],
 						    iconAnchor: [20, 35],
@@ -2543,7 +2543,7 @@ calcularAreaPunto(){
 
 					ruta = '../../../assets/images/'+_self.capasGeo.comun[indiceIcono].nombre;
 
-					iconoNuevo = window["L"]icon({
+					iconoNuevo = window["L"].icon({
 					    iconUrl: ruta,
 					    iconSize: [40,70],
 					    iconAnchor: [20, 35],
@@ -2579,7 +2579,7 @@ calcularAreaPunto(){
 		layer.bindPopup(popupdiv);
 	}
 
-  	this.capaShapefile = window["L"]geoJSON(shape, { onEachFeature: popup }).addTo(this.activeMap);
+  	this.capaShapefile = window["L"].geoJSON(shape, { onEachFeature: popup }).addTo(this.activeMap);
   }
 
   filtrarAtributos(){
