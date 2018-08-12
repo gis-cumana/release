@@ -2,7 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CategoriasService } from '../../services/categorias/categorias.service'
 import { CapasService } from '../../services/capas/capas.service'
 import { FlashMessagesService } from 'angular2-flash-messages';
-import * as L from 'leaflet';
+//import * as L from 'leaflet';
+
+declare const L: any;
+
 import * as Turf from '@turf/turf';
 import * as leafletImage from 'leaflet-image';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -2464,7 +2467,6 @@ calcularAreaPunto(){
 							radius: 50
 						});
 				}
-				
 				return {icono: icono, color: color};
 			}
 
