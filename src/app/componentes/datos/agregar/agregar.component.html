@@ -36,12 +36,9 @@
 				      <th scope="row" *ngIf="propiedad.nombre=='figura'">{{i+1}}</th>
 				      <td *ngIf="propiedad.nombre=='figura'">{{propiedad.nombre}}</td>
 				      <td *ngIf="propiedad.nombre=='figura'">
-				      	<select class="form-control" [(ngModel)]="figura" name="tipo_figura" [disabled]="registros > 0">
-				      		<option value="" selected default>Ninguna</option>
-				      		<option *ngFor="let icon of iconos" [value]="icon">
-				      			<i [class]="'fa fa-'+icon" aria-hidden="true"></i>
-				      		</option>
-				      	</select>
+				      	<button type="button" class="btn btn-outline-success" (click)="open(iconsContent)">
+				      		<i [class]="'fa fa-'+figura" aria-hidden="true"></i>
+				      	</button>
 				      </td>
 				      <th scope="row" *ngIf="propiedad.nombre=='color'">{{i+1}}</th>
 				      <td *ngIf="propiedad.nombre=='color'">{{propiedad.nombre}}</td>
@@ -162,3 +159,25 @@
 </div>
 </div>
 <i class="fa fa-spinner fa-pulse fa-2x fa-fw" *ngIf="loading"></i>
+
+
+		<ng-template #iconsContent let-c="close" let-d="dismiss">
+		  <div class="modal-header">
+			    <h4 class="modal-title">Iconos</h4>
+			    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			    	<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body">
+
+				<div class="row">
+					<div class="col-4 col-md-3 col-xl-2" *ngFor="let icono of iconos">
+						<button type="button" class="btn btn-outline-success" (click)="elegirIcono(icono)">
+							<i [class]="'fa fa-'+icono" aria-hidden="true"></i>
+						</button>
+					</div>
+				</div>
+
+			</div>
+		</ng-template>

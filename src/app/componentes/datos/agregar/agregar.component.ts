@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CapasService } from '../../../services/capas/capas.service'
 import { CategoriasService } from '../../../services/categorias/categorias.service'
 
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-agregar-datos',
   templateUrl: './agregar.component.html',
@@ -42,9 +44,12 @@ export class AgregarDatosComponent implements OnInit {
 
   iconos: string[];
 
+  modalRef: any;
+
   constructor(
   			private categoriasService: CategoriasService,
-  			private capasService: CapasService) {}
+  			private capasService: CapasService,
+        private modalService: NgbModal) {}
 
   ngOnInit() {
 
@@ -1306,5 +1311,22 @@ export class AgregarDatosComponent implements OnInit {
 "youtube-square"];
 
   }
+
+  open(content) {
+
+    this.modalRef = this.modalService.open(content).result.then((result) => {
+
+      console.log("Saludos");
+
+    }, (reason) => {
+
+    });
+  }
+
+  elegirIcono(icono){
+    this.figura = icono;
+    this.modalRef.close();
+  }
+
 
 }
