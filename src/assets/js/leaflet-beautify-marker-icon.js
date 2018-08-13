@@ -48,7 +48,7 @@
 
     console.log(defaults);
 
-    L.BeautifyIcon = {
+    window.L.BeautifyIcon = {
 
         Icon: L.Icon.extend({
 
@@ -195,13 +195,13 @@
         })
     };
 
-    console.log(L.BeautifyIcon);
+    console.log(window.L.BeautifyIcon);
 
-    L.BeautifyIcon.icon = function (options) {
+    window.L.BeautifyIcon.icon = function (options) {
         return new L.BeautifyIcon.Icon(options);
     }
 
-    console.log(L.BeautifyIcon.icon);
+    console.log(window.L.BeautifyIcon.icon);
 
 
 (function (window, document, undefined) {
