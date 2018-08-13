@@ -7,17 +7,6 @@
 
 /*global L of leaflet*/
 
-(function (window, document, undefined) {
-
-    'use strict';
-
-    /*
-    * Leaflet.BeautifyIcon assumes that you have already included the Leaflet library.
-    */
-
-    /*
-    * Default settings for various style markers
-    */
 
     console.log("Start");
 
@@ -59,7 +48,7 @@
 
     console.log(defaults);
 
-    window["L"]["BeautifyIcon"] = {
+    L.BeautifyIcon = {
 
         Icon: L.Icon.extend({
 
@@ -206,8 +195,27 @@
         })
     };
 
-    window["L"]["BeautifyIcon"]["icon"] = function (options) {
+    console.log(L.BeautifyIcon);
+
+    L.BeautifyIcon.icon = function (options) {
         return new L.BeautifyIcon.Icon(options);
     }
+
+    console.log(L.BeautifyIcon.icon);
+
+
+(function (window, document, undefined) {
+
+    'use strict';
+
+    /*
+    * Leaflet.BeautifyIcon assumes that you have already included the Leaflet library.
+    */
+
+    /*
+    * Default settings for various style markers
+    */
+
+
 
 }(this, document));
