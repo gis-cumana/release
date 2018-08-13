@@ -18,6 +18,11 @@
     /*
     * Default settings for various style markers
     */
+
+    console.log("Start");
+
+
+
     var defaults = {
 
         iconColor: '#1EB300',
@@ -51,6 +56,8 @@
             , 'doughnut': [15, 15]
         }
     };
+
+    console.log(defaults);
 
     L.BeautifyIcon = {
 
@@ -199,7 +206,7 @@
         })
     };
 
-    L.BeautifyIcon.icon = function (options) {
+    window["L"]["BeautifyIcon"]["icon"] = function (options) {
         return new L.BeautifyIcon.Icon(options);
     }
 
