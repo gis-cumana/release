@@ -1314,7 +1314,8 @@ export class AgregarDatosComponent implements OnInit {
 
   open(content) {
 
-    this.modalRef = this.modalService.open(content).result.then((result) => {
+    this.modalRef = this.modalService.open(content);
+    this.modalRef.result.then((result) => {
 
       console.log("Saludos");
 

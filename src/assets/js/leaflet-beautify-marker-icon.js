@@ -46,8 +46,6 @@ setInterval(function(){
         }
     };
 
-    console.log(defaults);
-
     window.L.BeautifyIcon = {
 
         Icon: L.Icon.extend({
@@ -195,13 +193,10 @@ setInterval(function(){
         })
     };
 
-    console.log(window.L.BeautifyIcon);
 
     window.L.BeautifyIcon.icon = function (options) {
         return new L.BeautifyIcon.Icon(options);
     }
-
-    console.log(window.L.BeautifyIcon.icon);
 
 
 }, 2000);
