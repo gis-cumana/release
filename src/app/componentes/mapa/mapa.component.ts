@@ -2420,8 +2420,8 @@ calcularAreaPunto(){
 					cuadrito.setAttribute("class","cuadrito");
 					let fuente = document.createElement("i");
 					fuente.setAttribute("class","fa fa-"+color.figura);
-					cuadrito.style.backgroundColor = white;
-					fuente.style.fontColor = color.target;
+					cuadrito.style.backgroundColor = "white";
+					fuente.style.color = color.target;
 
 					etiqueta.appendChild(cuadrito);
 				}
