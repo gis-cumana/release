@@ -2376,11 +2376,12 @@ calcularAreaPunto(){
 
 			let indiceColor = this.colorOverlayMaps.findIndex((el)=>{return el.capa == capaNueva.nombre});
 		
-			if(iconoNuevo.color){
+			if(iconoNuevo.figura){
 
 				this.colorOverlayMaps.push({
 					"capa": capaNueva.nombre,
-					"tipo": "color",
+					"tipo": "figura",
+					"figura": iconoNuevo.figura,
 					"target": iconoNuevo.color
 				});
 				
@@ -2412,6 +2413,17 @@ calcularAreaPunto(){
 					iconito.appendChild(imagen)
 
 					etiqueta.appendChild(iconito);
+				}
+				else if(color.tipo == "figura"){
+
+					let cuadrito = document.createElement("div");
+					cuadrito.setAttribute("class","cuadrito");
+					let fuente = document.createElement("i");
+					fuente.setAttribute("class","fa fa-"+color.figura);
+					cuadrito.style.backgroundColor = white;
+					fuente.style.fontColor = color.target;
+
+					etiqueta.appendChild(cuadrito);
 				}
 				else{
 
@@ -2507,9 +2519,6 @@ calcularAreaPunto(){
 						    iconAnchor: [20, 35],
 						    popupAnchor: [-10, -10]
 						    });
-
-
-
 					}
 					else{
 
