@@ -59,7 +59,7 @@
 
     console.log(defaults);
 
-    L.BeautifyIcon = {
+    window["L"]["BeautifyIcon"] = {
 
         Icon: L.Icon.extend({
 
