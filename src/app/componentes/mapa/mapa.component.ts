@@ -2476,7 +2476,7 @@ calcularAreaPunto(){
 						icon: window["L"]["BeautifyIcon"]["icon"](options)
 					});
 				}
-				return {icono: icono, color: color};
+				return {icono: icono, color: color, figura: figura};
 			}
 
 			let myRe = new RegExp("geo","i");

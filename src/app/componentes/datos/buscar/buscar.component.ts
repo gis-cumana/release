@@ -86,7 +86,7 @@ export class BuscarDatosComponent implements OnInit {
     window.localStorage.lastLayer = this.capa;
 
   	let estruct = this.estructuras.find((element) =>{return element.nombre == this.capa});
-  	this.estructuraActiva = estruct.atributos.filter((element) =>{return (element.nombre != "geom")||(element.nombre != "pk")||(element.nombre != "color")||(element.nombre != "figura")});
+  	this.estructuraActiva = estruct.atributos.filter((element) =>{return (element.nombre != "geom")&&(element.nombre != "pk")&&(element.nombre != "color")&&(element.nombre != "figura")});
   	this.capaActiva = this.capas.find((element) =>{return element.nombre == this.capa});
   	this.paginarCapa();
   }

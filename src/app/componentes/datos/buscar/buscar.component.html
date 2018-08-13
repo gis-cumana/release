@@ -46,7 +46,7 @@
 				  <tbody>
 				    <tr *ngFor="let dato of paginaActiva; let i = index; ">
 				      <th scope="row">{{((numeroPagina+1)*5)-5+i+1}}</th>
-				      <td *ngFor="let att of estructuraActiva">{{dato.properties[""+att.nombre]}}</td>
+				      <td *ngFor="let att of estructuraActiva">{{dato.properties[att.nombre]}}</td>
 				      <td><app-actualizar-datos (modificacionTerminada)="refrescarCapas($event, 'modificar')" [dato]="dato" [capa]="capaActiva.nombre" [estructura]="estructuraActiva" [posicion]="((numeroPagina+1)*5)-5+i+1"></app-actualizar-datos></td>
 				      <td><app-eliminar-datos (eliminacionTerminada)="refrescarCapas($event, 'eliminar')" [dato]="dato" [capa]="capaActiva.nombre" [estructura]="estructuraActiva" [posicion]="((numeroPagina+1)*5)-5+i+1"></app-eliminar-datos></td>
 				    </tr>			    
