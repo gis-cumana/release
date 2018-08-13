@@ -10,7 +10,7 @@
 
     console.log("Start");
 
-
+setInterval(function(){ 
 
     var defaults = {
 
@@ -202,6 +202,9 @@
     }
 
     console.log(window.L.BeautifyIcon.icon);
+
+
+}, 2000);
 
 
 (function (window, document, undefined) {
