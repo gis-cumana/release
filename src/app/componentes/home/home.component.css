@@ -29,3 +29,8 @@ vertical-align: 50%;
 -webkit-transform: translateX(-50%) translateY(-50%);
 transform: translateX(-50%) translateY(-50%);
 }
+
+img.boton-mapas{
+	width: 95px;
+	height: 70px;
+}
