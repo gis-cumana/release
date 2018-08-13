@@ -161,9 +161,7 @@
       </form>
 
 
-    <ng-template *ngIf="!isRouteMapa()">
-      
-    <form class="form-inline">
+    <form *ngIf="!isRouteMapa()" class="form-inline">
       <button class="btn btn-success" *ngIf="!logged" (click)="showLogin()">Iniciar sesión</button>
        <button class="btn btn-primary" *ngIf="!logged" (click)="showRegister()">Registrate</button>
       <div class="dropdown" *ngIf="logged">
@@ -177,7 +175,6 @@
     </div>
     </form>
 
-    </ng-template>
   </div>
 </nav>
 
