@@ -38,7 +38,16 @@ img.perfil{
 	margin-bottom: 0.5rem;
 }
 
+.modal-body div.row.botones-modal button{
+	height: 60px;
+}
+
 div.col-desarrolladores{
 	margin-top: .25rem;
 	margin-bottom: .25rem;
+}
+
+div.container-full{
+	padding-left: 0px;
+	padding-right: 0px;
 }
