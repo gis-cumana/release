@@ -36,8 +36,8 @@ export class FooterComponent implements OnInit {
         "nombre": "Contactanos"
       },
   		{
-        "corto": "TyC", 
-        "nombre": "Terminos y Condiciones"
+        "corto": "Términos y Condiciones", 
+        "nombre": "Términos y Condiciones"
       },
   		{
         "corto": "Acerca de",
