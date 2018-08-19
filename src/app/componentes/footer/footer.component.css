@@ -25,3 +25,7 @@ img.cabecera{
 img.img-about{
 	width: 100%;
 }
+
+.modal-body div.row.botones-modal{
+	margin-bottom: 0.5rem;
+}
