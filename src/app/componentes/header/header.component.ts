@@ -507,4 +507,8 @@ export class HeaderComponent implements OnInit {
     this.dataOpen = !this.dataOpen;
   }
 
+  abrirMapa(){
+    this.router.navigate(['mapa']);
+  }
+
 }
