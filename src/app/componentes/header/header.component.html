@@ -2,14 +2,24 @@
 <button type="button" id="montar" style="display: none" (click)="montarDatos()"></button>
 
     <div *ngIf="!isRouteMapa() && !logged" class="form-inline">
-      <button class="btn btn-success btn-flotante-1" (click)="showLogin()">Iniciar sesión</button>
-      <button class="btn btn-primary btn-flotante-2">Video</button>
+      <button class="btn btn-primary btn-flotante-1" (click)="showLogin()">
+        <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn-danger btn-flotante-2">
+        <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
+      </button>
     </div>
 
     <div *ngIf="!isRouteMapa() && logged" class="form-inline">
-      <button class="btn btn-success btn-flotante-1" (click)="logout()">Cerrar sesión</button>
-      <button class="btn btn-primary btn-flotante-2" (click)="showRegister()">Registrar</button>
-      <button class="btn btn-primary btn-flotante-3">Video</button>
+      <button class="btn btn-warning btn-flotante-1" (click)="logout()">
+        <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn-primary btn-flotante-2" (click)="showRegister()">
+        <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn-danger btn-flotante-3">
+        <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
+      </button>
     </div>
 
 <nav class="navbar omni-nav navbar-expand-lg navbar-light bg-light">
