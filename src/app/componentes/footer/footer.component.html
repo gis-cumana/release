@@ -147,6 +147,52 @@
         </div>
 
         <div class="container" *ngIf="ventanaActiva.nombre==ventanas[3].nombre">
+
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <button type="button" class="btn btn-block btn-info" (click)="seleccionarVentana(ventanas[3])" disabled>{{ventanas[3].nombre}}</button>
+            </div>
+            <div class="col-12 col-sm-4">
+              <button type="button" class="btn btn-block btn-otline-info" (click)="seleccionarVentana(ventanas[4])">{{ventanas[4].nombre}}</button>
+            </div>
+            <div class="col-12 col-sm-$">
+              <button type="button" class="btn btn-block btn-otline-info" (click)="seleccionarVentana(ventanas[5])">{{ventanas[5].nombre}}</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+
+                <div class="card text-center">
+                  <img class="card-img-top img-about" src="./assets/images/logo-2.png">
+                  <div class="card-body">
+                    <p class="card-text text-danger">Version 1.0</p>
+                    <p class="card-text">Propiedad del Centro de Sismologia de la Universidad de Oriente</p>
+                    <p class="card-text">Contacto: mail@sigcumana.com</p>
+                    <p class="card-text">Fuentes: PDVSA, BID, CSUDO</p>
+                    <p class="card-text">La informacion presentada en este portal es</p>
+                  </div>
+                </div>              
+              
+            </div>
+          </div>
+
+        </div>
+
+        <div class="container" *ngIf="ventanaActiva.nombre==ventanas[4].nombre">
+
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <button type="button" class="btn btn-block btn-outline-info" (click)="seleccionarVentana(ventanas[3])">{{ventanas[3].nombre}}</button>
+            </div>
+            <div class="col-12 col-sm-4">
+              <button type="button" class="btn btn-block btn-info" (click)="seleccionarVentana(ventanas[4])" disabled>{{ventanas[4].nombre}}</button>
+            </div>
+            <div class="col-12 col-sm-4">
+              <button type="button" class="btn btn-block btn-otline-info" (click)="seleccionarVentana(ventanas[5])">{{ventanas[5].nombre}}</button>
+            </div>
+          </div>
+
           <div class="row">
 
             <div class="col-12 col-xl-4 offset-xl-4">
@@ -167,9 +213,24 @@
             </div>
 
           </div>
+
+
         </div>
 
-        <div class="container" *ngIf="ventanaActiva.nombre==ventanas[4].nombre">
+        <div class="container" *ngIf="ventanaActiva.nombre==ventanas[5].nombre">
+
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <button type="button" class="btn btn-block btn-outline-info" (click)="seleccionarVentana(ventanas[3])">{{ventanas[3].nombre}}</button>
+            </div>
+            <div class="col-12 col-sm-4">
+              <button type="button" class="btn btn-block btn-otline-info" (click)="seleccionarVentana(ventanas[4])">{{ventanas[4].nombre}}</button>
+            </div>
+            <div class="col-12 col-sm-4">
+              <button type="button" class="btn btn-block btn-info" (click)="seleccionarVentana(ventanas[5])" disabled>{{ventanas[5].nombre}}</button>
+            </div>
+          </div>
+
           <div class="row" *ngFor="let grupo of desarrolladores">
 
             <div class="col-12 col-xl-4">
@@ -190,25 +251,7 @@
             </div>
 
           </div>
-        </div>
 
-        <div class="container" *ngIf="ventanaActiva.nombre==ventanas[5].nombre">
-          <div class="row">
-            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-
-                <div class="card text-center">
-                  <img class="card-img-top img-about" src="./assets/images/logo-2.png">
-                  <div class="card-body">
-                    <p class="card-text text-danger">Version 1.0</p>
-                    <p class="card-text">Propiedad del Centro de Sismologia de la Universidad de Oriente</p>
-                    <p class="card-text">Contacto: mail@sigcumana.com</p>
-                    <p class="card-text">Fuentes: PDVSA, BID, CSUDO</p>
-                    <p class="card-text">La informacion presentada en este portal es</p>
-                  </div>
-                </div>              
-              
-            </div>
-          </div>
         </div>
 
       </div>
@@ -221,8 +264,8 @@
 <nav class="navbar navbar-dark bg-default navbar-fixed-bottom">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-6 col-sm-3 separada" *ngFor="let ventana of ventanas;">
-          <button type="button" class="btn btn-link btn-block" (click)="abrirModal(ventana, content)">{{ventana.corto}}</button>
+        <div class="col-6 col-sm-3 separada" *ngFor="let count of contador;">
+          <button type="button" class="btn btn-link btn-block" (click)="abrirModal(ventanas[count], content)">{{ventanas[count].corto}}</button>
         </div>
       </div>
     </div>
