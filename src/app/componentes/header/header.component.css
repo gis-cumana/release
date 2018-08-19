@@ -13,14 +13,14 @@ button.btn-flotante-1{
 button.btn-flotante-2{
 	position: fixed;
 	z-index: 900;
-	top: 150px;
+	top: 175px;
 	right: 25px;
 }
 
 button.btn-flotante-3{
 	position: fixed;
 	z-index: 900;
-	top: 180;
+	top: 230px;
 	right: 25px;
 }
 
