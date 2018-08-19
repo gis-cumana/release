@@ -31,7 +31,7 @@ img.perfil{
 	margin: auto;
 	width: 100px;
 	height: 100px;
-	border-radius: .25rem;
+	border-radius: .25rem !important;
 }
 
 .modal-body div.row.botones-modal{
