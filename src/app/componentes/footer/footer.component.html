@@ -200,7 +200,7 @@
               <div class="card-group">
 
                 <div class="card" *ngFor="let investigador of investigadores">
-                  <img class="card-img-top img-240" [src]="'./assets/images/'+investigador.foto">
+                  <img class="card-img-top perfil" [src]="'./assets/images/'+investigador.foto">
                   <div class="card-body">
                     <p class="card-text text-danger">{{investigador.nombre}}</p>
                     <p class="card-text">Mail: {{investigador.correo}}</p>
@@ -238,7 +238,7 @@
               <div class="card-group">
 
                 <div class="card" *ngFor="let desarrollador of grupo">
-                  <img class="card-img-top img-240" [src]="'./assets/images/'+desarrollador.foto">
+                  <img class="card-img-top perfil" [src]="'./assets/images/'+desarrollador.foto">
                   <div class="card-body">
                     <p class="card-text text-danger">{{desarrollador.nombre}}</p>
                     <p class="card-text">Mail: {{desarrollador.correo}}</p>

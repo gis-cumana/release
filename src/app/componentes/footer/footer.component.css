@@ -26,6 +26,14 @@ img.img-about{
 	width: 100%;
 }
 
+img.perfil{
+	display: block;
+	margin: auto;
+	width: 100px;
+	height: 100px;
+	border-radius: .25rem;
+}
+
 .modal-body div.row.botones-modal{
 	margin-bottom: 0.5rem;
 }
