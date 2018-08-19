@@ -48,8 +48,8 @@ export class FooterComponent implements OnInit {
         "nombre": "Investigadores"
       },
       {
-        "corto": "Desarrolladores",
-        "nombre": "Desarrolladores"
+        "corto": "Analistas y Desarrolladores",
+        "nombre": "Analistas y Desarrolladores"
       }
   	];
   	this.investigadores = [
