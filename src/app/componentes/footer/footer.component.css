@@ -12,6 +12,15 @@ img.img-240{
 	height: 240px;
 }
 
+img.img-120{
+	height: 120px;
+}
+
+img.center{
+	display: block;
+    margin: auto;
+}
+
 img.proyecto{
 	width: 100%;
 	margin-top: 0.25rem;
@@ -23,7 +32,10 @@ img.cabecera{
 }
 
 img.img-about{
-	width: 100%;
+    display: block;
+    margin: auto;
+    width: 300px;
+    height: 100px;
 }
 
 img.perfil{
