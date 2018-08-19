@@ -222,7 +222,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-6 col-sm-3 separada" *ngFor="let ventana of ventanas;">
-          <button type="button" class="btn btn-link btn-block" (click)="abrirModal(ventana.nombre, content)">{{ventana.corto}}</button>
+          <button type="button" class="btn btn-link btn-block" (click)="abrirModal(ventana, content)">{{ventana.corto}}</button>
         </div>
       </div>
     </div>
