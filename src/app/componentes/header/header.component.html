@@ -1,15 +1,61 @@
 <input type="file" name="file" id="geojsonfile" style="display: none" (change)="cargarGeojson($event)">
 <button type="button" id="montar" style="display: none" (click)="montarDatos()"></button>
 
+
+            <ng-template #video let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Riesgo Sismico de la ciudad de Cumaná</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col"></div>
+                  <div class="col-auto">
+                    <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/fFdrvfZVGfU?rel=0"
+                    frameborder="0" allow="autoplay; encrypted-media"
+                    allowfullscreen></iframe>
+                  </div>
+                  <div class="col"></div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cerrar</button>
+              </div>
+            </ng-template>
+
+
+    <div *ngIf="!isRouteMapa() && !logged" class="form-inline">
+      <button class="btn btn-primary btn-flotante-1" (click)="showLogin()">
+        <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn-danger btn-flotante-2" (click)="open(video)">
+        <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div *ngIf="!isRouteMapa() && logged" class="form-inline">
+      <button class="btn btn-warning btn-flotante-1" (click)="logout()">
+        <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn-primary btn-flotante-2" (click)="showRegister()">
+        <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn-danger btn-flotante-3">
+        <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
+      </button>
+    </div>
+
 <nav class="navbar omni-nav navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLink="/" ngbPopover="Inicio" placement="bottom" triggers="mouseenter:mouseleave">
-    <img  *ngIf="!isRouteMapa()" src="assets/images/logoinicio1.png" >
-     <img *ngIf=" isRouteMapa()" src="assets/images/logo3.png" style="float: left" width="250" height="55">
+  <a *ngIf="!isRouteMapa()" class="navbar-brand">
+    <img class="img-full" src="assets/images/logoinicio1.png" >
   </a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-  </button>
+  <a *ngIf="isRouteMapa()" class="navbar-brand" routerLink="/" ngbPopover="Inicio" placement="bottom" triggers="mouseenter:mouseleave">
+     <img src="assets/images/logo3.png" style="float: left" width="250" height="55">
+  </a>
 
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -67,7 +113,7 @@
               </div>
               <div class="modal-body">
                 <div class="row">
-                  <div class="col-xs-12">
+                  <div class="col-12">
 
 
                     <ngb-accordion
@@ -84,7 +130,7 @@
                                 class="btn btn-success btn-filter"
                                 (click)="filtrarCapas(cat.id)">
                                 </button>
-                              <div class="col-xs-12" *ngFor="let cap of capasFiltradas">
+                              <div class="col-12" *ngFor="let cap of capasFiltradas">
                                 <button *ngIf="!isLayerSelected(cap.nombre)" class="btn btn-outline-info"
                                 (click)="traerCapa(cap.nombre)">{{cap.nombre}}</button>
 
@@ -160,21 +206,6 @@
           <i class="fa fa-street-view fa-2x" aria-hidden="true"></i>
         </button>
       </form>
-
-
-    <form *ngIf="!isRouteMapa()" class="form-inline">
-      <button class="btn btn-success" *ngIf="!logged" (click)="showLogin()">Iniciar sesión</button>
-       <button class="btn btn-primary" *ngIf="!logged" (click)="showRegister()">Registrate</button>
-      <div class="dropdown" *ngIf="logged">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="fa fa-user"></span> {{user_logged}}
-          </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#" routerLink="/profile" >Ver perfil</a>
-        <a class="dropdown-item" href="#" (click)="logout()" >Cerrar sesión</a>
-      </div>
-    </div>
-    </form>
 
   </div>
 </nav>

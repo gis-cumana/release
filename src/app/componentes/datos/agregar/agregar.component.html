@@ -172,9 +172,9 @@
 			<div class="modal-body">
 
 				<div class="row">
-					<div class="col-4 col-md-3 col-xl-2" *ngFor="let icono of iconos">
-						<button type="button" class="btn btn-outline-success" (click)="elegirIcono(icono)">
-							<i [class]="'fa fa-'+icono" aria-hidden="true"></i>
+					<div class="col-4 col-sm-3" *ngFor="let icono of iconos">
+						<button type="button" class="btn btn-outline-success btn-block" (click)="elegirIcono(icono)">
+							<i [class]="'fa fa-3x fa-'+icono" aria-hidden="true"></i>
 						</button>
 					</div>
 				</div>
