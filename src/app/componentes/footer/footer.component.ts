@@ -36,8 +36,8 @@ export class FooterComponent implements OnInit {
         "nombre": "Contactanos"
       },
   		{
-        "corto": "TyC", 
-        "nombre": "Terminos y Condiciones"
+        "corto": "Términos y Condiciones", 
+        "nombre": "Términos y Condiciones"
       },
   		{
         "corto": "Acerca de",
@@ -55,13 +55,13 @@ export class FooterComponent implements OnInit {
   	];
   	this.investigadores = [
   		{
-  		"nombre": "Dr. Jorge Rojas",
+  		"nombre": "MSc. Jorge Rojas",
   		"correo": "rogojorge@gmail.com",
   		"telefono": "0416-3200906",
   		"foto": "jorge.jpg"
   		},
   		{
-  		"nombre": "MSc. Francisco Alvarez",
+  		"nombre": "Licdo. Francisco Alvarez",
   		"correo": "faovenezuela@gmail.com",
   		"telefono": "0414-8242002",
   		"foto": "francisco.jpeg"

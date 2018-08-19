@@ -3,6 +3,11 @@ img.img-full{
 	height: auto;
 }
 
+img.boton-mapas{
+    width: 1.7em;
+    height: 2.1em;	
+}
+
 button.btn-flotante-1{
 	position: fixed;
 	z-index: 900;

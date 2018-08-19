@@ -95,16 +95,16 @@
 
         <div class="container" *ngIf="ventanaActiva.nombre==ventanas[1].nombre">
           <div class="row">
-            <div class="col-12 col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+            <div class="col-12 col-md-10 offset-md-1">
 
               <div class="card">
-                <img class="card-img-top img-240" src="./assets/images/logo_csudo.png">
-                <div class="card-body">
+                <img class="card-img-top img-120 center" src="./assets/images/logo_csudo.png">
+                <div class="card-body text-center">
                   <p class="card-text text-danger">Centro de Sismologia de la Universidad de Oriente</p>
-                  <p class="card-text">Direccion: Av. Universidad Cerro del medio, parte alta del Decanato. Cumana, Estado Sucre.</p>
-                  <p class="card-text">Telefono: (0293) - 4002403 / 4516756</p>
+                  <p class="card-text">Direccion: Av. Universidad Cerro del medio, parte alta del Decanato de la Universidad de Oriente. Cumana, Estado Sucre. Venezuela.</p>
+                  <p class="card-text">Telefono: (+58)(293) 4002403/4516756</p>
                 </div>
-               </div>              
+              </div>              
               
             </div>
           </div>
@@ -115,7 +115,7 @@
             <div class="col-12 text-justify">
 
               <p>
-              El uso del sitio virtual (SIGCUMANÄ) del Centro de Simbología de la Universidad de Oriente (CSUDO)  se rige por los términos y condiciones que a continuación se mencionan. En virtud de la utilización del Sitio Virtual usted acepta estos términos y condiciones y las modificaciones que el CSUDO haga de ellos y publique en el Sitio Virtual.  El CSUDO mantiene el Sitio Virtual exclusivamente con fines informativos.
+              El uso del sitio virtual (CUMASIG) del Centro de Simbología de la Universidad de Oriente (CSUDO)  se rige por los términos y condiciones que a continuación se mencionan. En virtud de la utilización del Sitio Virtual usted acepta estos términos y condiciones y las modificaciones que el CSUDO haga de ellos y publique en el Sitio Virtual.  El CSUDO mantiene el Sitio Virtual exclusivamente con fines informativos.
               </p>
 
               <p>
@@ -164,16 +164,15 @@
         <div class="container" *ngIf="ventanaActiva.nombre==ventanas[3].nombre">
 
           <div class="row">
-            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+            <div class="col-12 col-md-10 offset-md-1">
 
                 <div class="card text-center">
-                  <img class="card-img-top img-about" src="./assets/images/logo-2.png">
+                  <img class="card-img-top img-about" src="./assets/images/logo2.png">
                   <div class="card-body">
                     <p class="card-text text-danger">Version 1.0</p>
                     <p class="card-text">Propiedad del Centro de Sismologia de la Universidad de Oriente</p>
                     <p class="card-text">Contacto: mail@sigcumana.com</p>
-                    <p class="card-text">Fuentes: PDVSA, BID, CSUDO</p>
-                    <p class="card-text">La informacion presentada en este portal es</p>
+                    <p class="card-text">Fuentes: BID, CSUDO</p>
                   </div>
                 </div>              
               
@@ -202,7 +201,7 @@
 
           <div class="row">
 
-            <div class="col-12 col-xl-10 offset-xl-1">
+            <div class="col-12">
 
               <div class="card-group">
 
@@ -210,7 +209,8 @@
                   <img class="card-img-top perfil" [src]="'./assets/images/'+investigador.foto">
                   <div class="card-body">
                     <p class="card-text text-danger text-center">{{investigador.nombre}}</p>
-                    <p class="card-text">Mail: {{investigador.correo}}</p>
+                    <p class="card-text">Mail:</p>
+                    <p class="card-text">{{investigador.correo}}</p>
                     <p class="card-text">Tel: {{investigador.telefono}}</p>
                   </div>
                 </div>              
@@ -252,7 +252,8 @@
                   <img class="card-img-top perfil" [src]="'./assets/images/'+desarrollador.foto">
                   <div class="card-body">
                     <p class="card-text text-danger text-center">{{desarrollador.nombre}}</p>
-                    <p class="card-text">Mail: {{desarrollador.correo}}</p>
+                    <p class="card-text">Mail:</p>
+                    <p class="card-text">{{desarrollador.correo}}</p>
                     <p class="card-text">Tel: {{desarrollador.telefono}}</p>
                   </div>
                 </div>              
@@ -273,7 +274,7 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-6 col-sm-3 separada" *ngFor="let count of contador;">
+        <div class="col-6 col-md-3 separada" *ngFor="let count of contador;">
           <button type="button" class="btn btn-link btn-block" (click)="abrirModal(ventanas[count], content)">{{ventanas[count].corto}}</button>
         </div>
       </div>

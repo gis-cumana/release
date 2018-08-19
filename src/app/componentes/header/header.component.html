@@ -12,10 +12,7 @@
               <div class="modal-body">
                 <div class="row">
                   <div class="col">
-                    <iframe width="560" height="315"
-                    src="https://www.youtube.com/watch?v=n_7lfodHSYIrel=0"
-                    frameborder="0" allow="autoplay; encrypted-media"
-                    allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/n_7lfodHSYI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                   </div>
                 </div>
               </div>
@@ -32,6 +29,9 @@
       <button class="btn btn-danger btn-flotante-2" (click)="open(video)">
         <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
       </button>
+      <button class="btn btn-danger btn-flotante-3" (click)="abrirMapa()">
+        <img class="boton-mapas" src="assets/images/mapas-logo.png">
+      </button>
     </div>
 
     <div *ngIf="!isRouteMapa() && logged" class="form-inline">
@@ -43,6 +43,9 @@
       </button>
       <button class="btn btn-danger btn-flotante-3">
         <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn-danger btn-flotante-4" (click)="abrirMapa()">
+        <img class="boton-mapas" src="assets/images/mapas-logo.png">
       </button>
     </div>
 
