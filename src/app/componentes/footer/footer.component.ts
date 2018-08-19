@@ -22,12 +22,30 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
   	this.ventanas = [
-  		{"corto": "Proyecto", nombre": Proyecto"},
-  		{"corto": "Contactanos", nombre": Contactanos"},
-  		{"corto": "TyC", nombre": Terminos y Condiciones"},
-  		{"corto": "Investigadores", nombre": Investigadores"},
-  		{"corto": "Desarrolladores", nombre": Desarrolladores"},
-  		{"corto": "Acerca de", nombre": Acerca de"}
+  		{
+        "corto": "Proyecto",
+        "nombre": "Proyecto"
+      },
+  		{
+        "corto": "Contactanos",
+        "nombre": "Contactanos"
+      },
+  		{
+        "corto": "TyC", 
+        "nombre": "Terminos y Condiciones"
+      },
+  		{
+        "corto": "Investigadores",
+        "nombre": "Investigadores"
+      },
+  		{
+        "corto": "Desarrolladores",
+        "nombre": "Desarrolladores"
+      },
+  		{
+        "corto": "Acerca de",
+        "nombre": "Acerca de"
+      }
   	];
   	this.investigadores = [
   		{

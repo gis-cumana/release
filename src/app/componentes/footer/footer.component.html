@@ -221,7 +221,7 @@
 <nav class="navbar navbar-dark bg-default navbar-fixed-bottom">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-6 col-sm-4 separada" *ngFor="let ventana of ventanas;">
+        <div class="col-6 col-sm-3 separada" *ngFor="let ventana of ventanas;">
           <button type="button" class="btn btn-link btn-block" (click)="abrirModal(ventana.nombre, content)">{{ventana.corto}}</button>
         </div>
       </div>
