@@ -36,7 +36,7 @@
 				      <th scope="row" *ngIf="propiedad.nombre=='figura'">{{i+1}}</th>
 				      <td *ngIf="propiedad.nombre=='figura'">{{propiedad.nombre}}</td>
 				      <td *ngIf="propiedad.nombre=='figura'">
-				      	<button type="button" class="btn btn-outline-success" (click)="open(iconsContent)">
+				      	<button type="button" class="btn btn-outline-success" (click)="open(iconsContent)" [disabled]="registros > 0">
 				      		<i [class]="'fa fa-'+figura" aria-hidden="true"></i>
 				      	</button>
 				      </td>
