@@ -12,7 +12,7 @@
               <div class="modal-body">
                 <div class="row">
                   <div class="col">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/n_7lfodHSYI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe height="315" style="width: 100%" src="https://www.youtube.com/embed/n_7lfodHSYI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                   </div>
                 </div>
               </div>
@@ -23,11 +23,11 @@
 
 
     <div *ngIf="!isRouteMapa() && !logged" class="form-inline">
-      <button class="btn btn-primary btn-flotante-1" (click)="showLogin()">
+      <button class="btn btn-outline-primary btn-flotante-1" (click)="showLogin()">
         <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
       </button>
-      <button class="btn btn-danger btn-flotante-2" (click)="open(video)">
-        <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
+      <button class="btn btn-outline-danger btn-flotante-2" (click)="abrirMapa()">
+        <img class="boton-imagen" src="assets/images/mapas-logo.png">
       </button>
       <a href="https://www.iadb.org/es" target="_blank" class="btn btn-outline-info btn-flotante-3">
         <img class="boton-imagen" src="assets/images/bid.jpg">
@@ -38,20 +38,20 @@
       <a href="http://alcaldiadecumana.org/" target="_blank" class="btn btn-outline-info btn-flotante-5">
         <img class="boton-imagen" src="assets/images/logoalcaldia1.png">
       </a>
-      <button class="btn btn-danger btn-flotante-6" (click)="abrirMapa()">
-        <img class="boton-imagen" src="assets/images/mapas-logo.png">
+      <button class="btn btn-outline-danger btn-flotante-6" (click)="open(video)">
+        <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
       </button>
     </div>
 
     <div *ngIf="!isRouteMapa() && logged" class="form-inline">
-      <button class="btn btn-warning btn-flotante-1" (click)="logout()">
+      <button class="btn btn-outline-warning btn-flotante-1" (click)="logout()">
         <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
       </button>
-      <button class="btn btn-primary btn-flotante-2" (click)="showRegister()">
+      <button class="btn btn-outline-primary btn-flotante-2" (click)="showRegister()">
         <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
       </button>
-      <button class="btn btn-danger btn-flotante-3">
-        <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
+      <button class="btn btn-outline-danger btn-flotante-3" (click)="abrirMapa()">
+        <img class="boton-imagen" src="assets/images/mapas-logo.png">
       </button>
       <a href="https://www.iadb.org/es" target="_blank" class="btn btn-outline-info btn-flotante-4">
         <img class="boton-imagen" src="assets/images/bid.jpg">
@@ -62,8 +62,8 @@
       <a href="http://alcaldiadecumana.org/" target="_blank" class="btn btn-outline-info btn-flotante-6">
         <img class="boton-imagen" src="assets/images/logoalcaldia1.png">
       </a>
-      <button class="btn btn-danger btn-flotante-7" (click)="abrirMapa()">
-        <img class="boton-imagen" src="assets/images/mapas-logo.png">
+      <button class="btn btn-outline-danger btn-flotante-7">
+        <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
       </button>
     </div>
 
