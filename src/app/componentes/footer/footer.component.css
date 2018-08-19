@@ -37,3 +37,8 @@ img.perfil{
 .modal-body div.row.botones-modal{
 	margin-bottom: 0.5rem;
 }
+
+div.col-desarrolladores{
+	margin-top: .25rem;
+	margin-bottom: .25rem;
+}
