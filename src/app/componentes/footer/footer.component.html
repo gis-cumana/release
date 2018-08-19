@@ -156,7 +156,7 @@
               <button type="button" class="btn btn-block btn-outline-info" (click)="seleccionarVentana(ventanas[4])">{{ventanas[4].corto}}</button>
             </div>
             <div class="col-12 col-sm-4">
-              <button type="button" class="btn btn-block btn-outline-info" (click)="seleccionarVentana(ventanas[5])">{{ventanas[5].corto}}</button>
+              <button type="button" class="btn btn-block btn-outline-info" [attr.innerHTLM]="ventanas[5].corto" (click)="seleccionarVentana(ventanas[5])"></button>
             </div>
           </div>
         </div>
@@ -192,7 +192,7 @@
               <button type="button" class="btn btn-block btn-info" (click)="seleccionarVentana(ventanas[4])" disabled>{{ventanas[4].corto}}</button>
             </div>
             <div class="col-12 col-sm-4">
-              <button type="button" class="btn btn-block btn-outline-info" (click)="seleccionarVentana(ventanas[5])">{{ventanas[5].corto}}</button>
+              <button type="button" class="btn btn-block btn-outline-info" [attr.innerHTLM]="ventanas[5].corto" (click)="seleccionarVentana(ventanas[5])"></button>
             </div>
           </div>
 
@@ -234,7 +234,7 @@
               <button type="button" class="btn btn-block btn-outline-info" (click)="seleccionarVentana(ventanas[4])">{{ventanas[4].corto}}</button>
             </div>
             <div class="col-12 col-sm-4">
-              <button type="button" class="btn btn-block btn-info" (click)="seleccionarVentana(ventanas[5])" disabled>{{ventanas[5].corto}}</button>
+              <button type="button" class="btn btn-block btn-info" (click)="seleccionarVentana(ventanas[5])" [attr.innerHTLM]="ventanas[5].corto" disabled></button>
             </div>
           </div>
 
