@@ -11,49 +11,49 @@ img.boton-imagen{
 .btn-flotante-1{
 	position: fixed;
 	z-index: 900;
-	top: 80px;
+	top: 110px;
 	right: 25px;
 }
 
 .btn-flotante-2{
 	position: fixed;
 	z-index: 900;
-	top: 135px;
+	top: 165px;
 	right: 25px;
 }
 
 .btn-flotante-3{
 	position: fixed;
 	z-index: 900;
-	top: 190px;
+	top: 220px;
 	right: 25px;
 }
 
 .btn-flotante-4{
 	position: fixed;
 	z-index: 900;
-	top: 245px;
+	top: 275px;
 	right: 25px;
 }
 
 .btn-flotante-5{
 	position: fixed;
 	z-index: 900;
-	top: 300px;
+	top: 330px;
 	right: 25px;
 }
 
 .btn-flotante-6{
 	position: fixed;
 	z-index: 900;
-	top: 355px;
+	top: 385px;
 	right: 25px;
 }
 
 .btn-flotante-7{
 	position: fixed;
 	z-index: 900;
-	top: 410px;
+	top: 440px;
 	right: 25px;
 }
 

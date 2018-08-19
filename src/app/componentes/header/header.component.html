@@ -23,46 +23,46 @@
 
 
     <div *ngIf="!isRouteMapa() && !logged" class="form-inline">
-      <button class="btn btn-outline-primary btn-flotante-1" (click)="showLogin()">
+      <button class="btn btn-outline-primary btn-flotante-1" ngbPopover="Iniciar Sesión" placement="left" triggers="mouseenter:mouseleave" (click)="showLogin()">
         <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
       </button>
-      <button class="btn btn-outline-danger btn-flotante-2" (click)="abrirMapa()">
+      <button class="btn btn-outline-danger btn-flotante-2" ngbPopover="Ver Mapa" placement="left" triggers="mouseenter:mouseleave" (click)="abrirMapa()">
         <img class="boton-imagen" src="assets/images/mapas-logo.png">
       </button>
-      <a href="https://www.iadb.org/es" target="_blank" class="btn btn-outline-info btn-flotante-3">
+      <a href="https://www.iadb.org/es" target="_blank" class="btn btn-outline-info btn-flotante-3" ngbPopover="BID" placement="left" triggers="mouseenter:mouseleave">
         <img class="boton-imagen" src="assets/images/bid.jpg">
       </a>
-      <a href="http://csudo.sucre.udo.edu.ve/" target="_blank" class="btn btn-outline-info btn-flotante-4">
+      <a href="http://csudo.sucre.udo.edu.ve/" target="_blank" class="btn btn-outline-info btn-flotante-4" ngbPopover="CSUDO" placement="left" triggers="mouseenter:mouseleave">
         <img class="boton-imagen" src="assets/images/logo_csudo.png">
       </a>
-      <a href="http://alcaldiadecumana.org/" target="_blank" class="btn btn-outline-info btn-flotante-5">
+      <a href="http://alcaldiadecumana.org/" target="_blank" class="btn btn-outline-info btn-flotante-5" ngbPopover="Alcaldía Sucre" placement="left" triggers="mouseenter:mouseleave">
         <img class="boton-imagen" src="assets/images/logoalcaldia1.png">
       </a>
-      <button class="btn btn-outline-danger btn-flotante-6" (click)="open(video)">
+      <button class="btn btn-outline-danger btn-flotante-6" (click)="open(video)" ngbPopover="Riesgo Sísmico" placement="left" triggers="mouseenter:mouseleave">
         <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
       </button>
     </div>
 
     <div *ngIf="!isRouteMapa() && logged" class="form-inline">
-      <button class="btn btn-outline-warning btn-flotante-1" (click)="logout()">
+      <button class="btn btn-outline-warning btn-flotante-1" ngbPopover="Cerrar Sesión" placement="left" triggers="mouseenter:mouseleave" (click)="logout()">
         <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
       </button>
-      <button class="btn btn-outline-primary btn-flotante-2" (click)="showRegister()">
+      <button class="btn btn-outline-primary btn-flotante-2" (click)="showRegister()" ngbPopover="Registrar Usuario" placement="left" triggers="mouseenter:mouseleave">
         <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
       </button>
-      <button class="btn btn-outline-danger btn-flotante-3" (click)="abrirMapa()">
+      <button class="btn btn-outline-danger btn-flotante-3" (click)="abrirMapa()" ngbPopover="Ver Mapa" placement="left" triggers="mouseenter:mouseleave">
         <img class="boton-imagen" src="assets/images/mapas-logo.png">
       </button>
-      <a href="https://www.iadb.org/es" target="_blank" class="btn btn-outline-info btn-flotante-4">
+      <a href="https://www.iadb.org/es" target="_blank" class="btn btn-outline-info btn-flotante-4" ngbPopover="BID" placement="left" triggers="mouseenter:mouseleave">
         <img class="boton-imagen" src="assets/images/bid.jpg">
       </a>
-      <a href="http://csudo.sucre.udo.edu.ve/" target="_blank" class="btn btn-outline-info btn-flotante-5">
+      <a href="http://csudo.sucre.udo.edu.ve/" target="_blank" class="btn btn-outline-info btn-flotante-5" ngbPopover="CSUDO" placement="left" triggers="mouseenter:mouseleave">
         <img class="boton-imagen" src="assets/images/logo_csudo.png">
       </a>
-      <a href="http://alcaldiadecumana.org/" target="_blank" class="btn btn-outline-info btn-flotante-6">
+      <a href="http://alcaldiadecumana.org/" target="_blank" class="btn btn-outline-info btn-flotante-6" ngbPopover="Alcaldía Sucre" placement="left" triggers="mouseenter:mouseleave">
         <img class="boton-imagen" src="assets/images/logoalcaldia1.png">
       </a>
-      <button class="btn btn-outline-danger btn-flotante-7">
+      <button class="btn btn-outline-danger btn-flotante-7" ngbPopover="Riesgo Sísmico" placement="left" triggers="mouseenter:mouseleave">
         <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
       </button>
     </div>
