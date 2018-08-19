@@ -11,7 +11,39 @@
         </button>
       </div>
       <div class="modal-body">
+        <div class="container" *ngIf="ventanaActiva.nombre==ventanas[0].nombre">
 
+          <div class="row">
+            <div class="col-12">
+
+                <p class="text-danger text-left">CUMASIG</p>
+                <p class="text-justify">
+                  Sistema de Información Geográfica para el registro y visualización de información de variables de tipo sísmicas, geológicas y geotécnicas, necesarias para el diseño de estructuras nuevas o suplementarias, de Reforzamiento Sismorresistente que permitan reducir la vulnerabilidad y el riesgo sísmico de las edificaciones existentes en la ciudad de Cumaná estado Sucre Venezuela.
+                </p>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-10 offset-md-1 col-xl-8 offset-xl-2">
+
+              <img class="proyecto-resultados" src="./assets/images/resultados.png">
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+
+                <p class="text-justify">
+                  Parte la información mostrada en este Portal Web, es un resumen de los resultados obtenidos a través de los estudios realizados como parte del proyecto de “Reforzamiento Estructural de Edificios Escolares en la Ciudad de Cumaná, Venezuela” en el marco del convenio de cooperación entre la Alcaldía del Municipio Sucre y el Banco Interamericano de Desarrollo (BID), con el propósito de aportar información para el apoyo y toma de decisiones que permitan de transformar a la ciudad de Cumaná en una ciudad segura, sostenible y sustentable.
+                </p>
+
+            </div>
+          </div>
+
+        </div>
+<!--
         <div class="container" *ngIf="ventanaActiva.nombre==ventanas[0].nombre">
 
           <div class="row">
@@ -92,7 +124,7 @@
             </div>
           </div>
         </div>
-
+-->
         <div class="container" *ngIf="ventanaActiva.nombre==ventanas[1].nombre">
           <div class="row">
             <div class="col-12 col-md-10 offset-md-1">

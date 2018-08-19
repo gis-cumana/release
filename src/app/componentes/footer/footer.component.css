@@ -3,6 +3,10 @@
     margin-top:auto; 
 }
 
+img.proyecto-resultados{
+	width: 100%;
+}
+
 div.separada{
 	margin-top: 0.25rem;
 	margin-bottom: 0.25rem;
