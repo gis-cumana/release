@@ -34,10 +34,11 @@ img.boton-mapas{
 	width: 75px;
 	height: 55px;
 }
-/*
+
 div.carousel img{
-	width: 60% !important;
-	height: auto !important;
-	margin: auto !important;
+	border-radius: 10px;
 }
-*/
+
+div.row.primera{
+	margin-top: 5px;
+}
