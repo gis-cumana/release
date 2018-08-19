@@ -55,13 +55,13 @@ export class FooterComponent implements OnInit {
   	];
   	this.investigadores = [
   		{
-  		"nombre": "Dr. Jorge Rojas",
+  		"nombre": "MSc. Jorge Rojas",
   		"correo": "rogojorge@gmail.com",
   		"telefono": "0416-3200906",
   		"foto": "jorge.jpg"
   		},
   		{
-  		"nombre": "MSc. Francisco Alvarez",
+  		"nombre": "Licdo. Francisco Alvarez",
   		"correo": "faovenezuela@gmail.com",
   		"telefono": "0414-8242002",
   		"foto": "francisco.jpeg"
