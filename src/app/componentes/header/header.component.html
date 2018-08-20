@@ -20,8 +20,7 @@
                 <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cerrar</button>
               </div>
             </ng-template>
-
-
+<!--
     <div *ngIf="!isRouteMapa() && !logged" class="form-inline">
       <button class="btn btn-outline-primary btn-flotante-1" ngbPopover="Iniciar Sesión" placement="left" triggers="mouseenter:mouseleave" (click)="showLogin()">
         <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
@@ -42,6 +41,49 @@
         <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
       </button>
     </div>
+-->
+
+    <div *ngIf="!isRouteMapa() && !logged" class="sidebar-enlaces">
+      <div class="row">
+        <div class="col-12">
+
+          <button class="btn btn-outline-primary" ngbPopover="Iniciar Sesión" placement="left" triggers="mouseenter:mouseleave" (click)="showLogin()">
+            <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="col-12">
+
+          <button class="btn btn-outline-danger" (click)="abrirMapa()" ngbPopover="Ver Mapa" placement="left" triggers="mouseenter:mouseleave">
+            <img class="boton-imagen" src="assets/images/mapas-logo.png">
+          </button>
+        </div>
+        <div class="col-12">
+
+          <a href="https://www.iadb.org/es" target="_blank" class="btn btn-outline-info" ngbPopover="BID" placement="left" triggers="mouseenter:mouseleave">
+            <img class="boton-imagen" src="assets/images/bid.jpg">
+          </a>
+        </div>
+        <div class="col-12">
+
+          <a href="http://csudo.sucre.udo.edu.ve/" target="_blank" class="btn btn-outline-info" ngbPopover="CSUDO" placement="left" triggers="mouseenter:mouseleave">
+            <img class="boton-imagen" src="assets/images/logo_csudo.png">
+          </a>
+        </div>
+        <div class="col-12">
+
+          <a href="http://alcaldiadecumana.org/" target="_blank" class="btn btn-outline-info" ngbPopover="Alcaldía Sucre" placement="left" triggers="mouseenter:mouseleave">
+            <img class="boton-imagen" src="assets/images/logoalcaldia1.png">
+          </a>
+        </div>
+        <div class="col-12">
+
+          <button class="btn btn-outline-danger" ngbPopover="Riesgo Sísmico" placement="left" triggers="mouseenter:mouseleave">
+            <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
 
     <div *ngIf="!isRouteMapa() && logged" class="sidebar-enlaces">
       <div class="row">
