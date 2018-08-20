@@ -2423,7 +2423,7 @@ calcularAreaPunto(){
 					let fuente = document.createElement("i");
 					fuente.setAttribute("class","fa fa-"+color.figura);
 					fuente.style.color = color.target;
-					cuadrito.appendChild(figura);
+					cuadrito.appendChild(fuente);
 
 					etiqueta.appendChild(cuadrito);
 				}
