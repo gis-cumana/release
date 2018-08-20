@@ -9,6 +9,8 @@ import { CategoriasService } from '../../services/categorias/categorias.service'
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 
+import { FlashMessagesService } from 'angular2-flash-messages';
+
 @Component({
   selector: 'app-header',
   providers: [NgbDropdownConfig],
@@ -49,6 +51,7 @@ export class HeaderComponent implements OnInit {
               private capasService: CapasService, 
               private categoriasService: CategoriasService, 
               private modalService: NgbModal,
+              private flashMessage: FlashMessagesService,
               config: NgbDropdownConfig) { 
 
                 config.autoClose = false;
@@ -119,15 +122,68 @@ export class HeaderComponent implements OnInit {
     }
 
     login(){
-        this.msgs = [];
-        if (this.validar())
+
+        let ussuarios = [
         {
-        this.loading = true;
+          "email": "rojojorge@gmail.com",
+          "password": "04163200906",
+          "nombre": "Jorge",
+          "apellido": "Rojas"
+        },{
+          "email": "luismrodriguezf@gmail.com",
+          "password": "04168945712",
+          "nombre": "Luis",
+          "apellido": "Rodriguez"
+        },{
+          "email": "benjamin.s1.e@gmail.com",
+          "password": "04160337683",
+          "nombre": "Benjamin",
+          "apellido": "Escobar"
+        },{
+          "email": "adminbid@gmail.com",
+          "password": "123456",
+          "nombre": "Banco Interamericano de Desarrollo",
+          "apellido": ""
+        }]
+
+        this.msgs = [];
+        if (this.validar()){
+ 
         let user = {
           "email": this.email,
           "password": this.password
         };
 
+        if(usuarios.find((el)=>{return (el.email == this.email)&&(el.password == this.password)})){
+
+          //Entra
+
+              let header = "basic "+btoa(this.email+":"+this.password);
+              let datos = usuarios.find((el)=>{return (el.email == this.email)&&(el.password == this.password)});
+              this.registro = false;
+              console.log(data);
+              let key = {
+                "header": header,
+                "nombre": datos.nombre,
+                "apellido": datos.apellido,
+                "email": datos.email
+              }
+
+             this.password = "";
+             this.email = "";
+
+             localStorage.setItem("currentUser", JSON.stringify(key));
+             this.is_autenticate();
+             this.flashMessage.show('Autenticado con exito!', { cssClass: 'alert-success', timeout: 3000 });
+
+        }
+        else{
+
+          //Rebota
+          this.flashMessage.show('Usuario o contraseña invalidos', { cssClass: 'alert-danger', timeout: 3000 });
+        }
+
+/*
         this.authService.login(user).subscribe(data =>{
            this.loading = false;
            let header = "basic "+btoa(user.email+":"+user.password);
@@ -157,6 +213,7 @@ export class HeaderComponent implements OnInit {
             this.loading = false;
             this.password = "";
           });
+*/
       }
 
     }
