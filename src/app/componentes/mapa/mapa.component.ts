@@ -2479,7 +2479,7 @@ calcularAreaPunto(){
 					    textColor: opciones.color,
 					    iconSize: [30,30],
 					    iconAnchor: [15,15],
-					    innerIconAnchor: [4, 12],
+					    innerIconAnchor: [-4, 6],
 					    innerIconStyle: "font-size: 1rem;",
 					    backgroundColor: "white"
 					};
