@@ -118,7 +118,7 @@ export class HeaderComponent implements OnInit {
         return user.admin;
       }
       else{
-        return false:
+        return false;
       }
 
     }
