@@ -252,13 +252,13 @@
         (click)="openMapFilter()">
           <i class="fa fa-filter fa-2x" aria-hidden="true"></i>
         </button>
-        <button *ngIf="isRouteMapa() && dataOpen" id="openDataHeader" 
+        <button *ngIf="isRouteMapa() && dataOpen && is_admin()" id="openDataHeader" 
         type="button" class="btn btn-info"
         ngbPopover="Administrar Datos" placement="bottom" triggers="mouseenter:mouseleave"
         (click)="openMapData()">
           <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
         </button>
-        <button *ngIf="isRouteMapa() && !dataOpen" id="openDataHeader" 
+        <button *ngIf="isRouteMapa() && !dataOpen && is_admin()" id="openDataHeader" 
         type="button" class="btn btn-outline-info"
         ngbPopover="Administrar Datos" placement="bottom" triggers="mouseenter:mouseleave"
         (click)="openMapData()">
