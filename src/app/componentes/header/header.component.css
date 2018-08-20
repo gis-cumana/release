@@ -8,6 +8,16 @@ img.boton-imagen{
     height: 2.1em;	
 }
 
+div.sidebar-enlaces{
+	position: fixed;
+	z-index: 900;
+	top: 110px;
+	right: 25px;
+	width: 55px;
+	max-height: 500px;
+	overflow-y: auto;
+}
+
 .btn-flotante-1{
 	position: fixed;
 	z-index: 900;
