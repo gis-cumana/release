@@ -2082,7 +2082,7 @@ calcularAreaPunto(){
 			this.capasActivas = Object.keys(this.overlayMaps);
 			window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
 
-			this.colorOverlayMaps = this.colorOverlayMaps.filter((el)=>{return el.capa == capaVieja});
+			this.colorOverlayMaps = this.colorOverlayMaps.filter((el)=>{return el.capa != capaVieja});
 
 			this.colorOverlayMaps.forEach((color, index)=>{
 
