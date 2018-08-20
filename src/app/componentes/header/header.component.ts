@@ -359,7 +359,7 @@ export class HeaderComponent implements OnInit {
 
     window.localStorage.capaVieja = nombre;
     document.getElementById("removerCapaVieja").click();
-    this.capasPresentes = this.capasPresentes.filter((el)=>{return el.nombre != nombre}));
+    this.capasPresentes = this.capasPresentes.filter((el)=>{return el.nombre != nombre});
   }
 
   isRouteMapa(){

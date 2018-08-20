@@ -2125,8 +2125,7 @@ calcularAreaPunto(){
 
 			});
 
-			this.geoJsons = this.geoJsons.filter((el)=>{returl el.nombre != capaVieja});
-			
+			this.geoJsons = this.geoJsons.filter((el)=>{return el.nombre != capaVieja});
   }
 
   addOverlayToControl(capaNueva){
