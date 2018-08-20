@@ -2400,8 +2400,9 @@ calcularAreaPunto(){
 			this.colorOverlayMaps.forEach((color, index)=>{
 
 				let etiquetas = document.querySelectorAll(".leaflet-control-layers-overlays > label");
+				console.log(etiquetas);
 				let etiqueta = <HTMLElement>etiquetas[index].querySelector("div");
-
+				console.log(etiqueta);
 
 				if(color.tipo == "icono"){
 
@@ -2418,10 +2419,11 @@ calcularAreaPunto(){
 
 					let cuadrito = document.createElement("div");
 					cuadrito.setAttribute("class","cuadrito");
+					cuadrito.style.backgroundColor = "white";
 					let fuente = document.createElement("i");
 					fuente.setAttribute("class","fa fa-"+color.figura);
-					cuadrito.style.backgroundColor = "white";
 					fuente.style.color = color.target;
+					cuadrito.appendChild(figura);
 
 					etiqueta.appendChild(cuadrito);
 				}
@@ -2891,7 +2893,7 @@ calcularAreaPunto(){
 	}
 
 	irCentro(){
-		this.activeMap.setView([10.456389, -64.1675]);
+		this.activeMap.setView([10.4263649457595, -64.149649060059]);
 	}
 
 }
