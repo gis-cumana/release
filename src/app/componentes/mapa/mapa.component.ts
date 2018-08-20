@@ -2025,9 +2025,9 @@ calcularAreaPunto(){
 
   removerGeojsonFromLocal(){
 
-  	let capaNueva = localStorage.capaVieja;
+  	let capaVieja = localStorage.capaVieja;
   	console.log(capaNueva);
-
+  	this.removeOverlayFromControl(capaVieja);
   }
 
 
@@ -2063,7 +2063,7 @@ calcularAreaPunto(){
   	return match;
   }
 
-  removeOverlayToControl(capaVieja){
+  removeOverlayFromControl(capaVieja){
 
   			this.activeMap.removeLayer(this.overlayMaps[capaVieja]);
 
