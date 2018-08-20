@@ -2477,10 +2477,10 @@ calcularAreaPunto(){
 					    iconShape: 'marker',
 					    borderColor: opciones.color,
 					    textColor: opciones.color,
-					    iconSize: [40,40],
-					    iconAnchor: [20,20],
-					    innerIconAnchor: [0, 8s],
-					    innerIconStyle: "font-size: 1.4rem;",
+					    iconSize: [30,30],
+					    iconAnchor: [15,15],
+					    innerIconAnchor: [0, 5],
+					    innerIconStyle: "font-size: 1.3rem;",
 					    backgroundColor: "white"
 					};
 
