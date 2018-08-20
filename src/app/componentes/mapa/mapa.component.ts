@@ -342,8 +342,8 @@ export class MapaComponent implements OnInit, OnDestroy {
       });
 
 	this.activeMap = window["L"].map('mapid', {
-		center: [10.456389, -64.1675],
-		zoom: 11,
+		center: [10.4263649457595, -64.149649060059],
+		zoom: 13,
 		zoomControl: false,
 		layers: [osm],
 		preferCanvas: true,
