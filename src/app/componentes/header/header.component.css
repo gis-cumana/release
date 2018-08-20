@@ -13,9 +13,18 @@ div.sidebar-enlaces{
 	z-index: 900;
 	top: 110px;
 	right: 25px;
-	width: 55px;
-	max-height: 500px;
+	width: 65px;
+	max-height: 400px;
 	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.fa.fa-user-plus.fa-2x{
+	font-size: 1.5em;
+}
+
+.fa.fa-sign-out.fa-2x{
+	font-size: 1.8em;
 }
 
 .btn-flotante-1{
