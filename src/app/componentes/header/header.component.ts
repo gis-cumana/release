@@ -349,9 +349,17 @@ export class HeaderComponent implements OnInit {
         }
       },
       error => {
+        this.loading = false;
         console.log(error);
       }
     );
+  }
+
+  removerCapa(nombre){
+
+    window.localStorage.capaVieja = nombre;
+    document.getElementById("removerCapaVieja").click();
+    this.capasPresentes = this.capasPresentes.filter((el)=>{return el.nombre != nombre}));
   }
 
   isRouteMapa(){

@@ -219,7 +219,7 @@
                                 (click)="traerCapa(cap.nombre)">{{cap.nombre}}</button>
 
                                 <button *ngIf="isLayerSelected(cap.nombre)" class="btn btn-info"
-                                (click)="traerCapa(cap.nombre)">{{cap.nombre}}</button>
+                                (click)="removerCapa(cap.nombre)">{{cap.nombre}}</button>
                               </div>
                             </div>
                           </ng-template>
@@ -373,3 +373,5 @@
     <button type="button" (click)="showLogin()" class="btn btn-success">Regresar</button>
   </div>
 </p-dialog>
+
+<i class="fa fa-spinner fa-pulse fa-2x fa-fw" *ngIf="loading"></i>
