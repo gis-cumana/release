@@ -2023,6 +2023,14 @@ calcularAreaPunto(){
   }
 
 
+  removerGeojsonFromLocal(){
+
+  	let capaNueva = localStorage.capaVieja;
+  	console.log(capaNueva);
+
+  }
+
+
   verificarGeojsonExistente(capaNueva){
 
   	let geoJson;
@@ -2053,6 +2061,72 @@ calcularAreaPunto(){
 	});
 
   	return match;
+  }
+
+  removeOverlayToControl(capaVieja){
+
+  			this.activeMap.removeLayer(this.overlayMaps[capaVieja]);
+
+  			let obj = this.overlayMaps;
+
+  			this.overlayMaps = {};
+
+  			for(let prop in obj){
+  				if(prop != capaVieja) this.overlayMaps[prop] = obj[prop];
+  			}
+
+			this.activeMap.removeControl(this.control);
+			this.control = window["L"].control.layers(this.baseMaps, this.overlayMaps).addTo(this.activeMap);
+			this.control.setPosition('topright');
+
+			this.capasActivas = Object.keys(this.overlayMaps);
+			window.localStorage.capasActivas = JSON.stringify(this.capasActivas);
+
+			this.colorOverlayMaps = this.colorOverlayMaps.filter((el)=>{return el.capa == capaVieja});
+
+			this.colorOverlayMaps.forEach((color, index)=>{
+
+				let etiquetas = document.querySelectorAll(".leaflet-control-layers-overlays > label");
+				console.log(etiquetas);
+				let etiqueta = <HTMLElement>etiquetas[index].querySelector("div");
+				console.log(etiqueta);
+
+				if(color.tipo == "icono"){
+
+					let iconito = document.createElement("div");
+					iconito.setAttribute("class","cuadrito");
+					let imagen = document.createElement("img");
+					imagen.setAttribute("class","iconimg");	
+					imagen.src = color.target;
+					iconito.appendChild(imagen)
+
+					etiqueta.appendChild(iconito);
+				}
+				else if(color.tipo == "figura"){
+
+					let cuadrito = document.createElement("div");
+					cuadrito.setAttribute("class","cuadrito");
+					cuadrito.style.backgroundColor = "white";
+					let fuente = document.createElement("i");
+					fuente.setAttribute("class","fa fa-"+color.figura);
+					fuente.style.color = color.target;
+					cuadrito.appendChild(fuente);
+
+					etiqueta.appendChild(cuadrito);
+				}
+				else{
+
+					let cuadrito = document.createElement("div");
+					cuadrito.setAttribute("class","cuadrito");
+					cuadrito.style.backgroundColor = color.target;
+
+					etiqueta.appendChild(cuadrito);
+				}
+
+			});
+
+			this.geoJsons = this.geoJsons.filter((el)=>{returl el.nombre != capaVieja});
+			
   }
 
   addOverlayToControl(capaNueva){
