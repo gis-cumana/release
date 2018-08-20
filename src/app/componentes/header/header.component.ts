@@ -111,6 +111,18 @@ export class HeaderComponent implements OnInit {
         this.recover = true;
     }
 
+    is_admin(){
+
+      if(window.localStorage.currentUser){    
+        let user = JSON.parse(localStorage.getItem('currentUser'));
+        return user.admin;
+      }
+      else{
+        return false:
+      }
+
+    }
+
     is_autenticate(){
       let user = JSON.parse(localStorage.getItem('currentUser'));
       if (user != null){
@@ -128,22 +140,32 @@ export class HeaderComponent implements OnInit {
           "email": "rojojorge@gmail.com",
           "password": "04163200906",
           "nombre": "Jorge",
-          "apellido": "Rojas"
+          "apellido": "Rojas",
+          "admin": true
         },{
           "email": "luismrodriguezf@gmail.com",
           "password": "04168945712",
           "nombre": "Luis",
-          "apellido": "Rodriguez"
+          "apellido": "Rodriguez",
+          "admin": true
         },{
           "email": "benjamin.s1.e@gmail.com",
           "password": "04160337683",
           "nombre": "Benjamin",
-          "apellido": "Escobar"
+          "apellido": "Escobar",
+          "admin": true
         },{
           "email": "adminbid@gmail.com",
           "password": "123456",
           "nombre": "Banco Interamericano de Desarrollo",
-          "apellido": ""
+          "apellido": "",
+          "admin": true
+        },{
+          "email": "usuario@gmail.com",
+          "password": "123456",
+          "nombre": "Usuario",
+          "apellido": "Comun",
+          "admin": false
         }]
 
         this.msgs = [];

@@ -143,13 +143,15 @@
 
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-
+<!--
     <li class="nav-item" *ngIf="logged">
       <a class="nav-link" href="#" routerLink="/casos">Reportar caso</a>
     </li>
     <li class="nav-item" *ngIf="logged">
       <a class="nav-link" href="#" routerLink="/sucesos">Sucesos</a>
     </li>
+-->
+
 <!--    
     <li class="nav-item dropdown" ngbDropdown *ngIf="isRouteMapa()">
       <a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
@@ -161,7 +163,7 @@
     </li>    
 -->
 
-         <li *ngIf="isRouteMapa()" class="nav-item dropdown" ngbDropdown >
+         <li *ngIf="isRouteMapa() && is_admin()" class="nav-item dropdown" ngbDropdown >
             <a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
             <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdown01">
               <app-categorias></app-categorias>
