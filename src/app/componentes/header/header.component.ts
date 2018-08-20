@@ -188,7 +188,8 @@ export class HeaderComponent implements OnInit {
                 "header": header,
                 "nombre": datos.nombre,
                 "apellido": datos.apellido,
-                "email": datos.email
+                "email": datos.email,
+                "admin": datos.admin
               }
 
              this.password = "";
