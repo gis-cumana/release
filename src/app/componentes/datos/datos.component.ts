@@ -27,8 +27,8 @@ export class DatosComponent implements OnInit {
 
   ngOnInit() {
     
-    this.figura = "";
-    this.color = "";
+    this.figura = "circle-o";
+    this.color = "#000000";
 
     this.agregarDatosActivado = false;
   }
