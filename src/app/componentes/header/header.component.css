@@ -8,12 +8,15 @@ img.boton-imagen{
     height: 2.1em;	
 }
 
+div.sidebar-enlaces>div.row{
+	margin-top: 20px;
+}
 div.sidebar-enlaces{
 	position: fixed;
 	z-index: 900;
 	top: 110px;
 	right: 25px;
-	width: 65px;
+	width: 200px;
 	max-height: 400px;
 	overflow-y: auto;
 	overflow-x: hidden;
