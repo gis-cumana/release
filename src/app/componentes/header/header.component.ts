@@ -123,7 +123,7 @@ export class HeaderComponent implements OnInit {
 
     login(){
 
-        let ussuarios = [
+        let usuarios = [
         {
           "email": "rojojorge@gmail.com",
           "password": "04163200906",
@@ -161,7 +161,7 @@ export class HeaderComponent implements OnInit {
               let header = "basic "+btoa(this.email+":"+this.password);
               let datos = usuarios.find((el)=>{return (el.email == this.email)&&(el.password == this.password)});
               this.registro = false;
-              console.log(data);
+
               let key = {
                 "header": header,
                 "nombre": datos.nombre,
