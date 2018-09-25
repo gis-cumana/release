@@ -30,52 +30,126 @@ div.sidebar-enlaces{
 	font-size: 1.8em;
 }
 
-.btn-flotante-1{
+
+.btn-flotante-10{
 	position: fixed;
 	z-index: 900;
 	top: 110px;
 	right: 25px;
 }
 
-.btn-flotante-2{
+.btn-flotante-20{
 	position: fixed;
 	z-index: 900;
 	top: 165px;
 	right: 25px;
 }
 
-.btn-flotante-3{
+.btn-flotante-30{
 	position: fixed;
 	z-index: 900;
 	top: 220px;
 	right: 25px;
 }
 
-.btn-flotante-4{
+.btn-flotante-40{
 	position: fixed;
 	z-index: 900;
 	top: 275px;
 	right: 25px;
 }
 
-.btn-flotante-5{
+.btn-flotante-50{
 	position: fixed;
 	z-index: 900;
 	top: 330px;
 	right: 25px;
 }
 
-.btn-flotante-6{
+.btn-flotante-60{
 	position: fixed;
 	z-index: 900;
 	top: 385px;
 	right: 25px;
 }
 
-.btn-flotante-7{
+.btn-flotante-70{
 	position: fixed;
 	z-index: 900;
 	top: 440px;
+	right: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn-flotante-1{
+	position: fixed;
+	z-index: 900;
+	top: 220px;
+	right: 25px;
+}
+
+.btn-flotante-2{
+	position: fixed;
+	z-index: 900;
+	top: 275px;
+	right: 25px;
+}
+
+.btn-flotante-3{
+	position: fixed;
+	z-index: 900;
+	top: 330px;
+	right: 25px;
+}
+
+.btn-flotante-4{
+	position: fixed;
+	z-index: 900;
+	top: 385px;
+	right: 25px;
+}
+
+.btn-flotante-5{
+	position: fixed;
+	z-index: 900;
+	top: 440px;
+	right: 25px;
+}
+
+.btn-flotante-6{
+	position: fixed;
+	z-index: 900;
+	top: 495px;
+	right: 25px;
+}
+
+.btn-flotante-7{
+	position: fixed;
+	z-index: 900;
+	top: 550px;
 	right: 25px;
 }
 
