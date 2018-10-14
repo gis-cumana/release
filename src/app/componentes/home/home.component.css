@@ -12,6 +12,13 @@
     display: block; text-align: center; margin: auto;
 }
 
+div.row.btn-min a.btn{
+	margin-left: calc(65% - 100px);
+}
+
+div.row.btn-min div.col-12{
+	margin-top: 0.5rem;
+}
 
 
 .ui-panel-images{
@@ -46,19 +53,19 @@ div.row.primera{
 	position: fixed;
 	z-index: 900;
 	top: 170px;
-	right: 825px;
+	right: 225px;
 }
 
 .btn-flotante-2i{
 	position: fixed;
 	z-index: 900;
 	top: 400px;
-		right: 825px;
+	right: 225px;
 }
 
 .btn-flotante-3i{
 	position: fixed;
 	z-index: 900;
 	top: 780px;
-		right: 825px;
+	right: 225px;
 }
