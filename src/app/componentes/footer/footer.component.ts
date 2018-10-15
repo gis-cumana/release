@@ -8,13 +8,13 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class FooterComponent implements OnInit {
 
-	ventanas: any[];
-	investigadores: any[];
-	desarrolladores: any[];
+  ventanas: any[];
+  investigadores: any[];
+  desarrolladores: any[];
 
-	ventanaActiva: any;
+  ventanaActiva: any;
 
-	modalRef: any;
+  modalRef: any;
 
   contador: any[];
 
@@ -26,20 +26,20 @@ export class FooterComponent implements OnInit {
 
     this.contador = [0,1,2,3];
 
-  	this.ventanas = [
-  		{
+    this.ventanas = [
+      {
         "corto": "Proyecto",
         "nombre": "Proyecto"
       },
-  		{
+      {
         "corto": "Contactanos",
         "nombre": "Contactanos"
       },
-  		{
+      {
         "corto": "Términos y Condiciones", 
         "nombre": "Términos y Condiciones"
       },
-  		{
+      {
         "corto": "Acerca de",
         "nombre": "Acerca de"
       },
@@ -52,65 +52,49 @@ export class FooterComponent implements OnInit {
         "corto2": "Desarrolladores",
         "nombre": "Analistas y Desarrolladores"
       }
-  	];
-  	this.investigadores = [
-  		{
-  		"nombre": "MSc. Jorge Rojas",
-  		"correo": "rogojorge@gmail.com",
-  		"telefono": "0416-3200906",
-  		"foto": "jorge.jpg"
-  		},
-  		{
-  		"nombre": "Licdo. Francisco Alvarez",
-  		"correo": "faovenezuela@gmail.com",
-  		"telefono": "0414-8242002",
-  		"foto": "francisco.jpeg"
-  		},
-  		{
-  		"nombre": "MSc. Ysimar Rivera",
-  		"correo": "ysymar.river@gmail.com",
-  		"telefono": "0416-8936376",
-  		"foto": "ysimar.jpg"
-  		}
-  	];
-  	this.desarrolladores = [
-  		[{
-  			"nombre": "MSc. Yalgis Rodriguez",
-  			"correo": "yalgisrodriguez@gmail.com",
-  			"telefono": "0416-6143465",
-  			"foto": "yalgis.jpeg"
-  		},{
-  			"nombre": "MSc. Luis M. Rodriguez",
-  			"correo": "luismrodriguezf@gmail.com",
-  			"telefono": "0416-8945712",
-  			"foto": "luism.jpeg"
-  		},{
-  			"nombre": "MSc. Yulia Sardella",
-  			"correo": "sardellayulia@gmail.com",
-  			"telefono": "0416-4813369",
-  			"foto": "yulia.jpg"
-  		}],
-  		[{
-  			"nombre": "MSc. Gregorio Ruiz",
-  			"correo": "gruizleon@gmail.com",
-  			"telefono": "0426-2871235",
-  			"foto": "gregorio.jpg"
-  		},{
-  			"nombre": "TSU. Benjamin Escobar",
-  			"correo": "benjamin.s1.e@gmail.com",
-  			"telefono": "0416-0337683",
-  			"foto": "benjamin.jpg"
-  		},{
-  			"nombre": "Ing. Carlos Cercado",
-  			"correo": "cercadocarlos@gmail.com",
-  			"telefono": "0426-3814727",
-  			"foto": "cercado.png"
-  		}]
-  	];
+    ];
+    this.investigadores = [
+      {
+      "nombre": "MSc. Luis M. Rodriguez",
+      "correo": "luismrodriguezf@gmail.com",
+      "telefono": "0416-8945712",
+      "foto": "luism.jpeg"
+      },
+      {
+      "nombre": "Licdo. Jesus Francisco Marquez",
+      "correo": "Jesus@gmail.com",
+      "telefono": "0414-8242002",
+      "foto": "francisco.jpeg"
+      },
+      {
+      "nombre": "MSc. Yadeivis de Marquez",
+      "correo": "Yadeivis@gmail.com",
+      "telefono": "0416-8936376",
+      "foto": "ysimar.jpg"
+      }
+    ];
+    this.desarrolladores = [
+      [{
+        "nombre": "MSc. Luis M. Rodriguez",
+        "correo": "luismrodriguezf@gmail.com",
+        "telefono": "0416-8945712",
+        "foto": "luism.jpeg"
+      },{
+        "nombre": "TSU. Benjamin Escobar",
+        "correo": "benjamin.s1.e@gmail.com",
+        "telefono": "0416-0337683",
+        "foto": "benjamin.jpg"
+      },{
+        "nombre": "Ing. Carlos Cercado",
+        "correo": "cercadocarlos@gmail.com",
+        "telefono": "0426-3814727",
+        "foto": "cercado.png"
+      }]
+    ];
   }
 
   abrirModal(ventana, content){
-  	this.seleccionarVentana(ventana);
+    this.seleccionarVentana(ventana);
 
     this.modalRef = this.modalService.open(content, { size: 'lg' }).result.then((result) => {
 
@@ -120,14 +104,14 @@ export class FooterComponent implements OnInit {
   }
 
   seleccionarVentana(ventana){
-  	this.ventanaActiva = ventana;
+    this.ventanaActiva = ventana;
   }
 
   open(content) {
 
     this.modalService.open(content,{ size: 'lg' }).result.then((result) => {
 
-		console.log("Saludos");
+    console.log("Saludos");
     }, (reason) => {
 
     });
@@ -135,3 +119,4 @@ export class FooterComponent implements OnInit {
 
 
 }
+
