@@ -89,6 +89,9 @@ flash-messages{
   top: 5%;
   left: 0px; 
 }
+.top-overlay-image .fa.fa-bars{
+  color: white;
+}
 .bot-overlay-image{
   position: relative;
   margin-top: -150px;
