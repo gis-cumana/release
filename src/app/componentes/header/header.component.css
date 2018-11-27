@@ -13,9 +13,9 @@ div.sidebar-enlaces>div.row{
 }
 div.sidebar-enlaces{
 	position: fixed;
-	z-index: 900;
-	top: 110px;
-	right: 25px;
+	z-index: 1200;
+	top: 20px;
+	right: 0px;
 	width: 200px;
 	max-height: 400px;
 	overflow-y: auto;
