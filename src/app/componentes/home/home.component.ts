@@ -16,9 +16,14 @@ export class HomeComponent implements OnInit {
 
   msgs: Message[] = [];
 
+  logged: boolean;
+  user_logged: string;
+
   constructor(private flashMessage: FlashMessagesService,) { }
 
   ngOnInit() {
+        this.is_autenticate();
+        this.user_logged = "";
         this.email = "";
         this.password = "";
         this.images = [];
@@ -138,6 +143,21 @@ export class HomeComponent implements OnInit {
 
       let el = <HTMLElement>document.querySelector("#is_autenticate");
       el.click();
+      let user = JSON.parse(localStorage.getItem('currentUser'));
+      if (user != null){
+        this.logged = true;
+        this.user_logged = user.nombre;
+      }else{
+        this.logged = false;
+      }
+
     }
+
+    logout() {
+        localStorage.removeItem('currentUser');
+        this.router.navigate(['/']);
+        this.is_autenticate();
+    }
+
 
 }

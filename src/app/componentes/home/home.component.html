@@ -20,17 +20,18 @@
       <div class="row">
         <div class="col">
 
-          <fieldset class="form-group">
+          <fieldset *ngIf="!logged" class="form-group">
             <label for="email" class="bmd-label-floating">Correo Electronico</label>
             <input type="email" [(ngModel)]="email"  class="form-control" id="email" placeholder="Correo">
           </fieldset>
-          <fieldset class="form-group">
+          <fieldset *ngIf="!logged" class="form-group">
             <label for="password" class="bmd-label-floating">Contraseña</label>
             <input type="password" onkeyup="if(event.keyCode === 13){$('#botonlogin').click();}" [(ngModel)]="password"  class="form-control" id="password" placeholder="*******">
           </fieldset>
 
           <div class="center">
-            <button type="button" id="botonlogin" (click)="login()" class="btn btn-success btn-lg">Iniciar sesión</button>
+            <button *ngIf="!logged" type="button" id="botonlogin2" (click)="login()" class="btn btn-success btn-lg">Iniciar sesión</button>
+            <button *ngIf="logged" type="button" id="botonlogout2" (click)="logout()" class="btn btn-success btn-lg">Iniciar sesión</button>
           </div>
 
         </div>
