@@ -46,7 +46,7 @@ div.row.primera{
     .my-sidebar{
       background-color: rgba(40,80,130,0.6);
       position: absolute;
-      z-index: 200;
+      z-index: 1200;
       top: 0px;
       left: -250px;
       width: 0px;
