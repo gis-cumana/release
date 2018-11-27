@@ -78,3 +78,14 @@ flash-messages{
 .modal-header .close{
   color: white;
 }
+
+.full-image{
+  width: 100%;
+  height: auto;
+}
+
+.mid-overlay-image{
+  position: absolute;
+  top: 0px;
+  left: 0px; 
+}
