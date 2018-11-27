@@ -66,3 +66,12 @@ flash-messages{
 ::-webkit-scrollbar-thumb:active {
     background: rgba(0,0,0,0.5); 
 }
+
+.modal-content{
+  background-color: rgba(0,0,0,0);
+  border-color: rgba(0,0,0,0);
+}
+.modal-body{
+  background-color: rgba(255,255,255,1);
+  border-color: rgba(0,0,0,0);
+}
