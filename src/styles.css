@@ -84,8 +84,13 @@ flash-messages{
   height: auto;
 }
 
-.mid-overlay-image{
+.top-overlay-image{
   position: absolute;
   top: 0px;
+  left: 0px; 
+}
+.bot-overlay-image{
+  position: absolute;
+  bottom: 0px;
   left: 0px; 
 }
