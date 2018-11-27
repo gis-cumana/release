@@ -22,11 +22,11 @@
 
           <fieldset *ngIf="!logged" class="form-group">
             <label for="email" class="bmd-label-floating">Correo Electronico</label>
-            <input type="email" [(ngModel)]="email"  class="form-control" id="email" placeholder="Correo">
+            <input type="email" [(ngModel)]="email"  class="form-control" id="email2" placeholder="Correo">
           </fieldset>
           <fieldset *ngIf="!logged" class="form-group">
             <label for="password" class="bmd-label-floating">Contraseña</label>
-            <input type="password" onkeyup="if(event.keyCode === 13){$('#botonlogin2').click();}" [(ngModel)]="password"  class="form-control" id="password" placeholder="*******">
+            <input type="password" onkeyup="if(event.keyCode === 13){$('#botonlogin2').click();}" [(ngModel)]="password"  class="form-control" id="password2" placeholder="*******">
           </fieldset>
 
           <div class="center">
