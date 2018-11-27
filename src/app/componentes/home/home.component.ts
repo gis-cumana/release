@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   toggleSidebar(){
 
-    let el = <HTMLElement>document.querySelector(".target");
+    let el = <HTMLElement>document.querySelector(".my-sidebar");
     if(el.classList.contains("reveal")){
       el.classList.remove("reveal");
     }

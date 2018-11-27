@@ -86,7 +86,7 @@ flash-messages{
 .top-overlay-image{
   position: absolute;
   z-index: 200;
-  top: 5%;
+  top: 0px;
   left: 0px; 
 }
 .top-overlay-image .fa.fa-bars{
