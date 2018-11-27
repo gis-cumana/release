@@ -91,8 +91,10 @@ flash-messages{
   left: 0px; 
 }
 .bot-overlay-image{
-  position: absolute;
-  z-index: 300;
-  bottom: 5%;
-  left: 0px; 
+  position: relative;
+  margin-top: -200px;
+}
+.carousel.slide{
+  width: 300px;
+  height: 200px;
 }
