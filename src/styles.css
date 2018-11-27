@@ -86,11 +86,13 @@ flash-messages{
 
 .top-overlay-image{
   position: absolute;
-  top: 0px;
+  z-index: 200;
+  top: 5%;
   left: 0px; 
 }
 .bot-overlay-image{
   position: absolute;
-  bottom: 0px;
+  z-index: 300;
+  bottom: 5%;
   left: 0px; 
 }
