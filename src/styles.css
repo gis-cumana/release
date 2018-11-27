@@ -91,9 +91,34 @@ flash-messages{
 }
 .bot-overlay-image{
   position: relative;
-  margin-top: -200px;
+  margin-top: -150px;
 }
 .carousel.slide{
-  width: 300px;
-  height: 200px;
+  width: 225px;
+  height: 150px;
+}
+
+.box{
+  display: flex !important;
+  height: inherit;
+}
+
+.box.set-left{
+  justify-content: flex-start;
+}
+.box.set-center{  
+  justify-content: center;
+}
+.box.set-right{
+  justify-content: flex-end;
+}
+
+.box.set-top{
+  align-items: flex-start;
+}
+.box.set-mid{
+  align-items: center;
+}
+.box.set-bot{
+  align-items: flex-end;
 }
