@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {Message} from 'primeng/components/common/api';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
   logged: boolean;
   user_logged: string;
 
-  constructor(private flashMessage: FlashMessagesService,) { }
+  constructor(private flashMessage: FlashMessagesService, private router: Router) { }
 
   ngOnInit() {
         this.is_autenticate();
@@ -93,7 +94,6 @@ export class HomeComponent implements OnInit {
 
               let header = "basic "+btoa(this.email+":"+this.password);
               let datos = usuarios.find((el)=>{return (el.email == this.email)&&(el.password == this.password)});
-              this.registro = false;
 
               let key = {
                 "header": header,
@@ -152,12 +152,5 @@ export class HomeComponent implements OnInit {
       }
 
     }
-
-    logout() {
-        localStorage.removeItem('currentUser');
-        this.router.navigate(['/']);
-        this.is_autenticate();
-    }
-
 
 }
