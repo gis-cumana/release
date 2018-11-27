@@ -75,3 +75,6 @@ flash-messages{
   background-color: rgba(255,255,255,1);
   border-color: rgba(0,0,0,0);
 }
+.modal-header .close{
+  color: white;
+}
