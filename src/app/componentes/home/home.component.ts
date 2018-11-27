@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Message} from 'primeng/components/common/api';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +11,16 @@ export class HomeComponent implements OnInit {
 
   images: any[];
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  msgs: Message[] = [];
+
+  constructor(private flashMessage: FlashMessagesService,) { }
 
   ngOnInit() {
+        this.email = "";
+        this.password = "";
         this.images = [];
         this.images.push({source:'assets/images/indio.jpg', title:'El indio de Cumaná'});
         this.images.push({source:'assets/images/altagracia.jpg', title:'Calle el alacrán'});
@@ -28,5 +37,107 @@ export class HomeComponent implements OnInit {
       el.classList.add("reveal");
     }
   }
+
+
+    login(){
+
+        let usuarios = [
+        {
+          "email": "rojojorge@gmail.com",
+          "password": "04163200906",
+          "nombre": "Jorge",
+          "apellido": "Rojas",
+          "admin": true
+        },{
+          "email": "luismrodriguezf@gmail.com",
+          "password": "04168945712",
+          "nombre": "Luis",
+          "apellido": "Rodriguez",
+          "admin": true
+        },{
+          "email": "benjamin.s1.e@gmail.com",
+          "password": "04160337683",
+          "nombre": "Benjamin",
+          "apellido": "Escobar",
+          "admin": true
+        },{
+          "email": "adminbid@gmail.com",
+          "password": "123456",
+          "nombre": "Banco Interamericano de Desarrollo",
+          "apellido": "",
+          "admin": true
+        },{
+          "email": "usuario@gmail.com",
+          "password": "123456",
+          "nombre": "Usuario",
+          "apellido": "Comun",
+          "admin": false
+        }]
+
+        this.msgs = [];
+        if (this.validar()){
+ 
+        let user = {
+          "email": this.email,
+          "password": this.password
+        };
+
+        if(usuarios.find((el)=>{return (el.email == this.email)&&(el.password == this.password)})){
+
+          //Entra
+
+              let header = "basic "+btoa(this.email+":"+this.password);
+              let datos = usuarios.find((el)=>{return (el.email == this.email)&&(el.password == this.password)});
+              this.registro = false;
+
+              let key = {
+                "header": header,
+                "nombre": datos.nombre,
+                "apellido": datos.apellido,
+                "email": datos.email,
+                "admin": datos.admin
+              }
+
+             this.password = "";
+             this.email = "";
+
+             localStorage.setItem("currentUser", JSON.stringify(key));
+             this.is_autenticate();
+             this.flashMessage.show('Autenticado con exito!', { cssClass: 'alert-success', timeout: 3000 });
+
+        }
+        else{
+
+          //Rebota
+          this.flashMessage.show('Usuario o contraseña invalidos', { cssClass: 'alert-danger', timeout: 3000 });
+        }
+      }
+
+    }
+
+    validar(){
+      let res = true;
+      if (this.email == null){
+        res = false;
+        this.msgs.push({severity:'error', summary:'Email', detail:'es requerido'});
+      }
+      if (this.password == null){
+        res = false;
+        this.msgs.push({severity:'error', summary:'Clave', detail:'es requerida'});
+      }
+      return res;
+    }
+
+    logout() {
+        localStorage.removeItem('currentUser');
+        this.router.navigate(['/']);
+        this.is_autenticate();
+    }
+
+    is_autenticate(){
+
+      let el = <HTMLElement>document.querySelector("#is_autenticate");
+      el.click();
+    }
 
 }

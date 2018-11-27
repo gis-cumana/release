@@ -63,3 +63,7 @@ div.row.primera{
     .my-sidebar.reveal *{
       display: block;
     }
+
+div.my-sidebar div.login{
+	margin-top: 2rem;
+}

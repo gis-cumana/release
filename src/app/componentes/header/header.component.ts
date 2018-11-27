@@ -205,44 +205,12 @@ export class HeaderComponent implements OnInit {
           //Rebota
           this.flashMessage.show('Usuario o contraseña invalidos', { cssClass: 'alert-danger', timeout: 3000 });
         }
-
-/*
-        this.authService.login(user).subscribe(data =>{
-           this.loading = false;
-           let header = "basic "+btoa(user.email+":"+user.password);
-           this.authService.info(header).subscribe(data =>{
-              let datos = data.body;
-              this.registro = false;
-              console.log(data);
-              let key = {
-              "header": header,
-              "nombre": datos.first_name,
-              "apellido": datos.last_name,
-              "email": user.email
-             }
-
-             this.password = "";
-             this.email = "";
-
-             localStorage.setItem("currentUser", JSON.stringify(key));
-             this.is_autenticate();
-           },error => {
-              console.log(error);
-           });
-          },
-          error => {
-            console.log(error);
-            this.msgs.push({severity:'error', summary:'Datos incorrectos', detail:''});
-            this.loading = false;
-            this.password = "";
-          });
-*/
       }
 
     }
 
     validar(){
-    let res = true;
+      let res = true;
       if (this.email == null){
         res = false;
         this.msgs.push({severity:'error', summary:'Email', detail:'es requerido'});
