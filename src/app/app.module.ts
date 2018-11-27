@@ -53,8 +53,6 @@ import { CasosComponent } from './componentes/casos/casos.component';
 import { SucesosComponent } from './componentes/sucesos/sucesos.component';
 import { ProfileComponent } from './componentes/profile/profile.component';
 
-import {MatButtonModule} from '@angular/material/button';
-
 const appRoutes : Routes = [
  { path: '', component: HomeComponent},
  { path: 'mapa', component: MapaComponent},
@@ -93,7 +91,6 @@ const appRoutes : Routes = [
         EliminarCapasComponent
     ],
     imports: [
-        MatButtonModule,
         NgbModalModule.forRoot(),
         NgbCollapseModule.forRoot(),
         NgbDropdownModule.forRoot(),

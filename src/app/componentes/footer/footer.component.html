@@ -1,9 +1,15 @@
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
-        <h4 class="modal-title text-danger mat-raised-button mat-primary">{{ventanaActiva.nombre}}</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <div class="row">
+          <div class="col-6 col-sm-4 col-lg-3">
+            <h4 class="modal-title"> <span type="button" class="btn btn-primary">{{ventanaActiva.nombre}}</span></h4>
+          </div>
+          <div class="col">
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
       </div>
       <div class="modal-body">
         <div class="container" *ngIf="ventanaActiva.nombre==ventanas[0].nombre">
