@@ -1,6 +1,3 @@
-<!--
-
-
 <input type="file" name="file" id="geojsonfile" style="display: none" (change)="cargarGeojson($event)">
 <button type="button" id="montar" style="display: none" (click)="montarDatos()"></button>
 
@@ -23,37 +20,7 @@
                 <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cerrar</button>
               </div>
             </ng-template>
-
-
- fundesu -->
-
-<input type="file" name="file" id="geojsonfile" style="display: none" (change)="cargarGeojson($event)">
-<button type="button" id="montar" style="display: none" (click)="montarDatos()"></button>
-
-
-            <ng-template #video let-c="close" let-d="dismiss">
-              <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">FUNDESU</h4>
-                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col">
-                    <iframe height="315" style="width: 100%" src="https://www.youtube.com/watch?v=XXOkpE99bHQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cerrar</button>
-              </div>
-            </ng-template>
-
-
-
-
-<!-- sigcumana
+<!--
     <div *ngIf="!isRouteMapa() && !logged" class="form-inline">
       <button class="btn btn-outline-primary btn-flotante-1" ngbPopover="Iniciar Sesión" placement="left" triggers="mouseenter:mouseleave" (click)="showLogin()">
         <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
@@ -75,42 +42,42 @@
       </button>
     </div>
 -->
-<!-- sigcumana fundesu--> 
+
     <div *ngIf="!isRouteMapa() && !logged" class="sidebar-enlaces">
       <div class="row">
         <div class="col-5 offset-7">
 
-          <button class="btn btn-outline-primary btn-flotante-1" ngbPopover="Iniciar Sesión" placement="left" triggers="mouseenter:mouseleave" (click)="showLogin()">
-             <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+          <button class="btn btn-outline-primary" ngbPopover="Iniciar Sesión" placement="left" triggers="mouseenter:mouseleave" (click)="showLogin()">
+            <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
           </button>
         </div>
         <div class="col-5 offset-7">
 
-          <button class="btn btn-outline-danger btn-flotante-2" (click)="abrirMapa()" ngbPopover="Ver Mapa" placement="left" triggers="mouseenter:mouseleave">
+          <button class="btn btn-outline-danger" (click)="abrirMapa()" ngbPopover="Ver Mapa" placement="left" triggers="mouseenter:mouseleave">
             <img class="boton-imagen" src="assets/images/mapas-logo.png">
           </button>
         </div>
         <div class="col-5 offset-7">
 
-          <a href="https://twitter.com/fundesuoficial?lang=es" target="_blank" class="btn btn-outline-info btn-flotante-3" ngbPopover="FUNDESU" placement="left" triggers="mouseenter:mouseleave">
-            <img class="boton-imagen" src="assets/images/fundesu.png">
+          <a href="https://www.iadb.org/es" target="_blank" class="btn btn-outline-info" ngbPopover="BID" placement="left" triggers="mouseenter:mouseleave">
+            <img class="boton-imagen" src="assets/images/bid.jpg">
           </a>
         </div>
         <div class="col-5 offset-7">
 
-          <a href="https://www.facebook.com/GobiernoBolivarianoDelEstadoSucre/" target="_blank" class="btn btn-outline-info btn-flotante-4" ngbPopover="GOBERNACIÓN EDO. SUCRE" placement="left" triggers="mouseenter:mouseleave">
-            <img class="boton-imagen" src="assets/images/gobernacion.png">
+          <a href="http://csudo.sucre.udo.edu.ve/" target="_blank" class="btn btn-outline-info" ngbPopover="CSUDO" placement="left" triggers="mouseenter:mouseleave">
+            <img class="boton-imagen" src="assets/images/logo_csudo.png">
           </a>
         </div>
         <div class="col-5 offset-7">
 
-          <a href="http://www.mindeporte.gob.ve/mindep/index.php/" target="_blank" class="btn btn-outline-info btn-flotante-5" ngbPopover="MPP Juventud y Deporte" placement="left" triggers="mouseenter:mouseleave">
-            <img class="boton-imagen" src="assets/images/mppjd.jpeg">
+          <a href="http://alcaldiadecumana.org/" target="_blank" class="btn btn-outline-info" ngbPopover="Alcaldía Sucre" placement="left" triggers="mouseenter:mouseleave">
+            <img class="boton-imagen" src="assets/images/logoalcaldia1.png">
           </a>
         </div>
         <div class="col-5 offset-7">
 
-          <button class="btn btn-outline-danger btn-flotante-6" (click)="open(video)" ngbPopover="SUCRE POTENCIA" placement="left" triggers="mouseenter:mouseleave">
+          <button class="btn btn-outline-danger" (click)="open(video)" ngbPopover="Riesgo Sísmico" placement="left" triggers="mouseenter:mouseleave">
             <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
           </button>
         </div>
@@ -121,46 +88,44 @@
     <div *ngIf="!isRouteMapa() && logged" class="sidebar-enlaces">
       <div class="row">
         <div class="col-5 offset-7">
-         
 
-          <button class="btn btn-outline-warning btn-flotante-1" ngbPopover="Cerrar Sesión" placement="left" triggers="mouseenter:mouseleave" (click)="logout()">
+          <button class="btn btn-outline-warning" ngbPopover="Cerrar Sesión" placement="left" triggers="mouseenter:mouseleave" (click)="logout()">
             <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
           </button>
         </div>
         <div class="col-5 offset-7">
 
-          <button class="btn btn-outline-primary btn-flotante-2" (click)="showRegister()" ngbPopover="Registrar Usuario" placement="left" triggers="mouseenter:mouseleave">
+          <button class="btn btn-outline-primary" (click)="showRegister()" ngbPopover="Registrar Usuario" placement="left" triggers="mouseenter:mouseleave">
             <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
           </button>
         </div>
         <div class="col-5 offset-7">
 
-          <button class="btn btn-outline-danger btn-flotante-3" (click)="abrirMapa()" ngbPopover="Ver Mapa" placement="left" triggers="mouseenter:mouseleave">
+          <button class="btn btn-outline-danger" (click)="abrirMapa()" ngbPopover="Ver Mapa" placement="left" triggers="mouseenter:mouseleave">
             <img class="boton-imagen" src="assets/images/mapas-logo.png">
           </button>
         </div>
         <div class="col-5 offset-7">
 
-          <a href="https://twitter.com/fundesuoficial?lang=es" target="_blank" class="btn btn-outline-info btn-flotante-4" ngbPopover="FUNDESU" placement="left" triggers="mouseenter:mouseleave">
-            <img class="boton-imagen" src="assets/images/fundesu.png">
+          <a href="https://www.iadb.org/es" target="_blank" class="btn btn-outline-info" ngbPopover="BID" placement="left" triggers="mouseenter:mouseleave">
+            <img class="boton-imagen" src="assets/images/bid.jpg">
           </a>
         </div>
         <div class="col-5 offset-7">
 
-          <a href="https://www.facebook.com/GobiernoBolivarianoDelEstadoSucre/" target="_blank" class="btn btn-outline-info btn-flotante-5" ngbPopover="GOBERNACIÓN EDO. SUCRE" placement="left" triggers="mouseenter:mouseleave">
-            <img class="boton-imagen" src="assets/images/gobernacion.png">
-     
+          <a href="http://csudo.sucre.udo.edu.ve/" target="_blank" class="btn btn-outline-info" ngbPopover="CSUDO" placement="left" triggers="mouseenter:mouseleave">
+            <img class="boton-imagen" src="assets/images/logo_csudo.png">
           </a>
         </div>
         <div class="col-5 offset-7">
 
-          <a href="http://www.mindeporte.gob.ve/mindep/index.php/" target="_blank" class="btn btn-outline-info btn-flotante-6" ngbPopover="MPP Juventud y Deporte" placement="left" triggers="mouseenter:mouseleave">
-            <img class="boton-imagen" src="assets/images/mppjd.jpeg">
+          <a href="http://alcaldiadecumana.org/" target="_blank" class="btn btn-outline-info" ngbPopover="Alcaldía Sucre" placement="left" triggers="mouseenter:mouseleave">
+            <img class="boton-imagen" src="assets/images/logoalcaldia1.png">
           </a>
         </div>
         <div class="col-5 offset-7">
 
-          <button class="btn btn-outline-danger btn-flotante-7" (click)="open(video)" ngbPopover="SUCRE POTENCIA" placement="left" triggers="mouseenter:mouseleave">
+          <button class="btn btn-outline-danger" (click)="open(video)" ngbPopover="Riesgo Sísmico" placement="left" triggers="mouseenter:mouseleave">
             <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
           </button>
         </div>
@@ -168,12 +133,12 @@
     </div>
 
 <nav class="navbar omni-nav navbar-expand-lg navbar-light bg-light">
-  <a *ngIf="!isRouteMapa()" class="navbar-brand" style="width: 100%">
-    <img  class="img-full" src="assets/images/Banner6.png">
+  <a *ngIf="!isRouteMapa()" class="navbar-brand">
+    <img class="img-full" src="assets/images/logoinicio1.png" >
   </a>
 
   <a *ngIf="isRouteMapa()" class="navbar-brand" routerLink="/" ngbPopover="Inicio" placement="bottom" triggers="mouseenter:mouseleave">
-     <img src="assets/images/sigdesu.png" style="float: left" width="200" height="55">
+     <img src="assets/images/logo3.png" style="float: left" width="250" height="55">
   </a>
 
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
