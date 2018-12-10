@@ -28,8 +28,8 @@
                   <button *ngIf="ventanaActiva.nombre!=ventanas[4].nombre" type="button" class="btn btn-block btn-outline-primary" (click)="seleccionarVentana(ventanas[4])">{{ventanas[4].corto}}</button>
                 </div>
                 <div class="col-12 col-sm-4">
-                  <button *ngIf="ventanaActiva.nombre==ventanas[5].nombre" type="button" class="btn btn-block btn-primary" (click)="seleccionarVentana(ventanas[5])" disabled>{{ventanas[5].corto1}}<br>{{ventanas[5].corto2}}</button>
-                  <button *ngIf="ventanaActiva.nombre!=ventanas[5].nombre" type="button" class="btn btn-block btn-outline-primary" (click)="seleccionarVentana(ventanas[5])">{{ventanas[5].corto1}}<br>{{ventanas[5].corto2}}</button>
+                  <button *ngIf="ventanaActiva.nombre==ventanas[5].nombre" type="button" class="btn btn-block btn-primary text-left" (click)="seleccionarVentana(ventanas[5])" disabled>{{ventanas[5].corto1}}<br>{{ventanas[5].corto2}}</button>
+                  <button *ngIf="ventanaActiva.nombre!=ventanas[5].nombre" type="button" class="btn btn-block btn-outline-primary text-left" (click)="seleccionarVentana(ventanas[5])">{{ventanas[5].corto1}}<br>{{ventanas[5].corto2}}</button>
                 </div>
                 
               </div>
@@ -49,9 +49,9 @@
         <div class="container bg-white" *ngIf="ventanaActiva.nombre==ventanas[0].nombre">
 
           <div class="row">
-            <div class="col-12">
+            <div class="col-12 fcol">
 
-                <h5 class="text-danger text-left">CUMASIG</h5>
+                <div class="text-left t1 bb">CUMASIG</div>
                 <p class="text-justify">
                   Sistema de Información Geográfica para el registro y visualización de información de variables de tipo sísmicas, geológicas y geotécnicas, necesarias para el diseño de estructuras nuevas o suplementarias, de Reforzamiento Sismorresistente que permitan reducir la vulnerabilidad y el riesgo sísmico de las edificaciones existentes en la ciudad de Cumaná estado Sucre Venezuela.
                 </p>
@@ -181,24 +181,20 @@
 -->
         <div class="container bg-white" *ngIf="ventanaActiva.nombre==ventanas[1].nombre">
           <div class="row">
-            <div class="col-12 col-md-10 offset-md-1">
-
-              <div class="card">
-                <img class="card-img-top img-120 center" src="./assets/images/logo_csudo.png">
-                <div class="card-body text-center">
-                  <p class="card-text text-danger">Centro de Sismologia de la Universidad de Oriente</p>
-                  <p class="card-text">Direccion: Av. Universidad Cerro del medio, parte alta del Decanato de la Universidad de Oriente. Cumana, Estado Sucre. Venezuela.</p>
-                  <p class="card-text">Telefono: (+58)(293) 4002403/4516756</p>
-                </div>
-              </div>              
-              
+            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 fcol">
+                <img class="img-contact" src="./assets/images/logo_csudo.png">
+            </div>
+            <div class="col-12">
+                <p class="text-center negrita bb">Centro de Sismologia de la Universidad de Oriente</p>
+                <p class="text-center">Direccion: Av. Universidad Cerro del medio, parte alta del Decanato de la Universidad de Oriente. Cumana, Estado Sucre. Venezuela.</p>
+                <p class="text-center">Telefono: (+58)(293) 4002403/4516756</p>
             </div>
           </div>
         </div>
 
         <div class="container bg-white" *ngIf="ventanaActiva.nombre==ventanas[2].nombre">
           <div class="row">
-            <div class="col-12 text-justify">
+            <div class="col-12 text-justify fcol">
 
               <p>
               El uso del sitio virtual (CUMASIG) del Centro de Simbología de la Universidad de Oriente (CSUDO)  se rige por los términos y condiciones que a continuación se mencionan. En virtud de la utilización del Sitio Virtual usted acepta estos términos y condiciones y las modificaciones que el CSUDO haga de ellos y publique en el Sitio Virtual.  El CSUDO mantiene el Sitio Virtual exclusivamente con fines informativos.
@@ -235,18 +231,15 @@
         <div class="container bg-white" *ngIf="ventanaActiva.nombre==ventanas[3].nombre">
 
           <div class="row">
-            <div class="col-12 col-md-10 offset-md-1">
-
-                <div class="card text-center">
-                  <img class="card-img-top img-about" src="./assets/images/logo2.png">
-                  <div class="card-body">
-                    <p class="card-text text-danger">Version 1.0</p>
-                    <p class="card-text">Propiedad del Centro de Sismologia de la Universidad de Oriente</p>
-                    <p class="card-text">Contacto: mail@sigcumana.com</p>
-                    <p class="card-text">Fuentes: BID, CSUDO</p>
-                  </div>
-                </div>              
-              
+            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 fcol">
+                <img class="img-about" src="./assets/images/logo2.png">
+            </div>
+            <div class="col-12">
+                <p class="text-center">Sistema de Información Geográfica para el registro y visualización de información Geotécnica y Geológica de Cumaná, Estado Sucre</p>
+                <p class="text-center text-danger">Version 1.0</p>
+                <p class="text-center card-text">Propiedad del Centro de Sismologia de la Universidad de Oriente</p>
+                <p class="text-center card-text">Contacto: mail@sigcumana.com</p>
+                <p class="text-center card-text">Fuentes: BID, CSUDO</p>
             </div>
           </div>
 
@@ -260,11 +253,12 @@
 
                 <div class="card">
                   <img class="card-img-top perfil" [src]="'./assets/images/'+investigador.foto">
-                  <div class="card-body">
-                    <p class="card-text text-danger text-center">{{investigador.nombre}}</p>
-                    <p class="card-text">Mail:</p>
+                  <div class="divline bb"></div>
+                  <div class="card-body text-center">
+                    <p class="card-text negrita">{{investigador.nombre}}</p>
+                    <p class="card-text">Email:</p>
                     <p class="card-text">{{investigador.correo}}</p>
-                    <p class="card-text">Tel: {{investigador.telefono}}</p>
+                    <p class="card-text">Tlf: {{investigador.telefono}}</p>
                   </div>
                 </div>              
 
@@ -283,11 +277,12 @@
 
                 <div class="card">
                   <img class="card-img-top perfil" [src]="'./assets/images/'+desarrollador.foto">
+                  <div class="divline bb"></div>
                   <div class="card-body">
                     <p class="card-text text-danger text-center">{{desarrollador.nombre}}</p>
-                    <p class="card-text">Mail:</p>
+                    <p class="card-text">Email:</p>
                     <p class="card-text">{{desarrollador.correo}}</p>
-                    <p class="card-text">Tel: {{desarrollador.telefono}}</p>
+                    <p class="card-text">Tlf: {{desarrollador.telefono}}</p>
                   </div>
                 </div>
 
