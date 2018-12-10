@@ -13,7 +13,7 @@ div.sidebar-enlaces>div.row{
 }
 div.sidebar-enlaces{
 	position: fixed;
-	z-index: 1200;
+	z-index: 995;
 	top: 20px;
 	right: 0px;
 	width: 200px;

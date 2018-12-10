@@ -40,7 +40,12 @@ img.cabecera{
 	width: 100%;
 }
 
-.img-about img{
+div.img-center{
+	display: flex;
+	justify-content: center;
+}
+
+.img-about img, .img-contact{
     width: 100%;
     height: auto;
     margin: auto;
@@ -86,7 +91,7 @@ div.col-desarrolladores{
 }
 
 .modal-fc button{
-	height: 100% !important;
+	height: 50px !important;
 	font-weight: bold  !important;
 	color: #ffffff  !important;
 	padding: 0 !important;
@@ -112,4 +117,7 @@ div.divline{
     border-left: transparent;
     border-right: transparent;
     border-style: solid;
+}
+.fcol{
+	margin-top: 1rem;
 }
