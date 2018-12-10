@@ -98,13 +98,15 @@ flash-messages{
   margin-top: -150px;
 }
 .bot-overlay-image.linea{
+  position: relative;
   z-index: 180;
+  margin-top: -35px;
+  padding: 0;
 }
 .linea img{
   width: 100%;
   height: auto;
 }
-
 .carousel.slide{
   width: 225px;
   height: 150px;
