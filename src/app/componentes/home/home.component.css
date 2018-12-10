@@ -45,12 +45,12 @@ div.row.primera{
 
     .my-sidebar{
       background-color: rgba(40,80,130,0.6);
-      position: absolute;
+      position: fixed;
       z-index: 200;
       top: 0px;
       left: -250px;
       width: 250px;
-      height: 100%;
+      height: 100vh;
       transition: left 300ms;
     }
     .my-sidebar.reveal{
@@ -71,7 +71,7 @@ div.row.primera{
       transition: left 300ms;
     }
     .btn-menu.reveal{
-      left: 150px;
+      left: 190px;
     }
 
 

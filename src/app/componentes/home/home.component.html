@@ -12,7 +12,7 @@
 
 <div class="target">
   <img class="full-image" src="./assets/images/yoamoacumana.jpeg">
-  <div class="my-sidebar">
+  <div class="my-sidebar text-white">
 
     <div class="container login">
 
@@ -29,8 +29,8 @@
           </fieldset>
 
           <div class="box set-center">
-            <button *ngIf="!logged" type="button" id="botonlogin2" (click)="login()" class="btn btn-success btn-lg">Iniciar sesión</button>
-            <button *ngIf="logged" type="button" id="botonlogout2" (click)="logout()" class="btn btn-success btn-lg">Iniciar sesión</button>
+            <button *ngIf="!logged" type="button" id="botonlogin2" (click)="login()" class="btn btn-success">Iniciar sesión</button>
+            <button *ngIf="logged" type="button" id="botonlogout2" (click)="logout()" class="btn btn-danger">Cerrar sesión</button>
           </div>
 
         </div>
@@ -40,22 +40,22 @@
       <div class="row">
 
         <div class="col-12">
-          <button class="btn btn-outline-danger" (click)="open(video)" ngbPopover="Riesgo Sísmico" placement="top" triggers="mouseenter:mouseleave">
+          <button class="btn btn-outline-danger btn-sm btn-block" (click)="open(video)" ngbPopover="Riesgo Sísmico" placement="top" triggers="mouseenter:mouseleave">
             <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
           </button>
         </div>
         <div class="col-12">
-          <a href="https://www.iadb.org/es" target="_blank" class="btn btn-outline-info btn-block" ngbpopover="BID" placement="left" triggers="mouseenter:mouseleave">
+          <a href="https://www.iadb.org/es" target="_blank" class="btn btn-outline-info btn-sm btn-block" ngbpopover="BID" placement="top" triggers="mouseenter:mouseleave">
             <img class="boton-imagen" src="assets/images/bid.jpg">
           </a>
         </div>
         <div class="col-12">
-          <a href="http://csudo.sucre.udo.edu.ve/" target="_blank" class="btn btn-outline-info btn-block" ngbpopover="CSUDO" placement="left" triggers="mouseenter:mouseleave">
+          <a href="http://csudo.sucre.udo.edu.ve/" target="_blank" class="btn btn-outline-info btn-sm btn-block" ngbpopover="CSUDO" placement="top" triggers="mouseenter:mouseleave">
             <img class="boton-imagen" src="assets/images/logo_csudo.png">
           </a>
         </div>
         <div class="col-12">
-          <a href="http://alcaldiadecumana.org/" target="_blank" class="btn btn-outline-info btn-block" ngbpopover="Alcaldía Sucre" placement="left" triggers="mouseenter:mouseleave">
+          <a href="http://alcaldiadecumana.org/" target="_blank" class="btn btn-outline-info btn-sm btn-block" ngbpopover="Alcaldía Sucre" placement="top" triggers="mouseenter:mouseleave">
             <img class="boton-imagen" src="assets/images/logoalcaldia1.png">
           </a>
         </div>
@@ -90,7 +90,7 @@
 
                   <div class="carousel-item">
                     <div class="logo d-block w-100">
-                      <button class="btn btn-outline-danger" (click)="open(video)" ngbPopover="Riesgo Sísmico" placement="top" triggers="mouseenter:mouseleave">
+                      <button class="btn btn-outline-danger" (click)="open(video)" ngbPopover="Riesgo Sísmico" placement="bottom" triggers="mouseenter:mouseleave">
                         <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
                       </button>
                       <br/>
@@ -126,7 +126,7 @@
 
             <ng-template #video let-c="close" let-d="dismiss">
               <div class="modal-header text-white">
-                <h4 class="modal-title" id="modal-basic-title">Riesgo Sismico de la ciudad de Cumaná</h4>
+                <h4 class="modal-title" id="modal-basic-title">Riesgo Sísmico de la ciudad de Cumaná</h4>
                 <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                   <span aria-hidden="true">&times;</span>
                 </button>
