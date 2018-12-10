@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {Message} from 'primeng/components/common/api';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
   logged: boolean;
   user_logged: string;
 
-  constructor(private flashMessage: FlashMessagesService, private router: Router) { }
+  constructor(private flashMessage: FlashMessagesService, private modalService: NgbModal, private router: Router) { }
 
   ngOnInit() {
         this.is_autenticate();
@@ -45,6 +46,15 @@ export class HomeComponent implements OnInit {
       el.classList.add("reveal");
       target.classList.add("reveal");
     }
+  }
+
+  open(content) {
+
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      
+    }, (reason) => {
+      
+    });
   }
 
 

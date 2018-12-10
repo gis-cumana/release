@@ -85,3 +85,8 @@ div.row.primera{
 div.my-sidebar div.login{
 	margin-top: 50px;
 }
+
+img.boton-imagen{
+  width: 3em;
+  height: 3em;
+}
