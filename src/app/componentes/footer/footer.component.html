@@ -28,15 +28,15 @@
                   <button *ngIf="ventanaActiva.nombre!=ventanas[4].nombre" type="button" class="btn btn-block btn-outline-primary" (click)="seleccionarVentana(ventanas[4])">{{ventanas[4].corto}}</button>
                 </div>
                 <div class="col-12 col-sm-4">
-                  <button *ngIf="ventanaActiva.nombre==ventanas[5].nombre" type="button" class="btn btn-block btn-primary text-left" (click)="seleccionarVentana(ventanas[5])" disabled>{{ventanas[5].corto1}}<br>{{ventanas[5].corto2}}</button>
-                  <button *ngIf="ventanaActiva.nombre!=ventanas[5].nombre" type="button" class="btn btn-block btn-outline-primary text-left" (click)="seleccionarVentana(ventanas[5])">{{ventanas[5].corto1}}<br>{{ventanas[5].corto2}}</button>
+                  <button *ngIf="ventanaActiva.nombre==ventanas[5].nombre" type="button" class="btn btn-block btn-primary" (click)="seleccionarVentana(ventanas[5])" disabled>{{ventanas[5].corto1}}<br>{{ventanas[5].corto2}}</button>
+                  <button *ngIf="ventanaActiva.nombre!=ventanas[5].nombre" type="button" class="btn btn-block btn-outline-primary" (click)="seleccionarVentana(ventanas[5])">{{ventanas[5].corto1}}<br>{{ventanas[5].corto2}}</button>
                 </div>
                 
               </div>
 
             </div>
 
-            <div class="col-1 float-right">
+            <div class="col-12 col-sm-1 float-right">
               <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -231,8 +231,8 @@
         <div class="container bg-white" *ngIf="ventanaActiva.nombre==ventanas[3].nombre">
 
           <div class="row">
-            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 fcol">
-                <img class="img-about" src="./assets/images/cumasig-logo.png">
+            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 fcol img-about">
+                <img src="./assets/images/cumasig-logo.png">
             </div>
             <div class="col-12">
                 <p class="text-center negrita">Sistema de Información Geográfica para el registro y visualización de información Geotécnica y Geológica de Cumaná, Estado Sucre</p>
@@ -279,7 +279,7 @@
                   <img class="card-img-top perfil" [src]="'./assets/images/'+desarrollador.foto">
                   <div class="divline bb"></div>
                   <div class="card-body">
-                    <p class="card-text text-danger text-center">{{desarrollador.nombre}}</p>
+                    <p class="card-text negrita text-center">{{desarrollador.nombre}}</p>
                     <p class="card-text">Email:</p>
                     <p class="card-text">{{desarrollador.correo}}</p>
                     <p class="card-text">Tlf: {{desarrollador.telefono}}</p>
