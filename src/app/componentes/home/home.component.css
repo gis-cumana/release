@@ -46,23 +46,41 @@ div.row.primera{
     .my-sidebar{
       background-color: rgba(40,80,130,0.6);
       position: absolute;
-      z-index: 150;
+      z-index: 200;
       top: 0px;
       left: -250px;
-      width: 0px;
+      width: 250px;
       height: 100%;
-      transition: left 600ms, width 300ms;
+      transition: left 300ms;
     }
     .my-sidebar *{
       display: none;
     }
     .my-sidebar.reveal{
       left: 0px;
-      width: 250px;
     }
     .my-sidebar.reveal *{
       display: block;
     }
+
+    .my-sidebar .container{
+      margin-bottom: 30px;
+    }
+    .my-sidebar .frow{
+      margin-top: 60px;
+    }
+
+    .btn-menu{
+      position: absolute;
+      z-index: 250;
+      top: 15px;
+      left: 15px;
+      transition: left 300ms;
+    }
+    .btn-menu.reveal{
+      left: 150px;
+    }
+
 
 div.my-sidebar div.login{
 	margin-top: 2rem;

@@ -1,3 +1,7 @@
+<button type="button" class="btn btn-link btn-menu" (click)="toggleSidebar($event)">
+  <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+</button>
+
 <div class="container top-overlay-image">
   <div class="row">
     <div class="col-1">
@@ -6,17 +10,14 @@
       </button>
     </div>
   </div>
-  <div class="row">
-    <div class="col-6 offset-3 col-md-4 offset-md-4">
-      <img class="full-image" src="./assets/images/cumasig-logo.png">
-    </div>
-  </div>
 </div>
 
 <div class="target">
   <img class="full-image" src="./assets/images/yoamoacumana.jpg">
   <div class="my-sidebar">
+
     <div class="container login">
+
       <div class="row">
         <div class="col">
 
@@ -29,7 +30,7 @@
             <input type="password" onkeyup="if(event.keyCode === 13){$('#botonlogin2').click();}" [(ngModel)]="password"  class="form-control" id="password2" placeholder="*******">
           </fieldset>
 
-          <div class="center">
+          <div class="box set-center">
             <button *ngIf="!logged" type="button" id="botonlogin2" (click)="login()" class="btn btn-success btn-lg">Iniciar sesión</button>
             <button *ngIf="logged" type="button" id="botonlogout2" (click)="logout()" class="btn btn-success btn-lg">Iniciar sesión</button>
           </div>

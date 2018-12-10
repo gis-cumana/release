@@ -33,14 +33,17 @@ export class HomeComponent implements OnInit {
         this.images.push({source:'assets/images/arriba.jpg', title:'Cumaná'});
   }
 
-  toggleSidebar(){
+  toggleSidebar(event){
 
     let el = <HTMLElement>document.querySelector(".my-sidebar");
+    let target = <HTMLElement>event.target;
     if(el.classList.contains("reveal")){
       el.classList.remove("reveal");
+      target.classList.remove("reveal");
     }
     else{
       el.classList.add("reveal");
+      target.classList.add("reveal");
     }
   }
 
