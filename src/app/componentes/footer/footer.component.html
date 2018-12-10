@@ -1,6 +1,6 @@
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
-        <div class="container-full" *ngIf="ventanaActiva.nombre==ventanas[0].nombre || ventanaActiva.nombre==ventanas[1].nombre || ventanaActiva.nombre==ventanas[2].nombre">
+        <div class="container container-full" *ngIf="ventanaActiva.nombre==ventanas[0].nombre || ventanaActiva.nombre==ventanas[1].nombre || ventanaActiva.nombre==ventanas[2].nombre">
           <div class="row">
             <div class="col-6 col-sm-4 col-lg-3">
               <h4 class="modal-title"> <span type="button" class="btn btn-primary btn-block" disabled>{{ventanaActiva.nombre}}</span></h4>
@@ -12,7 +12,7 @@
             </div>
           </div>
         </div>
-        <div class="container" *ngIf="ventanaActiva.nombre==ventanas[3].nombre || ventanaActiva.nombre==ventanas[4].nombre || ventanaActiva.nombre==ventanas[5].nombre">
+        <div class="container container-full" *ngIf="ventanaActiva.nombre==ventanas[3].nombre || ventanaActiva.nombre==ventanas[4].nombre || ventanaActiva.nombre==ventanas[5].nombre">
 
           <div class="row botones-modal">
             <div class="col-11">
@@ -21,15 +21,15 @@
 
                 <div class="col-12 col-sm-4">
                   <button *ngIf="ventanaActiva.nombre==ventanas[3].nombre" type="button" class="btn btn-block btn-info" (click)="seleccionarVentana(ventanas[3])" disabled>{{ventanas[3].corto}}</button>
-                  <button *ngIf="!ventanaActiva.nombre==ventanas[3].nombre" type="button" class="btn btn-block btn-outline-info" (click)="seleccionarVentana(ventanas[3])" disabled>{{ventanas[3].corto}}</button>
+                  <button *ngIf="ventanaActiva.nombre!=ventanas[3].nombre" type="button" class="btn btn-block btn-outline-info" (click)="seleccionarVentana(ventanas[3])">{{ventanas[3].corto}}</button>
                 </div>
                 <div class="col-12 col-sm-4">
-                  <button *ngIf="ventanaActiva.nombre==ventanas[4].nombre" type="button" class="btn btn-block btn-info" (click)="seleccionarVentana(ventanas[4])">{{ventanas[4].corto}}</button>
-                  <button *ngIf="!ventanaActiva.nombre==ventanas[4].nombre" type="button" class="btn btn-block btn-outline-info" (click)="seleccionarVentana(ventanas[4])">{{ventanas[4].corto}}</button>
+                  <button *ngIf="ventanaActiva.nombre==ventanas[4].nombre" type="button" class="btn btn-block btn-info" (click)="seleccionarVentana(ventanas[4])" disabled>{{ventanas[4].corto}}</button>
+                  <button *ngIf="ventanaActiva.nombre!=ventanas[4].nombre" type="button" class="btn btn-block btn-outline-info" (click)="seleccionarVentana(ventanas[4])">{{ventanas[4].corto}}</button>
                 </div>
                 <div class="col-12 col-sm-4">
-                  <button *ngIf="ventanaActiva.nombre==ventanas[5].nombre" type="button" class="btn btn-block btn-info" (click)="seleccionarVentana(ventanas[5])">{{ventanas[5].corto1}}<br>{{ventanas[5].corto2}}</button>
-                  <button *ngIf="!ventanaActiva.nombre==ventanas[5].nombre" type="button" class="btn btn-block btn-outline-info" (click)="seleccionarVentana(ventanas[5])">{{ventanas[5].corto1}}<br>{{ventanas[5].corto2}}</button>
+                  <button *ngIf="ventanaActiva.nombre==ventanas[5].nombre" type="button" class="btn btn-block btn-info" (click)="seleccionarVentana(ventanas[5])" disabled>{{ventanas[5].corto1}}<br>{{ventanas[5].corto2}}</button>
+                  <button *ngIf="ventanaActiva.nombre!=ventanas[5].nombre" type="button" class="btn btn-block btn-outline-info" (click)="seleccionarVentana(ventanas[5])">{{ventanas[5].corto1}}<br>{{ventanas[5].corto2}}</button>
                 </div>
                 
               </div>
