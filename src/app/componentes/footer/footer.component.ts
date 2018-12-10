@@ -73,39 +73,38 @@ export class FooterComponent implements OnInit {
   		"foto": "ysimar.jpg"
   		}
   	];
-  	this.desarrolladores = [
-  		[{
-  			"nombre": "MSc. Yalgis Rodriguez",
-  			"correo": "yalgisrodriguez@gmail.com",
-  			"telefono": "0416-6143465",
-  			"foto": "yalgis.jpeg"
-  		},{
-  			"nombre": "MSc. Luis M. Rodriguez",
-  			"correo": "luismrodriguezf@gmail.com",
-  			"telefono": "0416-8945712",
-  			"foto": "luism.jpeg"
-  		},{
-  			"nombre": "MSc. Yulia Sardella",
-  			"correo": "sardellayulia@gmail.com",
-  			"telefono": "0416-4813369",
-  			"foto": "yulia.jpg"
-  		}],
-  		[{
-  			"nombre": "MSc. Gregorio Ruiz",
-  			"correo": "gruizleon@gmail.com",
-  			"telefono": "0426-2871235",
-  			"foto": "gregorio.jpg"
-  		},{
-  			"nombre": "TSU. Benjamin Escobar",
-  			"correo": "benjamin.s1.e@gmail.com",
-  			"telefono": "0416-0337683",
-  			"foto": "benjamin.jpg"
-  		},{
-  			"nombre": "Ing. Carlos Cercado",
-  			"correo": "cercadocarlos@gmail.com",
-  			"telefono": "0426-3814727",
-  			"foto": "cercado.png"
-  		}]
+    this.desarrolladores = [
+      {
+        "nombre": "MSc. Yalgis Rodriguez",
+        "correo": "yalgisrodriguez@gmail.com",
+        "telefono": "0416-6143465",
+        "foto": "yalgis.jpeg"
+      },{
+        "nombre": "MSc. Luis M. Rodriguez",
+        "correo": "luismrodriguezf@gmail.com",
+        "telefono": "0416-8945712",
+        "foto": "luism.jpeg"
+      },{
+        "nombre": "MSc. Yulia Sardella",
+        "correo": "sardellayulia@gmail.com",
+        "telefono": "0416-4813369",
+        "foto": "yulia.jpg"
+      },{
+        "nombre": "MSc. Gregorio Ruiz",
+        "correo": "gruizleon@gmail.com",
+        "telefono": "0426-2871235",
+        "foto": "gregorio.jpg"
+      },{
+        "nombre": "TSU. Benjamin Escobar",
+        "correo": "benjamin.s1.e@gmail.com",
+        "telefono": "0416-0337683",
+        "foto": "benjamin.jpg"
+      },{
+        "nombre": "Ing. Carlos Cercado",
+        "correo": "cercadocarlos@gmail.com",
+        "telefono": "0426-3814727",
+        "foto": "cercado.png"
+      }
   	];
   }
 
