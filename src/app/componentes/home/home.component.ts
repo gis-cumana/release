@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   toggleSidebar(event){
 
     let el = <HTMLElement>document.querySelector(".my-sidebar");
-    let target = <HTMLElement>event.target.parentNode;
+    let target = <HTMLElement>event.target.nodeName == "BUTTON" ? event.target : event.target.parentNode;
     if(el.classList.contains("reveal")){
       el.classList.remove("reveal");
       target.classList.remove("reveal");
