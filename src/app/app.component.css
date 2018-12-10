@@ -6,7 +6,7 @@ flash-messages{
     padding: 3px 1%;
 }
 
-.modal-body.modal-footer-comp{
+.modal-body.modal-fc{
 	background-color: none !important;
     border-color: none !important;
 }
@@ -14,4 +14,7 @@ flash-messages{
 div.col-desarrolladores{
 	margin-top: .25rem;
 	margin-bottom: .25rem;
+}
+.modal-header.modal-fc{
+	border: none !important;
 }

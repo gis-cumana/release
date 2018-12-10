@@ -67,3 +67,15 @@ div.container-full{
 	padding-left: 0px;
 	padding-right: 0px;
 }
+
+.modal-body.modal-fc{
+	background-color: none !important;
+    border-color: none !important;
+}
+div.col-desarrolladores{
+	margin-top: .25rem;
+	margin-bottom: .25rem;
+}
+.modal-header.modal-fc{
+	border: none !important;
+}
