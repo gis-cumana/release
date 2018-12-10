@@ -69,16 +69,23 @@ div.container-full{
 }
 
 .modal-body.modal-fc{
-	background-color: none !important;
-    border-color: none !important;
+	background-color: rgba(0,0,0,0) !important;
+    border-color: rgba(0,0,0,0) !important;
 }
 div.col-desarrolladores{
 	margin-top: .25rem;
 	margin-bottom: .25rem;
 }
 .modal-header.modal-fc{
-	border: none !important;
+	border-color: rgba(0,0,0,0) !important;
 }
 .modal-fc .card{
 	height: 100% !important;
+}
+
+.modal-fc button{
+	height: 100% !important;
+	text-align: left !important;
+	font-weight: bold;
+	color: #ffffff;
 }

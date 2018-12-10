@@ -5,19 +5,3 @@ flash-messages{
     z-index: 5000;
     padding: 3px 1%;
 }
-
-.modal-body.modal-fc{
-	background-color: none !important;
-    border-color: none !important;
-}
-
-div.col-desarrolladores{
-	margin-top: .25rem;
-	margin-bottom: .25rem;
-}
-.modal-header.modal-fc{
-	border: none !important;
-}
-.modal-fc .card{
-	height: 100% !important;
-}
