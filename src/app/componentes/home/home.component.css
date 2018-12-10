@@ -53,16 +53,9 @@ div.row.primera{
       height: 100%;
       transition: left 300ms;
     }
-    .my-sidebar *{
-      display: none;
-    }
     .my-sidebar.reveal{
       left: 0px;
     }
-    .my-sidebar.reveal *{
-      display: block;
-    }
-
     .my-sidebar .container{
       margin-bottom: 30px;
     }
