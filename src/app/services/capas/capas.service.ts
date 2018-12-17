@@ -10,7 +10,7 @@ export class CapasService {
     constructor(
         public http: HttpClient
     ){
-        this.url = 'https://gis-entorno-benjamin-s-e.c9users.io:8080/capas';
+        this.url = '/api/capas';
     }
 
     obtener(): Observable<any>{

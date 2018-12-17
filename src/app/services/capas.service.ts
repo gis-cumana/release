@@ -7,7 +7,7 @@ export class CapasService {
   public url: string;
   
   constructor(public http: HttpClient) {
-    this.url = 'http://190.168.131.13:8000/capas';
+    this.url = '/api/capas';
    }
 
    buscar(capa): Observable<any>{

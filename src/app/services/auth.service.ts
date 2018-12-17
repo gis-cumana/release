@@ -7,7 +7,7 @@ export class AuthService {
     public url: string;
   
   constructor(public http: HttpClient) {
-        this.url = 'http://190.168.131.13:8000/auth/';
+        this.url = '/api/auth/';
    }
 
    login(user): Observable<any>{
