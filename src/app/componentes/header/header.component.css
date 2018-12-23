@@ -3,6 +3,21 @@ img.img-full{
 	height: auto;
 }
 
+.row.full{
+	width: 100%;
+}
+
+.row.full.links img{
+	cursor: pointer;
+}
+.row.full.links img:hover{
+	border-color: cornflowerblue;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+
+
 img.boton-imagen{
     width: 1.7em;
     height: 2.1em;	

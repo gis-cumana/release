@@ -118,18 +118,28 @@
 -->
 
 <nav class="navbar omni-nav navbar-expand-lg navbar-light bg-light">
-  <div *ngIf="!isRouteMapa()" class="row">
-    <div class="col-3 box set-mid set-center">
-      <img class="img-full" src="assets/images/BID_solo.png" >
-    </div>
-    <div class="col-3 box set-mid set-center">
-      <img class="img-full" src="assets/images/ALCALDIA_solo.png" >
-    </div>
-    <div class="col-3 box set-mid set-center">
-      <img class="img-full" src="assets/images/UDO_solo.png" >
-    </div>
-    <div class="col-3 box set-mid set-center">
-      <img class="img-full" src="assets/images/CIGIR_solo.png" >
+  <div class="container-fluid">
+    <div *ngIf="!isRouteMapa()" class="row full links">
+      <div class="col-3 box set-mid set-center">
+      <a href="https://www.iadb.org/es" target="_blank">
+        <img class="img-full" src="assets/images/BID_solo.png" >
+      </a>
+      </div>
+      <div class="col-3 box set-mid set-center">
+      <a href="http://alcaldiadecumana.org/" target="_blank">
+        <img class="img-full" src="assets/images/ALCALDIA_solo.png" >
+      </a>
+      </div>
+      <div class="col-3 box set-mid set-center">
+      <a href="http://csudo.sucre.udo.edu.ve/" target="_blank">
+        <img class="img-full" src="assets/images/UDO_solo.png" >
+      </a>
+      </div>
+      <div class="col-3 box set-mid set-center">
+      <a href="http://cigir.org.ve" target="_blank">
+        <img class="img-full" src="assets/images/CIGIR_solo.png" >
+      </a>
+      </div>
     </div>
   </div>
 
