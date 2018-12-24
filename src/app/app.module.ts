@@ -46,7 +46,7 @@ const appRoutes : Routes = [
  { path: 'mapa', loadChildren: './mapa.module#MapaModule'},
  { path: 'casos', loadChildren: './casos.module#CasosModule', canActivate: [AuthGuard]},
  { path: 'sucesos', loadChildren: './sucesos.module#SucesosModule', canActivate: [AuthGuard]},
- { path: 'profile', loadChildren: './profile.module#ProfileModule' canActivate: [AuthGuard]},
+ { path: 'profile', loadChildren: './profile.module#ProfileModule', canActivate: [AuthGuard]},
  { path: '**', redirectTo: '', pathMatch: 'full' }
 ]
 
