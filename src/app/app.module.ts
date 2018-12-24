@@ -6,34 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { FlashMessagesModule } from 'angular2-flash-messages/module';
-
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap/popover/popover.module';
-
-import {
-GalleriaModule,
-ButtonModule,
-DialogModule,
-GrowlModule,
-ProgressBarModule
-} from 'primeng/primeng';
-import {TableModule} from 'primeng/table';
-
 
 import { AppComponent } from './app.component';
 
-//servicios
 import {AuthGuard} from './services/guard.service';
-
-import {CasosService} from './services/casos.service';
-import {SucesosService} from './services/sucesos.service';
 import {AuthService} from './services/auth.service';
-
-import { CategoriasService } from './services/categorias/categorias.service';
-
-import { DatosService } from './services/datos/datos.service';
-
-import { CapasService } from './services/capas/capas.service';
 
 const appRoutes : Routes = [
  { path: '', loadChildren: './inicio.module#InicioModule'},
@@ -45,22 +23,17 @@ const appRoutes : Routes = [
 ]
 
 @NgModule({
-    declarations: [
-        AppComponent,
-    ],
+    declarations: [AppComponent],
     imports: [
         NgbModalModule.forRoot(),
-        NgbPopoverModule.forRoot(),
         FlashMessagesModule.forRoot(),
         RouterModule.forRoot(appRoutes),
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
-        HttpClientModule,
-        GalleriaModule,
-        TableModule
+        HttpClientModule
     ],
-    providers: [CapasService, CasosService, SucesosService, AuthService, AuthGuard, CategoriasService, DatosService],
+    providers: [AuthService, AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
