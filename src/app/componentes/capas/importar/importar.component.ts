@@ -4,7 +4,6 @@ import { CapasService } from '../../../services/capas/capas.service'
 
 @Component({
   selector: 'app-importar-content',
-  styleUrls: ['./content.component.css'],
   template: `
     <div class="modal-header">
       <h4 class="modal-title">Importar Capas</h4>
