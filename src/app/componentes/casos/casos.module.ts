@@ -22,7 +22,6 @@ const casosRoutes : Routes = [
   imports: [
     CommonModule,
  	FormsModule,
- 	FlashMessagesModule,
  	RouterModule.forRoot(casosRoutes),
  	GalleriaModule,
 	ButtonModule,
