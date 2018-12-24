@@ -21,8 +21,6 @@ import {TableModule} from 'primeng/table';
 
 
 import { AppComponent } from './app.component';
-import { InicioModule } from './inicio.module';
-import { MapaModule } from './componentes/mapa/mapa.module';
 
 //servicios
 import {AuthGuard} from './services/guard.service';
@@ -37,16 +35,12 @@ import { DatosService } from './services/datos/datos.service';
 
 import { CapasService } from './services/capas/capas.service';
 
-import { CasosModule } from './componentes/casos/casos.module';
-import { SucesosModule } from './componentes/sucesos/sucesos.module';
-import { ProfileModule } from './componentes/profile/profile.module';
-
 const appRoutes : Routes = [
  { path: '', loadChildren: './inicio.module#InicioModule'},
- { path: 'mapa', loadChildren: './mapa.module#MapaModule'},
- { path: 'casos', loadChildren: './casos.module#CasosModule', canActivate: [AuthGuard]},
- { path: 'sucesos', loadChildren: './sucesos.module#SucesosModule', canActivate: [AuthGuard]},
- { path: 'profile', loadChildren: './profile.module#ProfileModule', canActivate: [AuthGuard]},
+ { path: 'mapa', loadChildren: './components/mapa/mapa.module#MapaModule'},
+ { path: 'casos', loadChildren: './components/casos/casos.module#CasosModule', canActivate: [AuthGuard]},
+ { path: 'sucesos', loadChildren: './components/sucesos/sucesos.module#SucesosModule', canActivate: [AuthGuard]},
+ { path: 'profile', loadChildren: './components/profile/profile.module#ProfileModule', canActivate: [AuthGuard]},
  { path: '**', redirectTo: '', pathMatch: 'full' }
 ]
 
