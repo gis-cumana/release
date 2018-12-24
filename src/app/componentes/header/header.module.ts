@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap/collapse/collapse.module';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap/accordion/accordion.module';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FlashMessagesModule } from 'angular2-flash-messages/module';
 
@@ -21,6 +22,7 @@ import { HeaderComponent } from './header.component';
     NgbCollapseModule,
     NgbDropdownModule,
     NgbAccordionModule,
+    NgbModalModule,
  	FlashMessagesModule,
  	CategoriasModule,
  	CapasModule,

@@ -12,7 +12,7 @@ ProgressBarModule
 import {TableModule} from 'primeng/table';
 
 import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap/popover/popover.module';
-
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopupModalContentComponent } from './popup-modal-content.component';
 
 import { HeaderModule } from '../header/header.module';
@@ -31,6 +31,7 @@ const mapRoutes : Routes = [
     CommonModule,
  	FormsModule,
  	FlashMessagesModule,
+ 	NgbModalModule,
  	NgbPopoverModule,
  	RouterModule.forChild(mapRoutes),
  	HeaderModule,

@@ -6,8 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { FlashMessagesModule } from 'angular2-flash-messages/module';
-import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AppComponent } from './app.component';
 
 import {AuthGuard} from './services/guard.service';
@@ -25,7 +23,6 @@ const appRoutes : Routes = [
 @NgModule({
     declarations: [AppComponent],
     imports: [
-        NgbModalModule.forRoot(),
         FlashMessagesModule.forRoot(),
         RouterModule.forRoot(appRoutes),
         BrowserModule,
