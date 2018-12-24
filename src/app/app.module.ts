@@ -36,12 +36,12 @@ import { DatosService } from './services/datos/datos.service';
 import { CapasService } from './services/capas/capas.service';
 
 const appRoutes : Routes = [
- { path: '/', loadChildren: './inicio.module#InicioModule'},
- { path: '/mapa', loadChildren: './componentes/mapa/mapa.module#MapaModule'},
- { path: '/casos', loadChildren: './componentes/casos/casos.module#CasosModule', canActivate: [AuthGuard]},
- { path: '/sucesos', loadChildren: './componentes/sucesos/sucesos.module#SucesosModule', canActivate: [AuthGuard]},
- { path: '/profile', loadChildren: './componentes/profile/profile.module#ProfileModule', canActivate: [AuthGuard]},
- { path: '**', redirectTo: '/', pathMatch: 'full' }
+ { path: '', loadChildren: './inicio.module#InicioModule'},
+ { path: 'mapa', loadChildren: './componentes/mapa/mapa.module#MapaModule'},
+ { path: 'casos', loadChildren: './componentes/casos/casos.module#CasosModule', canActivate: [AuthGuard]},
+ { path: 'sucesos', loadChildren: './componentes/sucesos/sucesos.module#SucesosModule', canActivate: [AuthGuard]},
+ { path: 'profile', loadChildren: './componentes/profile/profile.module#ProfileModule', canActivate: [AuthGuard]},
+ { path: '**', redirectTo: '', pathMatch: 'full' }
 ]
 
 @NgModule({
