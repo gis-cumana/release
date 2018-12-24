@@ -19,7 +19,7 @@ const inicioRoutes : Routes = [
     CommonModule,
  	FormsModule,
  	FlashMessagesModule,
- 	NgbModalModule,
+ 	NgbModalModule.forRoot(),
  	RouterModule.forChild(inicioRoutes),
  	HeaderModule
   ],

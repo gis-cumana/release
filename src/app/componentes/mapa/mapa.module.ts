@@ -31,8 +31,8 @@ const mapRoutes : Routes = [
     CommonModule,
  	FormsModule,
  	FlashMessagesModule,
- 	NgbModalModule,
- 	NgbPopoverModule,
+ 	NgbModalModule.forRoot(),
+ 	NgbPopoverModule.forRoot(),
  	RouterModule.forChild(mapRoutes),
  	HeaderModule,
  	DatosModule
