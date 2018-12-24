@@ -11,7 +11,6 @@ import { ImportarCapasComponent, ImportarCapasContent } from './importar.compone
   imports: [
     CommonModule,
  	FormsModule,
- 	ImportarModule,
  	FlashMessagesModule
   ],
   declarations: [ImportarCapasComponent, ImportarCapasContent],
