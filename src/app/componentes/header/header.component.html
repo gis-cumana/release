@@ -118,8 +118,8 @@
 -->
 
 <nav class="navbar omni-nav navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <div *ngIf="!isRouteMapa()" class="row full links">
+  <div *ngIf="!isRouteMapa()" class="container-fluid">
+    <div class="row full links">
       <div class="col-3 box set-mid set-center">
       <a href="https://www.iadb.org/es" target="_blank">
         <img class="img-full" src="assets/images/BID_solo.png" >
@@ -144,7 +144,7 @@
   </div>
 
   <a *ngIf="isRouteMapa()" class="navbar-brand" routerLink="/" ngbPopover="Inicio" placement="bottom" triggers="mouseenter:mouseleave">
-     <img src="assets/images/logo3.png" style="float: left" width="250" height="55">
+     <img src="assets/images/cumasig-logo.png" style="float: left" width="250" height="55">
   </a>
 
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -311,6 +311,8 @@
   </div>
 </nav>
 
+
+<!--
 <p-dialog header="Registrar nuevo usuario" width="400" modal="true" [(visible)]="display">
 <p-progressBar mode="indeterminate" *ngIf="loading"></p-progressBar>
 
@@ -335,7 +337,9 @@
     <button type="button" class="btn btn-success btn-lg" (click)="register()">Registrar</button>
   </div>
 </p-dialog>
+-->
 
+<!--
 <p-dialog header="Iniciar sesión" width="400" modal="true" [(visible)]="registro">
 <p-progressBar mode="indeterminate" *ngIf="loading"></p-progressBar>
 <p-growl [(value)]="msgs"></p-growl>
@@ -351,14 +355,16 @@
 
   <div class="center">
     <button type="button" id="botonlogin" (click)="login()" class="btn btn-success btn-lg">Iniciar sesión</button>
-<!--
+
      <br/><br/>
      <br/><br/>
     ¿No tienes cuenta? <a href="#" (click)="showRegister()">Registrate</a>
--->
+
   </div>
 </p-dialog>
+-->
 
+<!--
 <p-dialog header="Recuperar contraseña" width="400" modal="true" [(visible)]="recover">
 
   <span class="fa fa-info fa-2x"></span> Introduzca su correo electronico y le enviaremos su nuevo código de seguridad.
@@ -373,6 +379,7 @@
     <button type="button" (click)="showLogin()" class="btn btn-success">Regresar</button>
   </div>
 </p-dialog>
+-->
 
 <i class="fa fa-spinner fa-pulse fa-2x fa-fw" *ngIf="loading"></i>
 <flash-messages></flash-messages>
