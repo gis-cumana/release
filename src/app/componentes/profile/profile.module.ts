@@ -26,7 +26,7 @@ const profRoutes : Routes = [
     CommonModule,
  	FormsModule,
  	FlashMessagesModule,
- 	RouterModule.forRoot(profRoutes),
+ 	RouterModule.forChild(profRoutes),
  	GalleriaModule,
 	ButtonModule,
 	DialogModule,

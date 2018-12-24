@@ -18,7 +18,7 @@ const inicioRoutes : Routes = [
     CommonModule,
  	FormsModule,
  	FlashMessagesModule,
- 	RouterModule.forRoot(inicioRoutes),
+ 	RouterModule.forChild(inicioRoutes),
  	HeaderModule
   ],
   declarations: [HomeComponent, FooterComponent]

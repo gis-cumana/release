@@ -22,7 +22,7 @@ const sucesosRoutes : Routes = [
   imports: [
     CommonModule,
  	FormsModule,
- 	RouterModule.forRoot(sucesosRoutes),
+ 	RouterModule.forChild(sucesosRoutes),
  	GalleriaModule,
 	ButtonModule,
 	DialogModule,

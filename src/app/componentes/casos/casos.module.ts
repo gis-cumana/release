@@ -22,7 +22,7 @@ const casosRoutes : Routes = [
   imports: [
     CommonModule,
  	FormsModule,
- 	RouterModule.forRoot(casosRoutes),
+ 	RouterModule.forChild(casosRoutes),
  	GalleriaModule,
 	ButtonModule,
 	DialogModule,

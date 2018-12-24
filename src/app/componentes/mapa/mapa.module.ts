@@ -32,7 +32,7 @@ const mapRoutes : Routes = [
     CommonModule,
  	FormsModule,
  	FlashMessagesModule,
- 	RouterModule.forRoot(mapRoutes),
+ 	RouterModule.forChild(mapRoutes),
  	HeaderModule,
  	DatosModule
   ],
