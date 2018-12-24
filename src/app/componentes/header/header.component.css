@@ -7,6 +7,9 @@ img.img-full{
 	width: 100%;
 }
 
+.row.full.links{
+	max-height: 55px;
+}
 .row.full.links img{
 	cursor: pointer;
 }
