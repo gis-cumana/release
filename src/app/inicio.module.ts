@@ -8,6 +8,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages/module';
 import { HeaderModule } from './componentes/header/header.module';
 import { HomeComponent } from './componentes/home/home.component';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 const inicioRoutes : Routes = [
  { path: '', component: HomeComponent},
@@ -18,6 +19,7 @@ const inicioRoutes : Routes = [
     CommonModule,
  	FormsModule,
  	FlashMessagesModule,
+ 	NgbModalModule,
  	RouterModule.forChild(inicioRoutes),
  	HeaderModule
   ],
