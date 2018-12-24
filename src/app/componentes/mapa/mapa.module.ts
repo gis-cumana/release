@@ -17,6 +17,8 @@ import {TableModule} from 'primeng/table';
 import { MapaComponent } from './mapa.component';
 import { PopupModalContentComponent } from './popup-modal-content.component';
 
+import { HeaderModule } from './componentes/header/header.module';
+
 const mapRoutes : Routes = [
  { path: '', component: MapaComponent},
 ]
@@ -27,7 +29,8 @@ const mapRoutes : Routes = [
     CommonModule,
  	FormsModule,
  	FlashMessagesModule,
- 	RouterModule.forRoot(mapRoutes)
+ 	RouterModule.forRoot(mapRoutes),
+ 	HeaderModule
   ],
   declarations: [MapaComponent, PopupModalContentComponent],
   entryComponents: [

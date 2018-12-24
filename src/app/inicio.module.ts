@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { FlashMessagesModule } from 'angular2-flash-messages/module';
-import { HeaderModule } from './componentes/header/header.module';
 
+import { HeaderModule } from './componentes/header/header.module';
 import { HomeComponent } from './componentes/home/home.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 
