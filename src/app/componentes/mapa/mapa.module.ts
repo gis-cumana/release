@@ -14,10 +14,13 @@ ProgressBarModule
 } from 'primeng/primeng';
 import {TableModule} from 'primeng/table';
 
-import { MapaComponent } from './mapa.component';
 import { PopupModalContentComponent } from './popup-modal-content.component';
 
 import { HeaderModule } from '../header/header.module';
+import { DatosModule } from '../datos/datos.module';
+
+import { MapaComponent } from './mapa.component';
+
 
 const mapRoutes : Routes = [
  { path: '', component: MapaComponent},
@@ -30,7 +33,8 @@ const mapRoutes : Routes = [
  	FormsModule,
  	FlashMessagesModule,
  	RouterModule.forRoot(mapRoutes),
- 	HeaderModule
+ 	HeaderModule,
+ 	DatosModule
   ],
   declarations: [MapaComponent, PopupModalContentComponent],
   entryComponents: [
