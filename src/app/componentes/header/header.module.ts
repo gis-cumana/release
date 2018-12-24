@@ -18,9 +18,9 @@ import { HeaderComponent } from './header.component';
   imports: [
     CommonModule,
  	FormsModule,
-    NgbCollapseModule.forRoot(),
-    NgbDropdownModule.forRoot(),
-    NgbAccordionModule.forRoot(),
+    NgbCollapseModule,
+    NgbDropdownModule,
+    NgbAccordionModule,
  	FlashMessagesModule,
  	CategoriasModule,
  	CapasModule,

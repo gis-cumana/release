@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CasosComponent } from './casos.component';
+import { CasosService } from '../../services/casos.service';
 
 import {
-GalleriaModule,
-ButtonModule,
 DialogModule,
 GrowlModule,
 ProgressBarModule
@@ -23,13 +22,12 @@ const casosRoutes : Routes = [
     CommonModule,
  	FormsModule,
  	RouterModule.forChild(casosRoutes),
- 	GalleriaModule,
-	ButtonModule,
-	DialogModule,
+ 	DialogModule,
 	GrowlModule,
 	ProgressBarModule,
 	TableModule
   ],
+  providers: [CasosService],
   declarations: [CasosComponent]
 })
 export class CasosModule { }

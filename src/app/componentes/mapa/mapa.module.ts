@@ -6,13 +6,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages/module';
 
 import {
-GalleriaModule,
-ButtonModule,
-DialogModule,
 GrowlModule,
 ProgressBarModule
 } from 'primeng/primeng';
 import {TableModule} from 'primeng/table';
+
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap/popover/popover.module';
 
 import { PopupModalContentComponent } from './popup-modal-content.component';
 
@@ -32,13 +31,12 @@ const mapRoutes : Routes = [
     CommonModule,
  	FormsModule,
  	FlashMessagesModule,
+ 	NgbPopoverModule,
  	RouterModule.forChild(mapRoutes),
  	HeaderModule,
  	DatosModule
   ],
   declarations: [MapaComponent, PopupModalContentComponent],
-  entryComponents: [
-	PopupModalContentComponent
-  ],
+  entryComponents: [PopupModalContentComponent],
 })
 export class MapaModule { }

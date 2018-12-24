@@ -3,14 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FlashMessagesModule } from 'angular2-flash-messages/module';
-
 import { ProfileComponent } from './profile.component';
 
 import {
-GalleriaModule,
-ButtonModule,
-DialogModule,
 GrowlModule,
 ProgressBarModule
 } from 'primeng/primeng';
@@ -25,11 +20,7 @@ const profRoutes : Routes = [
   imports: [
     CommonModule,
  	FormsModule,
- 	FlashMessagesModule,
  	RouterModule.forChild(profRoutes),
- 	GalleriaModule,
-	ButtonModule,
-	DialogModule,
 	GrowlModule,
 	ProgressBarModule,
 	TableModule

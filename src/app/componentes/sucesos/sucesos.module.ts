@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { SucesosComponent } from './sucesos.component';
+import { SucesosService } from '../../services/sucesos.service';
 
 import {
-GalleriaModule,
-ButtonModule,
 DialogModule,
 GrowlModule,
 ProgressBarModule
@@ -23,13 +22,12 @@ const sucesosRoutes : Routes = [
     CommonModule,
  	FormsModule,
  	RouterModule.forChild(sucesosRoutes),
- 	GalleriaModule,
-	ButtonModule,
 	DialogModule,
 	GrowlModule,
 	ProgressBarModule,
 	TableModule
   ],
+  providers: [SucesosService],
   declarations: [SucesosComponent]
 })
 export class SucesosModule { }

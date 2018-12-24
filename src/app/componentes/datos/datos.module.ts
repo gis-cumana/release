@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages/module';
 
 import { DatosComponent } from './datos.component';
+import { DatosService } from '../../services/datos/datos.service';
 import { AgregarDatosComponent } from './agregar/agregar.component';
 import { BuscarDatosComponent } from './buscar/buscar.component';
 import { ActualizarDatosComponent } from './actualizar/actualizar.component';
@@ -18,6 +19,7 @@ import { EliminarDatosComponent } from './eliminar/eliminar.component';
  	FlashMessagesModule
   ],
   declarations: [DatosComponent, AgregarDatosComponent, BuscarDatosComponent, ActualizarDatosComponent, EliminarDatosComponent],
-  exports: [DatosComponent, AgregarDatosComponent, BuscarDatosComponent, ActualizarDatosComponent, EliminarDatosComponent]
+  exports: [DatosComponent, AgregarDatosComponent, BuscarDatosComponent, ActualizarDatosComponent, EliminarDatosComponent],
+  providers: [DatosService]
 })
 export class DatosModule { }
