@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -35,4 +34,4 @@ const mapRoutes : Routes = [
 	PopupModalContentComponent
   ],
 })
-export class ProfileModule { }
+export class MapaModule { }
