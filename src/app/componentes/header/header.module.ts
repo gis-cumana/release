@@ -9,6 +9,8 @@ import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap/accordion/accordi
 
 import { FlashMessagesModule } from 'angular2-flash-messages/module';
 
+import { CategoriasModule } from '../categorias/categorias.module';
+import { CapasModule } from '../capas/capas.module';
 import { ImportarModule } from '../capas/importar/importar.module';
 import { HeaderComponent } from './header.component';
 
@@ -20,6 +22,8 @@ import { HeaderComponent } from './header.component';
     NgbDropdownModule.forRoot(),
     NgbAccordionModule.forRoot(),
  	FlashMessagesModule,
+ 	CategoriasModule,
+ 	CapasModule,
  	ImportarModule
   ],
   declarations: [HeaderComponent],
