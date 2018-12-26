@@ -143,7 +143,7 @@
     </div>
   </div>
 
-  <a *ngIf="isRouteMapa()" class="navbar-brand" routerLink="/" ngbPopover="Inicio" placement="bottom" triggers="mouseenter:mouseleave">
+  <a *ngIf="isRouteMapa()" class="navbar-brand" (click)="goHome()" ngbPopover="Inicio" placement="bottom" triggers="mouseenter:mouseleave">
      <img src="assets/images/cumasig-logo.png" style="float: left" width="250" height="55">
   </a>
 

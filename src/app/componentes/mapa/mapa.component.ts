@@ -296,8 +296,8 @@ export class MapaComponent implements OnInit, OnDestroy {
 
     mapReady(){
 
-      let curtain = <HTMLElement>document.querySelector(".load-curtain");
       setTimeout(()=>{
+	     let curtain = <HTMLElement>document.querySelector(".load-curtain");
       	if(curtain.classList.contains("visible")) curtain.classList.remove("visible");
       },2000);
     }

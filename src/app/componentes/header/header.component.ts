@@ -567,4 +567,13 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['mapa']);
   }
 
+  goHome(ev){
+
+    ev.preventDefault();
+    ev.stopPropagation();
+    let curtain = <HTMLElement>document.querySelector(".load-curtain");
+    curtain.classList.add("visible");
+    this.router.navigate(['/']);
+  }
+
 }

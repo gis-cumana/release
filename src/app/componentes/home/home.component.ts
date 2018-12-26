@@ -166,6 +166,14 @@ export class HomeComponent implements OnInit {
 
     }
 
+    homeReady(){
+
+      setTimeout(()=>{
+        let curtain = <HTMLElement>document.querySelector(".load-curtain");
+        if(curtain.classList.contains("visible")) curtain.classList.remove("visible");
+      },1000);
+    }
+
     goMap(){
 
       let curtain = <HTMLElement>document.querySelector(".load-curtain");
