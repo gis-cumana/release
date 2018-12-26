@@ -283,14 +283,24 @@ export class MapaComponent implements OnInit, OnDestroy {
 	this.initDraw();
   	document.getElementById("montar").click();
 
+  	this.mapReady();
 
-	eval("window.yo = this");
+	eval("window.mapa = this");
   }
 
   ngOnDestroy(){
 
   	this.limpiarLocalStorage();
   }
+
+
+    mapReady(){
+
+      let curtain = <HTMLElement>document.querySelector(".load-curtain");
+      setTimeout(()=>{
+      	if(curtain.classList.contains("visible")) curtain.classList.remove("visible");
+      },2000);
+    }
 
 
   limpiarLocalStorage(){

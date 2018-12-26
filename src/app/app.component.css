@@ -5,3 +5,17 @@ flash-messages{
     z-index: 5000;
     padding: 3px 1%;
 }
+
+div.load-curtain{
+	position: fixed;
+	z-index: 10000;
+	display: none !important;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
+div.load-curtain.visible{
+	display: flex !important;
+}

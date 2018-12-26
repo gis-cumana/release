@@ -166,4 +166,11 @@ export class HomeComponent implements OnInit {
 
     }
 
+    goMap(){
+
+      let curtain = <HTMLElement>document.querySelector(".load-curtain");
+      curtain.classList.add("visible");
+      this.router.navigate(['/mapa']);
+    }
+
 }
