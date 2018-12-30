@@ -5,7 +5,7 @@
 
 .row-full{
     position: fixed;
-    z-index: 980;
+    z-index: 100;
     height: 100vh;
     width: 100%;
     top: 80px;
