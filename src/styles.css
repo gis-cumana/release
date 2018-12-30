@@ -136,3 +136,16 @@ flash-messages{
 .box.set-bot{
   align-items: flex-end;
 }
+
+
+.modal-fc button, button.mdt{
+  height: 50px !important;
+  font-weight: bold  !important;
+  color: #ffffff  !important;
+  padding: 0 !important;
+}
+
+.modal-header div.container-full{
+  padding-left: 0px;
+  padding-right: 0px;
+}

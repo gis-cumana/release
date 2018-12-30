@@ -75,11 +75,6 @@ img.perfil{
 	height: 60px;
 }
 
-div.container-full{
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
 .modal-body.modal-fc{
 	background-color: rgba(0,0,0,0) !important;
     border-color: rgba(0,0,0,0) !important;
@@ -95,12 +90,6 @@ div.col-desarrolladores{
 	height: 100% !important;
 }
 
-.modal-fc button{
-	height: 50px !important;
-	font-weight: bold  !important;
-	color: #ffffff  !important;
-	padding: 0 !important;
-}
 .negrita {
 	font-weight: bold;
 }

@@ -6,10 +6,18 @@ import { CapasService } from '../../../services/capas/capas.service'
   selector: 'app-importar-content',
   template: `
     <div class="modal-header">
-      <h4 class="modal-title">Importar Capas</h4>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+        <div class="container container-full">
+          <div class="row">
+            <div class="col-8 col-md-6 col-xl-4">
+              <button type="button" class="btn btn-primary btn-block mdt" disabled>Importar Capas</button>
+            </div>
+            <div class="col float-right">
+              <button type="button" id="botonCerrarCat" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+        </div>
     </div>
     <div class="modal-body">
 
