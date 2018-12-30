@@ -13,7 +13,7 @@ img.img-full{
 .row.full.links img{
 	cursor: pointer;
 }
-.row.full.links img:hover{
+.row.full.links>div.box:hover{
 	border-color: cornflowerblue;
     border-style: solid;
     border-radius: 10px;
