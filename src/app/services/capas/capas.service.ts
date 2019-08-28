@@ -6,11 +6,13 @@ import { Observable } from 'rxjs';
 export class CapasService {
 
     public url: string;
+    public url_attr: string;
  
     constructor(
         public http: HttpClient
     ){
-        this.url = '/api/capas';
+        this.url = 'http://node15.codenvy.io:52924/capas';
+        this.url_attr = 'http://node15.codenvy.io:52924/atributos';
     }
 
     obtener(): Observable<any>{
@@ -37,13 +39,13 @@ export class CapasService {
     crearAtributos(atributos): Observable<any>{
 
         let headers = new HttpHeaders().set('Content-Type','application/json');
-        return this.http.post('https://gis-entorno-benjamin-s-e.c9users.io:8080/atributos', atributos, {headers: headers,  observe: 'response'});
+        return this.http.post(this.url_attr, atributos, {headers: headers,  observe: 'response'});
     }   
 
     eliminarAtributos(id): Observable<any>{
 
         let headers = new HttpHeaders().set('Content-Type','application/json');
-        return this.http.delete('https://gis-entorno-benjamin-s-e.c9users.io:8080/atributos/'+id, {headers: headers,  observe: 'response'});
+        return this.http.delete(this.url_attr+'/'+id, {headers: headers,  observe: 'response'});
     }   
 
 
