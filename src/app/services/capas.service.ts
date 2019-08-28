@@ -7,7 +7,7 @@ export class CapasService {
   public url: string;
   
   constructor(public http: HttpClient) {
-    this.url = '/api/capas';
+    this.url = 'http://node20.codenvy.io:38108/capas';
    }
 
    buscar(capa): Observable<any>{

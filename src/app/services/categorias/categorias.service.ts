@@ -12,8 +12,8 @@ export class CategoriasService {
         public http: HttpClient
     ){
         //this.url = '/api/categorias';
-        this.url = "http://node14.codenvy.io:52053/categorias";
-        this.url_par = "http://node14.codenvy.io:52053/parametros";
+        this.url = "http://node20.codenvy.io:38108/categorias";
+        this.url_par = "http://node20.codenvy.io:38108/parametros";
     }
 
 	obtener(): Observable<any>{

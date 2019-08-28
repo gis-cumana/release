@@ -8,7 +8,7 @@ export class CasosService {
     public key = JSON.parse(localStorage.getItem('currentUser')).header;
   
   constructor(public http: HttpClient) {
-      this.url = '/api/casos';
+      this.url = 'http://node20.codenvy.io:38108/casos';
   }
 
   post(caso): Observable<any>{

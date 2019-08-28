@@ -7,7 +7,7 @@ export class SucesosService {
 public url: string;
 public key = JSON.parse(localStorage.getItem('currentUser')).header;
   constructor(public http: HttpClient) {
-      this.url = '/api/sucesos';
+      this.url = 'http://node20.codenvy.io:38108/sucesos';
    }
 
    all(): Observable<any>{
