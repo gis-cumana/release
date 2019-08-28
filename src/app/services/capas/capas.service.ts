@@ -11,8 +11,8 @@ export class CapasService {
     constructor(
         public http: HttpClient
     ){
-        this.url = 'http://node15.codenvy.io:52924/capas';
-        this.url_attr = 'http://node15.codenvy.io:52924/atributos';
+        this.url = 'http://node14.codenvy.io:52053/capas';
+        this.url_attr = 'http://node14.codenvy.io:52053/atributos';
     }
 
     obtener(): Observable<any>{
