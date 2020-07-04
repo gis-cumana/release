@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class CategoriasService {
 
     public url: string;
     public url_par: string;
- 
+    public base_url: string;
+
     constructor(
         public http: HttpClient
     ){
         //this.url = '/api/categorias';
-        this.url = "http://node20.codenvy.io:38108/categorias";
-        this.url_par = "http://node20.codenvy.io:38108/parametros";
+        this.base_url = environment.baseUrl;
+        this.url = this.base_url+'categorias/';
+        this.url_par = this.base_url+'parametros/';
     }
 
 	obtener(): Observable<any>{

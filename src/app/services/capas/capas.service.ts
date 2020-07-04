@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class CapasService {
 
     public url: string;
     public url_attr: string;
+    public base_url: string;
  
     constructor(
         public http: HttpClient
     ){
-        this.url = 'http://node20.codenvy.io:38108/capas';
-        this.url_attr = 'http://node20.codenvy.io:38108/atributos';
+        this.base_url = environment.baseUrl;
+        this.url = this.base_url+'capas/';
+        this.url_attr = this.base_url+'atributos/';
     }
 
     obtener(): Observable<any>{
